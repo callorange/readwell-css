@@ -18,6 +18,37 @@ Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분�
 
 ---
 
+## 🎛️ 4대 제어 속성 가이드 (`data-rw-*`)
+
+Readwell CSS는 별도의 JavaScript 없이, HTML 태그(`<html>` 또는 `<body>`)의 `data-rw-*` 속성 선언만으로 테마, 화면 용도, 여백 밀도, 전자종이 정적 모드를 직관적으로 제어합니다.
+
+### 제어 속성 명세표
+
+| 제어 축 (Attribute) | 사용 가능한 옵션 값 (Values) | 기본값 | 시각적 특징 및 권장 사용처 |
+| :--- | :--- | :--- | :--- |
+| **`data-rw-theme`** | `light`, `warm` | `light` | **테마 색온도**: `light`(맑고 정갈한 내추럴 백상지) vs `warm`(장시간 독서에 눈이 편안한 단행본 크림지) |
+| **`data-rw-surface`** | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **화면 용도별 표면**: `reading`(아티클/에세이/블로그), `workspace`(문서 협업/노션형), `dashboard`(운영 콘솔/지표), `dense`(데이터 테이블/백오피스) |
+| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | `comfortable` | **여백 및 컴포넌트 밀도**: `cozy`(터치 친화 여유 여백), `comfortable`(표준 균형 여백), `compact`(밀집된 데이터 뷰) |
+| **`data-rw-eink`** | `true`, `false` | `false` | **전자종이 정적 모드**: 모든 전환 효과 및 애니메이션(`transition: none`)을 차단하여 눈 피로 최소화 |
+
+### 마크업 적용 예시
+
+```html
+<!-- 1. 기술 블로그 / 장문 아티클 (미색 크림지 + 장문 독서 표면 + 여유로운 밀도) -->
+<body data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy">
+
+<!-- 2. 문서형 협업 도구 / 노션형 위키 (백상지 + 협업 문서 표면 + 표준 밀도) -->
+<body data-rw-surface="workspace" data-rw-density="comfortable">
+
+<!-- 3. 고밀도 백오피스 / 이슈 트래커 (고밀도 표 표면 + 압축 밀도) -->
+<body data-rw-surface="dense" data-rw-density="compact">
+
+<!-- 4. 전자종이(E-Ink) 기기 최적화 무모션 모드 -->
+<body data-rw-eink="true">
+```
+
+---
+
 ## 🚀 빠른 시작 (Quick Start)
 
 ### 빌드 및 개발

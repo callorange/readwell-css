@@ -72,7 +72,18 @@ semantic color를 사용하더라도 색상만으로 의미를 전달해서는 �
 
 Readwell은 동작 로직보다 시각 표현을 담당합니다.
 
-## 2. Surface family
+## 2. HTML 제어 속성 명세 (`data-rw-*` API)
+
+Readwell CSS는 HTML5 `data-*` 속성을 통해 전체 레이아웃과 종이 테마를 유연하게 제어합니다:
+
+| HTML 속성 | 속성 값 (Values) | 기본값 | 적용 레이어 및 역할 |
+| :--- | :--- | :--- | :--- |
+| `data-rw-theme` | `light`, `warm` | `light` | **테마 색온도**: 내추럴 백상지 vs 단행본 크림지 질감 |
+| `data-rw-surface` | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **표면 패밀리**: 용도별 최적화된 레이아웃 및 컴포넌트 프리셋 |
+| `data-rw-density` | `cozy`, `comfortable`, `compact` | `comfortable` | **밀도 시스템**: 행간, 패딩, 간격(spacing)의 압축률 제어 |
+| `data-rw-eink` | `true`, `false` | `false` | **전자종이 정적 모드**: 애니메이션/트랜지션을 차단하여 눈 피로 최소화 |
+
+## 3. Surface family
 
 ### 2.1 Reading Surface
 
