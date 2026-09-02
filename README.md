@@ -11,8 +11,8 @@ Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분�
 ## ✨ 핵심 특징 (Key Highlights)
 
 - **E-Ink 영감의 절제된 페이퍼 미학**: 불필요한 장식 색상, 과한 그림자, 시각적 소음이 되는 애니메이션을 억제하고 단정한 선과 여백으로 정보를 전달합니다.
-- **저채도 Semantic Color Matrix**: 6종의 의미 기반 상태 컬러(`primary`, `secondary`, `success`, `warning`, `danger`, `info`)를 저채도로 정밀하게 지원합니다.
-- **저자극 다크 모드 (E-Ink Inverted Theme)**: 순수 블랙의 눈부심을 배제한 차분한 다크 차콜 페이퍼 테마(`[data-rw-theme="dark"]` 및 OS 자동 감지)를 완벽 지원합니다.
+- **4대 페이퍼 테마 스펙트럼 (Paper Themes)**: 맑고 정갈한 백상지(`Light`), 단행본 크림지(`Warm Paper`), 클래식 전자책(`Sepia`), 아늑한 야간 웜 차콜(`Night Dark`) 테마를 완벽 지원합니다.
+- **저채도 Semantic Color Matrix**: 6종의 의미 기반 상태 컬러(`primary`, `secondary`, `success`, `warning`, `danger`, `info`)를 각 종이의 색온도에 맞추어 저채도로 정밀하게 지원합니다.
 - **Surface Family & Density System**: Reading(독서/블로그), Workspace(문서 협업), Dashboard(운영 콘솔), Dense Data(고밀도 테이블) 환경에 최적화된 표면과 밀도(`cozy`, `comfortable`, `compact`)를 제공합니다.
 - **Zero Runtime JavaScript & Zero Dependencies**: 100% 순수 HTML5 시맨틱 태그(`dialog`, `details`, `progress` 등)와 CSS3 `@layer`만으로 빌드 및 동작합니다.
 

@@ -18,3 +18,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 실시간 인터랙티브 모드 & 밀도 스위처 위젯(`examples/switcher.js`, `examples/switcher.css`) 추가
 - 저자극 E-Ink 인버스 다크 모드(`[data-rw-theme="dark"]`, `@media (prefers-color-scheme: dark)`) 및 테마 제어기 추가
 - 웜 세피아 나이트(Warm Sepia Night) 팔레트 리마스터 (눈부심 방지 및 아늑한 야간 가독성 톤앤매너 개선)
+- 4대 페이퍼 테마 스펙트럼(`light`, `warm`, `sepia`, `dark`) 및 인터랙티브 테마 스위처 연동
