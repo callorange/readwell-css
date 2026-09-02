@@ -15,3 +15,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 네이티브 모달 다이얼로그(`dialog`), 아코디언 정밀화(`details.rw-accordion`), 탭(`.rw-tabs`), 드롭다운(`.rw-dropdown`) 추가
 - 폼 유효성 검사 상태(`[aria-invalid="true"]`), 필드셋(`fieldset`), 엠프티 스테이트(`.rw-empty`), 요약 바(`.rw-summary-row`) 추가
 - 종합 컴포넌트 카탈로그 & 키친싱크 페이지(`examples/components.html`) 추가
+- 실시간 인터랙티브 모드 & 밀도 스위처 위젯(`examples/switcher.js`, `examples/switcher.css`) 추가
