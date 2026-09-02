@@ -50,7 +50,83 @@
     }
   }
 
-  /* Dark Theme (Warm Sepia Night - Cozy Low-Stimulus E-Ink Inversion) */
+  /* Theme 1: Warm Paper (Cream Book Paper / 단행본 크림지 테마) */
+  :root[data-rw-theme="warm"],
+  [data-rw-theme="warm"] {
+    --rw-paper: #f4efe2;
+    --rw-paper-2: #faf6ec;
+    --rw-paper-3: #eae3d2;
+    --rw-text: #28231d;
+    --rw-text-muted: #756c60;
+    --rw-line: #ded4c0;
+    --rw-line-strong: #b8ab94;
+    --rw-focus: #4a6f94;
+
+    /* Semantic Matrix - Warm Paper */
+    --rw-primary: #516b88;
+    --rw-primary-soft: #e0e8f0;
+    --rw-primary-strong: #364d68;
+
+    --rw-secondary: #6e786b;
+    --rw-secondary-soft: #e2e8df;
+    --rw-secondary-strong: #4f584d;
+
+    --rw-success: #638558;
+    --rw-success-soft: #e2ede0;
+    --rw-success-strong: #436339;
+
+    --rw-warning: #b08137;
+    --rw-warning-soft: #f7edd8;
+    --rw-warning-strong: #855e20;
+
+    --rw-danger: #a55e5a;
+    --rw-danger-soft: #f7e4e3;
+    --rw-danger-strong: #82423e;
+
+    --rw-info: #5f778c;
+    --rw-info-soft: #e2ecf2;
+    --rw-info-strong: #41576a;
+  }
+
+  /* Theme 2: Sepia (Classic Vintage E-Reader Sepia / 빈티지 앰버 세피아 테마) */
+  :root[data-rw-theme="sepia"],
+  [data-rw-theme="sepia"] {
+    --rw-paper: #eae0cb;
+    --rw-paper-2: #f2eadc;
+    --rw-paper-3: #ddcfb6;
+    --rw-text: #34271b;
+    --rw-text-muted: #7e6e5b;
+    --rw-line: #cfbf9f;
+    --rw-line-strong: #a89673;
+    --rw-focus: #587588;
+
+    /* Semantic Matrix - Sepia */
+    --rw-primary: #5c7482;
+    --rw-primary-soft: #dbe4e8;
+    --rw-primary-strong: #3f5562;
+
+    --rw-secondary: #747a6d;
+    --rw-secondary-soft: #e0e3db;
+    --rw-secondary-strong: #52584c;
+
+    --rw-success: #5f7d54;
+    --rw-success-soft: #dce5d8;
+    --rw-success-strong: #3f5b35;
+
+    --rw-warning: #ad782d;
+    --rw-warning-soft: #f4e7cd;
+    --rw-warning-strong: #7f5418;
+
+    --rw-danger: #a25c56;
+    --rw-danger-soft: #f5dfdc;
+    --rw-danger-strong: #7d3d37;
+
+    --rw-info: #5c7484;
+    --rw-info-soft: #dbe4e9;
+    --rw-info-strong: #3e5564;
+  }
+
+  /* Theme 3: Night Dark (Warm Sepia Night - Cozy Low-Stimulus E-Ink Inversion) */
   :root[data-rw-theme="dark"],
   [data-rw-theme="dark"] {
     --rw-paper: #201e1b;
@@ -90,7 +166,7 @@
 
   /* OS Preference Auto Dark Mode */
   @media (prefers-color-scheme: dark) {
-    :root:not([data-rw-theme="light"]),
+    :root:not([data-rw-theme="light"]):not([data-rw-theme="warm"]):not([data-rw-theme="sepia"]),
     :root[data-rw-theme="auto"],
     [data-rw-theme="auto"] {
       --rw-paper: #201e1b;
