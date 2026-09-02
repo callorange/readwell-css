@@ -5,6 +5,12 @@
 (function () {
   const STORAGE_KEY = 'readwell_live_preview_settings';
 
+  const THEMES = [
+    { id: 'auto', label: 'Auto' },
+    { id: 'light', label: 'Light' },
+    { id: 'dark', label: 'Dark' }
+  ];
+
   const SURFACES = [
     { id: 'reading', label: 'Reading' },
     { id: 'workspace', label: 'Workspace' },
@@ -19,6 +25,7 @@
   ];
 
   // Capture original page defaults
+  const originalTheme = document.documentElement.dataset.rwTheme || document.body.dataset.rwTheme || 'auto';
   const originalSurface = document.body.dataset.rwSurface || 'reading';
   const originalDensity = document.body.dataset.rwDensity || 'comfortable';
   const originalEink = document.body.dataset.rwEink === 'true';
@@ -30,12 +37,20 @@
     if (raw) savedSettings = JSON.parse(raw);
   } catch (e) {}
 
+  let currentTheme = savedSettings?.theme || originalTheme;
   let currentSurface = savedSettings?.surface || originalSurface;
   let currentDensity = savedSettings?.density || originalDensity;
   let currentEink = savedSettings?.eink !== undefined ? savedSettings.eink : originalEink;
 
   // Apply immediately
   function applyModes() {
+    if (currentTheme && currentTheme !== 'auto') {
+      document.documentElement.dataset.rwTheme = currentTheme;
+      document.body.dataset.rwTheme = currentTheme;
+    } else {
+      delete document.documentElement.dataset.rwTheme;
+      delete document.body.dataset.rwTheme;
+    }
     if (currentSurface) {
       document.body.dataset.rwSurface = currentSurface;
     }
@@ -52,6 +67,7 @@
   function saveSettings() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        theme: currentTheme,
         surface: currentSurface,
         density: currentDensity,
         eink: currentEink
@@ -74,6 +90,17 @@
         <div class="rw-switcher-header">
           <span class="rw-switcher-title">⚙️ Live Controls</span>
           <button type="button" class="rw-switcher-close" id="rw-switcher-close" aria-label="Close Controls">✕</button>
+        </div>
+
+        <div class="rw-switcher-section">
+          <label class="rw-switcher-label">Theme Mode</label>
+          <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr 1fr;" id="rw-theme-btns">
+            ${THEMES.map(t => `
+              <button type="button" class="rw-switcher-btn ${t.id === currentTheme ? 'is-active' : ''}" data-theme="${t.id}">
+                ${t.label}
+              </button>
+            `).join('')}
+          </div>
         </div>
 
         <div class="rw-switcher-section">
@@ -123,6 +150,7 @@
     const panel = wrap.querySelector('#rw-switcher-panel');
     const toggleBtn = wrap.querySelector('#rw-switcher-toggle');
     const closeBtn = wrap.querySelector('#rw-switcher-close');
+    const themeBtns = wrap.querySelectorAll('#rw-theme-btns button');
     const surfaceBtns = wrap.querySelectorAll('#rw-surface-btns button');
     const densityBtns = wrap.querySelectorAll('#rw-density-btns button');
     const einkSwitch = wrap.querySelector('#rw-eink-switch');
@@ -149,6 +177,17 @@
       if (e.key === 'Escape' && panel.classList.contains('is-open')) {
         togglePanel(false);
       }
+    });
+
+    // Theme buttons
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        themeBtns.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        currentTheme = btn.dataset.theme;
+        applyModes();
+        saveSettings();
+      });
     });
 
     // Surface buttons
@@ -185,10 +224,12 @@
       try {
         localStorage.removeItem(STORAGE_KEY);
       } catch (e) {}
+      currentTheme = originalTheme;
       currentSurface = originalSurface;
       currentDensity = originalDensity;
       currentEink = originalEink;
 
+      themeBtns.forEach(b => b.classList.toggle('is-active', b.dataset.theme === currentTheme));
       surfaceBtns.forEach(b => b.classList.toggle('is-active', b.dataset.surface === currentSurface));
       densityBtns.forEach(b => b.classList.toggle('is-active', b.dataset.density === currentDensity));
       einkSwitch.checked = currentEink;
