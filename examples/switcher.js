@@ -6,9 +6,11 @@
   const STORAGE_KEY = 'readwell_live_preview_settings';
 
   const THEMES = [
-    { id: 'auto', label: 'Auto' },
-    { id: 'light', label: 'Light' },
-    { id: 'dark', label: 'Dark' }
+    { id: 'light', label: 'Light 📄' },
+    { id: 'warm', label: 'Warm 📖' },
+    { id: 'sepia', label: 'Sepia 📜' },
+    { id: 'dark', label: 'Dark 🌙' },
+    { id: 'auto', label: 'Auto 💻' }
   ];
 
   const SURFACES = [

@@ -35,7 +35,7 @@
   position: absolute;
   bottom: calc(100% + 0.6rem);
   right: 0;
-  width: 290px;
+  width: 310px;
   background-color: var(--rw-paper-2);
   border: 1px solid var(--rw-line);
   border-radius: var(--rw-radius);
