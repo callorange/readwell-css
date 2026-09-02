@@ -124,14 +124,18 @@
 </head>
 <body data-rw-surface="workspace">
   <!-- Top Global Header -->
-  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
-    <nav class="rw-nav">
-      <strong>📖 Readwell CSS Docs</strong>
-      <span class="rw-badge rw-badge--primary">v0.1.0</span>
-      <span style="margin-left: auto;"></span>
-      <a href="../examples/index.html" style="margin-right: 1rem; font-size: 0.9rem;">템플릿 허브</a>
-      <a href="../examples/components.html" style="margin-right: 1rem; font-size: 0.9rem;">키친싱크 카탈로그</a>
-      <a class="rw-button rw-button--secondary" href="https://github.com/callorange/readwell-css" target="_blank">GitHub</a>
+  <header class="rw-container rw-border-bottom" style="padding-block: 0.85rem;">
+    <nav class="rw-nav" style="align-items: center; justify-content: space-between;">
+      <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+        <a href="index.html" style="font-weight: 700; text-decoration: none; color: var(--rw-text); font-size: 1.05rem;">📖 Readwell CSS</a>
+        <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">v0.1.0</span>
+        <span class="rw-meta" style="font-size: 0.85rem;">공식 문서 포털</span>
+      </div>
+      <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+        <a href="../examples/index.html" style="text-decoration: none; color: var(--rw-text); font-size: 0.9rem;">템플릿 허브</a>
+        <a href="../examples/components.html" style="text-decoration: none; color: var(--rw-text); font-size: 0.9rem;">키친싱크 카탈로그</a>
+        <a class="rw-button rw-button--secondary rw-button--sm" href="https://github.com/callorange/readwell-css" target="_blank">GitHub</a>
+      </div>
     </nav>
   </header>
 
@@ -420,6 +424,22 @@
               </div>
             </div>
 
+            <!-- 12-Column Grid with Spans -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-12 (12칸 반응형 그리드 & 컬럼 스팬 .rw-col-span-*)</strong></span>
+              <div class="rw-grid-12" style="margin-top: 0.4rem; font-size: 0.82rem;">
+                <div class="rw-panel rw-col-span-12" style="text-align: center; padding: 0.6rem;">.rw-col-span-12 (전체 12칸 / 100%)</div>
+                <div class="rw-panel rw-col-span-8" style="text-align: center; padding: 0.6rem;">.rw-col-span-8 (8칸 / 66.6%)</div>
+                <div class="rw-panel rw-col-span-4" style="text-align: center; padding: 0.6rem;">.rw-col-span-4 (4칸 / 33.3%)</div>
+                <div class="rw-panel rw-col-span-6" style="text-align: center; padding: 0.6rem;">.rw-col-span-6 (6칸 / 50%)</div>
+                <div class="rw-panel rw-col-span-6" style="text-align: center; padding: 0.6rem;">.rw-col-span-6 (6칸 / 50%)</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+              </div>
+            </div>
+
             <!-- Auto-fit -->
             <div>
               <span class="rw-meta"><strong>.rw-grid (반응형 자동 맞춤: minmax 240px)</strong></span>
@@ -433,53 +453,63 @@
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;!-- 2열 그리드 --&gt;
-&lt;div class="rw-grid-2"&gt;
-  &lt;div class="rw-panel"&gt;Column 1&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Column 2&lt;/div&gt;
+            <pre><code>&lt;!-- 12칸 그리드 및 컬럼 분할 --&gt;
+&lt;div class="rw-grid-12"&gt;
+  &lt;div class="rw-col-span-8"&gt;8칸 메인 영역 (66.6%)&lt;/div&gt;
+  &lt;div class="rw-col-span-4"&gt;4칸 사이드바 (33.3%)&lt;/div&gt;
+  &lt;div class="rw-col-span-6"&gt;6칸 좌측 (50%)&lt;/div&gt;
+  &lt;div class="rw-col-span-6"&gt;6칸 우측 (50%)&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;!-- 3열 그리드 --&gt;
-&lt;div class="rw-grid-3"&gt;
-  &lt;div class="rw-panel"&gt;Col 1&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Col 2&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Col 3&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- 4열 그리드 --&gt;
-&lt;div class="rw-grid-4"&gt;
-  &lt;div class="rw-panel"&gt;Col 1&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Col 2&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Col 3&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;Col 4&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- 자동 맞춤 그리드 (minmax 240px) --&gt;
-&lt;div class="rw-grid"&gt;
-  &lt;div class="rw-panel"&gt;Item&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;!-- 2열 / 3열 / 4열 그리드 --&gt;
+&lt;div class="rw-grid-2"&gt;...&lt;/div&gt;
+&lt;div class="rw-grid-3"&gt;...&lt;/div&gt;
+&lt;div class="rw-grid-4"&gt;...&lt;/div&gt;</code></pre>
           </div>
         </article>
 
         <!-- Stack & Cluster -->
         <article id="layout-stack" class="rw-card rw-stack docs-card">
-          <h3>Stack & Cluster</h3>
-          <p class="rw-meta"><code>.rw-stack</code>은 수직 흐름 여백을 부여하고, <code>.rw-cluster</code>는 버튼이나 태그의 수평 나열에 활용됩니다.</p>
+          <h3>Stack (.rw-stack) & Cluster (.rw-cluster)</h3>
+          <p class="rw-meta">
+            <code>.rw-stack</code>은 수직 흐름에 일정한 간격(밀도 토큰 <code>--rw-density-gap</code>)을 부여하며, <code>.rw-cluster</code>는 버튼이나 태그의 수평 나열(줄바꿈 지원)에 활용됩니다.
+          </p>
 
-          <div class="docs-preview">
-            <div class="rw-cluster">
-              <button type="button" class="rw-button rw-button--primary">Cluster Item 1</button>
-              <button type="button" class="rw-button rw-button--secondary">Cluster Item 2</button>
-              <span class="rw-badge rw-badge--success">Cluster Badge</span>
+          <div class="docs-preview rw-grid-2">
+            <!-- Stack Live Preview -->
+            <div style="border: 1px solid var(--rw-line); border-radius: var(--rw-radius); padding: 1rem;">
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">.rw-stack (수직 스택 흐름)</span>
+              <div class="rw-stack">
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 1 (상단)</div>
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 2 (중간)</div>
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 3 (하단)</div>
+              </div>
+            </div>
+
+            <!-- Cluster Live Preview -->
+            <div style="border: 1px solid var(--rw-line); border-radius: var(--rw-radius); padding: 1rem;">
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">.rw-cluster (수평 클러스터 나열)</span>
+              <div class="rw-cluster" style="margin-top: 0.5rem;">
+                <button type="button" class="rw-button rw-button--primary rw-button--sm">Cluster 1</button>
+                <button type="button" class="rw-button rw-button--secondary rw-button--sm">Cluster 2</button>
+                <button type="button" class="rw-button rw-button--sm">Cluster 3</button>
+                <span class="rw-badge rw-badge--success">Badge</span>
+              </div>
             </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;div class="rw-cluster"&gt;
-  &lt;button class="rw-button rw-button--primary"&gt;확인&lt;/button&gt;
-  &lt;button class="rw-button rw-button--secondary"&gt;취소&lt;/button&gt;
-  &lt;span class="rw-badge rw-badge--success"&gt;완료&lt;/span&gt;
+            <pre><code>&lt;!-- 수직 흐름 스택 --&gt;
+&lt;div class="rw-stack"&gt;
+  &lt;div class="rw-panel"&gt;상단 영역&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;하단 영역&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 수평 클러스터 --&gt;
+&lt;div class="rw-cluster"&gt;
+  &lt;button class="rw-button"&gt;버튼 1&lt;/button&gt;
+  &lt;button class="rw-button"&gt;버튼 2&lt;/button&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </article>
@@ -549,6 +579,43 @@
 &lt;h4&gt;Heading 4 (1.15rem)&lt;/h4&gt;
 &lt;h5&gt;Heading 5 (1.05rem)&lt;/h5&gt;
 &lt;h6&gt;Heading 6 (0.92rem)&lt;/h6&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Font Weights & Text Formatting -->
+        <article id="content-formatting" class="rw-card rw-stack docs-card">
+          <h3>Text Weights & Styles (텍스트 굵기 및 강조 서식)</h3>
+          <p class="rw-meta">진하게, 연하게, 이탤릭, 굵기 단계별 시맨틱 태그 및 유틸리티 클래스입니다.</p>
+
+          <div class="docs-preview rw-stack" style="gap: 0.6rem;">
+            <p style="margin: 0;">
+              <strong>진하게 (strong 태그 / .rw-bold)</strong>: 핵심 키워드나 중요한 문장을 굵게(700) 표현합니다.
+            </p>
+            <p style="margin: 0;">
+              <span class="rw-semibold">세미볼드 (.rw-semibold)</span>: 적절한 무게감(600)으로 UI 레이블을 강조합니다.
+            </p>
+            <p style="margin: 0;">
+              <span class="rw-normal">일반 굵기 (.rw-normal)</span>: 표준 본문 굵기(400)입니다.
+            </p>
+            <p style="margin: 0;">
+              <span class="rw-light">가벼운 굵기 (.rw-light)</span>: 은은하고 얇은 굵기(300)입니다.
+            </p>
+            <p style="margin: 0;">
+              <em>기울임꼴 (em / i 태그 / .rw-italic)</em>: 인용이나 강조 문장에 기울임 스타일을 적용합니다.
+            </p>
+            <p style="margin: 0;">
+              <span class="rw-muted">연하게 (small 태그 / .rw-muted)</span>: 부가 설명이나 보조 텍스트를 차분한 저채도 회색으로 표현합니다.
+            </p>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;strong&gt;진하게 (700)&lt;/strong&gt; 또는 &lt;span class="rw-bold"&gt;...&lt;/span&gt;
+&lt;span class="rw-semibold"&gt;세미볼드 (600)&lt;/span&gt;
+&lt;span class="rw-normal"&gt;일반 굵기 (400)&lt;/span&gt;
+&lt;span class="rw-light"&gt;가벼운 굵기 (300)&lt;/span&gt;
+&lt;em&gt;기울임꼴&lt;/em&gt;
+&lt;small class="rw-muted"&gt;연하게 보조 텍스트&lt;/small&gt;</code></pre>
           </div>
         </article>
 
@@ -659,24 +726,53 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
 
         <!-- Badges & Meta -->
         <article id="content-badge" class="rw-card rw-stack docs-card">
-          <h3>Badges & Meta (상태 라벨 & 메타)</h3>
-          <p class="rw-meta">6종 저채도 시맨틱 배지와 보조 메타 텍스트(<code>.rw-meta</code>)입니다.</p>
+          <h3>Badges (.rw-badge) & Meta (.rw-meta)</h3>
+          <p class="rw-meta">
+            6종 저채도 시맨틱 배지와 본문 부가 정보(작성일, 읽기 시간, 조회수 등)를 표현하는 <code>.rw-meta</code>입니다.
+          </p>
 
-          <div class="docs-preview rw-cluster">
-            <span class="rw-badge">Default</span>
-            <span class="rw-badge rw-badge--primary">Primary</span>
-            <span class="rw-badge rw-badge--secondary">Secondary</span>
-            <span class="rw-badge rw-badge--success">Success</span>
-            <span class="rw-badge rw-badge--warning">Warning</span>
-            <span class="rw-badge rw-badge--danger">Danger</span>
-            <span class="rw-badge rw-badge--info">Info</span>
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <!-- Badges -->
+            <div>
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">6종 상태 배지 (Badges)</span>
+              <div class="rw-cluster">
+                <span class="rw-badge">Default</span>
+                <span class="rw-badge rw-badge--primary">Primary</span>
+                <span class="rw-badge rw-badge--secondary">Secondary</span>
+                <span class="rw-badge rw-badge--success">Success</span>
+                <span class="rw-badge rw-badge--warning">Warning</span>
+                <span class="rw-badge rw-badge--danger">Danger</span>
+                <span class="rw-badge rw-badge--info">Info</span>
+              </div>
+            </div>
+
+            <!-- Meta Showcase -->
+            <div style="border-top: 1px dashed var(--rw-line); padding-top: 0.75rem;">
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">메타 텍스트 실사용 예시 (.rw-meta)</span>
+              <div class="rw-stack" style="gap: 0.4rem;">
+                <p class="rw-meta" style="margin: 0;">2026.09.02 · 읽기 6분 · 시각 디자인 원칙</p>
+                <div class="rw-cluster" style="font-size: 0.9em;">
+                  <span class="rw-meta">작성자: <strong>김개발</strong></span>
+                  <span class="rw-meta">·</span>
+                  <span class="rw-meta">조회수 1,420회</span>
+                  <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">기술 아티클</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;span class="rw-badge rw-badge--primary"&gt;Primary&lt;/span&gt;
+            <pre><code>&lt;!-- 배지 --&gt;
+&lt;span class="rw-badge rw-badge--primary"&gt;Primary&lt;/span&gt;
 &lt;span class="rw-badge rw-badge--success"&gt;Success&lt;/span&gt;
-&lt;span class="rw-meta"&gt;2026.09.02 · 읽기 5분&lt;/span&gt;</code></pre>
+
+&lt;!-- 메타 텍스트 --&gt;
+&lt;p class="rw-meta"&gt;2026.09.02 · 읽기 5분 · 가독성 가이드&lt;/p&gt;
+&lt;div class="rw-cluster"&gt;
+  &lt;span class="rw-meta"&gt;작성자: 김개발&lt;/span&gt;
+  &lt;span class="rw-badge rw-badge--secondary"&gt;공개&lt;/span&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </article>
       </section>

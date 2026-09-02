@@ -26,10 +26,19 @@
     border-radius: 50%;
   }
 
-  input[type="checkbox"]:not([role="switch"]):hover:not(:disabled),
-  input[type="radio"]:hover:not(:disabled) {
+  input[type="checkbox"]:not([role="switch"]):hover:not(:checked):not(:disabled),
+  input[type="radio"]:hover:not(:checked):not(:disabled) {
     border-color: var(--rw-primary);
     background-color: var(--rw-paper-3);
+  }
+
+  input[type="checkbox"]:not([role="switch"]):checked:hover:not(:disabled) {
+    background-color: var(--rw-primary-strong);
+    border-color: var(--rw-primary-strong);
+  }
+
+  input[type="radio"]:checked:hover:not(:disabled) {
+    border-color: var(--rw-primary-strong);
   }
 
   input[type="checkbox"]:not([role="switch"]):checked {
@@ -108,7 +117,8 @@
     height: calc(1.2em - 6px);
     border-radius: 50%;
     background-color: var(--rw-text-muted);
-    transition: left 0.15s ease, background-color 0.15s ease;
+    transform: translateX(0);
+    transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.18s ease;
   }
 
   input[role="switch"]:checked,
@@ -119,7 +129,7 @@
 
   input[role="switch"]:checked::before,
   input[type="checkbox"][role="switch"]:checked::before {
-    left: calc(100% - 1.2em + 4px);
+    transform: translateX(1em);
     background-color: var(--rw-primary-strong);
   }
 

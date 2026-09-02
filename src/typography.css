@@ -22,6 +22,8 @@
     overflow-wrap: break-word;
   }
 
+  strong, b { font-weight: 700; color: var(--rw-text); }
+  em, i { font-style: italic; }
   small { font-size: 0.85em; color: var(--rw-text-muted); }
   sub, sup { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
   sup { top: -0.5em; }
@@ -29,6 +31,15 @@
   del, s { text-decoration: line-through; color: var(--rw-text-muted); }
   ins, u { text-decoration: underline; text-underline-offset: 2px; }
   abbr[title] { text-decoration: underline dotted; cursor: help; }
+
+  /* Typography Weight & Style Utilities */
+  .rw-bold { font-weight: 700 !important; }
+  .rw-semibold { font-weight: 600 !important; }
+  .rw-normal { font-weight: 400 !important; }
+  .rw-light { font-weight: 300 !important; }
+  .rw-italic { font-style: italic !important; }
+  .rw-muted { color: var(--rw-text-muted) !important; }
+  .rw-strong { font-weight: 700 !important; color: var(--rw-text) !important; }
 
   blockquote {
     border-left: 3px solid var(--rw-line-strong);
