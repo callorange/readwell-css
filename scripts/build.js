@@ -11,7 +11,7 @@ const entryFile = path.join(srcDir, 'index.css');
 
 const BANNER = `/*!
  * Readwell CSS v0.1.0
- * https://github.com/readwell-css
+ * https://github.com/callorange/readwell-css
  * (c) 2026 Readwell Team
  * Released under the MIT License.
  */\n`;

@@ -107,7 +107,7 @@
         <div class="rw-switcher-section">
           <div class="rw-switcher-section-head">
             <label class="rw-switcher-label">Theme Mode</label>
-            <span class="rw-switcher-info-badge" title="종이 질감 색온도 선택">ⓘ</span>
+            <span class="rw-switcher-info-badge" data-tooltip="종이 질감 색온도 선택" tabindex="0">ⓘ</span>
           </div>
           <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr;" id="rw-theme-btns">
             ${THEMES.map(t => `
@@ -122,7 +122,7 @@
         <div class="rw-switcher-section">
           <div class="rw-switcher-section-head">
             <label class="rw-switcher-label">Surface Family</label>
-            <span class="rw-switcher-info-badge" title="화면 용도별 레이아웃 및 스타일 프리셋">ⓘ</span>
+            <span class="rw-switcher-info-badge" data-tooltip="화면 용도별 레이아웃 및 스타일 프리셋" tabindex="0">ⓘ</span>
           </div>
           <div class="rw-switcher-grid" id="rw-surface-btns">
             ${SURFACES.map(s => `
@@ -137,7 +137,7 @@
         <div class="rw-switcher-section">
           <div class="rw-switcher-section-head">
             <label class="rw-switcher-label">Density System</label>
-            <span class="rw-switcher-info-badge" title="행간 및 컴포넌트 여백 밀도">ⓘ</span>
+            <span class="rw-switcher-info-badge" data-tooltip="행간 및 컴포넌트 여백 밀도" tabindex="0">ⓘ</span>
           </div>
           <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr 1fr;" id="rw-density-btns">
             ${DENSITIES.map(d => `
@@ -153,7 +153,7 @@
           <div class="rw-switcher-row">
             <div class="rw-switcher-section-head">
               <span class="rw-switcher-label" style="margin: 0;">E-Ink Mode</span>
-              <span class="rw-switcher-info-badge" title="전자종이 디스플레이를 위한 무모션/정적 렌더링 모드">ⓘ</span>
+              <span class="rw-switcher-info-badge" data-tooltip="전자종이 디스플레이를 위한 무모션/정적 렌더링 모드" tabindex="0">ⓘ</span>
             </div>
             <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.85rem;" title="모든 애니메이션 및 전환 효과 제거">
               <input type="checkbox" role="switch" id="rw-eink-switch" ${currentEink ? 'checked' : ''}>

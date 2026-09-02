@@ -34,6 +34,14 @@
     "zero-dependency",
     "classless-css"
   ],
+  "homepage": "https://callorange.github.io/readwell-css/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callorange/readwell-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/callorange/readwell-css/issues"
+  },
   "author": "Readwell Team",
   "license": "MIT"
 }

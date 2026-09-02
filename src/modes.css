@@ -2,6 +2,7 @@
   /* Surface modifiers */
   [data-rw-surface="reading"] {
     --rw-line-height-body: 1.75;
+    --rw-container-width: 48rem;
   }
 
   [data-rw-surface="workspace"] {
@@ -14,8 +15,11 @@
 
   [data-rw-surface="dense"] {
     --rw-density-gap: 0.5rem;
-    --rw-density-row: 2rem;
+    --rw-density-row: 1.8rem;
     --rw-density-panel-padding: 0.75rem;
+    --rw-density-btn-padding: 0.3em 0.65em;
+    --rw-density-input-padding: 0.3em 0.55em;
+    --rw-density-table-padding: 0.32em 0.55em;
   }
 
   /* Density modifiers */
@@ -23,12 +27,18 @@
     --rw-density-gap: 1.5rem;
     --rw-density-row: 3rem;
     --rw-density-panel-padding: 1.5rem;
+    --rw-density-btn-padding: 0.6em 1.2em;
+    --rw-density-input-padding: 0.6em 0.9em;
+    --rw-density-table-padding: 0.85em 1.1em;
   }
 
   [data-rw-density="compact"] {
     --rw-density-gap: 0.5rem;
-    --rw-density-row: 2rem;
+    --rw-density-row: 1.8rem;
     --rw-density-panel-padding: 0.75rem;
+    --rw-density-btn-padding: 0.3em 0.65em;
+    --rw-density-input-padding: 0.3em 0.55em;
+    --rw-density-table-padding: 0.32em 0.55em;
   }
 
   /* E-Ink & Reduced Motion */

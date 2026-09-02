@@ -56,5 +56,8 @@
     --rw-density-gap: 1rem;
     --rw-density-row: 2.5rem;
     --rw-density-panel-padding: 1.25rem;
+    --rw-density-btn-padding: 0.45em 0.9em;
+    --rw-density-input-padding: 0.45em 0.7em;
+    --rw-density-table-padding: 0.55em 0.8em;
   }
 }

@@ -176,10 +176,16 @@
   details.rw-dropdown > summary {
     list-style: none;
     cursor: pointer;
+    user-select: none;
   }
 
   details.rw-dropdown > summary::-webkit-details-marker {
     display: none;
+  }
+
+  details.rw-dropdown[open] > summary.rw-button {
+    border-color: var(--rw-primary);
+    background-color: var(--rw-paper-3);
   }
 
   .rw-dropdown-menu {
@@ -187,17 +193,20 @@
     background-color: var(--rw-paper-2);
     border-radius: var(--rw-radius);
     padding: var(--rw-space-1) 0;
-    min-width: 180px;
+    min-width: 100%;
+    width: max-content;
+    max-width: 320px;
     list-style: none;
-    margin: var(--rw-space-1) 0 0 0;
+    margin: 0;
   }
 
   details.rw-dropdown .rw-dropdown-menu {
     position: absolute;
-    top: calc(100% + var(--rw-space-1));
+    top: calc(100% + 4px);
     left: 0;
+    margin: 0;
     z-index: 50;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .rw-dropdown-item {
