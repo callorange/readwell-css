@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `README.md`, `examples/index.html`, `docs/03_DESIGN_SYSTEM.md`에 4대 제어 속성(`data-rw-theme`, `data-rw-surface`, `data-rw-density`, `data-rw-eink`) 종합 사용 가이드 및 명세 추가
 - 폼 유효성 성공 상태(`[aria-invalid="false"]`, `.is-valid`, `.rw-form-success`) 스타일 추가
 - 모드 스위처 정보 뱃지(`ⓘ`)에 브라우저 딜레이 없는 Pure CSS 툴팁(`data-tooltip`) 추가
+- Pico CSS 스타일의 Zero-Dependency 공식 인터랙티브 문서 포털 웹사이트(`docs/index.html`, `examples/docs.html`) 신설 (반응형 스티키 사이드바, 카테고리별 설명, 라이브 렌더링 프리뷰, 원클릭 복사 코드 블록 완비)
 
 ### Changed
 - 체크박스(`input[type="checkbox"]`) 및 라디오 버튼(`input[type="radio"]`)을 Paper & Ink 철학에 부합하는 순수 CSS 커스텀 스타일로 개선

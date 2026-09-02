@@ -63,10 +63,16 @@ npm run dev
 npm test
 ```
 
+## 📖 공식 문서 및 쇼케이스
+
+- 🌐 **[공식 문서 포털 (Documentation Portal)](https://callorange.github.io/readwell-css/docs/)**: Pico CSS 스타일의 스티키 사이드바, 카테고리별 설명, 라이브 렌더링 프리뷰 및 원클릭 복사 코드가 제공되는 공식 문서 웹사이트
+- 🎨 **[예제 템플릿 허브 (Examples Hub)](https://callorange.github.io/readwell-css/examples/index.html)**: 5종의 표준 실사용 템플릿 및 키친싱크 카탈로그
+
 ---
 
 ## 📂 예제 템플릿 및 쇼케이스 (`examples/`)
 
+- [**공식 문서 포털 (Docs Portal)**](examples/docs.html): 카테고리별 라이브 프리뷰 및 복사 가능한 코드 블록
 - [**종합 컴포넌트 카탈로그 (Kitchen Sink)**](examples/components.html): 모든 타이포그래피, 폼 유효성 검사, 아코디언, 모달, 탭, 드롭다운, 엠프티 스테이트 쇼케이스
 - [**Article / Long-form Page**](examples/article.html): Reading Surface (장문 독서/기술 블로그)
 - [**Workspace / Documentation**](examples/workspace.html): Workspace Surface (문서형 협업 도구)

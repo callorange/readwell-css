@@ -44,29 +44,31 @@ HTML 기본 기능을 사용하고 Readwell은 스타일만 제공합니다.
 
 | 컴포넌트 | 구현 방식 |
 |---|---|
-| Accordion / Disclosure | `details` / `summary` |
+| Accordion / Disclosure | `details.rw-accordion` / `summary` |
+| Dropdown (Zero-JS) | `details.rw-dropdown` / `summary` / `.rw-dropdown-menu` |
 | Dialog / Modal | `dialog` |
 | Progress | `progress` |
+| Checkbox & Radio | `input[type="checkbox"]`, `input[type="radio"]` (Pure CSS Paper&Ink) |
 | Switch | `input type="checkbox" role="switch"` |
+| Form Validation | `[aria-invalid="false"]` / `[aria-invalid="true"]` / `.is-valid` / `.is-invalid` |
 
-### 3.3 Styled-only
+### 3.3 Styled-only & Widgets
 
-외형은 제공하지만 동작은 사용자 코드나 별도 라이브러리가 담당합니다.
+외형은 제공하며 동작은 가벼운 CSS 상태 또는 데모 위젯으로 지원합니다.
 
-| 컴포넌트 | Readwell 담당 | Readwell 미담당 |
+| 컴포넌트 | Readwell 담당 | 구현 상태 |
 |---|---|---|
-| Tabs | active/selected style | tab switching |
-| Dropdown | menu/panel style | open state, positioning, keyboard interaction |
-| Dialog | visual style | open/close orchestration |
+| Tabs | active/selected style | `.rw-tabs button.is-active` 지원 |
+| Dropdown Menu | menu/panel style, 4px 밀착 | `.rw-dropdown-menu`, `.rw-dropdown-item` 지원 |
+| Live Mode Switcher | 테마/표면/밀도/E-Ink 실시간 제어 위젯 | `examples/switcher.js` 제공 |
+| Instant CSS Tooltip | `data-tooltip` 기반 딜레이 없는 툴팁 | `.rw-switcher-info-badge` 등 제공 |
 
-### 3.4 Deferred
+### 3.4 Deferred & Optional
 
-후순위입니다.
+향후 확장 고려 항목입니다.
 
-- tooltip
-- theme preset switcher
-- print style
-- dark/mono/eink-pure theme
+- print style 최적화
+- 추가 서체(Monospace 등) 패키징
 
 ### 3.5 Excluded
 

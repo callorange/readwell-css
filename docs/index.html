@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readwell CSS Documentation - 공식 가이드 및 컴포넌트 명세</title>
+  <link rel="stylesheet" href="../dist/readwell.min.css">
+  <link rel="stylesheet" href="../examples/switcher.css">
+  <style>
+    /* Documentation Portal Custom Styles */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 1.5rem;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .docs-sidebar-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--rw-text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .docs-sidebar-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .docs-sidebar-links a {
+      color: var(--rw-text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--rw-radius);
+      display: block;
+      transition: background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .docs-sidebar-links a:hover {
+      background-color: var(--rw-paper-3);
+      color: var(--rw-primary-strong);
+    }
+
+    .docs-section {
+      margin-bottom: 3rem;
+    }
+
+    .docs-section-title {
+      font-size: 1.75rem;
+      border-bottom: 2px solid var(--rw-line-strong);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-card {
+      margin-bottom: 2rem;
+    }
+
+    .docs-preview {
+      background-color: var(--rw-paper-2);
+      border: 1px solid var(--rw-line);
+      border-radius: var(--rw-radius);
+      padding: 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .docs-code-wrap {
+      position: relative;
+      margin-top: 0.75rem;
+    }
+
+    .docs-copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      background-color: var(--rw-paper-3);
+      border: 1px solid var(--rw-line-strong);
+      border-radius: var(--rw-radius);
+      cursor: pointer;
+      color: var(--rw-text);
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+
+    .docs-copy-btn:hover {
+      background-color: var(--rw-primary-soft);
+      border-color: var(--rw-primary);
+      color: var(--rw-primary-strong);
+    }
+
+    .docs-code-wrap pre {
+      margin: 0;
+    }
+  </style>
+</head>
+<body data-rw-surface="workspace">
+  <!-- Top Global Header -->
+  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
+    <nav class="rw-nav">
+      <strong>📖 Readwell CSS Docs</strong>
+      <span class="rw-badge rw-badge--primary">v0.1.0</span>
+      <span style="margin-left: auto;"></span>
+      <a href="../examples/index.html" style="margin-right: 1rem; font-size: 0.9rem;">템플릿 허브</a>
+      <a href="../examples/components.html" style="margin-right: 1rem; font-size: 0.9rem;">키친싱크 카탈로그</a>
+      <a class="rw-button rw-button--secondary" href="https://github.com/callorange/readwell-css" target="_blank">GitHub</a>
+    </nav>
+  </header>
+
+  <!-- Main Documentation Container with Sidebar Layout -->
+  <div class="rw-container rw-sidebar-layout" style="padding-block: 2rem; align-items: flex-start;">
+    <!-- Left Sticky Sidebar -->
+    <aside class="docs-sidebar">
+      <nav aria-label="Documentation Categories">
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Getting Started</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#overview">개요 및 철학</a></li>
+            <li><a href="#quickstart">빠른 시작 (Installation)</a></li>
+            <li><a href="#attributes">4대 제어 속성 (data-rw-*)</a></li>
+            <li><a href="#themes">테마 듀오 (Pure Paper Duo)</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Layout</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#layout-container">Container & Reading</a></li>
+            <li><a href="#layout-grid">Grid & Column</a></li>
+            <li><a href="#layout-stack">Stack & Cluster</a></li>
+            <li><a href="#layout-sidebar">Sidebar Layout & App Shell</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Typography & Content</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#content-typography">Typography (Headings & Body)</a></li>
+            <li><a href="#content-blockquote">Blockquote & Code</a></li>
+            <li><a href="#content-table">Tables (선·여백 데이터 표)</a></li>
+            <li><a href="#content-badge">Badges & Meta</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Forms & Validation</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#forms-input">Input, Select & Textarea</a></li>
+            <li><a href="#forms-checkbox">Custom Checkbox & Radio</a></li>
+            <li><a href="#forms-switch">Toggle Switch</a></li>
+            <li><a href="#forms-validation">Valid & Invalid 상태</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Components</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#comp-button">Button & Button Group</a></li>
+            <li><a href="#comp-card">Card & Panel</a></li>
+            <li><a href="#comp-callout">Callout / Alerts (4종)</a></li>
+            <li><a href="#comp-accordion">Accordion (details)</a></li>
+            <li><a href="#comp-modal">Modal Dialog (dialog)</a></li>
+            <li><a href="#comp-tabs">Tabs (탭)</a></li>
+            <li><a href="#comp-dropdown">Dropdown (Zero-JS)</a></li>
+            <li><a href="#comp-progress">Progress Bar</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Product Patterns</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#pattern-stat">Stat Card (지표 카드)</a></li>
+            <li><a href="#pattern-summary">Summary Row & Empty State</a></li>
+          </ul>
+        </div>
+
+        <div class="docs-sidebar-section">
+          <div class="docs-sidebar-title">Modes & Customization</div>
+          <ul class="docs-sidebar-links">
+            <li><a href="#mode-surface">Surface Family</a></li>
+            <li><a href="#mode-density">Density System</a></li>
+            <li><a href="#mode-eink">E-Ink Mode</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Right Main Content Area -->
+    <main class="rw-stack" style="gap: 2.5rem; min-width: 0;">
+      <!-- Hero Intro Banner -->
+      <section class="rw-card rw-stack">
+        <span class="rw-badge rw-badge--primary">Official Documentation</span>
+        <h1 style="margin: 0; font-size: 2.2rem;">Readwell CSS 공식 가이드</h1>
+        <p class="rw-meta" style="font-size: 1.05rem;">
+          E-Ink 디스플레이에서 영감을 얻은 긴 글 가독성과 제품 UI를 위한 저자극 순수 CSS 프레임워크입니다.
+          모든 컴포넌트는 Zero Runtime JavaScript 및 표준 시맨틱 HTML5 태그를 기반으로 작동합니다.
+        </p>
+      </section>
+
+      <!-- 1. Getting Started -->
+      <section id="overview" class="docs-section">
+        <h2 class="docs-section-title">1. Getting Started (시작하기)</h2>
+
+        <!-- Overview -->
+        <article class="rw-card rw-stack docs-card">
+          <h3>개요 및 디자인 철학</h3>
+          <p>
+            Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분한 가독성과 실제 상용 제품 UI(Workspace, Dashboard, Backoffice)에 필요한 구조적 명확성을 함께 제공합니다.
+          </p>
+          <ul>
+            <li><strong>절제된 페이퍼 미학</strong>: 화려한 그림자, 과한 테두리 반경, 불필요한 모션을 억제하고 단정한 선과 여백으로 위계를 표현합니다.</li>
+            <li><strong>저채도 Semantic Matrix</strong>: 6종 상태 색상(<code>primary</code>, <code>secondary</code>, <code>success</code>, <code>warning</code>, <code>danger</code>, <code>info</code>)을 저채도로 조화롭게 적용합니다.</li>
+            <li><strong>Zero Runtime Dependencies</strong>: 별도의 자바스크립트 없이 HTML5 표준 요소만으로 컴포넌트가 완성됩니다.</li>
+          </ul>
+        </article>
+
+        <!-- Quick Start -->
+        <article id="quickstart" class="rw-card rw-stack docs-card">
+          <h3>빠른 시작 (Installation)</h3>
+          <p class="rw-meta">단일 CDN 링크 또는 로컬 빌드 파일을 HTML 문서 상단에 삽입하면 즉시 적용됩니다.</p>
+          
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- CDN 링크로 빠르게 불러오기 --&gt;
+&lt;link rel="stylesheet" href="https://callorange.github.io/readwell-css/dist/readwell.min.css"&gt;
+
+&lt;!-- 기본 HTML 마크업 예시 --&gt;
+&lt;main class="rw-container" data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy"&gt;
+  &lt;article class="rw-reading"&gt;
+    &lt;h1&gt;읽는 시간이 길수록 조용한 화면이 좋아진다.&lt;/h1&gt;
+    &lt;p&gt;본문 내용을 편안하게 작성하세요...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- 4 Control Attributes -->
+        <article id="attributes" class="rw-card rw-stack docs-card">
+          <h3>🎛️ 4대 HTML 제어 속성 (data-rw-*)</h3>
+          <p class="rw-meta">HTML <code>&lt;body&gt;</code> 또는 <code>&lt;html&gt;</code> 태그에 속성을 부여하여 전역 모드를 선언적으로 제어합니다.</p>
+          
+          <div class="rw-table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>제어 속성</th>
+                  <th>옵션 값</th>
+                  <th>기본값</th>
+                  <th>설명 및 권장 용도</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>data-rw-theme</code></td>
+                  <td><code>light</code>, <code>warm</code></td>
+                  <td><code>light</code></td>
+                  <td><strong>테마 색온도</strong>: 내추럴 백상지(Light) vs 단행본 미색 크림지(Warm)</td>
+                </tr>
+                <tr>
+                  <td><code>data-rw-surface</code></td>
+                  <td><code>reading</code>, <code>workspace</code>, <code>dashboard</code>, <code>dense</code></td>
+                  <td><code>reading</code></td>
+                  <td><strong>화면 표면</strong>: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 표</td>
+                </tr>
+                <tr>
+                  <td><code>data-rw-density</code></td>
+                  <td><code>cozy</code>, <code>comfortable</code>, <code>compact</code></td>
+                  <td><code>comfortable</code></td>
+                  <td><strong>여백 밀도</strong>: 여유로운 여백 / 표준 균형 / 압축 데이터 뷰</td>
+                </tr>
+                <tr>
+                  <td><code>data-rw-eink</code></td>
+                  <td><code>true</code>, <code>false</code></td>
+                  <td><code>false</code></td>
+                  <td><strong>전자종이 정적 모드</strong>: 모든 전환 효과 및 애니메이션 차단</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Theme Duo -->
+        <article id="themes" class="rw-card rw-stack docs-card">
+          <h3>퓨어 페이퍼 테마 듀오 (Pure Paper Duo)</h3>
+          <p class="rw-meta">E-Ink 및 인쇄 종이 매체의 자연스러운 질감을 살린 2종의 표준 테마입니다.</p>
+          <div class="rw-grid-2">
+            <div class="rw-panel rw-stack" data-rw-theme="light" style="border: 1px solid var(--rw-line-strong);">
+              <h4>Light 📄 (내추럴 백상지)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">맑고 정갈한 순수 종이 질감으로 깔끔하고 현대적인 가독성을 제공합니다.</p>
+            </div>
+            <div class="rw-panel rw-stack" data-rw-theme="warm" style="border: 1px solid var(--rw-line-strong);">
+              <h4>Warm Paper 📖 (단행본 크림지)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">단행본 출판 도서의 미색 크림지 질감으로 장시간 독서 시 눈의 피로를 최소화합니다.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2. Layout -->
+      <section id="layout" class="docs-section">
+        <h2 class="docs-section-title">2. Layout (레이아웃)</h2>
+
+        <!-- Container & Reading -->
+        <article id="layout-container" class="rw-card rw-stack docs-card">
+          <h3>Container & Reading</h3>
+          <p class="rw-meta"><code>.rw-container</code>는 페이지 최대 폭(72rem)을 안정적으로 제한하며, <code>.rw-reading</code>은 긴 글 가독성을 위해 본문 폭을 44rem으로 최적화합니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-container" style="background-color: var(--rw-paper-3); padding: 1rem; border: 1px dashed var(--rw-line-strong); text-align: center;">
+              .rw-container (기본 컨테이너 영역)
+              <div class="rw-reading" style="background-color: var(--rw-paper-1); margin: 0.75rem auto; padding: 1rem; border: 1px solid var(--rw-line); text-align: left;">
+                .rw-reading (최대 44rem 독서 최적화 영역)
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-container"&gt;
+  &lt;article class="rw-reading"&gt;
+    &lt;h1&gt;장문 아티클 제목&lt;/h1&gt;
+    &lt;p&gt;한 줄의 길이가 너무 길지 않아 눈이 피로하지 않습니다.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Grid -->
+        <article id="layout-grid" class="rw-card rw-stack docs-card">
+          <h3>Grid (그리드)</h3>
+          <p class="rw-meta"><code>.rw-grid-2</code>, <code>.rw-grid-3</code>을 통해 반응형 멀티 컬럼 레이아웃을 손쉽게 구성합니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-grid-3">
+              <div class="rw-panel" style="text-align: center;">Column 1</div>
+              <div class="rw-panel" style="text-align: center;">Column 2</div>
+              <div class="rw-panel" style="text-align: center;">Column 3</div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-grid-2"&gt;
+  &lt;div class="rw-panel"&gt;2열 그리드 좌측&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;2열 그리드 우측&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="rw-grid-3"&gt;
+  &lt;div class="rw-panel"&gt;3열 그리드 A&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;3열 그리드 B&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;3열 그리드 C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Stack & Cluster -->
+        <article id="layout-stack" class="rw-card rw-stack docs-card">
+          <h3>Stack & Cluster</h3>
+          <p class="rw-meta"><code>.rw-stack</code>은 수직 흐름 여백을 부여하고, <code>.rw-cluster</code>는 버튼이나 태그의 수평 나열에 활용됩니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-cluster">
+              <button class="rw-button--primary">Cluster Item 1</button>
+              <button class="rw-button--secondary">Cluster Item 2</button>
+              <span class="rw-badge rw-badge--success">Cluster Badge</span>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-cluster"&gt;
+  &lt;button class="rw-button--primary"&gt;확인&lt;/button&gt;
+  &lt;button class="rw-button--secondary"&gt;취소&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Sidebar Layout -->
+        <article id="layout-sidebar" class="rw-card rw-stack docs-card">
+          <h3>Sidebar Layout & App Shell</h3>
+          <p class="rw-meta"><code>.rw-sidebar-layout</code>은 본문과 사이드바(280px)를 자연스럽게 분할하는 문서형 제품 구조를 제공합니다.</p>
+        </article>
+      </section>
+
+      <!-- 3. Typography & Content -->
+      <section id="content" class="docs-section">
+        <h2 class="docs-section-title">3. Typography & Content (콘텐츠)</h2>
+
+        <!-- Typography -->
+        <article id="content-typography" class="rw-card rw-stack docs-card">
+          <h3>Typography (제목 & 본문)</h3>
+          <p class="rw-meta">별도의 클래스 없이 기본 HTML 태그(h1~h6, p)만으로 단정한 위계와 행간(1.7)이 적용됩니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <h1 style="margin: 0;">Heading 1 (2.2rem)</h1>
+            <h2 style="margin: 0;">Heading 2 (1.6rem)</h2>
+            <h3 style="margin: 0;">Heading 3 (1.25rem)</h3>
+            <p style="margin: 0;">본문 단락(Paragraph)입니다. 전자종이 디스플레이의 시각적 안정성을 브라우저 환경에 이식하여 눈의 피로를 최소화합니다.</p>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;h1&gt;대제목&lt;/h1&gt;
+&lt;h2&gt;중제목&lt;/h2&gt;
+&lt;p&gt;본문 단락입니다.&lt;/p&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Blockquote & Code -->
+        <article id="content-blockquote" class="rw-card rw-stack docs-card">
+          <h3>Blockquote & Code Block</h3>
+          <p class="rw-meta">인용문과 코드 블록은 과한 배경색 없이 단정한 보더와 여백으로 내용을 부각합니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <blockquote>"읽는 시간이 길수록 조용한 화면이 좋아진다." — Readwell Team</blockquote>
+            <pre><code>const readwell = { mode: 'pure-paper', runtime: 'zero-js' };</code></pre>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;blockquote&gt;"인용문 내용"&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;const code = "Hello Readwell";&lt;/code&gt;&lt;/pre&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Tables -->
+        <article id="content-table" class="rw-card rw-stack docs-card">
+          <h3>Tables (데이터 표)</h3>
+          <p class="rw-meta">선과 여백 중심의 미니멀 데이터 테이블로, 밀도(Density) 설정에 따라 셀 여백이 유기적으로 조절됩니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>역할</th>
+                    <th>상태</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>김개발</td>
+                    <td>엔지니어</td>
+                    <td><span class="rw-badge rw-badge--success">정상 운영</span></td>
+                  </tr>
+                  <tr>
+                    <td>이디자인</td>
+                    <td>디자이너</td>
+                    <td><span class="rw-badge rw-badge--primary">작업 중</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-table-container"&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;항목&lt;/th&gt;&lt;th&gt;상태&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;서버&lt;/td&gt;&lt;td&gt;&lt;span class="rw-badge rw-badge--success"&gt;정상&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Badges & Meta -->
+        <article id="content-badge" class="rw-card rw-stack docs-card">
+          <h3>Badges & Meta (상태 라벨 & 메타)</h3>
+          <p class="rw-meta">6종 저채도 시맨틱 배지와 보조 메타 텍스트(<code>.rw-meta</code>)입니다.</p>
+
+          <div class="docs-preview rw-cluster">
+            <span class="rw-badge">Default</span>
+            <span class="rw-badge rw-badge--primary">Primary</span>
+            <span class="rw-badge rw-badge--secondary">Secondary</span>
+            <span class="rw-badge rw-badge--success">Success</span>
+            <span class="rw-badge rw-badge--warning">Warning</span>
+            <span class="rw-badge rw-badge--danger">Danger</span>
+            <span class="rw-badge rw-badge--info">Info</span>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;span class="rw-badge rw-badge--primary"&gt;Primary&lt;/span&gt;
+&lt;span class="rw-badge rw-badge--success"&gt;Success&lt;/span&gt;
+&lt;span class="rw-meta"&gt;2026.09.02 · 읽기 5분&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 4. Forms & Validation -->
+      <section id="forms" class="docs-section">
+        <h2 class="docs-section-title">4. Forms & Validation (폼 입력 및 검증)</h2>
+
+        <!-- Input & Select -->
+        <article id="forms-input" class="rw-card rw-stack docs-card">
+          <h3>Input, Select & Textarea</h3>
+          <p class="rw-meta">밀도 시스템과 연동되는 기본 폼 컨트롤입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <div class="rw-grid-2">
+              <div>
+                <label class="rw-meta">텍스트 입력</label>
+                <input type="text" placeholder="입력하세요...">
+              </div>
+              <div>
+                <label class="rw-meta">옵션 선택</label>
+                <select>
+                  <option>선택지 1</option>
+                  <option>선택지 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label class="rw-meta"&gt;이름&lt;/label&gt;
+&lt;input type="text" placeholder="홍길동"&gt;
+
+&lt;label class="rw-meta"&gt;구분&lt;/label&gt;
+&lt;select&gt;
+  &lt;option&gt;옵션 1&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Checkbox & Radio -->
+        <article id="forms-checkbox" class="rw-card rw-stack docs-card">
+          <h3>Custom Checkbox & Radio</h3>
+          <p class="rw-meta">Paper & Ink 철학에 부합하는 순수 CSS 사각/원형 커스텀 컨트롤입니다.</p>
+
+          <div class="docs-preview rw-cluster" style="gap: 1.5rem;">
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" checked> 체크박스 (Checked)
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="radio" name="doc-radio" checked> 라디오 A
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="radio" name="doc-radio"> 라디오 B
+            </label>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label&gt;&lt;input type="checkbox" checked&gt; 동의함&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="group" checked&gt; 선택 1&lt;/label&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Switch -->
+        <article id="forms-switch" class="rw-card rw-stack docs-card">
+          <h3>Toggle Switch</h3>
+          <p class="rw-meta"><code>role="switch"</code> 속성만으로 슬라이더 스위치로 전환됩니다.</p>
+
+          <div class="docs-preview">
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" role="switch" checked> 자동 저장 활성화
+            </label>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" role="switch" checked&gt; 모드 활성화
+&lt;/label&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Validation States -->
+        <article id="forms-validation" class="rw-card rw-stack docs-card">
+          <h3>Valid & Invalid 유효성 검증 상태</h3>
+          <p class="rw-meta">웹 접근성 표준 <code>aria-invalid</code> 속성에 기반하여 성공 및 오류 상태를 명확히 표현합니다.</p>
+
+          <div class="docs-preview rw-grid-2">
+            <div>
+              <label class="rw-meta">접속 도메인 (Valid/성공)</label>
+              <input type="text" value="readwell.design" aria-invalid="false">
+              <span class="rw-form-success">✓ 사용 가능한 도메인입니다.</span>
+            </div>
+            <div>
+              <label class="rw-meta">이메일 주소 (Invalid/오류)</label>
+              <input type="email" value="wrong-email" aria-invalid="true">
+              <span class="rw-form-error">유효한 이메일 형식이 아닙니다.</span>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 성공 상태 (Valid) --&gt;
+&lt;input type="text" value="readwell.design" aria-invalid="false"&gt;
+&lt;span class="rw-form-success"&gt;✓ 사용 가능한 도메인입니다.&lt;/span&gt;
+
+&lt;!-- 오류 상태 (Invalid) --&gt;
+&lt;input type="email" value="wrong-email" aria-invalid="true"&gt;
+&lt;span class="rw-form-error"&gt;유효한 이메일 형식이 아닙니다.&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 5. Components -->
+      <section id="components" class="docs-section">
+        <h2 class="docs-section-title">5. Components (컴포넌트)</h2>
+
+        <!-- Buttons -->
+        <article id="comp-button" class="rw-card rw-stack docs-card">
+          <h3>Button & Button Group</h3>
+          <p class="rw-meta">단일 버튼 및 결합형 버튼 그룹(<code>.rw-button-group</code>)입니다.</p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <div class="rw-cluster">
+              <button type="button">Default</button>
+              <button type="button" class="rw-button--primary">Primary</button>
+              <button type="button" class="rw-button--secondary">Secondary</button>
+              <button type="button" class="rw-button--danger">Danger</button>
+            </div>
+            <div class="rw-button-group">
+              <button type="button" class="is-active" aria-pressed="true">Left</button>
+              <button type="button" aria-pressed="false">Center</button>
+              <button type="button" aria-pressed="false">Right</button>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;button class="rw-button--primary"&gt;확인&lt;/button&gt;
+
+&lt;div class="rw-button-group"&gt;
+  &lt;button class="is-active" aria-pressed="true"&gt;옵션 1&lt;/button&gt;
+  &lt;button aria-pressed="false"&gt;옵션 2&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Card & Panel -->
+        <article id="comp-card" class="rw-card rw-stack docs-card">
+          <h3>Card (.rw-card) vs Panel (.rw-panel)</h3>
+          <p class="rw-meta"><code>.rw-card</code>는 독립된 콘텐츠 단위(기사, 상품)를, <code>.rw-panel</code>은 화면의 구조적 구획(사이드바, 설정 박스)을 담당합니다.</p>
+
+          <div class="docs-preview rw-grid-2">
+            <div class="rw-card rw-stack">
+              <h4>.rw-card (콘텐츠 카드)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">독립된 읽기 단위를 표현합니다.</p>
+            </div>
+            <div class="rw-panel rw-stack">
+              <h4>.rw-panel (구조 패널)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">배경 및 구조적 영역을 분할합니다.</p>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;article class="rw-card"&gt;카드 콘텐츠&lt;/article&gt;
+&lt;div class="rw-panel"&gt;패널 구획&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Callouts -->
+        <article id="comp-callout" class="rw-card rw-stack docs-card">
+          <h3>Callouts / Alerts (4종 알림 메시지)</h3>
+          <p class="rw-meta">안내, 성공, 경고, 오류 알림 박스입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <div class="rw-callout rw-callout--info"><strong>Info</strong>: 새로운 버전 v0.1.0이 배포되었습니다.</div>
+            <div class="rw-callout rw-callout--success"><strong>Success</strong>: 작업이 정상적으로 완료되었습니다.</div>
+            <div class="rw-callout rw-callout--warning"><strong>Warning</strong>: 저장되지 않은 변경사항이 있습니다.</div>
+            <div class="rw-callout rw-callout--danger"><strong>Danger</strong>: 연결이 끊어졌습니다. 다시 시도하세요.</div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-callout rw-callout--info"&gt;안내 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--success"&gt;성공 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--warning"&gt;주의 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--danger"&gt;오류 메시지&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Accordion -->
+        <article id="comp-accordion" class="rw-card rw-stack docs-card">
+          <h3>Accordion / Disclosure (details.rw-accordion)</h3>
+          <p class="rw-meta">HTML5 표준 <code>&lt;details&gt;</code> 태그만으로 동작하는 아코디언입니다.</p>
+
+          <div class="docs-preview">
+            <details class="rw-accordion">
+              <summary>자주 묻는 질문 1: Readwell CSS는 자바스크립트가 필요한가요?</summary>
+              <div style="padding-top: 0.5rem; font-size: 0.9rem;">
+                아닙니다. 100% 순수 CSS와 HTML5 표준 태그만으로 모든 컴포넌트가 동작합니다.
+              </div>
+            </details>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;details class="rw-accordion"&gt;
+  &lt;summary&gt;아코디언 제목&lt;/summary&gt;
+  &lt;p&gt;펼쳐지는 상세 본문 내용...&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Modal Dialog -->
+        <article id="comp-modal" class="rw-card rw-stack docs-card">
+          <h3>Modal Dialog (&lt;dialog&gt;)</h3>
+          <p class="rw-meta">HTML5 네이티브 <code>&lt;dialog&gt;</code> 태그에 최적화된 모달 스타일입니다.</p>
+
+          <div class="docs-preview">
+            <button type="button" class="rw-button--primary" onclick="document.getElementById('doc-demo-dialog').showModal()">모달 열기 데모</button>
+
+            <dialog id="doc-demo-dialog" class="rw-dialog">
+              <form method="dialog" class="rw-stack" style="gap: 1rem;">
+                <h3>네이티브 모달 다이얼로그</h3>
+                <p>브라우저 표준 &lt;dialog&gt; 요소를 사용하여 백드롭과 접근성이 기본 보장됩니다.</p>
+                <div class="rw-cluster" style="justify-content: flex-end;">
+                  <button type="submit" class="rw-button--secondary">닫기</button>
+                </div>
+              </form>
+            </dialog>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;dialog id="my-dialog" class="rw-dialog"&gt;
+  &lt;form method="dialog" class="rw-stack"&gt;
+    &lt;h3&gt;모달 제목&lt;/h3&gt;
+    &lt;p&gt;모달 내용...&lt;/p&gt;
+    &lt;button type="submit"&gt;닫기&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Dropdown -->
+        <article id="comp-dropdown" class="rw-card rw-stack docs-card">
+          <h3>Dropdown (Zero-JS 네이티브 드롭다운)</h3>
+          <p class="rw-meta"><code>details.rw-dropdown</code> 구조로 자바스크립트 없이 4px 밀착 메뉴가 열립니다.</p>
+
+          <div class="docs-preview">
+            <details class="rw-dropdown">
+              <summary class="rw-button">옵션 선택 ▾</summary>
+              <ul class="rw-dropdown-menu">
+                <li><a href="#comp-dropdown" class="rw-dropdown-item">프로필 설정</a></li>
+                <li><a href="#comp-dropdown" class="rw-dropdown-item">팀 워크스페이스</a></li>
+                <li class="rw-dropdown-divider"></li>
+                <li><a href="#comp-dropdown" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">로그아웃</a></li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;details class="rw-dropdown"&gt;
+  &lt;summary class="rw-button"&gt;옵션 메뉴 ▾&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;
+    &lt;li&gt;&lt;a href="#" class="rw-dropdown-item"&gt;설정&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="rw-dropdown-divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="rw-dropdown-item"&gt;로그아웃&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Progress -->
+        <article id="comp-progress" class="rw-card rw-stack docs-card">
+          <h3>Progress Bar (&lt;progress&gt;)</h3>
+          <p class="rw-meta">HTML5 표준 진행률 표시줄입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <progress value="65" max="100" style="width: 100%;"></progress>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;progress value="65" max="100" style="width: 100%;"&gt;&lt;/progress&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 6. Product Patterns -->
+      <section id="patterns" class="docs-section">
+        <h2 class="docs-section-title">6. Product Patterns (제품형 UI 패턴)</h2>
+
+        <!-- Stat Card -->
+        <article id="pattern-stat" class="rw-card rw-stack docs-card">
+          <h3>Stat Card (지표/통계 카드)</h3>
+          <p class="rw-meta">대시보드와 모니터링 콘솔에 사용되는 메트릭 카드입니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-grid-2">
+              <div class="rw-stat rw-panel">
+                <span class="rw-meta">월간 활성 독자</span>
+                <div class="rw-stat__value">128,450</div>
+                <div class="rw-stat__diff" style="color: var(--rw-success-strong);">↑ 14.2% 전월 대비</div>
+              </div>
+              <div class="rw-stat rw-panel">
+                <span class="rw-meta">평균 완독률</span>
+                <div class="rw-stat__value">84.6%</div>
+                <div class="rw-stat__diff" style="color: var(--rw-primary-strong);">↑ 3.1% 전월 대비</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-stat rw-panel"&gt;
+  &lt;span class="rw-meta"&gt;지표 명칭&lt;/span&gt;
+  &lt;div class="rw-stat__value"&gt;128,450&lt;/div&gt;
+  &lt;div class="rw-stat__diff"&gt;↑ 14.2% 증가&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Summary & Empty State -->
+        <article id="pattern-summary" class="rw-card rw-stack docs-card">
+          <h3>Empty State (.rw-empty)</h3>
+          <p class="rw-meta">데이터가 없을 때 보여주는 단정한 엠프티 스테이트입니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-empty">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600;">등록된 문서가 없습니다</p>
+              <p class="rw-meta" style="margin: 0 0 1rem 0;">새로운 글을 작성하여 지식 베이스를 구축해 보세요.</p>
+              <button class="rw-button--primary">첫 글 작성하기</button>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-empty"&gt;
+  &lt;p&gt;데이터가 없습니다&lt;/p&gt;
+  &lt;button class="rw-button--primary"&gt;생성하기&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 7. Modes & Customization -->
+      <section id="modes" class="docs-section">
+        <h2 class="docs-section-title">7. Modes & Customization (모드 및 커스터마이징)</h2>
+
+        <!-- Surface Family -->
+        <article id="mode-surface" class="rw-card rw-stack docs-card">
+          <h3>Surface Family (화면 표면)</h3>
+          <p class="rw-meta"><code>data-rw-surface</code> 속성으로 용도별 화면 특성을 지정합니다.</p>
+          <ul>
+            <li><code>reading</code>: 장문 독서 최적화 (본문 폭 48rem 제한 및 넉넉한 타이포 행간)</li>
+            <li><code>workspace</code>: 문서형 협업 도구 및 사이드바 레이아웃 (컨테이너 80rem)</li>
+            <li><code>dashboard</code>: 운영 콘솔 및 지표 그리드 (컨테이너 84rem)</li>
+            <li><code>dense</code>: 고밀도 데이터 테이블 및 필터 (컴팩트 밀도 자동 활성화)</li>
+          </ul>
+        </article>
+
+        <!-- Density System -->
+        <article id="mode-density" class="rw-card rw-stack docs-card">
+          <h3>Density System (여백 밀도)</h3>
+          <p class="rw-meta"><code>data-rw-density</code> 속성으로 테이블 셀, 버튼, 인풋, 그리드 여백을 유기적으로 조절합니다.</p>
+          <ul>
+            <li><code>cozy</code>: 터치 인터페이스 및 여유로운 독서 여백</li>
+            <li><code>comfortable</code>: 표준 균형 여백 (기본값)</li>
+            <li><code>compact</code>: 대량 데이터 조회를 위한 압축 뷰</li>
+          </ul>
+        </article>
+
+        <!-- E-Ink Mode -->
+        <article id="mode-eink" class="rw-card rw-stack docs-card">
+          <h3>E-Ink Mode (전자종이 정적 렌더링 모드)</h3>
+          <p class="rw-meta"><code>data-rw-eink="true"</code> 속성 또는 <code>@media (update: slow)</code> 환경에서 모든 애니메이션과 전환 효과를 차단하여 눈 피로를 완벽히 제거합니다.</p>
+        </article>
+      </section>
+
+      <!-- Global Footer -->
+      <footer class="rw-card rw-cluster" style="justify-content: space-between; margin-top: 2rem;">
+        <span class="rw-meta">© 2026 Readwell Team · Released under the MIT License.</span>
+        <a href="#overview" style="font-size: 0.9rem;">맨 위로 이동 ↑</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Live Mode Switcher Script -->
+  <script src="../examples/switcher.js"></script>
+  <script>
+    // Copy Code Helper Function
+    function copyCode(button) {
+      const codeBlock = button.parentElement.querySelector('code');
+      if (!codeBlock) return;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerText;
+        button.innerText = '✓ 복사됨';
+        button.style.backgroundColor = 'var(--rw-primary-soft)';
+        button.style.color = 'var(--rw-primary-strong)';
+        setTimeout(() => {
+          button.innerText = originalText;
+          button.style.backgroundColor = '';
+          button.style.color = '';
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>

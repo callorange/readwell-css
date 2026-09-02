@@ -71,24 +71,54 @@ Readwell은 다음 컴포넌트를 우선 지원합니다.
 - combobox/autocomplete
 - 복잡한 animated widget
 
+## 테마 시스템 (Pure Paper Duo)
+
+Readwell은 E-Ink 및 종이 매체의 자연스러운 질감을 살린 **Pure Paper Duo** 테마를 제공합니다:
+
+- **Light (`data-rw-theme="light"`)**: 맑고 정갈한 내추럴 백상지(Natural White Paper) 기본 테마.
+- **Warm Paper (`data-rw-theme="warm"`)**: 은은하고 부드러운 단행본 미색 크림지(Cream/Book Paper) 테마.
+
+## 🎛️ 4대 HTML 제어 속성 (`data-rw-*` API)
+
+Readwell CSS는 4종의 선언적 `data-rw-*` 속성으로 인터페이스의 성격을 즉시 전환합니다:
+
+| 속성 (Attribute) | 옵션 값 (Values) | 기본값 | 특징 및 역할 |
+| :--- | :--- | :--- | :--- |
+| **`data-rw-theme`** | `light`, `warm` | `light` | **테마 색온도**: 내추럴 백상지 vs 단행본 미색 크림지 |
+| **`data-rw-surface`** | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **화면 표면**: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 테이블 |
+| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | `comfortable` | **여백 밀도**: 여유 여백 / 표준 균형 / 압축 데이터 뷰 |
+| **`data-rw-eink`** | `true`, `false` | `false` | **전자종이 정적 모드**: 모든 애니메이션 및 전환 효과(`transition: none`) 차단 |
+
 ## 빠른 시작
 
 ```html
-<link rel="stylesheet" href="readwell.css">
+<link rel="stylesheet" href="https://callorange.github.io/readwell-css/dist/readwell.min.css">
 
-<main class="rw-container" data-rw-surface="reading" data-rw-density="cozy">
+<!-- 미색 크림지 + 장문 독서 + 여유 밀도 적용 -->
+<main class="rw-container" data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy">
   <article class="rw-reading">
-    <p class="rw-meta">2026.08.30 · 읽기 7분</p>
+    <p class="rw-meta">2026.09.02 · 읽기 7분</p>
     <h1>읽는 시간이 길수록 조용한 화면이 좋아진다.</h1>
-    <p>본문...</p>
+    <p>본문 내용...</p>
   </article>
 </main>
 ```
+
+## 🌐 인터랙티브 라이브 데모 및 공식 문서
+
+- [**📖 공식 문서 포털 (Documentation Portal)**](https://callorange.github.io/readwell-css/docs/)
+- [공식 예제 허브 (Live Hub)](https://callorange.github.io/readwell-css/examples/index.html)
+- [종합 컴포넌트 키친싱크 (Kitchen Sink)](https://callorange.github.io/readwell-css/examples/components.html)
+- [기술 아티클 템플릿 (Article)](https://callorange.github.io/readwell-css/examples/article.html)
+- [문서형 워크스페이스 (Workspace)](https://callorange.github.io/readwell-css/examples/workspace.html)
+- [운영 대시보드 (Dashboard)](https://callorange.github.io/readwell-css/examples/dashboard.html)
+- [이슈 트래커 (Issues / Dense Table)](https://callorange.github.io/readwell-css/examples/issues.html)
 
 ## 문서 목록
 
 | 문서 | 목적 |
 |---|---|
+| `docs/index.html` | Pico CSS 스타일 공식 인터랙티브 문서 웹사이트 |
 | `01_CONCEPT.md` | 제품 컨셉, 철학, 차별점 |
 | `02_PRD.md` | 제품 요구사항과 MVP 범위 |
 | `03_DESIGN_SYSTEM.md` | 색상, 타이포그래피, 컴포넌트 디자인 원칙 |

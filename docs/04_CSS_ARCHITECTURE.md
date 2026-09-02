@@ -128,50 +128,48 @@ semantic color는 component 내부에 임의 HEX를 넣지 않고 `tokens` layer
 
 `cozy / comfortable / compact`는 위 토큰 묶음을 바꾸는 방식으로 구현합니다.
 
-## 5. Surface / Density API
+### 4.3 Density tokens
 
-### 5.1 Surface
-
-```html
-<body data-rw-surface="reading">
-<body data-rw-surface="workspace">
-<body data-rw-surface="dashboard">
-<body data-rw-surface="dense">
+```css
+--rw-density-gap: 1rem;
+--rw-density-row: 2.5rem;
+--rw-density-panel-padding: 1.25rem;
+--rw-density-btn-padding: 0.45em 0.9em;
+--rw-density-input-padding: 0.45em 0.7em;
+--rw-density-table-padding: 0.55em 0.8em;
 ```
 
-또는 섹션 단위로 사용할 수 있습니다.
+밀도(`cozy` / `comfortable` / `compact`) 모드에 따라 위 토큰들이 유기적으로 변경되어, 테이블 셀 패딩, 버튼/인풋 여백, 그리드 간격이 일괄 조정됩니다.
+
+## 5. 4대 HTML 제어 속성 명세 (`data-rw-*` API)
+
+Readwell CSS는 4종의 `data-rw-*` 속성을 통해 테마 색온도, 화면 표면, 밀도, 전자종이 무모션 모드를 선언적으로 제어합니다:
+
+| 제어 속성 (Attribute) | 옵션 값 (Values) | 기본값 | 시각적 특징 및 역할 |
+| :--- | :--- | :--- | :--- |
+| **`data-rw-theme`** | `light`, `warm` | `light` | **테마 색온도**: 맑고 정갈한 내추럴 백상지 vs 눈이 편안한 단행본 미색 크림지 |
+| **`data-rw-surface`** | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **화면 표면**: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 테이블 |
+| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | `comfortable` | **여백 밀도**: 터치 친화 여유 여백 / 표준 균형 / 압축 데이터 뷰 |
+| **`data-rw-eink`** | `true`, `false` | `false` | **전자종이 정적 모드**: 모든 애니메이션 및 전환 효과(`transition: none`) 차단 |
+
+### 마크업 적용 예시
 
 ```html
-<section class="rw-surface-dashboard">
+<!-- 블로그 / 기술 문서 (미색지 + 장문 독서 + 여유 밀도) -->
+<body data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy">
+
+<!-- 고밀도 백오피스 (백상지 + 고밀도 표 + 압축 밀도) -->
+<body data-rw-surface="dense" data-rw-density="compact">
 ```
 
-역할:
-
-- `reading`: 본문 가독성 우선
-- `workspace`: 문서 + 보조 패널 균형
-- `dashboard`: panel/stat/status 구분 강화
-- `dense`: list/table/filter 구조감 강화
-
-### 5.2 Density
-
-```html
-<body data-rw-density="cozy">
-<body data-rw-density="comfortable">
-<body data-rw-density="compact">
-```
-
-- `cozy`: article / blog / docs
-- `comfortable`: 일반 제품 UI 기본값
-- `compact`: issue tracker / admin list / dense table
-
-## 6. Class API 초안
+## 6. Class API 명세
 
 ### Layout
 
 | Class | 목적 |
 |---|---|
 | `.rw-container` | 페이지 기본 폭 |
-| `.rw-reading` | 긴 본문 폭 제한 |
+| `.rw-reading` | 긴 본문 폭 제한 (44rem) |
 | `.rw-reading-centered` | 가운데 정렬된 긴 본문 |
 | `.rw-stack` | 수직 간격 layout |
 | `.rw-cluster` | nav/button group 같은 수평 묶음 |
@@ -181,41 +179,50 @@ semantic color는 component 내부에 임의 HEX를 넣지 않고 `tokens` layer
 | `.rw-sidebar-layout` | 본문 + aside layout |
 | `.rw-app-shell` | sidebar + main + aside 제품 레이아웃 |
 
-### Elements
+### Elements & Forms
 
-| Selector/Class | 목적 |
+| Selector / Class | 목적 |
 |---|---|
-| `button`, `.rw-button` | 버튼 |
-| `.rw-button--primary` | 주요 액션 |
-| `.rw-button--secondary` | 보조 액션 |
-| `.rw-button--danger` | 파괴적 액션 |
-| `.rw-button-group` | 버튼 묶음 |
-| `input`, `select`, `textarea` | form control |
-| `input[type="checkbox"]` | checkbox |
-| `input[type="radio"]` | radio |
-| `input[role="switch"]` | switch/toggle |
-| `details`, `.rw-accordion` | disclosure/accordion |
-| `dialog`, `.rw-dialog` | dialog visual style |
-| `progress` | progress bar |
+| `button`, `.rw-button` | 기본 버튼 |
+| `.rw-button--primary` | 주요 액션 버튼 (Primary soft/strong) |
+| `.rw-button--secondary` | 보조 액션 버튼 |
+| `.rw-button--danger` | 파괴적 액션 버튼 |
+| `.rw-button-group` | 버튼 그룹 (선택 상태 `.is-active`, `aria-pressed="true"`) |
+| `input`, `select`, `textarea` | 폼 컨트롤 (밀도 토큰 연동) |
+| `[aria-invalid="false"]`, `.is-valid` | 폼 유효(Valid) 성공 상태 (초록색 보더) |
+| `[aria-invalid="true"]`, `.is-invalid` | 폼 유효성 오류 상태 (빨간색 보더) |
+| `.rw-form-success` | 폼 성공 안내 메시지 |
+| `.rw-form-error` | 폼 오류 메시지 |
+| `.rw-form-help` | 폼 보조 도움말 |
+| `input[type="checkbox"]` | Paper & Ink 커스텀 체크박스 |
+| `input[type="radio"]` | 원형 인디케이터 라디오 버튼 |
+| `input[role="switch"]` | 토글 스위치 |
+| `details.rw-accordion`, `details` | 아코디언 / 디스클로저 |
+| `dialog`, `.rw-dialog` | 네이티브 모달 다이얼로그 |
+| `table`, `th`, `td` | 선과 여백 중심 데이터 테이블 (밀도 연동) |
+| `progress` | 프로그레스 바 |
 
-### Components
+### Components & Patterns
 
 | Class | 목적 |
 |---|---|
-| `.rw-card` | 반복 가능한 콘텐츠 단위 |
-| `.rw-panel` | 선과 여백으로 구획 |
-| `.rw-callout` | 안내/주의/오류 메시지 |
+| `.rw-card` | 반복 가능한 독립 콘텐츠 단위 (기사, 상품 등) |
+| `.rw-panel` | 화면의 구조적 구획 (사이드바, 설정 박스 등) |
+| `.rw-callout` | 안내/주의/오류 메시지 박스 |
 | `.rw-callout--info/success/warning/danger` | semantic callout variant |
 | `.rw-badge` | 태그/상태 라벨 |
-| `.rw-badge--primary/secondary/success/warning/danger/info` | semantic badge variant |
-| `.rw-meta` | 날짜/작성자/읽기 시간 |
-| `.rw-nav` | navigation |
-| `.rw-breadcrumb` | breadcrumb |
-| `.rw-pagination` | pagination |
-| `.rw-toc` | 목차 |
-| `.rw-list` | list group |
-| `.rw-tabs` | tab visual style |
-| `.rw-dropdown` | dropdown visual style |
+| `.rw-badge--primary/secondary/success/warning/danger/info` | 6종 저채도 semantic badge variant |
+| `.rw-meta` | 날짜/작성자/읽기 시간 보조 텍스트 |
+| `.rw-nav` | 내비게이션 바 |
+| `.rw-breadcrumb` | 위치 경로 탐색 |
+| `.rw-pagination` | 페이지네이션 |
+| `.rw-toc` | 문서 목차 |
+| `.rw-tabs` | 탭 인터페이스 (.is-active / aria-selected) |
+| `details.rw-dropdown` | Zero-JS 네이티브 드롭다운 |
+| `.rw-dropdown-menu`, `.rw-dropdown-item` | 드롭다운 메뉴 및 항목 |
+| `.rw-stat` | 통계/지표 카드 |
+| `.rw-summary-row` | 요약 바 |
+| `.rw-empty` | 엠프티 스테이트 (데이터 없음 안내) |
 
 ### Patterns
 
