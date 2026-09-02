@@ -6,9 +6,8 @@
   const STORAGE_KEY = 'readwell_live_preview_settings';
 
   const THEMES = [
-    { id: 'auto', label: 'Auto' },
-    { id: 'light', label: 'Light' },
-    { id: 'dark', label: 'Dark' }
+    { id: 'light', label: 'Light 📄' },
+    { id: 'warm', label: 'Warm 📖' }
   ];
 
   const SURFACES = [
@@ -25,7 +24,7 @@
   ];
 
   // Capture original page defaults
-  const originalTheme = document.documentElement.dataset.rwTheme || document.body.dataset.rwTheme || 'auto';
+  const originalTheme = (document.documentElement.dataset.rwTheme || document.body.dataset.rwTheme) === 'warm' ? 'warm' : 'light';
   const originalSurface = document.body.dataset.rwSurface || 'reading';
   const originalDensity = document.body.dataset.rwDensity || 'comfortable';
   const originalEink = document.body.dataset.rwEink === 'true';
@@ -37,16 +36,16 @@
     if (raw) savedSettings = JSON.parse(raw);
   } catch (e) {}
 
-  let currentTheme = savedSettings?.theme || originalTheme;
+  let currentTheme = (savedSettings?.theme === 'warm' || savedSettings?.theme === 'light') ? savedSettings.theme : originalTheme;
   let currentSurface = savedSettings?.surface || originalSurface;
   let currentDensity = savedSettings?.density || originalDensity;
   let currentEink = savedSettings?.eink !== undefined ? savedSettings.eink : originalEink;
 
   // Apply immediately
   function applyModes() {
-    if (currentTheme && currentTheme !== 'auto') {
-      document.documentElement.dataset.rwTheme = currentTheme;
-      document.body.dataset.rwTheme = currentTheme;
+    if (currentTheme === 'warm') {
+      document.documentElement.dataset.rwTheme = 'warm';
+      document.body.dataset.rwTheme = 'warm';
     } else {
       delete document.documentElement.dataset.rwTheme;
       delete document.body.dataset.rwTheme;
@@ -94,7 +93,7 @@
 
         <div class="rw-switcher-section">
           <label class="rw-switcher-label">Theme Mode</label>
-          <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr 1fr;" id="rw-theme-btns">
+          <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr;" id="rw-theme-btns">
             ${THEMES.map(t => `
               <button type="button" class="rw-switcher-btn ${t.id === currentTheme ? 'is-active' : ''}" data-theme="${t.id}">
                 ${t.label}

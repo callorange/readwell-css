@@ -16,4 +16,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 폼 유효성 검사 상태(`[aria-invalid="true"]`), 필드셋(`fieldset`), 엠프티 스테이트(`.rw-empty`), 요약 바(`.rw-summary-row`) 추가
 - 종합 컴포넌트 카탈로그 & 키친싱크 페이지(`examples/components.html`) 추가
 - 실시간 인터랙티브 모드 & 밀도 스위처 위젯(`examples/switcher.js`, `examples/switcher.css`) 추가
-- 저자극 E-Ink 인버스 다크 모드(`[data-rw-theme="dark"]`, `@media (prefers-color-scheme: dark)`) 및 테마 제어기 추가
+- 퓨어 페이퍼 테마 듀오(Pure Paper Duo: `Light 📄` 내추럴 백상지, `Warm Paper 📖` 단행본 크림지) 큐레이션 및 테마 스위처 연동
