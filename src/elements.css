@@ -89,6 +89,13 @@
     border-bottom: 2px solid var(--rw-line-strong);
   }
 
+  .rw-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: var(--rw-space-3) 0;
+  }
+
   details.rw-accordion, details {
     border: 1px solid var(--rw-line);
     border-radius: var(--rw-radius);
@@ -100,14 +107,32 @@
   summary {
     font-weight: 600;
     cursor: pointer;
+    user-select: none;
   }
 
-  dialog {
+  summary:hover {
+    color: var(--rw-primary-strong);
+  }
+
+  details[open] > summary {
+    margin-bottom: var(--rw-space-2);
+    border-bottom: 1px solid var(--rw-line);
+    padding-bottom: var(--rw-space-1);
+  }
+
+  dialog, .rw-dialog {
     border: 1px solid var(--rw-line-strong);
     border-radius: var(--rw-radius);
     background-color: var(--rw-paper);
     color: var(--rw-text);
     padding: var(--rw-space-4);
+    max-width: 36rem;
+    width: 90%;
+    margin: auto;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(35, 39, 34, 0.45);
   }
 
   progress {

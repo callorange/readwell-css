@@ -42,4 +42,49 @@
   .rw-status-list li:last-child, .rw-activity-list li:last-child {
     border-bottom: none;
   }
+
+  /* Empty State */
+  .rw-empty {
+    text-align: center;
+    padding: var(--rw-space-5) var(--rw-space-3);
+    border: 1px dashed var(--rw-line-strong);
+    border-radius: var(--rw-radius);
+    background-color: var(--rw-paper-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--rw-space-3) 0;
+  }
+
+  .rw-empty__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--rw-text);
+  }
+
+  .rw-empty__description {
+    color: var(--rw-text-muted);
+    font-size: 0.9em;
+    max-width: 32rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Summary Row */
+  .rw-summary-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-4);
+    align-items: center;
+    padding: var(--rw-space-2) var(--rw-space-3);
+    background-color: var(--rw-paper-3);
+    border-radius: var(--rw-radius);
+    border: 1px solid var(--rw-line);
+    font-size: 0.9em;
+  }
+
+  .rw-summary-row strong {
+    color: var(--rw-text);
+  }
 }

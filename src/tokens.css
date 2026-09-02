@@ -1,14 +1,14 @@
 @layer tokens {
   :root {
-    /* Neutral Surface & Depth */
-    --rw-paper: #f5f2ea;
-    --rw-paper-2: #fbfaf6;
-    --rw-paper-3: #eeeae0;
-    --rw-text: #232722;
-    --rw-text-muted: #666b65;
-    --rw-line: #c8c4ba;
-    --rw-line-strong: #969185;
-    --rw-focus: #496a8b;
+    /* Neutral Surface & Depth (Refined Paper Palette) */
+    --rw-paper: #faf8f3;
+    --rw-paper-2: #fcfbf8;
+    --rw-paper-3: #efece4;
+    --rw-text: #1f1f1f;
+    --rw-text-muted: #6b6b6b;
+    --rw-line: #e2ddd2;
+    --rw-line-strong: #b8b2a4;
+    --rw-focus: #2e6ad2;
 
     /* Semantic Matrix (base / soft / strong) */
     --rw-primary: #496a8b;

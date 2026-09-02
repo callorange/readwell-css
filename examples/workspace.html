@@ -7,70 +7,153 @@
   <link rel="stylesheet" href="../dist/readwell.css">
 </head>
 <body data-rw-surface="workspace" data-rw-density="comfortable">
-  <header class="rw-container rw-border-bottom" style="padding-block: 0.8rem;">
-    <nav class="rw-nav">
+  <!-- Top Navigation Bar -->
+  <header class="rw-border-bottom" style="padding: 0.75rem 1.5rem; background-color: var(--rw-paper);">
+    <nav class="rw-nav" style="padding: 0;">
       <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
-      <span class="rw-meta">| Documentation Workspace</span>
+      <span class="rw-meta">| 프로덕트 팀 / 리드웰 CSS 도입 가이드</span>
       <span style="margin-left: auto;"></span>
-      <button class="rw-button rw-button--primary">문서 저장</button>
+      <div class="rw-cluster">
+        <button class="rw-button rw-button--secondary" style="font-size: 0.85em;">공유</button>
+        <button class="rw-button rw-button--primary" style="font-size: 0.85em;">문서 저장</button>
+      </div>
     </nav>
   </header>
 
-  <main class="rw-container rw-app-shell" style="padding-block: 1.5rem;">
+  <!-- Main Seamless Workspace Layout -->
+  <main class="rw-app-shell--seamless">
     <!-- Left Navigation Sidebar -->
-    <aside class="rw-panel rw-stack">
-      <div class="rw-cluster">
-        <strong>문서 탐색기</strong>
-        <span class="rw-badge rw-badge--info">v0.1</span>
+    <aside class="rw-stack">
+      <div class="rw-cluster" style="justify-content: space-between;">
+        <strong>Figrow Workspace</strong>
+        <span class="rw-badge rw-badge--info">v1.0</span>
       </div>
-      <ul style="padding-left: 1rem; line-height: 2;">
-        <li><a href="#">개요 (Overview)</a></li>
-        <li><strong><a href="#">디자인 시스템 가이드</a></strong></li>
-        <li><a href="#">CSS 아키텍처</a></li>
-        <li><a href="#">컴포넌트 명세</a></li>
-        <li><a href="#">배포 및 패키징</a></li>
-      </ul>
+
+      <div style="margin-top: 0.5rem;">
+        <input type="search" placeholder="문서 검색 (⌘K)..." style="font-size: 0.85em; padding: 0.4em 0.6em;">
+      </div>
+
+      <nav class="rw-stack" style="gap: 0.25rem; margin-top: 0.5rem; font-size: 0.9em;">
+        <span class="rw-meta" style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.05em;">즐겨찾기</span>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">📖 제품 로드맵</a>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">🎨 디자인 시스템</a>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">🎯 OKR 2026</a>
+
+        <span class="rw-meta" style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1rem;">팀스페이스</span>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">📁 프로젝트 개요</a>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-primary-strong); background-color: var(--rw-paper-3); font-weight: 600; border-radius: var(--rw-radius);">📄 리드웰 CSS 도입 가이드</a>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">📄 릴리즈 노트</a>
+        <a href="#" style="padding: 0.35em 0.6em; text-decoration: none; color: var(--rw-text); border-radius: var(--rw-radius);">📋 스프린트 계획</a>
+      </nav>
     </aside>
 
-    <!-- Center Content Area -->
-    <article class="rw-reading rw-stack">
-      <h1>Readwell CSS 아키텍처 가이드</h1>
-      <p class="rw-meta">최종 수정일: 2026.09.02 · 문서 담당: AI Architecture Team</p>
-
-      <div class="rw-callout rw-callout--success">
-        <strong>Zero Runtime Dependency 달성</strong>
-        <p>본 프레임워크는 외부 빌드 도구 의존성 없이 Node.js 표준 라이브러리만으로 번들링 및 압축이 가능합니다.</p>
+    <!-- Center Document Content Area -->
+    <article class="rw-reading rw-stack" style="margin-left: auto; margin-right: auto; width: 100%;">
+      <h1>리드웰 CSS 도입 가이드</h1>
+      
+      <div class="rw-grid-2" style="font-size: 0.9em; gap: 0.5rem; margin-top: 0.5rem;">
+        <div><span class="rw-meta">작성자:</span> 👤 김실장</div>
+        <div><span class="rw-meta">카테고리:</span> <span class="rw-badge">가이드</span></div>
+        <div><span class="rw-meta">상태:</span> <span class="rw-badge rw-badge--success">확정</span></div>
+        <div><span class="rw-meta">최종 업데이트:</span> 2026년 9월 2일</div>
       </div>
 
-      <h2>@layer 계층 구조</h2>
-      <p>스타일 충돌을 방지하고 명확한 특이도(Specificity)를 보장하기 위해 9개의 레이어를 사용합니다.</p>
+      <hr style="margin: 1.5rem 0;">
 
-      <table style="margin-top: 1rem;">
-        <thead>
-          <tr><th>Layer</th><th>목적</th><th>접두사</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><code>tokens</code></td><td>CSS Custom Properties</td><td><code>--rw-*</code></td></tr>
-          <tr><td><code>layout</code></td><td>그리드, 컨테이너, 셸</td><td><code>.rw-*</code></td></tr>
-          <tr><td><code>modes</code></td><td>Surface & Density 제어</td><td><code>[data-rw-*]</code></td></tr>
-        </tbody>
-      </table>
+      <h2>1. 개요</h2>
+      <p>리드웰 CSS는 정보 전달을 최우선으로 설계된 저자극 디자인 언어입니다. 문서 중심의 경험을 제공하기 위해 타이포그래피, 색상, 간격, 컴포넌트를 하나의 시스템으로 제공합니다.</p>
+
+      <div class="rw-callout rw-callout--info">
+        <strong>정보 (Info)</strong>
+        <p>리드웰은 조용하지만 단단한 시각 체계를 통해 사용자가 콘텐츠에 집중할 수 있도록 돕습니다.</p>
+      </div>
+
+      <div class="rw-callout rw-callout--warning">
+        <strong>주의 (Warning)</strong>
+        <p>강조 색상은 의미가 있을 때만 사용하세요. 과도한 사용은 가독성을 해칠 수 있습니다.</p>
+      </div>
+
+      <div class="rw-callout rw-callout--success">
+        <strong>성공 (Success)</strong>
+        <p>일관된 컴포넌트 사용은 팀 협업의 속도와 제품 품질을 획기적으로 높여줍니다.</p>
+      </div>
+
+      <h2>2. 체크리스트</h2>
+      <div class="rw-stack" style="gap: 0.5rem; margin-top: 0.5rem;">
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95em;">
+          <input type="checkbox" checked> 타이포그래피 스케일 적용
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95em;">
+          <input type="checkbox" checked> 색상 토큰 검토 및 적용
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95em;">
+          <input type="checkbox"> 컴포넌트 구현
+        </label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95em;">
+          <input type="checkbox"> 접근성 검토
+        </label>
+      </div>
+
+      <h2>3. 토큰 예시</h2>
+      <div class="rw-table-container">
+        <table>
+          <thead>
+            <tr><th>토큰</th><th>용도</th><th>값</th><th>의미</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>--rw-paper</code></td><td>배경</td><td><code>#FAF8F3</code></td><td>문서 기본 배경</td></tr>
+            <tr><td><code>--rw-text</code></td><td>본문 텍스트</td><td><code>#1F1F1F</code></td><td>기본 본문 텍스트</td></tr>
+            <tr><td><code>--rw-text-muted</code></td><td>보조 텍스트</td><td><code>#6B6B6B</code></td><td>설명 및 메타데이터</td></tr>
+            <tr><td><code>--rw-primary</code></td><td>강조</td><td><code>#496A8B</code></td><td>링크, 포커스, 액션</td></tr>
+            <tr><td><code>--rw-success</code></td><td>성공</td><td><code>#62835B</code></td><td>성공 상태</td></tr>
+          </tbody>
+        </table>
+      </div>
     </article>
 
-    <!-- Right Properties Sidebar -->
-    <aside class="rw-panel rw-stack">
-      <h3>문서 속성</h3>
-      <div class="rw-stack">
-        <label class="rw-meta">상태</label>
-        <span class="rw-badge rw-badge--success">검토 완료</span>
+    <!-- Right Properties & TOC Sidebar -->
+    <aside class="rw-stack" style="font-size: 0.9em;">
+      <div>
+        <strong>목차</strong>
+        <ol style="padding-left: 1.2rem; line-height: 1.8; margin-top: 0.5rem;">
+          <li><a href="#">1. 개요</a></li>
+          <li><a href="#">2. 체크리스트</a></li>
+          <li><a href="#">3. 토큰 예시</a></li>
+        </ol>
+      </div>
 
-        <label class="rw-meta" style="margin-top: 0.5rem;">공개 범위</label>
-        <span class="rw-badge rw-badge--secondary">전사 공개</span>
+      <hr style="margin: 1rem 0;">
 
-        <label class="rw-meta" style="margin-top: 0.5rem;">E-Ink 최적화</label>
-        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9em;">
-          <input type="checkbox" role="switch" checked> 활성화
-        </label>
+      <div class="rw-stack" style="gap: 0.75rem;">
+        <strong>문서 속성</strong>
+        <div>
+          <label class="rw-meta" style="display: block;">상태</label>
+          <span class="rw-badge rw-badge--success">확정</span>
+        </div>
+        <div>
+          <label class="rw-meta" style="display: block;">버전</label>
+          <span>v1.0</span>
+        </div>
+        <div>
+          <label class="rw-meta" style="display: block;">공개 범위</label>
+          <span>프로덕트 팀</span>
+        </div>
+        <div>
+          <label class="rw-meta" style="display: block;">태그</label>
+          <div class="rw-cluster" style="margin-top: 0.25rem;">
+            <span class="rw-badge">디자인 시스템</span>
+            <span class="rw-badge">가이드</span>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin: 1rem 0;">
+
+      <div class="rw-stack" style="gap: 0.4rem;">
+        <strong>문서 통계</strong>
+        <div style="display: flex; justify-content: space-between;"><span class="rw-meta">단어 수:</span> <span>412</span></div>
+        <div style="display: flex; justify-content: space-between;"><span class="rw-meta">글자 수:</span> <span>1,982</span></div>
+        <div style="display: flex; justify-content: space-between;"><span class="rw-meta">읽기 시간:</span> <span>2분</span></div>
       </div>
     </aside>
   </main>

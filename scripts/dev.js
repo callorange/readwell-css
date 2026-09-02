@@ -51,24 +51,50 @@ if (fs.existsSync(srcDir)) {
 // 3. Static server
 const server = http.createServer((req, res) => {
   let reqPath = decodeURI(req.url.split('?')[0]);
+
+  // Root redirect to /examples/
   if (reqPath === '/') {
-    reqPath = '/examples/index.html';
+    res.writeHead(302, { Location: '/examples/' });
+    res.end();
+    return;
   }
 
-  const filePath = path.join(rootDir, reqPath);
+  // Normalize path
+  let targetPath = path.join(rootDir, reqPath);
 
-  fs.stat(filePath, (err, stats) => {
+  // Directory handling
+  if (fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory()) {
+    if (!reqPath.endsWith('/')) {
+      res.writeHead(302, { Location: reqPath + '/' });
+      res.end();
+      return;
+    }
+    const indexInDir = path.join(targetPath, 'index.html');
+    if (fs.existsSync(indexInDir)) {
+      targetPath = indexInDir;
+    }
+  }
+
+  // Fallback: check inside examples/ if file not found at root (e.g. /article.html -> /examples/article.html)
+  if (!fs.existsSync(targetPath) || !fs.statSync(targetPath).isFile()) {
+    const examplesFallback = path.join(rootDir, 'examples', reqPath);
+    if (fs.existsSync(examplesFallback) && fs.statSync(examplesFallback).isFile()) {
+      targetPath = examplesFallback;
+    }
+  }
+
+  fs.stat(targetPath, (err, stats) => {
     if (err || !stats.isFile()) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end(`404 Not Found: ${reqPath}`);
       return;
     }
 
-    const ext = path.extname(filePath).toLowerCase();
+    const ext = path.extname(targetPath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
     res.writeHead(200, { 'Content-Type': contentType });
-    fs.createReadStream(filePath).pipe(res);
+    fs.createReadStream(targetPath).pipe(res);
   });
 });
 

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Readwell CSS - Component Catalog & Kitchen Sink</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="workspace" data-rw-density="comfortable">
+  <!-- Header -->
+  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
+      <strong>Readwell 컴포넌트 카탈로그 (Kitchen Sink)</strong>
+      <span class="rw-meta">v0.1.0 All Components & States</span>
+      <span style="margin-left: auto;"></span>
+      <a class="rw-button rw-button--secondary" href="index.html">템플릿 예제 보기</a>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-sidebar-layout" style="padding-block: 2.5rem 5rem;">
+    <!-- Main Content Area -->
+    <div class="rw-stack" style="gap: 3rem;">
+      <!-- 1. Introduction -->
+      <section>
+        <span class="rw-badge rw-badge--primary">Complete Showcase</span>
+        <h1>Readwell CSS 종합 컴포넌트 명세</h1>
+        <p class="rw-meta">Readwell CSS가 제공하는 모든 HTML5 시맨틱 기본 요소, 클래스 기반 컴포넌트, 시맨틱 컬러 매트릭스 및 제품 패턴을 한 화면에서 탐색하고 검증할 수 있는 키친싱크입니다.</p>
+      </section>
+
+      <!-- 2. Typography & Content -->
+      <section id="typography" class="rw-card rw-stack">
+        <h2>1. Typography & Content</h2>
+        <div class="rw-stack">
+          <h1>H1 Heading (2.25rem)</h1>
+          <h2>H2 Heading (1.75rem)</h2>
+          <h3>H3 Heading (1.35rem)</h3>
+          <h4>H4 Heading (1.15rem)</h4>
+          <p>일반 본문 텍스트입니다. Readwell CSS는 눈의 피로를 최소화하는 1.7 행간과 최적화된 자간을 제공합니다. <em>기울임꼴(Italic)</em>과 <strong>굵은 글씨(Strong)</strong>, <del>취소선</del>, <mark>형광펜 강조(Mark)</mark>가 조화롭게 표현됩니다.</p>
+
+          <blockquote>
+            “조용함은 무구조를 뜻하지 않는다. 긴 글에서는 읽기 편해야 하고, 제품 화면에서는 구조와 상태가 빠르게 판독되어야 한다.”
+          </blockquote>
+
+          <div class="rw-cluster">
+            <code>inline code: --rw-paper</code>
+            <kbd>Ctrl + C</kbd>
+            <samp>sample output: 200 OK</samp>
+          </div>
+
+          <pre><code>/* Code Block */
+:root {
+  --rw-paper: #f5f2ea;
+  --rw-text: #232722;
+  --rw-primary: #496a8b;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- 3. Semantic Color Matrix & Badges -->
+      <section id="badges" class="rw-card rw-stack">
+        <h2>2. Semantic Color Matrix & Badges</h2>
+        <p class="rw-meta">저채도 의미 기반 6종 시맨틱 컬러 시스템 (.rw-badge--*)</p>
+        <div class="rw-cluster">
+          <span class="rw-badge">Default Neutral</span>
+          <span class="rw-badge rw-badge--primary">Primary Action</span>
+          <span class="rw-badge rw-badge--secondary">Secondary Neutral</span>
+          <span class="rw-badge rw-badge--success">Success / Normal</span>
+          <span class="rw-badge rw-badge--warning">Warning / Review</span>
+          <span class="rw-badge rw-badge--danger">Danger / Error</span>
+          <span class="rw-badge rw-badge--info">Info / Notice</span>
+        </div>
+      </section>
+
+      <!-- 4. Buttons & Groups -->
+      <section id="buttons" class="rw-card rw-stack">
+        <h2>3. Buttons & Button Groups</h2>
+        <div class="rw-cluster">
+          <button>Default Button</button>
+          <button class="rw-button--primary">Primary Button</button>
+          <button class="rw-button--secondary">Secondary Button</button>
+          <button class="rw-button--danger">Danger Button</button>
+          <button disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+        </div>
+
+        <div>
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Button Group (.rw-button-group)</label>
+          <div class="rw-button-group">
+            <button class="rw-button--primary">Left</button>
+            <button>Center</button>
+            <button>Right</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Form Controls & Validation -->
+      <section id="forms" class="rw-card rw-stack">
+        <h2>4. Form Controls & Validation</h2>
+        <form class="rw-stack" onsubmit="return false;">
+          <fieldset>
+            <legend>기본 입력 필드</legend>
+            <div class="rw-grid-2">
+              <div>
+                <label class="rw-meta">사용자 이름</label>
+                <input type="text" placeholder="홍길동">
+                <span class="rw-form-help">실명을 입력해 주세요.</span>
+              </div>
+              <div>
+                <label class="rw-meta">이메일 주소 (오류 예시)</label>
+                <input type="email" value="invalid-email-address" aria-invalid="true">
+                <span class="rw-form-error">유효한 이메일 형식이 아닙니다.</span>
+              </div>
+            </div>
+
+            <div class="rw-grid-2" style="margin-top: 1rem;">
+              <div>
+                <label class="rw-meta">카테고리 선택</label>
+                <select>
+                  <option>선택 옵션 1</option>
+                  <option>선택 옵션 2</option>
+                  <option>선택 옵션 3</option>
+                </select>
+              </div>
+              <div>
+                <label class="rw-meta">검색어 입력</label>
+                <input type="search" placeholder="검색어 입력...">
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <label class="rw-meta">상세 의견 / 본문</label>
+              <textarea rows="3" placeholder="내용을 입력하세요..."></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>체크박스, 라디오 및 토글 스위치</legend>
+            <div class="rw-cluster" style="gap: 2rem;">
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" checked> 알림 수신 동의
+              </label>
+
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="radio-demo" checked> 옵션 A
+              </label>
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="radio-demo"> 옵션 B
+              </label>
+
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" role="switch" checked> E-Ink 모드
+              </label>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- 6. Display, Cards & Callouts -->
+      <section id="display" class="rw-card rw-stack">
+        <h2>5. Cards, Panels & Callouts</h2>
+        <div class="rw-grid-2">
+          <div class="rw-card rw-stack">
+            <strong>.rw-card</strong>
+            <p class="rw-meta">독립된 콘텐츠 단위(블로그 글, 아이템 등)를 표현하는 기본 카드 컨테이너입니다.</p>
+          </div>
+          <div class="rw-panel rw-stack">
+            <strong>.rw-panel</strong>
+            <p class="rw-meta">화면 내 구획(사이드바, 설정 패널, 위젯)을 나누는 패널 컨테이너입니다.</p>
+          </div>
+        </div>
+
+        <div class="rw-stack">
+          <div class="rw-callout rw-callout--info">
+            <strong>Info Callout (.rw-callout--info)</strong>
+            <p>참고할 만한 유용한 정보나 부가 설명을 전달합니다.</p>
+          </div>
+          <div class="rw-callout rw-callout--success">
+            <strong>Success Callout (.rw-callout--success)</strong>
+            <p>작업 완료, 배포 성공 등 긍정적 결과를 안내합니다.</p>
+          </div>
+          <div class="rw-callout rw-callout--warning">
+            <strong>Warning Callout (.rw-callout--warning)</strong>
+            <p>주의가 필요한 작업이나 검토 대기 항목을 안내합니다.</p>
+          </div>
+          <div class="rw-callout rw-callout--danger">
+            <strong>Danger Callout (.rw-callout--danger)</strong>
+            <p>오류 발생, 데이터 삭제 등 위험한 동작을 경고합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Navigation & Tabs -->
+      <section id="navigation" class="rw-card rw-stack">
+        <h2>6. Navigation & Tabs</h2>
+        
+        <label class="rw-meta">Tabs (.rw-tabs, .rw-tab)</label>
+        <ul class="rw-tabs">
+          <li><a href="#" class="rw-tab is-active" aria-selected="true">개요 (Overview)</a></li>
+          <li><a href="#" class="rw-tab">설정 (Settings)</a></li>
+          <li><a href="#" class="rw-tab">팀 멤버 (Members)</a></li>
+          <li><a href="#" class="rw-tab">감사 로그 (Audit)</a></li>
+        </ul>
+
+        <label class="rw-meta">Breadcrumb (.rw-breadcrumb)</label>
+        <ol class="rw-breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Components</a></li>
+          <li>Kitchen Sink</li>
+        </ol>
+
+        <label class="rw-meta">Pagination (.rw-pagination)</label>
+        <div>
+          <nav class="rw-pagination">
+            <a href="#">‹ 이전</a>
+            <span aria-current="page">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">다음 ›</a>
+          </nav>
+        </div>
+
+        <label class="rw-meta">Dropdown Visual (.rw-dropdown, .rw-dropdown-menu)</label>
+        <div class="rw-dropdown">
+          <ul class="rw-dropdown-menu">
+            <li><a href="#" class="rw-dropdown-item">프로필 수정</a></li>
+            <li><a href="#" class="rw-dropdown-item">계정 설정</a></li>
+            <li class="rw-dropdown-divider"></li>
+            <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">로그아웃</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8. Native Interactive (Accordion, Dialog, Progress) -->
+      <section id="interactive" class="rw-card rw-stack">
+        <h2>7. Native Interactive Elements</h2>
+        
+        <div>
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Accordion (details.rw-accordion, summary)</label>
+          <details class="rw-accordion" open>
+            <summary>Readwell CSS의 설계 철학은 무엇인가요?</summary>
+            <p style="margin-top: 0.5rem;">E-Ink 디스플레이에서 얻은 절제된 디자인 원칙을 적용하여 화려한 그림자와 애니메이션을 억제하고, 오직 선·여백·저채도 시맨틱 컬러로 편안한 가독성을 제공합니다.</p>
+          </details>
+          <details class="rw-accordion">
+            <summary>JavaScript 의존성이 필요한가요?</summary>
+            <p style="margin-top: 0.5rem;">아닙니다. Readwell CSS는 100% Zero Runtime JavaScript로 동작하며 모든 인터랙션은 HTML5 표준 태그(dialog, details 등)를 우선 활용합니다.</p>
+          </details>
+        </div>
+
+        <div>
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Modal Dialog (&lt;dialog&gt;)</label>
+          <button class="rw-button--primary" onclick="document.getElementById('demo-dialog').showModal()">모달 다이얼로그 열기 (Show Modal)</button>
+
+          <dialog id="demo-dialog">
+            <div class="rw-stack">
+              <h3>네이티브 모달 다이얼로그</h3>
+              <p>HTML5 <code>&lt;dialog&gt;</code> 태그와 <code>::backdrop</code>을 적용한 순수 네이티브 모달입니다. E-Ink 및 일반 브라우저에서 가볍고 안전하게 렌더링됩니다.</p>
+              <div class="rw-cluster" style="justify-content: flex-end; margin-top: 1rem;">
+                <button onclick="document.getElementById('demo-dialog').close()">닫기</button>
+                <button class="rw-button--primary" onclick="document.getElementById('demo-dialog').close()">확인</button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+
+        <div>
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Progress Bar (&lt;progress&gt;)</label>
+          <progress value="68" max="100"></progress>
+        </div>
+      </section>
+
+      <!-- 9. Product Patterns -->
+      <section id="patterns" class="rw-card rw-stack">
+        <h2>8. Product Patterns</h2>
+
+        <label class="rw-meta">Summary Row (.rw-summary-row)</label>
+        <div class="rw-summary-row">
+          <span>전체 이슈: <strong>142개</strong></span>
+          <span>열림: <strong style="color: var(--rw-primary-strong);">18개</strong></span>
+          <span>해결 완료: <strong style="color: var(--rw-success-strong);">124개</strong></span>
+          <span style="margin-left: auto;"></span>
+          <span class="rw-badge rw-badge--success">정상 상태</span>
+        </div>
+
+        <label class="rw-meta" style="margin-top: 1rem;">Stat Cards Grid (.rw-grid, .rw-stat)</label>
+        <div class="rw-grid">
+          <div class="rw-stat">
+            <span class="rw-meta">활성 구독자</span>
+            <strong>2,840</strong>
+            <span class="rw-badge rw-badge--success">+8.2%</span>
+          </div>
+          <div class="rw-stat">
+            <span class="rw-meta">평균 응답 속도</span>
+            <strong>124ms</strong>
+            <span class="rw-badge rw-badge--primary">최적화됨</span>
+          </div>
+        </div>
+
+        <label class="rw-meta" style="margin-top: 1rem;">Empty State (.rw-empty)</label>
+        <div class="rw-empty">
+          <div class="rw-empty__title">등록된 프로젝트가 없습니다</div>
+          <div class="rw-empty__description">새로운 문서를 작성하거나 팀 저장소를 연동하여 첫 번째 협업을 시작해 보세요.</div>
+          <button class="rw-button--primary">+ 새 프로젝트 생성</button>
+        </div>
+
+        <label class="rw-meta" style="margin-top: 1rem;">Responsive Table (.rw-table-container, table)</label>
+        <div class="rw-table-container">
+          <table>
+            <thead>
+              <tr><th>구분</th><th>클래스명</th><th>타입</th><th>비고</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Layout</td><td><code>.rw-container</code></td><td>Container</td><td>페이지 최대 너비 제한</td></tr>
+              <tr><td>Component</td><td><code>.rw-badge</code></td><td>Inline</td><td>6종 시맨틱 뱃지</td></tr>
+              <tr><td>Interactive</td><td><code>details.rw-accordion</code></td><td>Native</td><td>아코디언 접기/펼침</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right Quick Navigation Sidebar -->
+    <aside class="rw-stack" style="position: sticky; top: 1.5rem;">
+      <nav class="rw-panel rw-stack">
+        <h3>목차 (Index)</h3>
+        <ul style="padding-left: 1rem; line-height: 1.8; font-size: 0.9em;">
+          <li><a href="#typography">1. Typography</a></li>
+          <li><a href="#badges">2. Semantic Badges</a></li>
+          <li><a href="#buttons">3. Buttons & Groups</a></li>
+          <li><a href="#forms">4. Form & Validation</a></li>
+          <li><a href="#display">5. Cards & Callouts</a></li>
+          <li><a href="#navigation">6. Navigation & Tabs</a></li>
+          <li><a href="#interactive">7. Interactive (Dialog, Details)</a></li>
+          <li><a href="#patterns">8. Product Patterns</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </main>
+</body>
+</html>
