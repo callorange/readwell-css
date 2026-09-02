@@ -18,7 +18,18 @@
       top: 1.5rem;
       max-height: calc(100vh - 3rem);
       overflow-y: auto;
-      padding-right: 0.5rem;
+      padding-right: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rw-line-strong) transparent;
+    }
+
+    .docs-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .docs-sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--rw-line-strong);
+      border-radius: 4px;
     }
 
     .docs-sidebar-section {
@@ -125,7 +136,7 @@
   </header>
 
   <!-- Main Documentation Container with Sidebar Layout -->
-  <div class="rw-container rw-sidebar-layout" style="padding-block: 2rem; align-items: flex-start;">
+  <div class="rw-container rw-sidebar-layout--left" style="padding-block: 2rem; align-items: flex-start;">
     <!-- Left Sticky Sidebar -->
     <aside class="docs-sidebar">
       <nav aria-label="Documentation Categories">

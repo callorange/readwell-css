@@ -35,3 +35,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - `pre code` 중첩 셀렉터 스타일 상속으로 인한 코드 블록 배경 깨짐 및 폰트 이중 축소 현상 수정
 - 예제 허브(`examples/index.html`), `scripts/build.js`, `package.json` 내 GitHub 리포지토리 링크 깨짐 수정(`https://github.com/callorange/readwell-css`)
+- `.rw-sidebar-layout--left`(좌측 고정 사이드바 250px + 우측 본문 1fr) 추가 및 공식 문서 포털 레이아웃 왜곡/스크롤바 분할 버그 수정

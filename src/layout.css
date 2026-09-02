@@ -56,6 +56,12 @@
     grid-template-columns: 1fr 260px;
   }
 
+  .rw-sidebar-layout--left {
+    display: grid;
+    gap: var(--rw-space-4);
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+
   .rw-app-shell {
     display: grid;
     gap: var(--rw-space-4);
@@ -84,7 +90,7 @@
   }
 
   @media (max-width: 860px) {
-    .rw-sidebar-layout, .rw-app-shell, .rw-app-shell--seamless {
+    .rw-sidebar-layout, .rw-sidebar-layout--left, .rw-app-shell, .rw-app-shell--seamless {
       grid-template-columns: 1fr;
     }
 
