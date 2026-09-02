@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Readwell CSS Documentation - 공식 가이드 및 컴포넌트 명세</title>
   <link rel="stylesheet" href="../dist/readwell.min.css">
-  <link rel="stylesheet" href="./switcher.css">
+  <link rel="stylesheet" href="../examples/switcher.css">
   <style>
     /* Documentation Portal Custom Styles */
     html {
@@ -268,36 +268,36 @@
           <p class="rw-meta">HTML <code>&lt;body&gt;</code> 또는 <code>&lt;html&gt;</code> 태그에 속성을 부여하여 전역 모드를 선언적으로 제어합니다.</p>
           
           <div class="rw-table-container">
-            <table>
+            <table class="docs-table" style="width: 100%;">
               <thead>
                 <tr>
-                  <th>제어 속성</th>
-                  <th>옵션 값</th>
-                  <th>기본값</th>
+                  <th style="width: 160px;">제어 속성</th>
+                  <th style="width: 230px;">옵션 값</th>
+                  <th style="width: 120px;">기본값</th>
                   <th>설명 및 권장 용도</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><code>data-rw-theme</code></td>
+                  <td><code style="white-space: nowrap;">data-rw-theme</code></td>
                   <td><code>light</code>, <code>warm</code></td>
                   <td><code>light</code></td>
                   <td><strong>테마 색온도</strong>: 내추럴 백상지(Light) vs 단행본 미색 크림지(Warm)</td>
                 </tr>
                 <tr>
-                  <td><code>data-rw-surface</code></td>
+                  <td><code style="white-space: nowrap;">data-rw-surface</code></td>
                   <td><code>reading</code>, <code>workspace</code>, <code>dashboard</code>, <code>dense</code></td>
                   <td><code>reading</code></td>
                   <td><strong>화면 표면</strong>: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 표</td>
                 </tr>
                 <tr>
-                  <td><code>data-rw-density</code></td>
+                  <td><code style="white-space: nowrap;">data-rw-density</code></td>
                   <td><code>cozy</code>, <code>comfortable</code>, <code>compact</code></td>
                   <td><code>comfortable</code></td>
                   <td><strong>여백 밀도</strong>: 여유로운 여백 / 표준 균형 / 압축 데이터 뷰</td>
                 </tr>
                 <tr>
-                  <td><code>data-rw-eink</code></td>
+                  <td><code style="white-space: nowrap;">data-rw-eink</code></td>
                   <td><code>true</code>, <code>false</code></td>
                   <td><code>false</code></td>
                   <td><strong>전자종이 정적 모드</strong>: 모든 전환 효과 및 애니메이션 차단</td>
@@ -312,13 +312,42 @@
           <h3>퓨어 페이퍼 테마 듀오 (Pure Paper Duo)</h3>
           <p class="rw-meta">E-Ink 및 인쇄 종이 매체의 자연스러운 질감을 살린 2종의 표준 테마입니다.</p>
           <div class="rw-grid-2">
-            <div class="rw-panel rw-stack" data-rw-theme="light" style="border: 1px solid var(--rw-line-strong);">
-              <h4>Light 📄 (내추럴 백상지)</h4>
-              <p style="margin: 0; font-size: 0.9rem;">맑고 정갈한 순수 종이 질감으로 깔끔하고 현대적인 가독성을 제공합니다.</p>
+            <!-- Light Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #faf8f3; color: #1f1f1f; border: 1.5px solid #b8b2a4; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Light 📄 (내추럴 백상지)</strong>
+                <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">기본 테마</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #6b6b6b;">
+                맑고 정갈한 순수 종이 질감으로 깔끔하고 현대적인 가독성을 제공합니다.
+              </p>
+              <div style="background-color: #fcfbf8; border: 1px solid #e2ddd2; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem;">조용한 화면이 만드는 집중</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #6b6b6b;">긴 글 읽기와 업무용 워크스페이스에 최적화된 시각 대비를 선사합니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm">확인</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm">취소</button>
+                </div>
+              </div>
             </div>
-            <div class="rw-panel rw-stack" data-rw-theme="warm" style="border: 1px solid var(--rw-line-strong);">
-              <h4>Warm Paper 📖 (단행본 크림지)</h4>
-              <p style="margin: 0; font-size: 0.9rem;">단행본 출판 도서의 미색 크림지 질감으로 장시간 독서 시 눈의 피로를 최소화합니다.</p>
+
+            <!-- Warm Paper Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #f4efe2; color: #28231d; border: 1.5px solid #b8ab94; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Warm Paper 📖 (단행본 크림지)</strong>
+                <span class="rw-badge rw-badge--warning" style="font-size: 0.75rem;">눈 피로 완화</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #756c60;">
+                단행본 출판 도서의 미색 크림지 질감으로 장시간 독서 시 블루라이트 자극을 줄입니다.
+              </p>
+              <div style="background-color: #faf6ec; border: 1px solid #ded4c0; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem;">단행본 질감의 편안함</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #756c60;">실제 출판 책의 미색 용지 색온도를 재현하여 야간 독서에 적합합니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm" style="background-color: #e0e8f0; border-color: #516b88; color: #364d68;">읽기 시작</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm" style="background-color: #e2e8df; border-color: #6e786b; color: #4f584d;">목차</button>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -355,28 +384,79 @@
 
         <!-- Grid -->
         <article id="layout-grid" class="rw-card rw-stack docs-card">
-          <h3>Grid (그리드)</h3>
-          <p class="rw-meta"><code>.rw-grid-2</code>, <code>.rw-grid-3</code>을 통해 반응형 멀티 컬럼 레이아웃을 손쉽게 구성합니다.</p>
+          <h3>Grid (그리드 체계: 1열·2열·3열·4열 & 자동 맞춤)</h3>
+          <p class="rw-meta">
+            Readwell CSS는 <strong>총 5종의 그리드 유틸리티</strong>(<code>.rw-grid-1</code>, <code>.rw-grid-2</code>, <code>.rw-grid-3</code>, <code>.rw-grid-4</code>, <code>.rw-grid</code>)를 제공합니다.
+          </p>
 
-          <div class="docs-preview">
-            <div class="rw-grid-3">
-              <div class="rw-panel" style="text-align: center;">Column 1</div>
-              <div class="rw-panel" style="text-align: center;">Column 2</div>
-              <div class="rw-panel" style="text-align: center;">Column 3</div>
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <!-- 2-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-2 (2열 그리드)</strong></span>
+              <div class="rw-grid-2" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Column 1 of 2</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Column 2 of 2</div>
+              </div>
+            </div>
+
+            <!-- 3-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-3 (3열 그리드)</strong></span>
+              <div class="rw-grid-3" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 1 of 3</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 2 of 3</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 3 of 3</div>
+              </div>
+            </div>
+
+            <!-- 4-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-4 (4열 그리드)</strong></span>
+              <div class="rw-grid-4" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 1/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 2/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 3/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 4/4</div>
+              </div>
+            </div>
+
+            <!-- Auto-fit -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid (반응형 자동 맞춤: minmax 240px)</strong></span>
+              <div class="rw-grid" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item A</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item B</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item C</div>
+              </div>
             </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;div class="rw-grid-2"&gt;
-  &lt;div class="rw-panel"&gt;2열 그리드 좌측&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;2열 그리드 우측&lt;/div&gt;
+            <pre><code>&lt;!-- 2열 그리드 --&gt;
+&lt;div class="rw-grid-2"&gt;
+  &lt;div class="rw-panel"&gt;Column 1&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Column 2&lt;/div&gt;
 &lt;/div&gt;
 
+&lt;!-- 3열 그리드 --&gt;
 &lt;div class="rw-grid-3"&gt;
-  &lt;div class="rw-panel"&gt;3열 그리드 A&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;3열 그리드 B&lt;/div&gt;
-  &lt;div class="rw-panel"&gt;3열 그리드 C&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 1&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 2&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 4열 그리드 --&gt;
+&lt;div class="rw-grid-4"&gt;
+  &lt;div class="rw-panel"&gt;Col 1&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 2&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 3&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;Col 4&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 자동 맞춤 그리드 (minmax 240px) --&gt;
+&lt;div class="rw-grid"&gt;
+  &lt;div class="rw-panel"&gt;Item&lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </article>
@@ -388,8 +468,8 @@
 
           <div class="docs-preview">
             <div class="rw-cluster">
-              <button class="rw-button--primary">Cluster Item 1</button>
-              <button class="rw-button--secondary">Cluster Item 2</button>
+              <button type="button" class="rw-button rw-button--primary">Cluster Item 1</button>
+              <button type="button" class="rw-button rw-button--secondary">Cluster Item 2</button>
               <span class="rw-badge rw-badge--success">Cluster Badge</span>
             </div>
           </div>
@@ -397,8 +477,9 @@
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
             <pre><code>&lt;div class="rw-cluster"&gt;
-  &lt;button class="rw-button--primary"&gt;확인&lt;/button&gt;
-  &lt;button class="rw-button--secondary"&gt;취소&lt;/button&gt;
+  &lt;button class="rw-button rw-button--primary"&gt;확인&lt;/button&gt;
+  &lt;button class="rw-button rw-button--secondary"&gt;취소&lt;/button&gt;
+  &lt;span class="rw-badge rw-badge--success"&gt;완료&lt;/span&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </article>
@@ -406,31 +487,105 @@
         <!-- Sidebar Layout -->
         <article id="layout-sidebar" class="rw-card rw-stack docs-card">
           <h3>Sidebar Layout & App Shell</h3>
-          <p class="rw-meta"><code>.rw-sidebar-layout</code>은 본문과 사이드바(280px)를 자연스럽게 분할하는 문서형 제품 구조를 제공합니다.</p>
+          <p class="rw-meta">
+            <code>.rw-sidebar-layout--left</code>는 좌측 사이드바(250px 고정)와 우측 본문(1fr) 구조를,
+            <code>.rw-sidebar-layout</code>은 좌측 본문(1fr)과 우측 목차(260px) 구조를 지원합니다.
+          </p>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 좌측 사이드바 + 우측 본문 문서 레이아웃 --&gt;
+&lt;div class="rw-container rw-sidebar-layout--left"&gt;
+  &lt;aside&gt;사이드바 메뉴 (250px)&lt;/aside&gt;
+  &lt;main&gt;본문 콘텐츠 영역 (1fr)&lt;/main&gt;
+&lt;/div&gt;</code></pre>
+          </div>
         </article>
       </section>
 
       <!-- 3. Typography & Content -->
       <section id="content" class="docs-section">
-        <h2 class="docs-section-title">3. Typography & Content (콘텐츠)</h2>
+        <h2 class="docs-section-title">3. Typography & Content (타이포그래피 및 인라인 콘텐츠)</h2>
 
-        <!-- Typography -->
+        <!-- Typography Headings -->
         <article id="content-typography" class="rw-card rw-stack docs-card">
-          <h3>Typography (제목 & 본문)</h3>
-          <p class="rw-meta">별도의 클래스 없이 기본 HTML 태그(h1~h6, p)만으로 단정한 위계와 행간(1.7)이 적용됩니다.</p>
+          <h3>Typography (제목 태그 h1 ~ h6)</h3>
+          <p class="rw-meta">
+            별도의 클래스 없이 기본 시맨틱 태그(<code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code>, <code>&lt;p&gt;</code>)만으로 단정한 위계와 행간(1.7), 한국어 줄바꿈(<code>keep-all</code>)이 기본 적용됩니다.
+          </p>
 
-          <div class="docs-preview rw-stack">
-            <h1 style="margin: 0;">Heading 1 (2.2rem)</h1>
-            <h2 style="margin: 0;">Heading 2 (1.6rem)</h2>
-            <h3 style="margin: 0;">Heading 3 (1.25rem)</h3>
-            <p style="margin: 0;">본문 단락(Paragraph)입니다. 전자종이 디스플레이의 시각적 안정성을 브라우저 환경에 이식하여 눈의 피로를 최소화합니다.</p>
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <div style="border-bottom: 1px dashed var(--rw-line); padding-bottom: 0.5rem;">
+              <h1 style="margin: 0;">Heading 1 (2.25rem / 36px)</h1>
+              <span class="rw-meta">최상위 대제목 및 페이지 타이틀</span>
+            </div>
+            <div style="border-bottom: 1px dashed var(--rw-line); padding-bottom: 0.5rem;">
+              <h2 style="margin: 0;">Heading 2 (1.75rem / 28px, 하단 구분선)</h2>
+              <span class="rw-meta">주요 대단락 섹션 제목</span>
+            </div>
+            <div style="border-bottom: 1px dashed var(--rw-line); padding-bottom: 0.5rem;">
+              <h3 style="margin: 0;">Heading 3 (1.35rem / 21.6px)</h3>
+              <span class="rw-meta">중단락 컴포넌트 제목</span>
+            </div>
+            <div style="border-bottom: 1px dashed var(--rw-line); padding-bottom: 0.5rem;">
+              <h4 style="margin: 0;">Heading 4 (1.15rem / 18.4px)</h4>
+              <span class="rw-meta">소단락 및 카드 헤더</span>
+            </div>
+            <div style="border-bottom: 1px dashed var(--rw-line); padding-bottom: 0.5rem;">
+              <h5 style="margin: 0;">Heading 5 (1.05rem / 16.8px)</h5>
+              <span class="rw-meta">세부 항목 명칭</span>
+            </div>
+            <div>
+              <h6 style="margin: 0;">Heading 6 (0.92rem / 14.7px, Muted Color)</h6>
+              <span class="rw-meta">보조 캡션 및 메타 타이틀</span>
+            </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;h1&gt;대제목&lt;/h1&gt;
-&lt;h2&gt;중제목&lt;/h2&gt;
-&lt;p&gt;본문 단락입니다.&lt;/p&gt;</code></pre>
+            <pre><code>&lt;h1&gt;Heading 1 (2.25rem)&lt;/h1&gt;
+&lt;h2&gt;Heading 2 (1.75rem)&lt;/h2&gt;
+&lt;h3&gt;Heading 3 (1.35rem)&lt;/h3&gt;
+&lt;h4&gt;Heading 4 (1.15rem)&lt;/h4&gt;
+&lt;h5&gt;Heading 5 (1.05rem)&lt;/h5&gt;
+&lt;h6&gt;Heading 6 (0.92rem)&lt;/h6&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Inline Text Elements -->
+        <article id="content-inline" class="rw-card rw-stack docs-card">
+          <h3>Inline Text (인라인 서식: kbd, mark, del, ins, samp 등)</h3>
+          <p class="rw-meta">표준 HTML5 인라인 텍스트 요소를 품격 있는 페이퍼 질감으로 스타일링합니다.</p>
+
+          <div class="docs-preview rw-stack" style="gap: 0.75rem;">
+            <p style="margin: 0;">
+              단축키를 누르려면 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> 키를 입력하세요.
+            </p>
+            <p style="margin: 0;">
+              중요한 핵심 문장은 <mark>형광펜 하이라이트(mark)</mark>로 강조됩니다.
+            </p>
+            <p style="margin: 0;">
+              수정 전 내용은 <del>취소선(del)</del> 처리되고, 새로 추가된 내용은 <ins>추가선(ins)</ins>으로 표현됩니다.
+            </p>
+            <p style="margin: 0;">
+              터미널 출력 표본은 <samp>npm run build --success</samp> 형태로 나타납니다.
+            </p>
+            <p style="margin: 0;">
+              수학/화학식의 첨자: H<sub>2</sub>O (아래첨자) 및 E = mc<sup>2</sup> (위첨자)
+            </p>
+            <p style="margin: 0;">
+              용어 설명 툴팁: <abbr title="Cascading Style Sheets">CSS</abbr> 및 <abbr title="HyperText Markup Language">HTML5</abbr>
+            </p>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;
+&lt;mark&gt;형광펜 하이라이트&lt;/mark&gt;
+&lt;del&gt;취소선&lt;/del&gt; / &lt;ins&gt;추가선&lt;/ins&gt;
+&lt;samp&gt;출력 결과&lt;/samp&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
+&lt;abbr title="설명"&gt;약어&lt;/abbr&gt;</code></pre>
           </div>
         </article>
 
@@ -469,13 +624,18 @@
                 <tbody>
                   <tr>
                     <td>김개발</td>
-                    <td>엔지니어</td>
+                    <td>프론트엔드 엔지니어</td>
                     <td><span class="rw-badge rw-badge--success">정상 운영</span></td>
                   </tr>
                   <tr>
                     <td>이디자인</td>
-                    <td>디자이너</td>
+                    <td>UI/UX 디자이너</td>
                     <td><span class="rw-badge rw-badge--primary">작업 중</span></td>
+                  </tr>
+                  <tr>
+                    <td>박기획</td>
+                    <td>프로덕트 매니저</td>
+                    <td><span class="rw-badge rw-badge--warning">검토 대기</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -487,10 +647,10 @@
             <pre><code>&lt;div class="rw-table-container"&gt;
   &lt;table&gt;
     &lt;thead&gt;
-      &lt;tr&gt;&lt;th&gt;항목&lt;/th&gt;&lt;th&gt;상태&lt;/th&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th&gt;항목&lt;/th&gt;&lt;th&gt;역할&lt;/th&gt;&lt;th&gt;상태&lt;/th&gt;&lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;서버&lt;/td&gt;&lt;td&gt;&lt;span class="rw-badge rw-badge--success"&gt;정상&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;김개발&lt;/td&gt;&lt;td&gt;엔지니어&lt;/td&gt;&lt;td&gt;&lt;span class="rw-badge rw-badge--success"&gt;정상&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -523,7 +683,7 @@
 
       <!-- 4. Forms & Validation -->
       <section id="forms" class="docs-section">
-        <h2 class="docs-section-title">4. Forms & Validation (폼 입력 및 검증)</h2>
+        <h2 class="docs-section-title">4. Forms & Validation (폼 컨트롤 및 유효성 검증)</h2>
 
         <!-- Input & Select -->
         <article id="forms-input" class="rw-card rw-stack docs-card">
@@ -533,16 +693,21 @@
           <div class="docs-preview rw-stack">
             <div class="rw-grid-2">
               <div>
-                <label class="rw-meta">텍스트 입력</label>
-                <input type="text" placeholder="입력하세요...">
+                <label for="doc-demo-name" class="rw-meta">사용자 이름</label>
+                <input type="text" id="doc-demo-name" placeholder="홍길동" style="margin-top: 0.25rem;">
               </div>
               <div>
-                <label class="rw-meta">옵션 선택</label>
-                <select>
-                  <option>선택지 1</option>
-                  <option>선택지 2</option>
+                <label for="doc-demo-role" class="rw-meta">역할 선택</label>
+                <select id="doc-demo-role" style="margin-top: 0.25rem;">
+                  <option>소프트웨어 엔지니어</option>
+                  <option>프로덕트 디자이너</option>
+                  <option>기술 문서 작성자</option>
                 </select>
               </div>
+            </div>
+            <div>
+              <label for="doc-demo-bio" class="rw-meta">소개 (Textarea)</label>
+              <textarea id="doc-demo-bio" rows="3" placeholder="소개를 입력하세요..." style="margin-top: 0.25rem;"></textarea>
             </div>
           </div>
 
@@ -551,52 +716,70 @@
             <pre><code>&lt;label class="rw-meta"&gt;이름&lt;/label&gt;
 &lt;input type="text" placeholder="홍길동"&gt;
 
-&lt;label class="rw-meta"&gt;구분&lt;/label&gt;
-&lt;select&gt;
-  &lt;option&gt;옵션 1&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+&lt;label class="rw-meta"&gt;소개&lt;/label&gt;
+&lt;textarea rows="3" placeholder="내용 입력..."&gt;&lt;/textarea&gt;</code></pre>
           </div>
         </article>
 
         <!-- Checkbox & Radio -->
         <article id="forms-checkbox" class="rw-card rw-stack docs-card">
           <h3>Custom Checkbox & Radio</h3>
-          <p class="rw-meta">Paper & Ink 철학에 부합하는 순수 CSS 사각/원형 커스텀 컨트롤입니다.</p>
+          <p class="rw-meta">
+            Paper & Ink 철학에 부합하는 순수 CSS 사각/원형 커스텀 컨트롤입니다. 완벽한 네이티브 포커스 링과 라벨 클릭 토글을 지원합니다.
+          </p>
 
           <div class="docs-preview rw-cluster" style="gap: 1.5rem;">
             <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              <input type="checkbox" checked> 체크박스 (Checked)
+              <input type="checkbox" id="chk-doc-1" checked> <span>알림 수신 동의 (Checked)</span>
             </label>
             <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              <input type="radio" name="doc-radio" checked> 라디오 A
+              <input type="checkbox" id="chk-doc-2"> <span>마케팅 정보 수신</span>
             </label>
             <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              <input type="radio" name="doc-radio"> 라디오 B
+              <input type="radio" name="doc-radio" id="rad-doc-1" checked> <span>옵션 A (Radio)</span>
             </label>
-          </div>
-
-          <div class="docs-code-wrap">
-            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;label&gt;&lt;input type="checkbox" checked&gt; 동의함&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" name="group" checked&gt; 선택 1&lt;/label&gt;</code></pre>
-          </div>
-        </article>
-
-        <!-- Switch -->
-        <article id="forms-switch" class="rw-card rw-stack docs-card">
-          <h3>Toggle Switch</h3>
-          <p class="rw-meta"><code>role="switch"</code> 속성만으로 슬라이더 스위치로 전환됩니다.</p>
-
-          <div class="docs-preview">
             <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-              <input type="checkbox" role="switch" checked> 자동 저장 활성화
+              <input type="radio" name="doc-radio" id="rad-doc-2"> <span>옵션 B</span>
             </label>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
             <pre><code>&lt;label&gt;
-  &lt;input type="checkbox" role="switch" checked&gt; 모드 활성화
+  &lt;input type="checkbox" checked&gt; 동의함
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="radio" name="group" checked&gt; 옵션 A
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;input type="radio" name="group"&gt; 옵션 B
+&lt;/label&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Switch -->
+        <article id="forms-switch" class="rw-card rw-stack docs-card">
+          <h3>Toggle Switch (슬라이더 스위치)</h3>
+          <p class="rw-meta">
+            표준 체크박스에 <code>role="switch"</code> 속성만 부여하면 슬라이더 토글 스위치로 자동 전환됩니다.
+          </p>
+
+          <div class="docs-preview rw-cluster" style="gap: 2rem;">
+            <label style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+              <input type="checkbox" role="switch" id="sw-doc-1" checked>
+              <span>자동 저장 활성화 (On)</span>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+              <input type="checkbox" role="switch" id="sw-doc-2">
+              <span>야간 모드 (Off)</span>
+            </label>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" role="switch" checked&gt; 자동 저장 활성화
 &lt;/label&gt;</code></pre>
           </div>
         </article>
@@ -604,30 +787,34 @@
         <!-- Validation States -->
         <article id="forms-validation" class="rw-card rw-stack docs-card">
           <h3>Valid & Invalid 유효성 검증 상태</h3>
-          <p class="rw-meta">웹 접근성 표준 <code>aria-invalid</code> 속성에 기반하여 성공 및 오류 상태를 명확히 표현합니다.</p>
+          <p class="rw-meta">
+            웹 접근성 표준 <code>aria-invalid="false"</code>(성공) 및 <code>aria-invalid="true"</code>(오류) 속성을 통해 명확한 테두리 및 도움말 메시지를 표시합니다.
+          </p>
 
           <div class="docs-preview rw-grid-2">
             <div>
-              <label class="rw-meta">접속 도메인 (Valid/성공)</label>
-              <input type="text" value="readwell.design" aria-invalid="false">
+              <label for="val-doc-valid" class="rw-meta">접속 도메인 (Valid / 성공)</label>
+              <input type="text" id="val-doc-valid" value="readwell.design" aria-invalid="false" style="margin-top: 0.25rem;">
               <span class="rw-form-success">✓ 사용 가능한 도메인입니다.</span>
             </div>
             <div>
-              <label class="rw-meta">이메일 주소 (Invalid/오류)</label>
-              <input type="email" value="wrong-email" aria-invalid="true">
-              <span class="rw-form-error">유효한 이메일 형식이 아닙니다.</span>
+              <label for="val-doc-invalid" class="rw-meta">이메일 주소 (Invalid / 오류)</label>
+              <input type="email" id="val-doc-invalid" value="invalid-email-format" aria-invalid="true" style="margin-top: 0.25rem;">
+              <span class="rw-form-error">✕ 올바른 이메일 형식을 입력하세요.</span>
             </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
             <pre><code>&lt;!-- 성공 상태 (Valid) --&gt;
+&lt;label class="rw-meta"&gt;도메인&lt;/label&gt;
 &lt;input type="text" value="readwell.design" aria-invalid="false"&gt;
 &lt;span class="rw-form-success"&gt;✓ 사용 가능한 도메인입니다.&lt;/span&gt;
 
 &lt;!-- 오류 상태 (Invalid) --&gt;
+&lt;label class="rw-meta"&gt;이메일&lt;/label&gt;
 &lt;input type="email" value="wrong-email" aria-invalid="true"&gt;
-&lt;span class="rw-form-error"&gt;유효한 이메일 형식이 아닙니다.&lt;/span&gt;</code></pre>
+&lt;span class="rw-form-error"&gt;✕ 올바른 이메일 형식이 아닙니다.&lt;/span&gt;</code></pre>
           </div>
         </article>
       </section>
@@ -638,27 +825,66 @@
 
         <!-- Buttons -->
         <article id="comp-button" class="rw-card rw-stack docs-card">
-          <h3>Button & Button Group</h3>
-          <p class="rw-meta">단일 버튼 및 결합형 버튼 그룹(<code>.rw-button-group</code>)입니다.</p>
+          <h3>Button Sizes & Variants (버튼 크기 및 스타일)</h3>
+          <p class="rw-meta">
+            3종 크기(<code>.rw-button--sm</code>, 기본 Medium, <code>.rw-button--lg</code>), 전체 폭 블록(<code>.rw-button--block</code>), 외곽선(<code>.rw-button--outline</code>) 및 <code>.rw-button-group</code>을 지원합니다.
+          </p>
 
-          <div class="docs-preview rw-stack" style="gap: 1rem;">
-            <div class="rw-cluster">
-              <button type="button">Default</button>
-              <button type="button" class="rw-button--primary">Primary</button>
-              <button type="button" class="rw-button--secondary">Secondary</button>
-              <button type="button" class="rw-button--danger">Danger</button>
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <!-- Sizes -->
+            <div>
+              <span class="rw-meta"><strong>버튼 크기 체계 (Button Sizes)</strong></span>
+              <div class="rw-cluster" style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button rw-button--sm">Small (sm)</button>
+                <button type="button" class="rw-button">Default (Medium)</button>
+                <button type="button" class="rw-button rw-button--lg">Large (lg)</button>
+              </div>
             </div>
-            <div class="rw-button-group">
-              <button type="button" class="is-active" aria-pressed="true">Left</button>
-              <button type="button" aria-pressed="false">Center</button>
-              <button type="button" aria-pressed="false">Right</button>
+
+            <!-- Variants -->
+            <div>
+              <span class="rw-meta"><strong>스타일 변형 (Variants)</strong></span>
+              <div class="rw-cluster" style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button">Default</button>
+                <button type="button" class="rw-button rw-button--primary">Primary</button>
+                <button type="button" class="rw-button rw-button--secondary">Secondary</button>
+                <button type="button" class="rw-button rw-button--danger">Danger</button>
+                <button type="button" class="rw-button rw-button--outline">Outline</button>
+              </div>
+            </div>
+
+            <!-- Block -->
+            <div>
+              <span class="rw-meta"><strong>전체 폭 블록 버튼 (.rw-button--block)</strong></span>
+              <div style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button rw-button--primary rw-button--block">전체 폭 블록 버튼 (Full Width Block)</button>
+              </div>
+            </div>
+
+            <!-- Button Group -->
+            <div>
+              <span class="rw-meta"><strong>버튼 그룹 (.rw-button-group)</strong></span>
+              <div class="rw-button-group" style="margin-top: 0.4rem;">
+                <button type="button" class="is-active" aria-pressed="true">좌측</button>
+                <button type="button" aria-pressed="false">중앙</button>
+                <button type="button" aria-pressed="false">우측</button>
+              </div>
             </div>
           </div>
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;button class="rw-button--primary"&gt;확인&lt;/button&gt;
+            <pre><code>&lt;!-- 크기 --&gt;
+&lt;button class="rw-button rw-button--sm"&gt;Small&lt;/button&gt;
+&lt;button class="rw-button"&gt;Default&lt;/button&gt;
+&lt;button class="rw-button rw-button--lg"&gt;Large&lt;/button&gt;
 
+&lt;!-- 스타일 --&gt;
+&lt;button class="rw-button rw-button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="rw-button rw-button--outline"&gt;Outline&lt;/button&gt;
+&lt;button class="rw-button rw-button--block rw-button--primary"&gt;Block Button&lt;/button&gt;
+
+&lt;!-- 버튼 그룹 --&gt;
 &lt;div class="rw-button-group"&gt;
   &lt;button class="is-active" aria-pressed="true"&gt;옵션 1&lt;/button&gt;
   &lt;button aria-pressed="false"&gt;옵션 2&lt;/button&gt;

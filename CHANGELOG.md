@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 폼 유효성 성공 상태(`[aria-invalid="false"]`, `.is-valid`, `.rw-form-success`) 스타일 추가
 - 모드 스위처 정보 뱃지(`ⓘ`)에 브라우저 딜레이 없는 Pure CSS 툴팁(`data-tooltip`) 추가
 - Pico CSS 스타일의 Zero-Dependency 공식 인터랙티브 문서 포털 웹사이트(`docs/index.html`, `examples/docs.html`) 신설 (반응형 스티키 사이드바, 카테고리별 설명, 라이브 렌더링 프리뷰, 원클릭 복사 코드 블록 완비)
+- 버튼 크기 체계(`.rw-button--sm`, 기본 Medium, `.rw-button--lg`, `.rw-button--block`, `.rw-button--outline`) 추가
+- 그리드 체계 확장(`.rw-grid-1`, `.rw-grid-2`, `.rw-grid-3`, `.rw-grid-4`, `.rw-grid`) 추가
+- 한국어 자연스러운 줄바꿈을 위한 `word-break: keep-all;` 전역 및 타이포그래피 적용
+- 인라인 텍스트 서식 태그(`kbd`, `mark`, `del`, `ins`, `samp`, `sub`, `sup`, `abbr`) 스타일링 추가
 
 ### Changed
 - 체크박스(`input[type="checkbox"]`) 및 라디오 버튼(`input[type="radio"]`)을 Paper & Ink 철학에 부합하는 순수 CSS 커스텀 스타일로 개선
@@ -31,8 +35,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 드롭다운 메뉴(`.rw-dropdown-menu`) 이중 간격 제거 및 트리거 버튼과의 4px 위치 밀착 연결 개선
 - 모드 스위처 힌트 바(`rw-switcher-hint`) 고정 높이 적용으로 마우스오버 시 레이아웃 시프트(덜컹거림) 방지
 - Density System(`cozy`, `comfortable`, `compact`) 및 Surface Family 토큰을 테이블 셀, 버튼, 인풋 패딩에 실질 연동하여 시각 체감 강화
+- 공식 문서 포털(`docs/index.html`, `examples/docs.html`)의 4대 속성 표, 퓨어 페이퍼 테마 듀오 표본 카드, 5종 그리드 및 h1~h6 타이포그래피 쇼케이스 고도화
 
 ### Fixed
 - `pre code` 중첩 셀렉터 스타일 상속으로 인한 코드 블록 배경 깨짐 및 폰트 이중 축소 현상 수정
 - 예제 허브(`examples/index.html`), `scripts/build.js`, `package.json` 내 GitHub 리포지토리 링크 깨짐 수정(`https://github.com/callorange/readwell-css`)
 - `.rw-sidebar-layout--left`(좌측 고정 사이드바 250px + 우측 본문 1fr) 추가 및 공식 문서 포털 레이아웃 왜곡/스크롤바 분할 버그 수정
+- `scripts/build.js`의 잘못된 주석 정규식으로 인해 SVG Data URL이 잘려나가 폼/스위치/검증 스타일이 파싱 에러로 무효화되던 치명적 버그 수정
+- GitHub Pages 배포 워크플로(`.github/workflows/deploy-pages.yml`)에 `_site/docs` 디렉터리 동기화 누락 수정

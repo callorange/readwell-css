@@ -37,9 +37,10 @@ jobs:
 
       - name: Assemble Static Site
         run: |
-          mkdir -p _site/dist _site/examples
+          mkdir -p _site/dist _site/examples _site/docs
           cp -r dist/* _site/dist/
           cp -r examples/* _site/examples/
+          cp -r docs/* _site/docs/
           cat << 'EOF' > _site/index.html
           <!doctype html>
           <html lang="ko">

@@ -37,6 +37,39 @@
     color: var(--rw-danger-strong);
   }
 
+  /* Button Sizes & Modifiers */
+  .rw-button--sm,
+  button.rw-button--sm {
+    font-size: 0.8rem;
+    padding: 0.25em 0.65em;
+  }
+
+  .rw-button--lg,
+  button.rw-button--lg {
+    font-size: 1.12rem;
+    padding: 0.6em 1.35em;
+    font-weight: 600;
+  }
+
+  .rw-button--block,
+  button.rw-button--block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rw-button--outline,
+  button.rw-button--outline {
+    background-color: transparent;
+    border-color: var(--rw-line-strong);
+    color: var(--rw-text);
+  }
+
+  .rw-button--outline:hover,
+  button.rw-button--outline:hover {
+    background-color: var(--rw-paper-3);
+  }
+
   .rw-button-group {
     display: inline-flex;
     vertical-align: middle;

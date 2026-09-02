@@ -38,6 +38,12 @@
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 
+  .rw-grid-1 {
+    display: grid;
+    gap: var(--rw-density-gap);
+    grid-template-columns: 1fr;
+  }
+
   .rw-grid-2 {
     display: grid;
     gap: var(--rw-density-gap);
@@ -48,6 +54,12 @@
     display: grid;
     gap: var(--rw-density-gap);
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .rw-grid-4 {
+    display: grid;
+    gap: var(--rw-density-gap);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 
   .rw-sidebar-layout {

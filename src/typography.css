@@ -5,13 +5,30 @@
     line-height: var(--rw-line-height-heading);
     margin-top: 1.5em;
     margin-bottom: 0.5em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   h1 { font-size: 2.25rem; margin-top: 0; }
   h2 { font-size: 1.75rem; border-bottom: 1px solid var(--rw-line); padding-bottom: 0.3em; }
   h3 { font-size: 1.35rem; }
   h4 { font-size: 1.15rem; }
-  p { margin-bottom: 1.2em; }
+  h5 { font-size: 1.05rem; font-weight: 600; }
+  h6 { font-size: 0.92rem; font-weight: 600; color: var(--rw-text-muted); }
+  
+  p {
+    margin-bottom: 1.2em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  small { font-size: 0.85em; color: var(--rw-text-muted); }
+  sub, sup { font-size: 0.75em; line-height: 0; position: relative; vertical-align: baseline; }
+  sup { top: -0.5em; }
+  sub { bottom: -0.25em; }
+  del, s { text-decoration: line-through; color: var(--rw-text-muted); }
+  ins, u { text-decoration: underline; text-underline-offset: 2px; }
+  abbr[title] { text-decoration: underline dotted; cursor: help; }
 
   blockquote {
     border-left: 3px solid var(--rw-line-strong);
@@ -19,6 +36,7 @@
     color: var(--rw-text-muted);
     margin: var(--rw-space-4) 0;
     font-style: italic;
+    word-break: keep-all;
   }
 
   code, pre, kbd, samp {

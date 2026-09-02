@@ -46,14 +46,14 @@ function resolveImports(filePath, seen = new Set()) {
 
 function minifyCSS(css) {
   return css
-    // Remove multi-line comments
+    // Remove CSS comments (/* ... */)
     .replace(/\/\*[\s\S]*?\*\//g, '')
-    // Remove single-line comments
-    .replace(/\/\/.*/g, '')
     // Collapse whitespace
     .replace(/\s+/g, ' ')
-    // Remove whitespace around symbols
-    .replace(/\s*([{}:;,>+~])\s*/g, '$1')
+    // Remove whitespace around standard CSS symbols (avoid breaking quoted strings/urls)
+    .replace(/\s*([{};,>+~])\s*/g, '$1')
+    .replace(/:\s+/g, ':')
+    .replace(/\s+!important/g, '!important')
     // Remove trailing semicolons before closing brace
     .replace(/;}/g, '}')
     .trim();
