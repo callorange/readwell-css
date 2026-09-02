@@ -17,3 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 종합 컴포넌트 카탈로그 & 키친싱크 페이지(`examples/components.html`) 추가
 - 실시간 인터랙티브 모드 & 밀도 스위처 위젯(`examples/switcher.js`, `examples/switcher.css`) 추가
 - 퓨어 페이퍼 테마 듀오(Pure Paper Duo: `Light 📄` 내추럴 백상지, `Warm Paper 📖` 단행본 크림지) 큐레이션 및 테마 스위처 연동
+- 컴포넌트 카탈로그(`examples/components.html`) 내 실시간 탭 전환, 버튼 그룹 선택 토글, HTML5 네이티브 드롭다운 인터랙션 추가
+
+### Changed
+- 체크박스(`input[type="checkbox"]`) 및 라디오 버튼(`input[type="radio"]`)을 Paper & Ink 철학에 부합하는 순수 CSS 커스텀 스타일로 개선
+- 카드(`.rw-card`, 개별 콘텐츠 단위)와 패널(`.rw-panel`, 워크스페이스 구조 구획)의 디자인 및 구조적 역할 명확화
+- 버튼 그룹(`.rw-button-group`) 활성 버튼(`.is-active`, `[aria-pressed="true"]`) 스타일 및 `z-index` 계층 정돈
+
+### Fixed
+- `pre code` 중첩 셀렉터 스타일 상속으로 인한 코드 블록 배경 깨짐 및 폰트 이중 축소 현상 수정

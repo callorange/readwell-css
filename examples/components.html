@@ -14,7 +14,7 @@
     <nav class="rw-nav">
       <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
       <strong>Readwell 컴포넌트 카탈로그 (Kitchen Sink)</strong>
-      <span class="rw-meta">v0.1.0 All Components & States</span>
+      <span class="rw-meta">v0.1.0 All Components & Interactive Demos</span>
       <span style="margin-left: auto;"></span>
       <a class="rw-button rw-button--secondary" href="index.html">템플릿 예제 보기</a>
     </nav>
@@ -27,7 +27,7 @@
       <section>
         <span class="rw-badge rw-badge--primary">Complete Showcase</span>
         <h1>Readwell CSS 종합 컴포넌트 명세</h1>
-        <p class="rw-meta">Readwell CSS가 제공하는 모든 HTML5 시맨틱 기본 요소, 클래스 기반 컴포넌트, 시맨틱 컬러 매트릭스 및 제품 패턴을 한 화면에서 탐색하고 검증할 수 있는 키친싱크입니다.</p>
+        <p class="rw-meta">Readwell CSS가 제공하는 모든 HTML5 시맨틱 기본 요소, 클래스 기반 컴포넌트, 시맨틱 컬러 매트릭스 및 인터랙티브 동작을 한 화면에서 탐색하고 검증할 수 있는 키친싱크입니다.</p>
       </section>
 
       <!-- 2. Typography & Content -->
@@ -45,16 +45,24 @@
           </blockquote>
 
           <div class="rw-cluster">
-            <code>inline code: --rw-paper</code>
-            <kbd>Ctrl + C</kbd>
-            <samp>sample output: 200 OK</samp>
+            <code>--rw-paper: #faf8f3;</code>
+            <code>display: inline-flex;</code>
+            <kbd>Ctrl</kbd> + <kbd>C</kbd>
+            <samp>status: 200 OK</samp>
+            <mark>형광펜 강조</mark>
           </div>
 
-          <pre><code>/* Code Block */
+          <pre><code>/* Readwell CSS Design Tokens */
 :root {
-  --rw-paper: #f5f2ea;
-  --rw-text: #232722;
+  --rw-paper: #faf8f3;
+  --rw-text: #1f1f1f;
   --rw-primary: #496a8b;
+  --rw-line: #e2ddd2;
+}
+
+function calculateReadingTime(wordCount) {
+  const wordsPerMinute = 200;
+  return Math.ceil(wordCount / wordsPerMinute);
 }</code></pre>
         </div>
       </section>
@@ -85,12 +93,16 @@
           <button disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
         </div>
 
-        <div>
-          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Button Group (.rw-button-group)</label>
-          <div class="rw-button-group">
-            <button class="rw-button--primary">Left</button>
-            <button>Center</button>
-            <button>Right</button>
+        <div class="rw-stack" style="gap: 0.5rem; margin-top: 0.5rem;">
+          <div class="rw-cluster" style="justify-content: space-between; align-items: baseline;">
+            <label class="rw-meta">인터랙티브 버튼 그룹 (.rw-button-group - 클릭하여 활성 상태 전환)</label>
+            <span id="button-group-selected-val" class="rw-meta">선택됨: <strong style="color: var(--rw-primary-strong);">Left</strong></span>
+          </div>
+          <div class="rw-button-group" id="demo-button-group" role="group" aria-label="정렬 선택">
+            <button type="button" class="is-active" aria-pressed="true" data-value="Left">Left</button>
+            <button type="button" aria-pressed="false" data-value="Center">Center</button>
+            <button type="button" aria-pressed="false" data-value="Right">Right</button>
+            <button type="button" aria-pressed="false" data-value="Justify">Justify</button>
           </div>
         </div>
       </section>
@@ -136,22 +148,58 @@
           </fieldset>
 
           <fieldset>
-            <legend>체크박스, 라디오 및 토글 스위치</legend>
-            <div class="rw-cluster" style="gap: 2rem;">
-              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                <input type="checkbox" checked> 알림 수신 동의
-              </label>
+            <legend>커스텀 체크박스, 라디오 & 토글 스위치</legend>
+            <div class="rw-stack" style="gap: 1.25rem;">
+              <div>
+                <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">체크박스 (Checkbox - E-Ink & Paper 커스텀 스타일)</label>
+                <div class="rw-cluster" style="gap: 1.5rem;">
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" checked> 알림 수신 동의 (Checked)
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox"> 야간 모드 자동 전환 (Unchecked)
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" id="demo-indeterminate-checkbox"> 부분 선택 (Indeterminate)
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; opacity: 0.6; cursor: not-allowed;">
+                    <input type="checkbox" disabled checked> 비활성화 (Disabled)
+                  </label>
+                </div>
+              </div>
 
-              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                <input type="radio" name="radio-demo" checked> 옵션 A
-              </label>
-              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                <input type="radio" name="radio-demo"> 옵션 B
-              </label>
+              <div>
+                <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">라디오 버튼 (Radio - 원형 인디케이터)</label>
+                <div class="rw-cluster" style="gap: 1.5rem;">
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="radio" name="radio-demo" value="A" checked> 일간 요약 리포트
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="radio" name="radio-demo" value="B"> 주간 모아보기
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="radio" name="radio-demo" value="C"> 실시간 즉시 알림
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; opacity: 0.6; cursor: not-allowed;">
+                    <input type="radio" name="radio-demo-disabled" disabled checked> 비활성화 (Disabled)
+                  </label>
+                </div>
+              </div>
 
-              <label style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                <input type="checkbox" role="switch" checked> E-Ink 모드
-              </label>
+              <div>
+                <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">토글 스위치 (Switch - 역할 기반 슬라이더)</label>
+                <div class="rw-cluster" style="gap: 1.5rem;">
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" role="switch" checked> E-Ink 최적화 모드
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" role="switch"> 고대비 텍스처
+                  </label>
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; opacity: 0.6; cursor: not-allowed;">
+                    <input type="checkbox" role="switch" disabled checked> 하드웨어 가속 (고정)
+                  </label>
+                </div>
+              </div>
             </div>
           </fieldset>
         </form>
@@ -160,14 +208,47 @@
       <!-- 6. Display, Cards & Callouts -->
       <section id="display" class="rw-card rw-stack">
         <h2>5. Cards, Panels & Callouts</h2>
+        <p class="rw-meta"><strong>.rw-card</strong>는 기사, 상품 등 '독립된 콘텐츠 단위'를 표현하고, <strong>.rw-panel</strong>은 사이드바, 설정 위젯 등 '화면의 구조적 구획'을 표현합니다.</p>
+
         <div class="rw-grid-2">
-          <div class="rw-card rw-stack">
-            <strong>.rw-card</strong>
-            <p class="rw-meta">독립된 콘텐츠 단위(블로그 글, 아이템 등)를 표현하는 기본 카드 컨테이너입니다.</p>
-          </div>
+          <!-- Card Example -->
+          <article class="rw-card rw-stack">
+            <header class="rw-card__header rw-cluster" style="justify-content: space-between;">
+              <span class="rw-badge rw-badge--primary">Article Card</span>
+              <span class="rw-meta">2026-09-02</span>
+            </header>
+            <div class="rw-stack" style="gap: 0.5rem;">
+              <h3 style="margin: 0; font-size: 1.2rem;">Readwell CSS 디자인 시스템의 탄생</h3>
+              <p style="margin: 0; font-size: 0.95rem; color: var(--rw-text);">전자종이 디스플레이의 시각적 안정성을 웹 UI에 이식하여 눈의 피로도를 최소화하고 장문 읽기 효율을 극대화합니다.</p>
+            </div>
+            <footer class="rw-card__footer rw-cluster" style="justify-content: space-between;">
+              <span>작성자: Readwell Team</span>
+              <a href="#" style="font-weight: 600; color: var(--rw-primary-strong);">자세히 읽기 →</a>
+            </footer>
+          </article>
+
+          <!-- Panel Example -->
           <div class="rw-panel rw-stack">
-            <strong>.rw-panel</strong>
-            <p class="rw-meta">화면 내 구획(사이드바, 설정 패널, 위젯)을 나누는 패널 컨테이너입니다.</p>
+            <div class="rw-panel__header">
+              <span>워크스페이스 설정 (Panel)</span>
+              <button class="rw-button--secondary" style="font-size: 0.75rem; padding: 0.2em 0.5em;">저장</button>
+            </div>
+            <div class="rw-panel__body rw-stack" style="gap: 0.75rem;">
+              <div>
+                <label class="rw-meta" style="font-size: 0.8rem;">기본 글꼴 서체</label>
+                <select style="font-size: 0.85rem; padding: 0.3em 0.5em; width: 100%;">
+                  <option>Serif (명조 / Garamond)</option>
+                  <option selected>Sans-Serif (고딕 / System UI)</option>
+                  <option>Monospace (고정폭)</option>
+                </select>
+              </div>
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer;">
+                <input type="checkbox" role="switch" checked> 자동 저장 활성화
+              </label>
+            </div>
+            <div class="rw-panel__footer">
+              <span>동기화 상태: 최신 (1분 전)</span>
+            </div>
           </div>
         </div>
 
@@ -191,44 +272,90 @@
         </div>
       </section>
 
-      <!-- 7. Navigation & Tabs -->
+      <!-- 7. Navigation, Tabs & Dropdowns -->
       <section id="navigation" class="rw-card rw-stack">
-        <h2>6. Navigation & Tabs</h2>
+        <h2>6. Navigation, Tabs & Dropdowns</h2>
         
-        <label class="rw-meta">Tabs (.rw-tabs, .rw-tab)</label>
-        <ul class="rw-tabs">
-          <li><a href="#" class="rw-tab is-active" aria-selected="true">개요 (Overview)</a></li>
-          <li><a href="#" class="rw-tab">설정 (Settings)</a></li>
-          <li><a href="#" class="rw-tab">팀 멤버 (Members)</a></li>
-          <li><a href="#" class="rw-tab">감사 로그 (Audit)</a></li>
-        </ul>
-
-        <label class="rw-meta">Breadcrumb (.rw-breadcrumb)</label>
-        <ol class="rw-breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">Components</a></li>
-          <li>Kitchen Sink</li>
-        </ol>
-
-        <label class="rw-meta">Pagination (.rw-pagination)</label>
         <div>
-          <nav class="rw-pagination">
-            <a href="#">‹ 이전</a>
-            <span aria-current="page">1</span>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">다음 ›</a>
-          </nav>
+          <div class="rw-cluster" style="justify-content: space-between; align-items: baseline;">
+            <label class="rw-meta">Tabs (.rw-tabs, .rw-tab - 클릭하여 전환)</label>
+            <span class="rw-meta" style="color: var(--rw-primary-strong);">실시간 탭 전환 활성화됨</span>
+          </div>
+          <ul class="rw-tabs" role="tablist" id="demo-tabs">
+            <li><button type="button" class="rw-tab is-active" role="tab" aria-selected="true" aria-controls="tab-overview" id="tab-btn-overview">개요 (Overview)</button></li>
+            <li><button type="button" class="rw-tab" role="tab" aria-selected="false" aria-controls="tab-settings" id="tab-btn-settings">설정 (Settings)</button></li>
+            <li><button type="button" class="rw-tab" role="tab" aria-selected="false" aria-controls="tab-members" id="tab-btn-members">팀 멤버 (Members)</button></li>
+            <li><button type="button" class="rw-tab" role="tab" aria-selected="false" aria-controls="tab-audit" id="tab-btn-audit">감사 로그 (Audit)</button></li>
+          </ul>
+
+          <div class="rw-tab-panels" style="padding: 1rem; border: 1px solid var(--rw-line); border-radius: var(--rw-radius); background: var(--rw-paper-2);">
+            <div class="rw-tab-panel" id="tab-overview" role="tabpanel" aria-labelledby="tab-btn-overview">
+              <h4 style="margin-top: 0;">프로젝트 개요</h4>
+              <p style="margin-bottom: 0;">Readwell CSS 프로젝트의 현재 버전 및 핵심 요약 현황을 확인합니다. 0.1.0 배포 준비가 완료되었습니다.</p>
+            </div>
+            <div class="rw-tab-panel" id="tab-settings" role="tabpanel" aria-labelledby="tab-btn-settings" hidden>
+              <h4 style="margin-top: 0;">환경 및 레이아웃 설정</h4>
+              <p style="margin-bottom: 0;">기본 폰트 패밀리, 자간, 여백 밀도(Comfortable/Compact)를 지정할 수 있는 환경 설정 패널입니다.</p>
+            </div>
+            <div class="rw-tab-panel" id="tab-members" role="tabpanel" aria-labelledby="tab-btn-members" hidden>
+              <h4 style="margin-top: 0;">팀 멤버 및 권한</h4>
+              <p style="margin-bottom: 0;">총 4명의 기여자가 워크스페이스에 참여하고 있습니다. 관리자 권한을 부여하거나 역할을 변경할 수 있습니다.</p>
+            </div>
+            <div class="rw-tab-panel" id="tab-audit" role="tabpanel" aria-labelledby="tab-btn-audit" hidden>
+              <h4 style="margin-top: 0;">시스템 감사 로그</h4>
+              <p style="margin-bottom: 0;">최근 24시간 동안 발생한 설정 변경 및 배포 이력 12건이 정상 기록되었습니다.</p>
+            </div>
+          </div>
         </div>
 
-        <label class="rw-meta">Dropdown Visual (.rw-dropdown, .rw-dropdown-menu)</label>
-        <div class="rw-dropdown">
-          <ul class="rw-dropdown-menu">
-            <li><a href="#" class="rw-dropdown-item">프로필 수정</a></li>
-            <li><a href="#" class="rw-dropdown-item">계정 설정</a></li>
-            <li class="rw-dropdown-divider"></li>
-            <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">로그아웃</a></li>
-          </ul>
+        <div class="rw-grid-2" style="margin-top: 1rem;">
+          <div>
+            <label class="rw-meta">Breadcrumb (.rw-breadcrumb)</label>
+            <ol class="rw-breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Components</a></li>
+              <li>Kitchen Sink</li>
+            </ol>
+          </div>
+          <div>
+            <label class="rw-meta">Pagination (.rw-pagination)</label>
+            <nav class="rw-pagination">
+              <a href="#">‹ 이전</a>
+              <span aria-current="page">1</span>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">다음 ›</a>
+            </nav>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">드롭다운 메뉴 (.rw-dropdown - HTML5 네이티브 Zero-JS & 인터랙티브)</label>
+          <div class="rw-cluster" style="align-items: flex-start; gap: 2rem;">
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">인터랙티브 드롭다운 (클릭하여 열기)</span>
+              <details class="rw-dropdown" id="demo-dropdown">
+                <summary class="rw-button rw-button--primary">작업 메뉴 선택 ▾</summary>
+                <ul class="rw-dropdown-menu">
+                  <li><a href="#profile" class="rw-dropdown-item">프로필 정보 수정</a></li>
+                  <li><a href="#settings" class="rw-dropdown-item">계정 및 보안 설정</a></li>
+                  <li><a href="#theme" class="rw-dropdown-item">테마 프리셋 변경</a></li>
+                  <li class="rw-dropdown-divider"></li>
+                  <li><a href="#logout" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">로그아웃</a></li>
+                </ul>
+              </details>
+            </div>
+
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">정적 메뉴 토큰 뷰 (.rw-dropdown-menu)</span>
+              <ul class="rw-dropdown-menu" style="position: static; box-shadow: none;">
+                <li><a href="#" class="rw-dropdown-item">문서 내보내기 (PDF)</a></li>
+                <li><a href="#" class="rw-dropdown-item">Markdown 복사</a></li>
+                <li class="rw-dropdown-divider"></li>
+                <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">문서 삭제</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -337,5 +464,69 @@
       </nav>
     </aside>
   </main>
+
+  <!-- Interactive Demo Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Indeterminate Checkbox demo initialization
+      const indCheckbox = document.getElementById('demo-indeterminate-checkbox');
+      if (indCheckbox) indCheckbox.indeterminate = true;
+
+      // 2. Button Group interactive toggle demo
+      const btnGroup = document.getElementById('demo-button-group');
+      const btnGroupLabel = document.getElementById('button-group-selected-val');
+      if (btnGroup && btnGroupLabel) {
+        btnGroup.addEventListener('click', (e) => {
+          const btn = e.target.closest('button');
+          if (!btn) return;
+          btnGroup.querySelectorAll('button').forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-pressed', 'true');
+          const val = btn.dataset.value || btn.textContent.trim();
+          btnGroupLabel.innerHTML = `선택됨: <strong style="color: var(--rw-primary-strong);">${val}</strong>`;
+        });
+      }
+
+      // 3. Tabs interactive switching demo
+      const tabList = document.getElementById('demo-tabs');
+      if (tabList) {
+        tabList.addEventListener('click', (e) => {
+          const tabBtn = e.target.closest('.rw-tab');
+          if (!tabBtn) return;
+          const targetPanelId = tabBtn.getAttribute('aria-controls');
+          if (!targetPanelId) return;
+
+          tabList.querySelectorAll('.rw-tab').forEach(t => {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tabBtn.classList.add('is-active');
+          tabBtn.setAttribute('aria-selected', 'true');
+
+          const container = tabList.parentElement;
+          if (container) {
+            container.querySelectorAll('.rw-tab-panel').forEach(panel => {
+              panel.hidden = true;
+            });
+            const targetPanel = document.getElementById(targetPanelId);
+            if (targetPanel) targetPanel.hidden = false;
+          }
+        });
+      }
+
+      // 4. Dropdown outside click handler
+      const dropdown = document.getElementById('demo-dropdown');
+      if (dropdown) {
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target) && dropdown.open) {
+            dropdown.open = false;
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

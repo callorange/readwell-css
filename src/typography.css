@@ -21,16 +21,17 @@
     font-style: italic;
   }
 
-  code, pre {
+  code, pre, kbd, samp {
     font-family: var(--rw-font-mono);
-    font-size: 0.9em;
   }
 
-  code {
+  :not(pre) > code, code:not(pre code) {
     background-color: var(--rw-paper-2);
     border: 1px solid var(--rw-line);
     padding: 0.15em 0.35em;
     border-radius: var(--rw-radius);
+    font-size: 0.875em;
+    color: var(--rw-text);
   }
 
   pre {
@@ -40,5 +41,48 @@
     overflow-x: auto;
     border-radius: var(--rw-radius);
     margin: var(--rw-space-4) 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+
+  pre code {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  kbd {
+    display: inline-block;
+    padding: 0.15em 0.4em;
+    font-size: 0.8em;
+    font-weight: 500;
+    color: var(--rw-text);
+    background-color: var(--rw-paper-3);
+    border: 1px solid var(--rw-line-strong);
+    border-bottom-width: 2px;
+    border-radius: var(--rw-radius);
+    line-height: 1.2;
+    vertical-align: baseline;
+  }
+
+  samp {
+    display: inline-block;
+    padding: 0.15em 0.4em;
+    font-size: 0.85em;
+    background-color: var(--rw-paper-2);
+    border: 1px dashed var(--rw-line-strong);
+    border-radius: var(--rw-radius);
+    color: var(--rw-text);
+  }
+
+  mark {
+    background-color: var(--rw-warning-soft);
+    color: var(--rw-text);
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
   }
 }

@@ -38,12 +38,34 @@
 
   .rw-button-group {
     display: inline-flex;
+    vertical-align: middle;
   }
 
   .rw-button-group > button,
   .rw-button-group > .rw-button {
     border-radius: 0;
     margin-left: -1px;
+    position: relative;
+  }
+
+  .rw-button-group > button:hover,
+  .rw-button-group > .rw-button:hover,
+  .rw-button-group > button:focus,
+  .rw-button-group > .rw-button:focus {
+    z-index: 1;
+  }
+
+  .rw-button-group > button.is-active,
+  .rw-button-group > .rw-button.is-active,
+  .rw-button-group > button[aria-pressed="true"],
+  .rw-button-group > .rw-button[aria-pressed="true"],
+  .rw-button-group > button[aria-selected="true"],
+  .rw-button-group > .rw-button[aria-selected="true"] {
+    background-color: var(--rw-primary-soft);
+    border-color: var(--rw-primary);
+    color: var(--rw-primary-strong);
+    font-weight: 600;
+    z-index: 2;
   }
 
   .rw-button-group > :first-child {
