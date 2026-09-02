@@ -1,0 +1,52 @@
+@layer components {
+  .rw-card {
+    border: 1px solid var(--rw-line);
+    border-radius: var(--rw-radius);
+    padding: var(--rw-space-3);
+    background-color: var(--rw-paper-2);
+  }
+
+  .rw-panel {
+    border: 1px solid var(--rw-line);
+    border-radius: var(--rw-radius);
+    padding: var(--rw-density-panel-padding);
+    background-color: var(--rw-paper-2);
+  }
+
+  .rw-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15em 0.5em;
+    font-size: 0.8em;
+    font-weight: 600;
+    border-radius: var(--rw-radius);
+    border: 1px solid var(--rw-line);
+    background-color: var(--rw-paper-3);
+    color: var(--rw-text);
+  }
+
+  .rw-badge--primary { background: var(--rw-primary-soft); color: var(--rw-primary-strong); border-color: var(--rw-primary); }
+  .rw-badge--secondary { background: var(--rw-secondary-soft); color: var(--rw-secondary-strong); border-color: var(--rw-secondary); }
+  .rw-badge--success { background: var(--rw-success-soft); color: var(--rw-success-strong); border-color: var(--rw-success); }
+  .rw-badge--warning { background: var(--rw-warning-soft); color: var(--rw-warning-strong); border-color: var(--rw-warning); }
+  .rw-badge--danger { background: var(--rw-danger-soft); color: var(--rw-danger-strong); border-color: var(--rw-danger); }
+  .rw-badge--info { background: var(--rw-info-soft); color: var(--rw-info-strong); border-color: var(--rw-info); }
+
+  .rw-meta {
+    font-size: 0.85em;
+    color: var(--rw-text-muted);
+  }
+
+  .rw-callout {
+    border-left: 4px solid var(--rw-line-strong);
+    padding: var(--rw-space-3);
+    background-color: var(--rw-paper-2);
+    border-radius: 0 var(--rw-radius) var(--rw-radius) 0;
+    margin: var(--rw-space-3) 0;
+  }
+
+  .rw-callout--info { border-left-color: var(--rw-info); background-color: var(--rw-info-soft); color: var(--rw-info-strong); }
+  .rw-callout--success { border-left-color: var(--rw-success); background-color: var(--rw-success-soft); color: var(--rw-success-strong); }
+  .rw-callout--warning { border-left-color: var(--rw-warning); background-color: var(--rw-warning-soft); color: var(--rw-warning-strong); }
+  .rw-callout--danger { border-left-color: var(--rw-danger); background-color: var(--rw-danger-soft); color: var(--rw-danger-strong); }
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Issue Tracker - Readwell CSS</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="dense" data-rw-density="compact">
+  <header class="rw-container rw-border-bottom" style="padding-block: 0.6rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
+      <strong>이슈 트래커 (Dense Data View)</strong>
+      <span style="margin-left: auto;"></span>
+      <button class="rw-button rw-button--primary">+ 이슈 생성</button>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-stack" style="padding-block: 1.5rem;">
+    <!-- Filter Toolbar -->
+    <div class="rw-filterbar">
+      <input type="text" placeholder="이슈 제목, 라벨, 담당자 필터..." style="max-width: 320px;">
+      <select style="width: 140px;">
+        <option>전체 상태</option>
+        <option>열림 (Open)</option>
+        <option>완료 (Closed)</option>
+      </select>
+      <select style="width: 140px;">
+        <option>우선순위 전체</option>
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+      <span style="margin-left: auto;"></span>
+      <span class="rw-meta">총 42개 중 1-5 표시</span>
+    </div>
+
+    <!-- Data Table -->
+    <table style="margin-top: 0.5rem;">
+      <thead>
+        <tr>
+          <th style="width: 80px;">번호</th>
+          <th>이슈 제목</th>
+          <th style="width: 120px;">라벨</th>
+          <th style="width: 100px;">상태</th>
+          <th style="width: 120px;">담당자</th>
+          <th style="width: 100px;">갱신일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>#101</code></td>
+          <td><strong><a href="#">Chrome Extension 프로토타입 토큰 연동</a></strong></td>
+          <td><span class="rw-badge rw-badge--info">Extension</span></td>
+          <td><span class="rw-badge rw-badge--primary">진행 중</span></td>
+          <td>callder</td>
+          <td class="rw-meta">오늘</td>
+        </tr>
+        <tr>
+          <td><code>#100</code></td>
+          <td><strong><a href="#">12개 CSS 모듈 스켈레톤 및 @layer 정의</a></strong></td>
+          <td><span class="rw-badge rw-badge--success">Core CSS</span></td>
+          <td><span class="rw-badge rw-badge--success">완료</span></td>
+          <td>ai-subagent</td>
+          <td class="rw-meta">오늘</td>
+        </tr>
+        <tr>
+          <td><code>#99</code></td>
+          <td><strong><a href="#">Zero-dependency Node.js 빌드 스크립트 작성</a></strong></td>
+          <td><span class="rw-badge rw-badge--secondary">Tooling</span></td>
+          <td><span class="rw-badge rw-badge--success">완료</span></td>
+          <td>ai-subagent</td>
+          <td class="rw-meta">오늘</td>
+        </tr>
+        <tr>
+          <td><code>#98</code></td>
+          <td><strong><a href="#">WCAG 색상 대비 및 저채도 시맨틱 컬러 매트릭스 검토</a></strong></td>
+          <td><span class="rw-badge rw-badge--warning">A11y</span></td>
+          <td><span class="rw-badge rw-badge--warning">검토 대기</span></td>
+          <td>design-lead</td>
+          <td class="rw-meta">어제</td>
+        </tr>
+        <tr>
+          <td><code>#97</code></td>
+          <td><strong><a href="#">대시보드 stat 카드 밀도 조정 시 여백 불일치 이슈</a></strong></td>
+          <td><span class="rw-badge rw-badge--danger">Bug</span></td>
+          <td><span class="rw-badge rw-badge--danger">오류 보고</span></td>
+          <td>qa-tester</td>
+          <td class="rw-meta">2일 전</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+      <nav class="rw-pagination">
+        <a href="#">‹ 이전</a>
+        <span aria-current="page">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">다음 ›</a>
+      </nav>
+    </div>
+  </main>
+</body>
+</html>

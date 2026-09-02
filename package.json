@@ -1,0 +1,36 @@
+{
+  "name": "readwell-css",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "E-Ink inspired quiet and readable CSS framework for modern web and product UIs",
+  "main": "dist/readwell.css",
+  "style": "dist/readwell.css",
+  "exports": {
+    ".": "./dist/readwell.css",
+    "./min": "./dist/readwell.min.css",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev.js",
+    "start": "node scripts/dev.js",
+    "test": "node scripts/test-build.js"
+  },
+  "keywords": [
+    "css",
+    "css-framework",
+    "e-ink",
+    "reading",
+    "typography",
+    "minimal-ui",
+    "design-tokens"
+  ],
+  "author": "Readwell Team",
+  "license": "MIT"
+}

@@ -1,0 +1,60 @@
+@layer tokens {
+  :root {
+    /* Neutral Surface & Depth */
+    --rw-paper: #f5f2ea;
+    --rw-paper-2: #fbfaf6;
+    --rw-paper-3: #eeeae0;
+    --rw-text: #232722;
+    --rw-text-muted: #666b65;
+    --rw-line: #c8c4ba;
+    --rw-line-strong: #969185;
+    --rw-focus: #496a8b;
+
+    /* Semantic Matrix (base / soft / strong) */
+    --rw-primary: #496a8b;
+    --rw-primary-soft: #dfe8f0;
+    --rw-primary-strong: #334f6b;
+
+    --rw-secondary: #68736a;
+    --rw-secondary-soft: #e3e7e2;
+    --rw-secondary-strong: #4d574f;
+
+    --rw-success: #62835b;
+    --rw-success-soft: #e4efe0;
+    --rw-success-strong: #446340;
+
+    --rw-warning: #b2853f;
+    --rw-warning-soft: #f6eddc;
+    --rw-warning-strong: #866327;
+
+    --rw-danger: #a36460;
+    --rw-danger-soft: #f4e5e4;
+    --rw-danger-strong: #7f4a47;
+
+    --rw-info: #61788a;
+    --rw-info-soft: #e4ebf0;
+    --rw-info-strong: #445968;
+
+    /* Typography & Sizing */
+    --rw-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --rw-font-serif: "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Nanum Myeongjo", serif;
+    --rw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --rw-reading-width: 44rem;
+    --rw-container-width: 72rem;
+    --rw-line-height-body: 1.7;
+    --rw-line-height-heading: 1.25;
+    --rw-radius: 4px;
+
+    /* Spacing Steps */
+    --rw-space-1: 0.25rem;
+    --rw-space-2: 0.5rem;
+    --rw-space-3: 1rem;
+    --rw-space-4: 1.5rem;
+    --rw-space-5: 2.5rem;
+
+    /* Density Defaults (comfortable) */
+    --rw-density-gap: 1rem;
+    --rw-density-row: 2.5rem;
+    --rw-density-panel-padding: 1.25rem;
+  }
+}

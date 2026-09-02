@@ -1,0 +1,45 @@
+@layer patterns {
+  .rw-toolbar, .rw-filterbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border: 1px solid var(--rw-line);
+    border-radius: var(--rw-radius);
+    background-color: var(--rw-paper-2);
+  }
+
+  .rw-stat {
+    border: 1px solid var(--rw-line);
+    border-radius: var(--rw-radius);
+    padding: var(--rw-space-3);
+    background-color: var(--rw-paper-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+  }
+
+  .rw-stat strong {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .rw-status-list, .rw-activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rw-status-list li, .rw-activity-list li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid var(--rw-line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rw-status-list li:last-child, .rw-activity-list li:last-child {
+    border-bottom: none;
+  }
+}

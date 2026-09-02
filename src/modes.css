@@ -1,0 +1,52 @@
+@layer modes {
+  /* Surface modifiers */
+  [data-rw-surface="reading"] {
+    --rw-line-height-body: 1.75;
+  }
+
+  [data-rw-surface="workspace"] {
+    --rw-container-width: 80rem;
+  }
+
+  [data-rw-surface="dashboard"] {
+    --rw-container-width: 84rem;
+  }
+
+  [data-rw-surface="dense"] {
+    --rw-density-gap: 0.5rem;
+    --rw-density-row: 2rem;
+    --rw-density-panel-padding: 0.75rem;
+  }
+
+  /* Density modifiers */
+  [data-rw-density="cozy"] {
+    --rw-density-gap: 1.5rem;
+    --rw-density-row: 3rem;
+    --rw-density-panel-padding: 1.5rem;
+  }
+
+  [data-rw-density="compact"] {
+    --rw-density-gap: 0.5rem;
+    --rw-density-row: 2rem;
+    --rw-density-panel-padding: 0.75rem;
+  }
+
+  /* E-Ink & Reduced Motion */
+  @media (update: slow), (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+  }
+
+  [data-rw-eink="true"], .rw-eink {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+  }
+}

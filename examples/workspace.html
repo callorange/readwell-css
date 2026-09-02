@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace Example - Readwell CSS</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="workspace" data-rw-density="comfortable">
+  <header class="rw-container rw-border-bottom" style="padding-block: 0.8rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
+      <span class="rw-meta">| Documentation Workspace</span>
+      <span style="margin-left: auto;"></span>
+      <button class="rw-button rw-button--primary">문서 저장</button>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-app-shell" style="padding-block: 1.5rem;">
+    <!-- Left Navigation Sidebar -->
+    <aside class="rw-panel rw-stack">
+      <div class="rw-cluster">
+        <strong>문서 탐색기</strong>
+        <span class="rw-badge rw-badge--info">v0.1</span>
+      </div>
+      <ul style="padding-left: 1rem; line-height: 2;">
+        <li><a href="#">개요 (Overview)</a></li>
+        <li><strong><a href="#">디자인 시스템 가이드</a></strong></li>
+        <li><a href="#">CSS 아키텍처</a></li>
+        <li><a href="#">컴포넌트 명세</a></li>
+        <li><a href="#">배포 및 패키징</a></li>
+      </ul>
+    </aside>
+
+    <!-- Center Content Area -->
+    <article class="rw-reading rw-stack">
+      <h1>Readwell CSS 아키텍처 가이드</h1>
+      <p class="rw-meta">최종 수정일: 2026.09.02 · 문서 담당: AI Architecture Team</p>
+
+      <div class="rw-callout rw-callout--success">
+        <strong>Zero Runtime Dependency 달성</strong>
+        <p>본 프레임워크는 외부 빌드 도구 의존성 없이 Node.js 표준 라이브러리만으로 번들링 및 압축이 가능합니다.</p>
+      </div>
+
+      <h2>@layer 계층 구조</h2>
+      <p>스타일 충돌을 방지하고 명확한 특이도(Specificity)를 보장하기 위해 9개의 레이어를 사용합니다.</p>
+
+      <table style="margin-top: 1rem;">
+        <thead>
+          <tr><th>Layer</th><th>목적</th><th>접두사</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>tokens</code></td><td>CSS Custom Properties</td><td><code>--rw-*</code></td></tr>
+          <tr><td><code>layout</code></td><td>그리드, 컨테이너, 셸</td><td><code>.rw-*</code></td></tr>
+          <tr><td><code>modes</code></td><td>Surface & Density 제어</td><td><code>[data-rw-*]</code></td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- Right Properties Sidebar -->
+    <aside class="rw-panel rw-stack">
+      <h3>문서 속성</h3>
+      <div class="rw-stack">
+        <label class="rw-meta">상태</label>
+        <span class="rw-badge rw-badge--success">검토 완료</span>
+
+        <label class="rw-meta" style="margin-top: 0.5rem;">공개 범위</label>
+        <span class="rw-badge rw-badge--secondary">전사 공개</span>
+
+        <label class="rw-meta" style="margin-top: 0.5rem;">E-Ink 최적화</label>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9em;">
+          <input type="checkbox" role="switch" checked> 활성화
+        </label>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

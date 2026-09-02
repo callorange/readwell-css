@@ -1,0 +1,11 @@
+@layer utilities {
+  .rw-muted { color: var(--rw-text-muted); }
+  .rw-serif { font-family: var(--rw-font-serif); }
+  .rw-mono { font-family: var(--rw-font-mono); }
+  .rw-border-top { border-top: 1px solid var(--rw-line); }
+  .rw-border-bottom { border-bottom: 1px solid var(--rw-line); }
+  .rw-inverse {
+    background-color: var(--rw-text);
+    color: var(--rw-paper);
+  }
+}

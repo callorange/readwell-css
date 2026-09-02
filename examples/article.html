@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article Example - Readwell CSS</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="reading" data-rw-density="cozy">
+  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Readwell Hub</a>
+      <span class="rw-meta">Article Demo</span>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-sidebar-layout" style="padding-block: 3rem 5rem;">
+    <article class="rw-reading">
+      <ol class="rw-breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Articles</a></li>
+        <li>Design Philosophy</li>
+      </ol>
+
+      <p class="rw-meta" style="margin-top: 1rem;">2026.09.02 · 읽기 6분 · 시각 디자인 원칙</p>
+      <h1>읽는 시간이 길수록 조용한 화면이 좋아진다</h1>
+      <p>Readwell CSS는 E-Ink 디스플레이에서 얻은 절제된 디자인 원칙을 일반 웹 UI에 적용하는 CSS 프레임워크입니다. 전자책 리더를 흉내 내는 것이 아니라, <strong>텍스트 중심 화면은 더 오래 편하게 읽게 만들고, 제품형 화면은 더 차분하지만 더 명확하게 보이게 만드는 것</strong>을 목표로 합니다.</p>
+
+      <div class="rw-callout rw-callout--info">
+        <strong>핵심 설계 방향</strong>
+        <p>불필요한 장식용 색상은 억제하고, 구조는 주로 여백·선·글자 위계로 표현합니다. 주요 액션과 성공/경고/오류/진행 상태에는 저채도 semantic color를 적극적으로 사용합니다.</p>
+      </div>
+
+      <h2>1. 타이포그래피와 가독성</h2>
+      <p>현대 웹 UI는 정보를 빠르게 스캔하는 데 치중되어 있어 긴 글을 읽을 때 눈의 피로를 유발할 수 있습니다. Readwell은 본문 너비를 44rem 내외로 제한하고 행간을 1.7 이상으로 설정하여 호흡이 긴 글에서도 편안함을 유지합니다.</p>
+
+      <blockquote>
+        “조용함은 무구조를 뜻하지 않는다. 장문 화면에서는 읽기 편해야 하고, 제품 화면에서는 구조와 상태가 빠르게 판독되어야 한다.”
+      </blockquote>
+
+      <h2>2. 코드 블록 및 테이블 예시</h2>
+      <p>코드 블록 역시 차분한 종이 질감의 배경과 얇은 경계선으로 표현됩니다.</p>
+      <pre><code>// Readwell CSS Token Structure
+:root {
+  --rw-paper: #f5f2ea;
+  --rw-text: #232722;
+  --rw-primary: #496a8b;
+}</code></pre>
+
+      <div class="rw-cluster" style="margin-top: 2rem;">
+        <button class="rw-button rw-button--primary">좋아요 (42)</button>
+        <button class="rw-button rw-button--secondary">공유하기</button>
+      </div>
+    </article>
+
+    <aside class="rw-stack">
+      <section class="rw-panel rw-stack">
+        <h3>목차 (TOC)</h3>
+        <ul style="padding-left: 1.2rem; line-height: 1.8;">
+          <li><a href="#">1. 타이포그래피와 가독성</a></li>
+          <li><a href="#">2. 코드 블록 및 테이블 예시</a></li>
+        </ul>
+      </section>
+      <section class="rw-panel rw-stack">
+        <span class="rw-badge rw-badge--primary">저자 소개</span>
+        <p class="rw-meta">Readwell Core Design Team. 웹의 시각적 소음을 줄이고 본질적인 정보 전달에 집중합니다.</p>
+      </section>
+    </aside>
+  </main>
+</body>
+</html>

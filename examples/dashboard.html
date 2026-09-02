@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Example - Readwell CSS</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="dashboard" data-rw-density="comfortable">
+  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
+      <strong>운영 콘솔 (Dashboard)</strong>
+      <span style="margin-left: auto;"></span>
+      <span class="rw-badge rw-badge--success">시스템 정상 (All Systems Normal)</span>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-stack" style="padding-block: 2rem;">
+    <!-- Stat Cards Grid -->
+    <div class="rw-grid">
+      <div class="rw-stat">
+        <span class="rw-meta">일일 순 방문자</span>
+        <strong>14,280</strong>
+        <span class="rw-badge rw-badge--success">+12.4% vs 지난주</span>
+      </div>
+      <div class="rw-stat">
+        <span class="rw-meta">평균 체류 시간</span>
+        <strong>8분 42초</strong>
+        <span class="rw-badge rw-badge--primary">+1.8%</span>
+      </div>
+      <div class="rw-stat">
+        <span class="rw-meta">서버 리소스 사용률</span>
+        <strong>24.6%</strong>
+        <progress value="25" max="100" style="margin-top: 0.3rem;"></progress>
+      </div>
+      <div class="rw-stat">
+        <span class="rw-meta">오류 발생 건수</span>
+        <strong>0건</strong>
+        <span class="rw-badge rw-badge--secondary">안정적</span>
+      </div>
+    </div>
+
+    <!-- Main Content Panels -->
+    <div class="rw-grid-2" style="margin-top: 1rem;">
+      <div class="rw-panel rw-stack">
+        <h3>시스템 상태 요약</h3>
+        <ul class="rw-status-list">
+          <li>
+            <span>API Gateway (Edge)</span>
+            <span class="rw-badge rw-badge--success">정상 작동</span>
+          </li>
+          <li>
+            <span>PostgreSQL Primary</span>
+            <span class="rw-badge rw-badge--success">정상 (복제 지연 0ms)</span>
+          </li>
+          <li>
+            <span>Redis Cache Cluster</span>
+            <span class="rw-badge rw-badge--info">메모리 42% 점유</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rw-panel rw-stack">
+        <h3>최근 관리 활동</h3>
+        <ul class="rw-activity-list">
+          <li>
+            <span>v0.1.0 CSS 빌드 산출물 배포</span>
+            <span class="rw-meta">10분 전</span>
+          </li>
+          <li>
+            <span>신규 예제 템플릿 동기화</span>
+            <span class="rw-meta">30분 전</span>
+          </li>
+          <li>
+            <span>Git 저장소 초기화 및 설정 완료</span>
+            <span class="rw-meta">1시간 전</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

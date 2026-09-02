@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community Example - Readwell CSS</title>
+  <link rel="stylesheet" href="../dist/readwell.css">
+</head>
+<body data-rw-surface="reading" data-rw-density="comfortable">
+  <header class="rw-container rw-border-bottom" style="padding-block: 1rem;">
+    <nav class="rw-nav">
+      <a href="index.html" style="font-weight: 700; text-decoration: none; color: inherit;">← Hub</a>
+      <strong>Readwell 커뮤니티</strong>
+      <span style="margin-left: auto;"></span>
+      <button class="rw-button rw-button--primary">새 글 작성</button>
+    </nav>
+  </header>
+
+  <main class="rw-container rw-reading-centered rw-stack" style="padding-block: 2rem;">
+    <div class="rw-toolbar">
+      <button class="rw-button rw-button--primary">인기글</button>
+      <button class="rw-button">최신순</button>
+      <button class="rw-button">토론</button>
+      <span style="margin-left: auto;"></span>
+      <input type="search" placeholder="커뮤니티 검색..." style="width: 200px;">
+    </div>
+
+    <!-- Feed Items -->
+    <div class="rw-stack" style="margin-top: 1rem;">
+      <article class="rw-card rw-stack">
+        <div class="rw-cluster">
+          <span class="rw-badge rw-badge--primary">토론</span>
+          <span class="rw-meta">작성자: callder · 2시간 전 · 댓글 14개</span>
+        </div>
+        <h3><a href="#">전자책 리더 환경에서 CSS Grid 성능 최적화 경험 공유</a></h3>
+        <p class="rw-meta">저주사율 디스플레이에서 불필요한 리플로우(Reflow)를 방지하고 순수 레이아웃 규칙만으로 반응형 웹을 구현한 사례를 정리했습니다.</p>
+      </article>
+
+      <article class="rw-card rw-stack">
+        <div class="rw-cluster">
+          <span class="rw-badge rw-badge--success">쇼케이스</span>
+          <span class="rw-meta">작성자: design_guru · 5시간 전 · 댓글 8개</span>
+        </div>
+        <h3><a href="#">Readwell CSS로 개인 기술 블로그 리뉴얼했습니다</a></h3>
+        <p class="rw-meta">기존의 화려한 네온 컬러와 그림자를 모두 걷어내고, 오직 선과 여백, 저채도 시맨틱 컬러로만 재구성한 후기입니다.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

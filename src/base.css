@@ -1,0 +1,31 @@
+@layer base {
+  html {
+    background-color: var(--rw-paper);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    line-height: var(--rw-line-height-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  a {
+    color: var(--rw-primary-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    color: var(--rw-primary);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--rw-line);
+    margin: var(--rw-space-4) 0;
+  }
+}
