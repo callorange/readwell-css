@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 전체 7종 예제 템플릿(`examples/` 전수)의 상단 내비게이션 바, 헤더 브랜딩 및 컴포넌트 일관성 전면 통일
 
 ### Fixed
+- 드롭다운 트리거 버튼의 여백/테두리가 누락되어 깨져 보이던 현상 수정 (`summary` 기본 버튼 스타일 및 `.rw-button` 상속 복원) 및 `.rw-input-group` 내부 버튼/인풋 flex 정렬 버그 수정
 - 드롭다운 메뉴 열림 시 `details[open] > summary`의 불필요한 하단 여백 및 테두리 오버라이드로 인해 트리거 버튼과 메뉴가 요동치던(움찔거리던) 레이아웃 시프트 버그 수정 및 `.rw-dropdown` 제로 지터(Zero-Jitter) 격리, 부드러운 0.12s 미세 슬라이드 애니메이션(`@keyframes rw-dropdown-show`) 적용
 - `pre code` 중첩 셀렉터 스타일 상속으로 인한 코드 블록 배경 깨짐 및 폰트 이중 축소 현상 수정
 - 예제 허브(`examples/index.html`), `scripts/build.js`, `package.json` 내 GitHub 리포지토리 링크 깨짐 수정(`https://github.com/callorange/readwell-css`)

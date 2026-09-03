@@ -303,6 +303,28 @@
     margin-left: -1px;
   }
 
+  .rw-input-group > input,
+  .rw-input-group > select,
+  .rw-input-group > textarea {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .rw-input-group > button,
+  .rw-input-group > .rw-button,
+  .rw-input-group > [role="button"] {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .rw-input-group > .rw-input-group-addon,
+  .rw-input-group > .rw-input-group-text {
+    flex: 0 0 auto;
+  }
+
   .rw-input-group > :first-child {
     border-top-left-radius: var(--rw-radius);
     border-bottom-left-radius: var(--rw-radius);
