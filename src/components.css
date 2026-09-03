@@ -319,10 +319,44 @@
     border-bottom-right-radius: var(--rw-radius);
   }
 
+  /* When dropdown is at the right end of a button group, auto-align menu to the right edge */
+  .rw-button-group > .rw-dropdown:last-child .rw-dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  .rw-button-group > .rw-dropdown:first-child .rw-dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+
   .rw-button-group > .rw-dropdown:hover,
   .rw-button-group > .rw-dropdown:focus-within,
   .rw-button-group > .rw-dropdown[open] {
     z-index: 3;
+  }
+
+  /* Native Popover Dropdown Support (Zero-JS Light-Dismiss) */
+  .rw-dropdown-menu[popover],
+  [popover].rw-dropdown-menu {
+    border: 1px solid var(--rw-line-strong);
+    background-color: var(--rw-paper-2);
+    border-radius: var(--rw-radius);
+    padding: var(--rw-space-1) 0;
+    min-width: 160px;
+    width: max-content;
+    max-width: 320px;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    color: var(--rw-text);
+    overflow: visible;
+    inset: unset;
+  }
+
+  .rw-dropdown-menu[popover]:popover-open,
+  [popover].rw-dropdown-menu:popover-open {
+    animation: rw-dropdown-show 0.12s ease-out;
   }
 
   /* Spinners */

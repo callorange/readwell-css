@@ -318,5 +318,21 @@
   } else {
     createSwitcherDOM();
   }
+
+  // Global Light-Dismiss for details.rw-dropdown across all examples & docs
+  document.addEventListener('click', (e) => {
+    const openDropdowns = document.querySelectorAll('details.rw-dropdown[open]');
+    openDropdowns.forEach(d => {
+      if (!d.contains(e.target) || e.target.closest('.rw-dropdown-item')) {
+        d.removeAttribute('open');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('details.rw-dropdown[open]').forEach(d => d.removeAttribute('open'));
+    }
+  });
 })();
 

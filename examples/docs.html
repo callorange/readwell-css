@@ -1688,6 +1688,20 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
         }, 1500);
       });
     }
+
+    // Light-Dismiss handler for details.rw-dropdown (Click Outside & ESC)
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('details.rw-dropdown[open]').forEach(d => {
+        if (!d.contains(e.target) || e.target.closest('.rw-dropdown-item')) {
+          d.removeAttribute('open');
+        }
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('details.rw-dropdown[open]').forEach(d => d.removeAttribute('open'));
+      }
+    });
   </script>
 </body>
 </html>

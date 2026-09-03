@@ -54,6 +54,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 전체 7종 예제 템플릿(`examples/` 전수)의 상단 내비게이션 바, 헤더 브랜딩 및 컴포넌트 일관성 전면 통일
 
 ### Fixed
+- 드롭다운 메뉴가 포커스를 잃어도 닫히지 않고 계속 떠 있어 다른 버튼을 가리던 문제 수정:
+  - 전역 Light-Dismiss (외부 클릭, ESC 키 입력, 메뉴 항목 클릭 시 자동 닫힘) 기본 탑재
+  - 스플릿 버튼 그룹(`.rw-button-group > .rw-dropdown:last-child`)의 드롭다운 메뉴가 우측 바깥으로 삐져나가지 않도록 우측 기준 자동 정렬(`left: auto; right: 0;`) 적용
+  - 최신 브라우저 표준 Popover API(`[popover].rw-dropdown-menu`) 스타일 지원 추가
 - 드롭다운 트리거 버튼의 여백/테두리가 누락되어 깨져 보이던 현상 수정 (`summary` 기본 버튼 스타일 및 `.rw-button` 상속 복원) 및 `.rw-input-group` 내부 버튼/인풋 flex 정렬 버그 수정
 - 드롭다운 메뉴 열림 시 `details[open] > summary`의 불필요한 하단 여백 및 테두리 오버라이드로 인해 트리거 버튼과 메뉴가 요동치던(움찔거리던) 레이아웃 시프트 버그 수정 및 `.rw-dropdown` 제로 지터(Zero-Jitter) 격리, 부드러운 0.12s 미세 슬라이드 애니메이션(`@keyframes rw-dropdown-show`) 적용
 - `pre code` 중첩 셀렉터 스타일 상속으로 인한 코드 블록 배경 깨짐 및 폰트 이중 축소 현상 수정

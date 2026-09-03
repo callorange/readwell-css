@@ -632,15 +632,19 @@ function calculateReadingTime(wordCount) {
         });
       }
 
-      // 4. Dropdown outside click handler
-      const dropdown = document.getElementById('demo-dropdown');
-      if (dropdown) {
-        document.addEventListener('click', (e) => {
-          if (!dropdown.contains(e.target) && dropdown.open) {
-            dropdown.open = false;
+      // 4. Global Dropdown Light-Dismiss handler (outside click & Escape)
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('details.rw-dropdown[open]').forEach(d => {
+          if (!d.contains(e.target) || e.target.closest('.rw-dropdown-item')) {
+            d.removeAttribute('open');
           }
         });
-      }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('details.rw-dropdown[open]').forEach(d => d.removeAttribute('open'));
+        }
+      });
     });
   </script>
 </body>
