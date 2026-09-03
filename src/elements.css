@@ -216,7 +216,7 @@
     box-shadow: 0 1px 0 var(--rw-line-strong);
   }
 
-  details.rw-accordion, details {
+  details.rw-accordion, details:not(.rw-dropdown) {
     border: 1px solid var(--rw-line);
     border-radius: var(--rw-radius);
     padding: var(--rw-space-2) var(--rw-space-3);
@@ -265,7 +265,7 @@
     color: var(--rw-primary-strong);
   }
 
-  details[open] > summary {
+  details:not(.rw-dropdown)[open] > summary {
     margin-bottom: var(--rw-space-2);
     border-bottom: 1px solid var(--rw-line);
     padding-bottom: var(--rw-space-1);

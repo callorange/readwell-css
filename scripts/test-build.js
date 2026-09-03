@@ -46,6 +46,7 @@ const requiredFeatures = [
   'rw-accordion',
   'rw-spinner',
   'rw-dropdown--right',
+  'rw-dropdown-show',
   'aria-disabled'
 ];
 
