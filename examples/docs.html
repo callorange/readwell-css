@@ -1423,17 +1423,18 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
 
         <!-- Dropdown -->
         <article id="comp-dropdown" class="rw-card rw-stack docs-card">
-          <h3>Dropdown (Zero-JS 네이티브 드롭다운 & 스플릿 버튼)</h3>
+          <h3>Dropdown & Dropup (네이티브 드롭다운, 상/하 위치, 스플릿 버튼)</h3>
           <p class="rw-meta">
-            <code>details.rw-dropdown</code> 구조로 자바스크립트 없이 메뉴가 열리며, 우측 정렬(<code>.rw-dropdown--right</code>) 및 버튼 그룹과 결합한 <strong>스플릿 버튼 드롭다운(Split Button Dropdown)</strong>을 지원합니다.
+            <code>details.rw-dropdown</code> 구조로 자바스크립트 없이 메뉴가 열리며, 아래/위 방향(<code>.rw-dropdown--up</code>)과 좌/우 정렬(<code>.rw-dropdown--right</code>), 그리고 버튼 그룹과 결합한 <strong>스플릿 버튼 드롭다운</strong>을 완벽히 지원합니다.
           </p>
 
-          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+          <div class="docs-preview rw-stack" style="gap: 1.5rem;">
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">단독 드롭다운 (좌측 기본 / 우측 정렬)</span>
-              <div class="rw-cluster" style="justify-content: space-between; align-items: center;">
+              <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">1. 위치 방향 및 정렬 (아래 / 위 / 좌측 / 우측)</span>
+              <div class="rw-cluster" style="justify-content: space-between; align-items: center; gap: 1rem;">
+                <!-- Downward Left (Default) -->
                 <details class="rw-dropdown">
-                  <summary class="rw-button">옵션 선택 ▾</summary>
+                  <summary class="rw-button">아래 좌측 (기본) ▾</summary>
                   <ul class="rw-dropdown-menu">
                     <li><a href="#comp-dropdown" class="rw-dropdown-item">프로필 설정</a></li>
                     <li><a href="#comp-dropdown" class="rw-dropdown-item">팀 워크스페이스</a></li>
@@ -1442,8 +1443,9 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
                   </ul>
                 </details>
 
+                <!-- Downward Right -->
                 <details class="rw-dropdown rw-dropdown--right">
-                  <summary class="rw-button rw-button--primary">우측 정렬 메뉴 (.rw-dropdown--right) ▾</summary>
+                  <summary class="rw-button rw-button--primary">아래 우측 정렬 ▾</summary>
                   <ul class="rw-dropdown-menu">
                     <li><a href="#comp-dropdown" class="rw-dropdown-item">문서 내보내기</a></li>
                     <li><a href="#comp-dropdown" class="rw-dropdown-item">Markdown 복사</a></li>
@@ -1451,16 +1453,36 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
                     <li><a href="#comp-dropdown" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">문서 삭제</a></li>
                   </ul>
                 </details>
+
+                <!-- Upward (Dropup) -->
+                <details class="rw-dropdown rw-dropdown--up">
+                  <summary class="rw-button">위로 열기 (.rw-dropdown--up) ▴</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">최근 열람 문서</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">북마크 바로가기</a></li>
+                    <li class="rw-dropdown-divider"></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">휴지통</a></li>
+                  </ul>
+                </details>
+
+                <!-- Upward Right -->
+                <details class="rw-dropdown rw-dropdown--up rw-dropdown--right">
+                  <summary class="rw-button rw-button--secondary">위로 우측 정렬 ▴</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">환경 설정</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">단축키 안내</a></li>
+                  </ul>
+                </details>
               </div>
             </div>
 
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">일체형 스플릿 버튼 드롭다운 (.rw-button-group 결합)</span>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">2. 일체형 스플릿 버튼 드롭다운 (버튼 전체 아래로 자연스럽게 전개)</span>
               <div class="rw-cluster" style="align-items: center; gap: 1.5rem;">
-                <!-- Primary Split Button -->
+                <!-- Primary Split Button (Downward below whole button group) -->
                 <div class="rw-button-group">
                   <button type="button" class="rw-button rw-button--primary">저장 및 발행</button>
-                  <details class="rw-dropdown rw-dropdown--right">
+                  <details class="rw-dropdown">
                     <summary class="rw-button rw-button--primary" aria-label="추가 옵션">▾</summary>
                     <ul class="rw-dropdown-menu">
                       <li><a href="#comp-dropdown" class="rw-dropdown-item">초안(Draft)으로 보관</a></li>
@@ -1471,11 +1493,11 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
                   </details>
                 </div>
 
-                <!-- Secondary Split Button -->
+                <!-- Secondary Split Button (Upward Dropup) -->
                 <div class="rw-button-group">
                   <button type="button" class="rw-button">내보내기 (PDF)</button>
-                  <details class="rw-dropdown rw-dropdown--right">
-                    <summary class="rw-button" aria-label="포맷 선택">▾</summary>
+                  <details class="rw-dropdown rw-dropdown--up">
+                    <summary class="rw-button" aria-label="포맷 선택">▴</summary>
                     <ul class="rw-dropdown-menu">
                       <li><a href="#comp-dropdown" class="rw-dropdown-item">Markdown (.md)</a></li>
                       <li><a href="#comp-dropdown" class="rw-dropdown-item">HTML 웹 페이지</a></li>
@@ -1489,16 +1511,27 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
 
           <div class="docs-code-wrap">
             <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
-            <pre><code>&lt;!-- 1. 기본 좌측/우측 드롭다운 --&gt;
+            <pre><code>&lt;!-- 1. 아래로 열림 (기본 좌측 / 우측 정렬) --&gt;
 &lt;details class="rw-dropdown"&gt;
-  &lt;summary class="rw-button"&gt;옵션 메뉴 ▾&lt;/summary&gt;
+  &lt;summary class="rw-button"&gt;아래 좌측 ▾&lt;/summary&gt;
   &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
 &lt;/details&gt;
 
-&lt;!-- 2. 스플릿 버튼 드롭다운 (Split Button Dropdown) --&gt;
+&lt;details class="rw-dropdown rw-dropdown--right"&gt;
+  &lt;summary class="rw-button"&gt;아래 우측 ▾&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;!-- 2. 위로 열림 (Dropup: .rw-dropdown--up) --&gt;
+&lt;details class="rw-dropdown rw-dropdown--up"&gt;
+  &lt;summary class="rw-button"&gt;위로 열기 ▴&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;!-- 3. 일체형 스플릿 버튼 드롭다운 (버튼 전체 아래로 펼쳐짐) --&gt;
 &lt;div class="rw-button-group"&gt;
   &lt;button type="button" class="rw-button rw-button--primary"&gt;저장 및 발행&lt;/button&gt;
-  &lt;details class="rw-dropdown rw-dropdown--right"&gt;
+  &lt;details class="rw-dropdown"&gt;
     &lt;summary class="rw-button rw-button--primary" aria-label="추가 옵션"&gt;▾&lt;/summary&gt;
     &lt;ul class="rw-dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#" class="rw-dropdown-item"&gt;초안으로 보관&lt;/a&gt;&lt;/li&gt;

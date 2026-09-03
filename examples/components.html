@@ -400,10 +400,10 @@ function calculateReadingTime(wordCount) {
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">드롭다운 메뉴 (.rw-dropdown - HTML5 네이티브 Zero-JS & 스플릿 버튼 지원)</label>
-          <div class="rw-cluster" style="justify-content: space-between; align-items: flex-start; gap: 2rem;">
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">드롭다운 & 드롭업 (.rw-dropdown, .rw-dropdown--up, .rw-dropdown--right)</label>
+          <div class="rw-cluster" style="justify-content: space-between; align-items: center; gap: 1.5rem;">
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">기본 좌측 정렬 드롭다운</span>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">아래 좌측 (기본)</span>
               <details class="rw-dropdown" id="demo-dropdown">
                 <summary class="rw-button rw-button--primary">작업 메뉴 ▾</summary>
                 <ul class="rw-dropdown-menu">
@@ -417,9 +417,9 @@ function calculateReadingTime(wordCount) {
             </div>
 
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">우측 끝 정렬 드롭다운 (.rw-dropdown--right)</span>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">아래 우측 (.rw-dropdown--right)</span>
               <details class="rw-dropdown rw-dropdown--right">
-                <summary class="rw-button">우측 정렬 메뉴 ▾</summary>
+                <summary class="rw-button">우측 정렬 ▾</summary>
                 <ul class="rw-dropdown-menu">
                   <li><a href="#" class="rw-dropdown-item">문서 내보내기 (PDF)</a></li>
                   <li><a href="#" class="rw-dropdown-item">Markdown 클립보드 복사</a></li>
@@ -428,34 +428,53 @@ function calculateReadingTime(wordCount) {
                 </ul>
               </details>
             </div>
+
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">위로 열기 (.rw-dropdown--up)</span>
+              <details class="rw-dropdown rw-dropdown--up">
+                <summary class="rw-button">위로 열기 (Dropup) ▴</summary>
+                <ul class="rw-dropdown-menu">
+                  <li><a href="#" class="rw-dropdown-item">최근 열람 기록</a></li>
+                  <li><a href="#" class="rw-dropdown-item">북마크 폴더</a></li>
+                  <li class="rw-dropdown-divider"></li>
+                  <li><a href="#" class="rw-dropdown-item">단축키 도움말</a></li>
+                </ul>
+              </details>
+            </div>
           </div>
 
-          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rw-line);">
-            <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">일체형 스플릿 버튼 드롭다운 (.rw-button-group + .rw-dropdown)</span>
-            <div class="rw-cluster" style="align-items: center; gap: 1.5rem;">
-              <div class="rw-button-group">
-                <button type="button" class="rw-button rw-button--primary">문서 발행</button>
-                <details class="rw-dropdown rw-dropdown--right">
-                  <summary class="rw-button rw-button--primary" aria-label="추가 옵션">▾</summary>
-                  <ul class="rw-dropdown-menu">
-                    <li><a href="#" class="rw-dropdown-item">초안(Draft)으로 보관</a></li>
-                    <li><a href="#" class="rw-dropdown-item">팀원에게만 공개</a></li>
-                    <li class="rw-dropdown-divider"></li>
-                    <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">발행 취소</a></li>
-                  </ul>
-                </details>
+          <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--rw-line);">
+            <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">일체형 스플릿 버튼 드롭다운 (버튼 전체 아래/위로 자연스럽게 전개)</span>
+            <div class="rw-cluster" style="align-items: center; gap: 2rem;">
+              <div>
+                <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">스플릿 아래로 펼침 (기본 좌측 기준)</span>
+                <div class="rw-button-group">
+                  <button type="button" class="rw-button rw-button--primary">문서 발행</button>
+                  <details class="rw-dropdown">
+                    <summary class="rw-button rw-button--primary" aria-label="추가 옵션">▾</summary>
+                    <ul class="rw-dropdown-menu">
+                      <li><a href="#" class="rw-dropdown-item">초안(Draft)으로 보관</a></li>
+                      <li><a href="#" class="rw-dropdown-item">팀원에게만 공개</a></li>
+                      <li class="rw-dropdown-divider"></li>
+                      <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">발행 취소</a></li>
+                    </ul>
+                  </details>
+                </div>
               </div>
 
-              <div class="rw-button-group">
-                <button type="button" class="rw-button">내보내기</button>
-                <details class="rw-dropdown rw-dropdown--right">
-                  <summary class="rw-button" aria-label="포맷 선택">▾</summary>
-                  <ul class="rw-dropdown-menu">
-                    <li><a href="#" class="rw-dropdown-item">PDF 문서 다운로드</a></li>
-                    <li><a href="#" class="rw-dropdown-item">Markdown 복사</a></li>
-                    <li><a href="#" class="rw-dropdown-item">텍스트 파일 (.txt)</a></li>
-                  </ul>
-                </details>
+              <div>
+                <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">스플릿 위로 열기 (Dropup)</span>
+                <div class="rw-button-group">
+                  <button type="button" class="rw-button">내보내기 (PDF)</button>
+                  <details class="rw-dropdown rw-dropdown--up">
+                    <summary class="rw-button" aria-label="포맷 선택">▴</summary>
+                    <ul class="rw-dropdown-menu">
+                      <li><a href="#" class="rw-dropdown-item">PDF 문서 다운로드</a></li>
+                      <li><a href="#" class="rw-dropdown-item">Markdown 복사</a></li>
+                      <li><a href="#" class="rw-dropdown-item">텍스트 파일 (.txt)</a></li>
+                    </ul>
+                  </details>
+                </div>
               </div>
             </div>
           </div>

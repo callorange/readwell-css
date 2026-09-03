@@ -110,6 +110,7 @@
   .rw-button-group {
     display: inline-flex;
     vertical-align: middle;
+    position: relative;
   }
 
   .rw-button-group > button,

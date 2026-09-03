@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- 드롭업(Dropup) 위쪽 전개 지원 수식어(`.rw-dropdown--up`, `.rw-dropup`) 및 부드러운 상향 슬라이드 애니메이션(`@keyframes rw-dropup-show`) 추가
+- 스플릿 버튼 그룹(`.rw-button-group`)과 연동 시 드롭다운 메뉴가 작은 화살표에 국한되지 않고 일반 드롭다운처럼 **버튼 그룹 전체의 아래쪽/좌측 기준(`left: 0`)으로 자연스럽게 펼쳐지도록** 위치 컨텍스트 최적화
 - 버튼 그룹(`.rw-button-group`)과 드롭다운(`details.rw-dropdown`)을 결합한 일체형 스플릿 버튼 드롭다운(Split Button Dropdown / Action Split Button) 순수 CSS 지원 및 공식 문서/쇼케이스 데모 추가
 - 로딩 인디케이터 및 비지 상태(`[aria-busy="true"]`) 순수 CSS 회전 스피너(`@keyframes rw-spin`) 및 독립 스피너 컴포넌트(`.rw-spinner`, `--sm`, `--lg`) 추가
 - 순수 CSS 전역 툴팁(`[data-tooltip]`) 지원 (마우스 호버 및 키보드 Tab 포커스 시 상단 말풍선 슬라이드 노출)

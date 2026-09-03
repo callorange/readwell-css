@@ -248,20 +248,63 @@
   details.rw-dropdown .rw-dropdown-menu {
     position: absolute;
     top: calc(100% + 4px);
+    bottom: auto;
     left: 0;
+    right: auto;
     margin: 0;
     z-index: 50;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
-  details.rw-dropdown[open] .rw-dropdown-menu {
+  /* Right Alignment */
+  details.rw-dropdown.rw-dropdown--right .rw-dropdown-menu,
+  .rw-dropdown--right .rw-dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  /* Left Alignment (Explicit) */
+  details.rw-dropdown.rw-dropdown--left .rw-dropdown-menu,
+  .rw-dropdown--left .rw-dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+
+  /* Upward Direction (Dropup) */
+  details.rw-dropdown.rw-dropdown--up .rw-dropdown-menu,
+  .rw-dropdown--up .rw-dropdown-menu,
+  details.rw-dropup .rw-dropdown-menu,
+  .rw-dropup .rw-dropdown-menu {
+    top: auto;
+    bottom: calc(100% + 4px);
+  }
+
+  /* Animation for Downward (Default) */
+  details.rw-dropdown[open]:not(.rw-dropdown--up):not(.rw-dropup) .rw-dropdown-menu {
     animation: rw-dropdown-show 0.12s ease-out;
+  }
+
+  /* Animation for Upward (Dropup) */
+  details.rw-dropdown.rw-dropdown--up[open] .rw-dropdown-menu,
+  details.rw-dropup[open] .rw-dropdown-menu {
+    animation: rw-dropup-show 0.12s ease-out;
   }
 
   @keyframes rw-dropdown-show {
     from {
       opacity: 0;
       transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rw-dropup-show {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
     }
     to {
       opacity: 1;
@@ -288,17 +331,11 @@
     margin: var(--rw-space-1) 0;
   }
 
-  details.rw-dropdown.rw-dropdown--right .rw-dropdown-menu,
-  .rw-dropdown--right .rw-dropdown-menu {
-    left: auto;
-    right: 0;
-  }
-
   /* Split Button Dropdown within .rw-button-group */
   .rw-button-group > .rw-dropdown {
     display: inline-flex;
     margin-left: -1px;
-    position: relative;
+    position: static;
     vertical-align: middle;
   }
 
@@ -319,15 +356,17 @@
     border-bottom-right-radius: var(--rw-radius);
   }
 
-  /* When dropdown is at the right end of a button group, auto-align menu to the right edge */
-  .rw-button-group > .rw-dropdown:last-child .rw-dropdown-menu {
-    left: auto;
-    right: 0;
-  }
-
-  .rw-button-group > .rw-dropdown:first-child .rw-dropdown-menu {
+  /* In a split button group, default dropdown menu sits directly below the whole button group */
+  .rw-button-group > .rw-dropdown .rw-dropdown-menu {
     left: 0;
     right: auto;
+  }
+
+  /* When right aligned in split button group */
+  .rw-button-group > .rw-dropdown.rw-dropdown--right .rw-dropdown-menu,
+  .rw-button-group > .rw-dropdown--right .rw-dropdown-menu {
+    left: auto;
+    right: 0;
   }
 
   .rw-button-group > .rw-dropdown:hover,
