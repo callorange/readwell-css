@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- 버튼 그룹(`.rw-button-group`)과 드롭다운(`details.rw-dropdown`)을 결합한 일체형 스플릿 버튼 드롭다운(Split Button Dropdown / Action Split Button) 순수 CSS 지원 및 공식 문서/쇼케이스 데모 추가
 - 로딩 인디케이터 및 비지 상태(`[aria-busy="true"]`) 순수 CSS 회전 스피너(`@keyframes rw-spin`) 및 독립 스피너 컴포넌트(`.rw-spinner`, `--sm`, `--lg`) 추가
 - 순수 CSS 전역 툴팁(`[data-tooltip]`) 지원 (마우스 호버 및 키보드 Tab 포커스 시 상단 말풍선 슬라이드 노출)
 - Paper & Ink 스타일에 맞춘 슬라이더 레인지 컨트롤(`<input type="range">`) 미니멀 트랙 및 조절 핸들(Thumb) 스타일링 추가

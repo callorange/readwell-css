@@ -294,6 +294,37 @@
     right: 0;
   }
 
+  /* Split Button Dropdown within .rw-button-group */
+  .rw-button-group > .rw-dropdown {
+    display: inline-flex;
+    margin-left: -1px;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .rw-button-group > .rw-dropdown > summary {
+    border-radius: 0;
+    padding-inline: 0.6em;
+    min-width: 2.2em;
+    justify-content: center;
+  }
+
+  .rw-button-group > .rw-dropdown:first-child > summary {
+    border-top-left-radius: var(--rw-radius);
+    border-bottom-left-radius: var(--rw-radius);
+  }
+
+  .rw-button-group > .rw-dropdown:last-child > summary {
+    border-top-right-radius: var(--rw-radius);
+    border-bottom-right-radius: var(--rw-radius);
+  }
+
+  .rw-button-group > .rw-dropdown:hover,
+  .rw-button-group > .rw-dropdown:focus-within,
+  .rw-button-group > .rw-dropdown[open] {
+    z-index: 3;
+  }
+
   /* Spinners */
   .rw-spinner {
     display: inline-block;
