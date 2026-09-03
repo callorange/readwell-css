@@ -34,12 +34,28 @@ if (!fs.existsSync(minPath)) {
 const fullContent = fs.readFileSync(fullPath, 'utf-8');
 const minContent = fs.readFileSync(minPath, 'utf-8');
 
-if (!fullContent.includes('--rw-paper')) {
-  throw new Error('Tokens missing in bundled CSS');
-}
+const requiredFeatures = [
+  '--rw-paper',
+  'aria-busy',
+  'data-tooltip',
+  'type="range"',
+  'rw-input-group',
+  'rw-avatar',
+  'rw-sr-only',
+  'rw-table--striped',
+  'rw-accordion',
+  'rw-spinner',
+  'rw-dropdown--right',
+  'aria-disabled'
+];
 
-if (!minContent.includes('--rw-paper')) {
-  throw new Error('Tokens missing in minified CSS');
+for (const feature of requiredFeatures) {
+  if (!fullContent.includes(feature)) {
+    throw new Error(`Feature "${feature}" missing in bundled CSS`);
+  }
+  if (!minContent.includes(feature)) {
+    throw new Error(`Feature "${feature}" missing in minified CSS`);
+  }
 }
 
 if (isTemp) {

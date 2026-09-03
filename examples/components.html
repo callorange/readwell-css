@@ -102,6 +102,17 @@ function calculateReadingTime(wordCount) {
         </div>
 
         <div class="rw-stack" style="gap: 0.5rem; margin-top: 0.5rem;">
+          <label class="rw-meta">로딩 상태 버튼 ([aria-busy="true"]) 및 독립 스피너 (.rw-spinner)</label>
+          <div class="rw-cluster" style="align-items: center; gap: 1rem;">
+            <button type="button" class="rw-button rw-button--primary" aria-busy="true">저장 중...</button>
+            <button type="button" class="rw-button" aria-busy="true">데이터 동기화 중...</button>
+            <span class="rw-spinner rw-spinner--sm"></span>
+            <span class="rw-spinner"></span>
+            <span class="rw-spinner rw-spinner--lg"></span>
+          </div>
+        </div>
+
+        <div class="rw-stack" style="gap: 0.5rem; margin-top: 0.5rem;">
           <div class="rw-cluster" style="justify-content: space-between; align-items: baseline;">
             <label class="rw-meta">인터랙티브 버튼 그룹 (.rw-button-group - 클릭하여 활성 상태 전환)</label>
             <span id="button-group-selected-val" class="rw-meta">선택됨: <strong style="color: var(--rw-primary-strong);">Left</strong></span>
@@ -209,6 +220,30 @@ function calculateReadingTime(wordCount) {
                   </label>
                 </div>
               </div>
+
+              <div>
+                <div class="rw-cluster" style="justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem;">
+                  <label class="rw-meta">슬라이더 컨트롤 (&lt;input type="range"&gt; - 글자 크기 조절)</label>
+                  <span id="example-range-val" class="rw-meta">16px</span>
+                </div>
+                <input type="range" min="12" max="28" value="16" oninput="document.getElementById('example-range-val').textContent = this.value + 'px'">
+              </div>
+
+              <div>
+                <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">인풋 그룹 (.rw-input-group - 접두사/접미사/버튼 결합)</label>
+                <div class="rw-stack" style="gap: 0.75rem;">
+                  <div class="rw-input-group">
+                    <span class="rw-input-group-addon">https://</span>
+                    <input type="text" placeholder="workspace.readwell.design">
+                    <button type="button" class="rw-button rw-button--primary">연결</button>
+                  </div>
+                  <div class="rw-input-group">
+                    <span class="rw-input-group-addon">₩</span>
+                    <input type="text" value="38,000" style="text-align: right;">
+                    <span class="rw-input-group-addon">원 / 월</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </fieldset>
         </form>
@@ -279,6 +314,32 @@ function calculateReadingTime(wordCount) {
             <p>오류 발생, 데이터 삭제 등 위험한 동작을 경고합니다.</p>
           </div>
         </div>
+
+        <!-- Avatars, Tooltips & A11y -->
+        <div class="rw-grid-2" style="border-top: 1px solid var(--rw-line); padding-top: 1.25rem;">
+          <div class="rw-stack">
+            <label class="rw-meta">아바타 컴포넌트 (.rw-avatar - 이니셜, 라운드 사각, 이미지)</label>
+            <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+              <span class="rw-avatar rw-avatar--sm">SM</span>
+              <span class="rw-avatar">홍</span>
+              <span class="rw-avatar rw-avatar--lg">JD</span>
+              <span class="rw-avatar rw-avatar--rounded">RW</span>
+              <span class="rw-avatar rw-avatar--rounded rw-avatar--sm">팀</span>
+            </div>
+          </div>
+
+          <div class="rw-stack">
+            <label class="rw-meta">순수 CSS 전역 툴팁 ([data-tooltip]) & A11y (.rw-sr-only)</label>
+            <div class="rw-cluster" style="align-items: center; gap: 1rem;">
+              <button type="button" class="rw-button" data-tooltip="풍선 도움말이 표시됩니다">호버해 보세요</button>
+              <span class="rw-badge rw-badge--primary" data-tooltip="시맨틱 배지 설명">정보 안내</span>
+              <button type="button" class="rw-button">
+                <span aria-hidden="true">🔔</span>
+                <span class="rw-sr-only">신규 알림 보기 (스크린 리더 전용)</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- 7. Navigation, Tabs & Dropdowns -->
@@ -327,24 +388,24 @@ function calculateReadingTime(wordCount) {
             </ol>
           </div>
           <div>
-            <label class="rw-meta">Pagination (.rw-pagination)</label>
-            <nav class="rw-pagination">
-              <a href="#">‹ 이전</a>
+            <label class="rw-meta">Pagination (.rw-pagination - [aria-disabled="true"] 지원)</label>
+            <nav class="rw-pagination" aria-label="Demo pagination">
+              <span class="rw-pagination-prev" aria-disabled="true">‹ 이전</span>
               <span aria-current="page">1</span>
               <a href="#">2</a>
               <a href="#">3</a>
-              <a href="#">다음 ›</a>
+              <a href="#" class="rw-pagination-next">다음 ›</a>
             </nav>
           </div>
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">드롭다운 메뉴 (.rw-dropdown - HTML5 네이티브 Zero-JS & 인터랙티브)</label>
-          <div class="rw-cluster" style="align-items: flex-start; gap: 2rem;">
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">드롭다운 메뉴 (.rw-dropdown - HTML5 네이티브 Zero-JS & 우측 정렬 지원)</label>
+          <div class="rw-cluster" style="justify-content: space-between; align-items: flex-start; gap: 2rem;">
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">인터랙티브 드롭다운 (클릭하여 열기)</span>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">기본 좌측 정렬 드롭다운</span>
               <details class="rw-dropdown" id="demo-dropdown">
-                <summary class="rw-button rw-button--primary">작업 메뉴 선택 ▾</summary>
+                <summary class="rw-button rw-button--primary">작업 메뉴 ▾</summary>
                 <ul class="rw-dropdown-menu">
                   <li><a href="#profile" class="rw-dropdown-item">프로필 정보 수정</a></li>
                   <li><a href="#settings" class="rw-dropdown-item">계정 및 보안 설정</a></li>
@@ -356,13 +417,16 @@ function calculateReadingTime(wordCount) {
             </div>
 
             <div>
-              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">정적 메뉴 토큰 뷰 (.rw-dropdown-menu)</span>
-              <ul class="rw-dropdown-menu" style="position: static; box-shadow: none;">
-                <li><a href="#" class="rw-dropdown-item">문서 내보내기 (PDF)</a></li>
-                <li><a href="#" class="rw-dropdown-item">Markdown 복사</a></li>
-                <li class="rw-dropdown-divider"></li>
-                <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">문서 삭제</a></li>
-              </ul>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.35rem;">우측 끝 정렬 드롭다운 (.rw-dropdown--right)</span>
+              <details class="rw-dropdown rw-dropdown--right">
+                <summary class="rw-button">우측 정렬 메뉴 ▾</summary>
+                <ul class="rw-dropdown-menu">
+                  <li><a href="#" class="rw-dropdown-item">문서 내보내기 (PDF)</a></li>
+                  <li><a href="#" class="rw-dropdown-item">Markdown 클립보드 복사</a></li>
+                  <li class="rw-dropdown-divider"></li>
+                  <li><a href="#" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">문서 영구 삭제</a></li>
+                </ul>
+              </details>
             </div>
           </div>
         </div>
@@ -385,18 +449,27 @@ function calculateReadingTime(wordCount) {
         </div>
 
         <div>
-          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Modal Dialog (&lt;dialog&gt;)</label>
-          <button class="rw-button--primary" onclick="document.getElementById('demo-dialog').showModal()">모달 다이얼로그 열기 (Show Modal)</button>
+          <label class="rw-meta" style="display: block; margin-bottom: 0.5rem;">Modal Dialog (&lt;dialog&gt; - 구조화된 article, header, footer 레이아웃)</label>
+          <button class="rw-button--primary" onclick="document.getElementById('demo-dialog').showModal()">구조화 모달 열기 (Show Modal)</button>
 
-          <dialog id="demo-dialog">
-            <div class="rw-stack">
-              <h3>네이티브 모달 다이얼로그</h3>
-              <p>HTML5 <code>&lt;dialog&gt;</code> 태그와 <code>::backdrop</code>을 적용한 순수 네이티브 모달입니다. E-Ink 및 일반 브라우저에서 가볍고 안전하게 렌더링됩니다.</p>
-              <div class="rw-cluster" style="justify-content: flex-end; margin-top: 1rem;">
-                <button onclick="document.getElementById('demo-dialog').close()">닫기</button>
-                <button class="rw-button--primary" onclick="document.getElementById('demo-dialog').close()">확인</button>
+          <dialog id="demo-dialog" class="rw-dialog">
+            <article>
+              <header>
+                <h4 style="margin: 0;">팀원 초대 및 권한 부여</h4>
+                <button type="button" class="rw-button rw-button--sm" onclick="document.getElementById('demo-dialog').close()" style="border: none; background: transparent; font-size: 1.1rem; padding: 0.2rem 0.4rem; cursor: pointer;">✕</button>
+              </header>
+              <div class="rw-stack" style="gap: 1rem; padding-block: 0.5rem;">
+                <p style="margin: 0; color: var(--rw-text-muted);">새로운 기여자를 워크스페이스에 초대하고 권한을 설정합니다.</p>
+                <div>
+                  <label class="rw-meta">이메일 주소</label>
+                  <input type="email" placeholder="colleague@company.com" style="margin-top: 0.25rem;">
+                </div>
               </div>
-            </div>
+              <footer>
+                <button type="button" class="rw-button rw-button--secondary" onclick="document.getElementById('demo-dialog').close()">취소</button>
+                <button type="button" class="rw-button rw-button--primary" onclick="document.getElementById('demo-dialog').close()">초대장 발송</button>
+              </footer>
+            </article>
           </dialog>
         </div>
 
@@ -440,16 +513,19 @@ function calculateReadingTime(wordCount) {
           <button class="rw-button--primary">+ 새 프로젝트 생성</button>
         </div>
 
-        <label class="rw-meta" style="margin-top: 1rem;">Responsive Table (.rw-table-container, table)</label>
+        <label class="rw-meta" style="margin-top: 1rem;">Responsive Table (.rw-table-container, .rw-table--striped, .rw-table--hoverable)</label>
         <div class="rw-table-container">
-          <table>
+          <table class="rw-table--striped rw-table--hoverable">
             <thead>
               <tr><th>구분</th><th>클래스명</th><th>타입</th><th>비고</th></tr>
             </thead>
             <tbody>
               <tr><td>Layout</td><td><code>.rw-container</code></td><td>Container</td><td>페이지 최대 너비 제한</td></tr>
               <tr><td>Component</td><td><code>.rw-badge</code></td><td>Inline</td><td>6종 시맨틱 뱃지</td></tr>
-              <tr><td>Interactive</td><td><code>details.rw-accordion</code></td><td>Native</td><td>아코디언 접기/펼침</td></tr>
+              <tr><td>Component</td><td><code>.rw-avatar</code></td><td>Inline-flex</td><td>원형/라운드 사각 아바타</td></tr>
+              <tr><td>Component</td><td><code>.rw-input-group</code></td><td>Flex</td><td>인풋 + 애드온 + 버튼 결합</td></tr>
+              <tr><td>Interactive</td><td><code>details.rw-accordion</code></td><td>Native</td><td>미니멀 쉐브론 회전 아코디언</td></tr>
+              <tr><td>Interactive</td><td><code>dialog.rw-dialog</code></td><td>Modal</td><td>구조화 article 헤더/푸터 모달</td></tr>
             </tbody>
           </table>
         </div>

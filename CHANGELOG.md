@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- 로딩 인디케이터 및 비지 상태(`[aria-busy="true"]`) 순수 CSS 회전 스피너(`@keyframes rw-spin`) 및 독립 스피너 컴포넌트(`.rw-spinner`, `--sm`, `--lg`) 추가
+- 순수 CSS 전역 툴팁(`[data-tooltip]`) 지원 (마우스 호버 및 키보드 Tab 포커스 시 상단 말풍선 슬라이드 노출)
+- Paper & Ink 스타일에 맞춘 슬라이더 레인지 컨트롤(`<input type="range">`) 미니멀 트랙 및 조절 핸들(Thumb) 스타일링 추가
+- W3C 표준 웹 접근성 화면 숨김 유틸리티(`.rw-sr-only`, `.rw-visually-hidden`) 및 포커스 시 노출 클래스(`--focusable`) 추가
+- 입력창과 고정 단위(₩, $, %), 프로토콜(https://), 검색 버튼을 매끄럽게 연결하는 인풋 그룹(`.rw-input-group`, `.rw-input-group-addon`, `.rw-input-group-text`) 추가
+- 사용자 프로필 이미지 및 이니셜 텍스트 표기용 원형/라운드 사각 아바타 컴포넌트(`.rw-avatar`, `--sm`, `--lg`, `--rounded`) 추가
+- 데이터 테이블 확장 수식어: 줄무늬 행(`.rw-table--striped`), 마우스 호버 강조(`.rw-table--hoverable`), 고정 헤더(`.rw-table--sticky-header`) 추가
+- 드롭다운 우측 정렬 클래스(`details.rw-dropdown.rw-dropdown--right`) 추가 (화면 우측 가장자리 메뉴 잘림 방지)
+- 페이지네이션 비활성화 상태(`[aria-disabled="true"]`, `.is-disabled`) 및 이전/다음 버튼 스타일 추가
+- 공식 문서 포털(`docs/index.html`, `examples/docs.html`) 및 컴포넌트 카탈로그(`examples/components.html`)에 신규 6종 및 개선 5종 실물 라이브 프리뷰 및 원클릭 복사 코드 블록 추가
+- `scripts/test-build.js`에 신규 11대 핵심 선택자 정량 검증 테스트 추가
 - 프로젝트 초기 설정 및 디렉터리 구조 구축
 - Zero-dependency 빌드 스크립트(`scripts/build.js`) 및 개발 서버(`scripts/dev.js`) 추가
 - 12개 CSS 모듈 스켈레톤 및 토큰 체계(`src/`) 정의
@@ -30,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.rw-stack` 및 `.rw-meta` 전용 라이브 프리뷰 쇼케이스 문서화
 
 ### Changed
+- 아코디언(`details.rw-accordion`) 브라우저 기본 삼각형 마커 제거 및 `[open]` 시 180° 매끄럽게 회전하는 Paper & Ink 쉐브론 화살표(`::after`) 인터랙션 적용
+- 모달 다이얼로그(`<dialog>`, `.rw-dialog`) 내부 `<article>`(헤더/본문/푸터 버튼 그룹) 구조화 카드형 레이아웃 지원 및 단일 텍스트 다이얼로그 하위 호환성 유지
 - 체크박스(`input[type="checkbox"]`) 및 라디오 버튼(`input[type="radio"]`)을 Paper & Ink 철학에 부합하는 순수 CSS 커스텀 스타일로 개선
 - 카드(`.rw-card`, 개별 콘텐츠 단위)와 패널(`.rw-panel`, 워크스페이스 구조 구획)의 디자인 및 구조적 역할 명확화
 - 버튼 그룹(`.rw-button-group`) 활성 버튼(`.is-active`, `[aria-pressed="true"]`) 스타일 및 `z-index` 계층 정돈
