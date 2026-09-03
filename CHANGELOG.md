@@ -56,6 +56,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 전체 7종 예제 템플릿(`examples/` 전수)의 상단 내비게이션 바, 헤더 브랜딩 및 컴포넌트 일관성 전면 통일
 
 ### Fixed
+- CSS 빌드 스크립트(`scripts/build.js`) 압축 정규식에서 `calc()` 내부의 덧셈 연산자(`+`) 공백이 제거되어 `calc(100%+4px)`로 압축되며 브라우저 문법 오류로 `top`/`bottom`이 무시되던 치명적 버그 수정 (드롭업 및 상향/하향 위치가 완벽히 동작하도록 복원)
+- 드롭다운 메뉴 너비가 트리거 버튼 너비(`min-width: 100%`)에 강제로 맞춰져 긴 버튼에서 좌/우 정렬 구분이 사라지던 문제를 최소 `10rem` 고정 및 컨텐츠 폭 기반(`width: max-content; max-width: 22rem;`)으로 최적화하여 좌/우 정렬 차이를 명확화
+- 스플릿 버튼 그룹(`.rw-button-group`) 내 드롭다운 메뉴가 버튼을 덮어버리던 위치 컨텍스트 오류를 수정하고 항상 4px 상/하단 여백 및 정렬 기준선 유지
 - 드롭다운 메뉴가 포커스를 잃어도 닫히지 않고 계속 떠 있어 다른 버튼을 가리던 문제 수정:
   - 전역 Light-Dismiss (외부 클릭, ESC 키 입력, 메뉴 항목 클릭 시 자동 닫힘) 기본 탑재
   - 스플릿 버튼 그룹(`.rw-button-group > .rw-dropdown:last-child`)의 드롭다운 메뉴가 우측 바깥으로 삐져나가지 않도록 우측 기준 자동 정렬(`left: auto; right: 0;`) 적용

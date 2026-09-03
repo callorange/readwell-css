@@ -50,8 +50,8 @@ function minifyCSS(css) {
     .replace(/\/\*[\s\S]*?\*\//g, '')
     // Collapse whitespace
     .replace(/\s+/g, ' ')
-    // Remove whitespace around standard CSS symbols (avoid breaking quoted strings/urls)
-    .replace(/\s*([{};,>+~])\s*/g, '$1')
+    // Remove whitespace around standard CSS symbols (keep spaces around + to protect CSS calc() syntax)
+    .replace(/\s*([{};,>~])\s*/g, '$1')
     .replace(/:\s+/g, ':')
     .replace(/\s+!important/g, '!important')
     // Remove trailing semicolons before closing brace

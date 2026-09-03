@@ -238,11 +238,12 @@
     background-color: var(--rw-paper-2);
     border-radius: var(--rw-radius);
     padding: var(--rw-space-1) 0;
-    min-width: 100%;
+    min-width: 10rem;
     width: max-content;
-    max-width: 320px;
+    max-width: 22rem;
     list-style: none;
     margin: 0;
+    box-sizing: border-box;
   }
 
   details.rw-dropdown .rw-dropdown-menu {
@@ -335,7 +336,7 @@
   .rw-button-group > .rw-dropdown {
     display: inline-flex;
     margin-left: -1px;
-    position: static;
+    position: relative;
     vertical-align: middle;
   }
 
@@ -356,17 +357,18 @@
     border-bottom-right-radius: var(--rw-radius);
   }
 
-  /* In a split button group, default dropdown menu sits directly below the whole button group */
-  .rw-button-group > .rw-dropdown .rw-dropdown-menu {
-    left: 0;
-    right: auto;
-  }
-
-  /* When right aligned in split button group */
-  .rw-button-group > .rw-dropdown.rw-dropdown--right .rw-dropdown-menu,
-  .rw-button-group > .rw-dropdown--right .rw-dropdown-menu {
+  /* When the split dropdown arrow is on the right end (:last-child), align menu right edge to arrow right edge */
+  .rw-button-group > .rw-dropdown:last-child .rw-dropdown-menu {
     left: auto;
     right: 0;
+  }
+
+  /* When explicitly left-aligned or on first child */
+  .rw-button-group > .rw-dropdown:first-child .rw-dropdown-menu,
+  .rw-button-group > .rw-dropdown.rw-dropdown--left .rw-dropdown-menu,
+  .rw-button-group > .rw-dropdown--left .rw-dropdown-menu {
+    left: 0;
+    right: auto;
   }
 
   .rw-button-group > .rw-dropdown:hover,
