@@ -1315,6 +1315,162 @@
       color: var(--rw-sumi-ink);
       letter-spacing: 0.05em;
     }
+
+    /* --------------------------------------------------------------------------
+       15. 수묵 원형 붓터치 스피너 (.rw-sumi-spinner)
+       동양 전통 서예의 '비백호(飛白弧)'와 '원상(圓相, Enso)' 붓터치 모티프
+       -------------------------------------------------------------------------- */
+    .rw-sumi-spinner {
+      --rw-spinner-size: 36px;
+      width: var(--rw-spinner-size);
+      height: var(--rw-spinner-size);
+      display: inline-block;
+      vertical-align: middle;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      box-sizing: border-box;
+      animation: rw-sumi-spin 1.1s linear infinite;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+
+    /* 스타일 1: 비백호(飛白弧) 오픈 링 붓터치 (기필 ~ 갈필 꼬리) */
+    .rw-sumi-spinner--brush,
+    .rw-sumi-spinner--brush-ink {
+      background-image: url('assets/sumi-spinner-brush-ink.png');
+    }
+
+    .rw-sumi-spinner--brush-seal {
+      background-image: url('assets/sumi-spinner-brush-seal.png');
+    }
+
+    .rw-sumi-spinner--brush-wash {
+      background-image: url('assets/sumi-spinner-brush-wash.png');
+    }
+
+    /* 스타일 2: 원상(圓相, Enso) 서클 붓터치 (외곽 비백 + 일필휘지 완결형) */
+    .rw-sumi-spinner--enso,
+    .rw-sumi-spinner--enso-ink {
+      background-image: url('assets/sumi-spinner-enso-ink.png');
+    }
+
+    .rw-sumi-spinner--enso-seal {
+      background-image: url('assets/sumi-spinner-enso-seal.png');
+    }
+
+    .rw-sumi-spinner--enso-wash {
+      background-image: url('assets/sumi-spinner-enso-wash.png');
+    }
+
+    /* 크기 규격 */
+    .rw-sumi-spinner--sm {
+      --rw-spinner-size: 20px;
+    }
+
+    .rw-sumi-spinner--md {
+      --rw-spinner-size: 36px;
+    }
+
+    .rw-sumi-spinner--lg {
+      --rw-spinner-size: 52px;
+    }
+
+    .rw-sumi-spinner--xl {
+      --rw-spinner-size: 72px;
+    }
+
+    /* 애니메이션 모드: 서예 호흡 완급 펄스 (기운생동) */
+    .rw-sumi-spinner--pulse {
+      animation: rw-sumi-spin-pulse 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+    }
+
+    @keyframes rw-sumi-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rw-sumi-spin-pulse {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(210deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 접근성: prefers-reduced-motion 설정 시 회전 대신 은은한 붓자국 호흡 펄스로 대체 */
+    @media (prefers-reduced-motion: reduce) {
+      .rw-sumi-spinner {
+        animation: rw-sumi-fade-pulse 1.8s ease-in-out infinite alternate !important;
+      }
+    }
+
+    @keyframes rw-sumi-fade-pulse {
+      from {
+        opacity: 0.35;
+        transform: scale(0.97);
+      }
+      to {
+        opacity: 0.95;
+        transform: scale(1);
+      }
+    }
+
+    /* 중앙 묵적/인주 핵 결합 스피너 */
+    .rw-sumi-spinner-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rw-sumi-spinner-core {
+      position: absolute;
+      width: 22%;
+      height: 22%;
+      border-radius: 50%;
+      pointer-events: none;
+      background-color: var(--rw-sumi-ink);
+      box-shadow: 0 0 4px rgba(18, 19, 22, 0.25);
+    }
+
+    .rw-sumi-spinner-core--seal {
+      background-color: var(--rw-sumi-seal);
+      box-shadow: 0 0 4px rgba(184, 40, 29, 0.35);
+    }
+
+    /* 텍스트 결합 로딩 레이아웃 */
+    .rw-sumi-loading-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(220, 205, 185, 0.15);
+      border: 1px solid rgba(45, 38, 30, 0.1);
+      border-radius: 6px;
+    }
+
+    .rw-sumi-loading-text {
+      font-size: 0.92rem;
+      color: var(--rw-sumi-ink);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .rw-sumi-loading-subtext {
+      font-size: 0.8rem;
+      color: var(--rw-sumi-wash);
+      margin-top: 0.15rem;
+    }
   </style>
 </head>
 <body class="rw-sumi-body hanji-texture-active">
@@ -1363,7 +1519,7 @@
       <div class="rw-sidebar-group">
         <a href="#content" class="rw-sidebar-link">Content</a>
         <a href="#styling-guide-2" class="rw-sidebar-link">Styling Guide</a>
-        <a href="#styling-api-race" class="rw-sidebar-link">Styling API race</a>
+        <a href="#sumi-spinners" class="rw-sidebar-link">Sumi Spinners</a>
 
         <!-- 수묵 갈필(渴筆) 붓선 3 -->
         <img src="assets/brush-divider-3.png" class="rw-brush-divider" alt="수묵 구분선">
@@ -1836,6 +1992,127 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="75" label="75"&gt;75&lt;/option&gt;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="100" label="100"&gt;100&lt;/option&gt;<br>
             &nbsp;&nbsp;&lt;/datalist&gt;<br>
+            &lt;/div&gt;
+          </code>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           수묵 확장 컴포넌트: 수묵 원형 붓터치 스피너 (.rw-sumi-spinner)
+           동양 전통 서예의 '비백호(飛白弧)'와 '원상(圓相, Enso)' 붓터치 모티프
+           ==================================================================== -->
+      <div id="sumi-spinners" class="rw-showcase-card" style="margin-top: 2.5rem; background: var(--rw-sumi-paper-surface); border: 1px solid var(--rw-sumi-line); border-radius: 6px; padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--rw-sumi-line); padding-bottom: 0.6rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: var(--rw-sumi-ink);">
+            수묵 원형 붓터치 스피너 (<code style="font-size:0.9rem;">.rw-sumi-spinner</code>)
+          </h3>
+          <span class="rw-seal-badge rw-seal-badge--solid" style="background: var(--rw-sumi-seal); color: #fff; border-color: var(--rw-sumi-seal);">신규 에셋</span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--rw-sumi-charcoal); line-height: 1.6; margin-bottom: 1.25rem;">
+          차가운 기하학적 원형 링을 탈피하여, 화선지 위에 서예 붓으로 한 획을 힘차게 내리돌린 <strong>'비백호(飛白弧)' 갈필 궤적</strong>과 <strong>'원상(圓相, Enso)' 일필휘지 붓터치</strong>를 적용한 수묵 로딩 스피너입니다. 투명 알파 채널로 화선지의 닥나무 결이 은은하게 비치며, 서예의 호흡을 담은 유기적 회전 리듬을 제공합니다.
+        </p>
+
+        <!-- 1. 비백호(飛白弧) 오픈 링 붓터치 스타일 (주력) -->
+        <div style="margin-bottom: 1.5rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.65rem;">
+            스타일 1. 비백호(飛白弧) 오픈 링 붓터치 (굵은 기필 ~ 흩어지는 갈필 꼬리)
+          </strong>
+          <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; background: rgba(220, 205, 185, 0.12); padding: 1.25rem; border-radius: 6px; border: 1px solid rgba(45, 38, 30, 0.08);">
+            <!-- 농묵 기본 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink" role="status" aria-label="농묵 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-ink); font-weight: 600;">농묵 (濃墨)</span>
+            </div>
+            <!-- 주사 인주 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-seal" role="status" aria-label="주사 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-seal); font-weight: 600;">주사 (朱砂)</span>
+            </div>
+            <!-- 담묵 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-wash" role="status" aria-label="담묵 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-wash); font-weight: 600;">담묵 (淡墨)</span>
+            </div>
+            <!-- 서예 호흡 펄스 (Pulse) -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--pulse" role="status" aria-label="기운생동 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-ink); font-weight: 600;">기운생동 펄스</span>
+            </div>
+            <!-- 중심 붉은 인주 핵 (Core) 결합형 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner-wrap">
+                <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink" role="status" aria-label="인주 핵 결합 스피너"></div>
+                <div class="rw-sumi-spinner-core rw-sumi-spinner-core--seal"></div>
+              </div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-charcoal); font-weight: 600;">화룡점정 핵</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 원상(圓相, Enso) 일필휘지 서클 스타일 -->
+        <div style="margin-bottom: 1.5rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.65rem;">
+            스타일 2. 원상(圓相, Enso) 서클 붓터치 (외곽 비백 + 일필휘지 완결형)
+          </strong>
+          <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; background: rgba(220, 205, 185, 0.12); padding: 1.25rem; border-radius: 6px; border: 1px solid rgba(45, 38, 30, 0.08);">
+            <!-- 농묵 엔소 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--enso-ink" role="status" aria-label="농묵 원상 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-ink); font-weight: 600;">농묵 원상</span>
+            </div>
+            <!-- 주사 엔소 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--enso-seal" role="status" aria-label="주사 원상 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-seal); font-weight: 600;">주사 원상</span>
+            </div>
+            <!-- 담묵 엔소 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--enso-wash" role="status" aria-label="담묵 원상 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-wash); font-weight: 600;">담묵 원상</span>
+            </div>
+            <!-- 대형 펄스 엔소 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+              <div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--lg rw-sumi-spinner--pulse" role="status" aria-label="대형 원상 스피너"></div>
+              <span style="font-size: 0.78rem; color: var(--rw-sumi-ink); font-weight: 600;">대형 52px (완급 펄스)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 실무 적용 레이아웃: 크기 규격 및 인라인 로딩 박스 -->
+        <div style="margin-bottom: 1.5rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.65rem;">
+            3. 크기 규격 (--sm 20px, 기본 36px, --lg 52px, --xl 72px) 및 텍스트 결합 로딩 레이아웃
+          </strong>
+          <div style="display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+            <!-- 인라인 소형 -->
+            <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.88rem; color: var(--rw-sumi-charcoal);">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--sm" aria-hidden="true"></div>
+              <span>인라인 소형 (20px)</span>
+            </div>
+            <!-- 텍스트 결합 로딩 카드 -->
+            <div class="rw-sumi-loading-box">
+              <div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--md rw-sumi-spinner--pulse" aria-hidden="true"></div>
+              <div>
+                <div class="rw-sumi-loading-text">墨痕 寫入中... (문서 로딩 중)</div>
+                <div class="rw-sumi-loading-subtext">화선지 조판 규격을 초기화하고 있습니다</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.35rem;">사용 예시 (HTML)</strong>
+          <code style="display: block; background: rgba(0,0,0,0.04); padding: 0.6rem 0.85rem; border-radius: 4px; font-size: 0.82rem; color: var(--rw-sumi-charcoal); line-height: 1.5;">
+            &lt;!-- 1. 비백호 기본 농묵 스피너 --&gt;<br>
+            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink" role="status" aria-label="로딩 중"&gt;&lt;/div&gt;<br><br>
+            &lt;!-- 2. 주사(朱砂) 붉은 인주 스피너 + 서예 완급 펄스 --&gt;<br>
+            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" role="status" aria-label="처리 중"&gt;&lt;/div&gt;<br><br>
+            &lt;!-- 3. 원상(Enso) 대형 스피너 --&gt;<br>
+            &lt;div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--lg" role="status" aria-label="데이터 불러오는 중"&gt;&lt;/div&gt;<br><br>
+            &lt;!-- 4. 텍스트 결합 로딩 레이아웃 --&gt;<br>
+            &lt;div class="rw-sumi-loading-box"&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" aria-hidden="true"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;span class="rw-sumi-loading-text"&gt;墨痕 寫入中...&lt;/span&gt;<br>
             &lt;/div&gt;
           </code>
         </div>

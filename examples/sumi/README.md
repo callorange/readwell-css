@@ -301,6 +301,42 @@
 </footer>
 ```
 
+### 5) 수묵 원형 붓터치 스피너 (`.rw-sumi-spinner`)
+* **개념**: 인위적이고 차가운 기하학적 원형 링(Pill Ring)을 탈피하여, 화선지 위에 서예 붓으로 일필휘지 휘돌려 친 **'비백호(飛白弧)' 갈필 궤적**과 **'원상(圓相, Enso)' 일필휘지 붓터치**를 웹 로딩 스피너로 구현한 컴포넌트입니다.
+* **조형적 특징 & 2대 스타일 라인업**:
+  1. **스타일 1. 비백호(飛白弧) 오픈 링 (Open Arc)**:
+     - 굵고 묵직한 기필(起筆)에서 시작하여 회전하면서 여러 갈래의 모필 붓털로 자연스럽게 흩어지는 갈필(渴筆, dry brush) 테이퍼링 꼬리를 지닌 C자형 오픈 링.
+     - 획의 굵기와 농담 변화 덕분에 회전 시 유체역학적이고 역동적인 방향성과 속도감을 제공합니다.
+     - 클래스: `.rw-sumi-spinner--brush-ink`(농묵), `.rw-sumi-spinner--brush-seal`(주사), `.rw-sumi-spinner--brush-wash`(담묵)
+  2. **스타일 2. 원상(圓相, Enso) 서클 (Circle Enso)**:
+     - 붓을 멈추지 않고 한 번에 휘돌려 닫히기 직전의 완결미를 지닌 도넛형 원상 붓터치. 외곽을 스쳐 지나가는 섬세한 비백(飛白) 선율이 회전 궤적을 강조합니다.
+     - 클래스: `.rw-sumi-spinner--enso-ink`(농묵), `.rw-sumi-spinner--enso-seal`(주사), `.rw-sumi-spinner--enso-wash`(담묵)
+* **애니메이션 모드**:
+  - **유장한 순환 (기본, `1.1s linear`)**: 붓터치 자체의 굵기 차이로 인해 일정한 회전에서도 스스로 자연스러운 속도감이 표현됨.
+  - **기운생동 완급 펄스 (`.rw-sumi-spinner--pulse`, `1.5s cubic-bezier(0.4, 0.0, 0.2, 1)`)**: 서예가가 붓을 종이에 대어 힘을 주었다가 거두는 호흡과 율동감을 구현한 서예 특화 애니메이션.
+* **크기 규격**: `--sm`(20px, 인라인/배지용), 기본(36px), `--lg`(52px, 섹션 로더), `--xl`(72px, 전체 페이지 로더).
+* **접근성**: `prefers-reduced-motion: reduce` 지원 (회전 대신 은은한 수묵 호흡 펄스로 자동 전환).
+
+```html
+<!-- 1. 기본 비백호 농묵 스피너 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-ink" role="status" aria-label="로딩 중"></div>
+
+<!-- 2. 주사(朱砂) 붉은 인주 스피너 + 기운생동 완급 펄스 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" role="status" aria-label="처리 중"></div>
+
+<!-- 3. 원상(Enso) 대형 스피너 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--lg" role="status" aria-label="불러오는 중"></div>
+
+<!-- 4. 텍스트 결합 로딩 레이아웃 -->
+<div class="rw-sumi-loading-box">
+  <div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" aria-hidden="true"></div>
+  <div>
+    <div class="rw-sumi-loading-text">墨痕 寫入中... (문서 로딩 중)</div>
+    <div class="rw-sumi-loading-subtext">화선지 조판 규격을 초기화하고 있습니다</div>
+  </div>
+</div>
+```
+
 ---
 
 ## 8. 에셋 인벤토리 (Asset Inventory)
@@ -321,6 +357,12 @@
 | `brush-divider-vertical.png` | 12x200 | PNG (Alpha) | 우측 메타 레일 세로 수묵선 (실측 규격 보존, 세로 구분용 슬림 먹선) |
 | `sumi-stroke-track.png` | 846x36 (1x 282x12) | PNG (Alpha) | 컨셉아트 원본 1:1 추출 담묵(淡墨, 투명도 ~28%) 붓선 트랙 (둥근 기필 머리 ~ 테이퍼링 꼬리) |
 | `sumi-stroke-fill.png` | 846x36 (1x 282x12) | PNG (Alpha) | 트랙과 1:1 완벽 일치 실루엣의 칠흑 농묵(濃墨) 채움 에셋 |
+| `sumi-spinner-brush-ink.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 칠흑 농묵(濃墨) 붓터치 스피너 에셋 |
+| `sumi-spinner-brush-seal.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 전통 주사(朱砂) 붉은 인주 붓터치 스피너 에셋 |
+| `sumi-spinner-brush-wash.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 은은한 담묵(淡墨) 붓터치 스피너 에셋 |
+| `sumi-spinner-enso-ink.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 농묵(濃墨) 서클 붓터치 스피너 에셋 |
+| `sumi-spinner-enso-seal.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 주사(朱砂) 인주 서클 붓터치 스피너 에셋 |
+| `sumi-spinner-enso-wash.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 담묵(淡墨) 서클 붓터치 스피너 에셋 |
 | `ink-drop.png` | 24x24 | PNG (Alpha) | 콜아웃 제목 앞 수묵 묵적(먹방울) 불릿 |
 | `avatar.png` | 48x48 | PNG (Alpha) | 서예가 프로필 원형 아바타 |
 | `seal-author.png` | 32x32 | PNG (Alpha) | 작성자 옆 주사 낙관 인장 |
@@ -345,6 +387,7 @@
      - 전각 직인 도장 쇼케이스
      - **수묵 갈필 프로그레스 게이지 (인주 붓점 / 서예 점획 마커)**
      - **수묵 인터랙티브 슬라이더 3종 (서예 붓점, 모필 브러시, 척 눈금자)**
+     - **수묵 원형 붓터치 스피너 (비백호 오픈 링 & 원상 Enso 2대 스타일, 기운생동 완급 펄스)**
      - **전통 서첩 발문(跋文) 서명란**
    - 우측 사이드바: `Approved by [讀書正本]` 컴포넌트 직인 도장과 실제 비트맵 1:1 비교
 
