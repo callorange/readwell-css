@@ -666,17 +666,24 @@
       font-family: var(--rw-font-serif);
       font-size: 13px;
       font-weight: 900;
-      line-height: 1;
+      line-height: 1 !important;
       text-align: center;
       flex-shrink: 0;
       filter: url(#seal-carve-filter); /* 리얼 전각 칼맛 및 잉크 압착 필터 */
+      writing-mode: horizontal-tb !important;
+      text-orientation: initial !important;
+      direction: ltr !important;
+      letter-spacing: normal !important;
     }
 
     .rw-seal-chop span {
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
+      line-height: 1 !important;
+      letter-spacing: normal !important;
+      writing-mode: horizontal-tb !important;
+      text-orientation: initial !important;
       text-shadow: 0 0 0.5px rgba(184, 40, 29, 0.6);
     }
 
@@ -1551,17 +1558,46 @@
 
     .rw-sumi-vertical-wrap {
       margin: 2.2rem 0 2.5rem;
-      padding: 1.8rem 2.2rem;
+      padding: 1.8rem 2.2rem 1.35rem;
       background: rgba(220, 205, 185, 0.12);
       border: 1px solid rgba(45, 38, 30, 0.08);
       border-radius: 6px;
       overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(66, 71, 84, 0.3) rgba(45, 38, 30, 0.05);
+    }
+
+    /* 서첩 가로 스크롤바: 투박한 윈도우 기본 화살표 버튼 제거 및 미니멀 수묵 먹선 바 적용 */
+    .rw-sumi-vertical-wrap::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .rw-sumi-vertical-wrap::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    .rw-sumi-vertical-wrap::-webkit-scrollbar-track {
+      background: rgba(45, 38, 30, 0.05);
+      border-radius: 999px;
+      margin: 0 1.2rem;
+    }
+
+    .rw-sumi-vertical-wrap::-webkit-scrollbar-thumb {
+      background: rgba(66, 71, 84, 0.3);
+      border-radius: 999px;
+      transition: background-color 0.2s ease;
+    }
+
+    .rw-sumi-vertical-wrap::-webkit-scrollbar-thumb:hover {
+      background: var(--rw-sumi-charcoal);
     }
 
     .rw-sumi-vertical-body {
       writing-mode: vertical-rl;
       text-orientation: upright;
-      height: 230px;
+      height: 300px;
       font-family: var(--rw-font-serif);
       letter-spacing: 0.15em;
       line-height: 2.3;
@@ -1578,20 +1614,43 @@
     }
 
     .rw-sumi-vertical-title {
-      font-size: 1.2rem !important;
+      font-size: 1.18rem !important;
       font-weight: 700 !important;
       color: var(--rw-sumi-ink) !important;
+      margin: 0 0 0 0.55rem !important;
+      padding: 0 !important;
+      white-space: nowrap;
+    }
+
+    .rw-sumi-vertical-reading {
+      font-size: 0.94rem !important;
+      font-weight: 600 !important;
+      color: var(--rw-sumi-charcoal) !important;
       border-left: 2px solid var(--rw-sumi-ink);
-      padding-left: 0.5rem;
+      padding-left: 0.65rem !important;
+      margin: 0 0 0 1.6rem !important;
+      white-space: nowrap;
     }
 
     .rw-sumi-vertical-colophon {
       font-size: 0.82rem;
       color: var(--rw-sumi-dilute);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-left: 0.8rem !important;
+      display: inline-block !important;
+      height: 100%;
+      vertical-align: top;
+      margin: 0 0 0 0.8rem !important;
+      padding: 0 !important;
+      white-space: nowrap;
+    }
+
+    .rw-sumi-vertical-colophon span {
+      display: inline;
+    }
+
+    .rw-sumi-vertical-colophon .rw-seal-chop {
+      margin-top: 0.8rem;
+      display: inline-grid;
+      vertical-align: middle;
     }
 
     /* --------------------------------------------------------------------------
@@ -1918,7 +1977,8 @@
       <!-- 2. 고서 전통 세로쓰기(縱書) 카드 -->
       <div class="rw-sumi-vertical-wrap">
         <div class="rw-sumi-vertical-body">
-          <p class="rw-sumi-vertical-title">歲寒然後知松柏之後凋也 (세한연후 지송백지후조야)</p>
+          <p class="rw-sumi-vertical-title">歲寒然後知松柏之後凋也</p>
+          <p class="rw-sumi-vertical-reading">세한연후 지송백지후조야</p>
           <p>날이 차가워진 뒤에야 소나무와 잣나무가 늦게 시드는 것을 안다.</p>
           <p>한지 위에 스며든 붓글씨의 뼈대는 혹한의 겨울에도 푸르름을 잃지 않는 선비의 절개와 같다.</p>
           <p>장문의 기술 문서를 조판함에 있어 화려한 기교보다 흔들림 없는 가독성의 골격을 세움이 이와 같음이다.</p>
