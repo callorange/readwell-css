@@ -31,26 +31,11 @@
       --rw-sumi-seal-soft: rgba(184, 40, 29, 0.08); /* 인장 배경 */
       --rw-sumi-seal-border: #d45d52;
       
-      --rw-font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      --rw-font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "맑은 고딕", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
       --rw-font-serif: "Noto Serif KR", Georgia, serif;
     }
 
-    /* 흑묵(Dark Sumi: 흑지에 백옥묵) 테마 */
-    [data-theme="dark"] {
-      --rw-sumi-paper: #121316;              /* 먹물로 물들인 흑지 바탕 */
-      --rw-sumi-paper-surface: #181a1f;      /* 짙은 먹빛 카드 표면 */
-      --rw-sumi-paper-sunken: #0c0d0f;
-      
-      --rw-sumi-ink: #fcfbf9;                /* 백묵(白墨): 맑은 백옥빛 텍스트 */
-      --rw-sumi-charcoal: #d6d3cb;           /* 은은한 담묵빛 본문 */
-      --rw-sumi-wash: #9c978d;               /* 보조 텍스트 */
-      --rw-sumi-dilute: #656972;
-      --rw-sumi-line: #2c2f38;
-      
-      --rw-sumi-seal: #e54b3d;
-      --rw-sumi-seal-soft: rgba(229, 75, 61, 0.15);
-      --rw-sumi-seal-border: #9e352b;
-    }
+
 
     /* --------------------------------------------------------------------------
        1. 한지 배경: Full-bleed 천연 닥나무 화선지 캔버스 레이어
@@ -93,11 +78,6 @@
       opacity: 0;
     }
 
-    [data-theme="dark"] .rw-sumi-hanji-canvas {
-      background-blend-mode: multiply;
-      background-color: #121316;
-      filter: invert(1) brightness(0.22) contrast(1.25);
-    }
 
     /* strong, b 태그: 칠흑 농묵으로 확실한 강조 및 가독성 확보 */
     strong, b {
@@ -165,10 +145,6 @@
       box-sizing: border-box;
     }
 
-    [data-theme="dark"] .rw-sumi-sidebar {
-      background: rgba(255, 255, 255, 0.025);
-      border-right-color: rgba(255, 255, 255, 0.06);
-    }
 
     .rw-sidebar-brand {
       font-size: 1.35rem;
@@ -221,10 +197,6 @@
       transition: opacity 0.2s ease;
     }
 
-    [data-theme="dark"] .rw-brush-divider {
-      filter: invert(1) brightness(1.2);
-      opacity: 0.65;
-    }
 
     .rw-sidebar-group:hover .rw-brush-divider {
       opacity: 1;
@@ -389,9 +361,6 @@
       z-index: 1;
     }
 
-    [data-theme="dark"] .rw-callout-ink-box::before {
-      filter: invert(1) brightness(1.2);
-    }
 
     /* 변형 프레임 1: 대각선 상호보완 필세 (좌상단 기필 농묵, 우하단 맺음, 우상단·좌하단 열린 여백) */
     .rw-callout-ink-box--variant::before {
@@ -431,9 +400,6 @@
       user-select: none;
     }
 
-    [data-theme="dark"] .rw-callout-inkdrop {
-      filter: invert(1) brightness(1.15);
-    }
 
     .rw-callout-ink-header {
       display: flex;
@@ -463,9 +429,6 @@
       margin: 0.25rem 0 0.45rem;
     }
 
-    [data-theme="dark"] .rw-callout-ink-divider {
-      background: rgba(255, 255, 255, 0.12);
-    }
 
     .rw-callout-ink-desc {
       font-size: 0.90rem;
@@ -542,9 +505,6 @@
       display: block;
     }
 
-    [data-theme="dark"] .rw-aside-vertical-brush {
-      filter: invert(1) brightness(1.2);
-    }
 
     .rw-aside-section {
       margin-bottom: 2rem;
@@ -669,12 +629,6 @@
         0 0 2px 2.5px rgba(184, 40, 29, 0.25);
     }
 
-    [data-theme="dark"] .rw-seal-badge--double {
-      box-shadow: 
-        0 0 0 1.5px #181716,
-        0 0 0 2.5px var(--rw-sumi-seal),
-        0 0 2px 2.5px rgba(229, 75, 61, 0.35);
-    }
 
     /* 타원형 두인 (圓印 / 頭印) */
     .rw-seal-badge--round {
@@ -800,33 +754,9 @@
         0 0 1.5px 2px rgba(184, 40, 29, 0.35);
     }
 
-    [data-theme="dark"] .rw-seal-chop {
-      border-color: var(--rw-sumi-seal);
-      color: var(--rw-sumi-seal);
-      background: radial-gradient(circle at 45% 45%, rgba(229, 75, 61, 0.18) 0%, rgba(229, 75, 61, 0.05) 65%, rgba(229, 75, 61, 0.22) 100%);
-      box-shadow: 
-        0 0 1px 0.5px rgba(229, 75, 61, 0.75),
-        inset 0 0 1.8px rgba(229, 75, 61, 0.3);
-    }
 
-    [data-theme="dark"] .rw-seal-chop span {
-      text-shadow: 0 0 0.5px rgba(229, 75, 61, 0.6);
-    }
 
-    [data-theme="dark"] .rw-seal-chop--solid {
-      background: var(--rw-sumi-seal);
-      color: #121316;
-      box-shadow: 
-        0 0 1.5px rgba(229, 75, 61, 0.8),
-        0 1px 3px rgba(229, 75, 61, 0.4);
-    }
 
-    [data-theme="dark"] .rw-seal-chop--double {
-      box-shadow: 
-        0 0 0 1px #181716,
-        0 0 0 2.2px var(--rw-sumi-seal),
-        0 0 1.5px 2px rgba(229, 75, 61, 0.45);
-    }
 
     .rw-seal-chop--tilted {
       transform: rotate(-1.5deg);
@@ -835,7 +765,7 @@
     }
 
     /* --------------------------------------------------------------------------
-       9. 플로팅 컨트롤러: 한지 결 On/Off 토글 및 흑묵(다크) 모드
+       9. 플로팅 컨트롤러: 한지 결 On/Off 토글
        -------------------------------------------------------------------------- */
     .rw-control-panel {
       position: fixed;
@@ -869,6 +799,521 @@
       background: var(--rw-sumi-seal-soft);
       border-color: var(--rw-sumi-seal);
       color: var(--rw-sumi-seal);
+    }
+
+    /* 수묵 텍스트 계조 유틸리티 */
+    .rw-sumi-ink {
+      color: var(--rw-sumi-ink);
+      font-weight: 800;
+    }
+    .rw-sumi-wash {
+      color: var(--rw-sumi-wash);
+      font-weight: 700;
+    }
+    .rw-sumi-seal {
+      color: var(--rw-sumi-seal);
+      font-weight: 700;
+    }
+
+    /* --------------------------------------------------------------------------
+       11. 첫 글자 기필(起筆) 드롭캡 (.rw-sumi-dropcap)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-dropcap {
+      float: left;
+      font-family: var(--rw-font-serif);
+      font-size: 3.4rem;
+      line-height: 0.82;
+      padding-top: 0.2rem;
+      padding-right: 0.65rem;
+      padding-bottom: 0.1rem;
+      font-weight: 900;
+      color: var(--rw-sumi-ink);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+
+    /* --------------------------------------------------------------------------
+       12. 수묵 갈필(渴筆) 프로그레스 바 (.rw-sumi-progress)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-progress-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .rw-sumi-progress-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .rw-sumi-progress-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-sumi-progress-val {
+      font-family: var(--rw-font-sans);
+      color: var(--rw-sumi-seal);
+      font-weight: 700;
+    }
+
+    .rw-sumi-progress {
+      position: relative;
+      width: 100%;
+      height: 12px;
+    }
+
+    .rw-sumi-progress__track {
+      position: absolute;
+      inset: 0;
+      background: url('assets/sumi-stroke-track.png') no-repeat center / 100% 100%;
+      pointer-events: none;
+    }
+
+    .rw-sumi-progress__fill {
+      position: absolute;
+      inset: 0;
+      background: url('assets/sumi-stroke-fill.png') no-repeat center / 100% 100%;
+      clip-path: inset(0 calc(100% - var(--rw-progress, 0%)) 0 0);
+      transition: clip-path 0.35s ease;
+      pointer-events: none;
+    }
+
+    .rw-sumi-progress--fine {
+      height: 10px;
+    }
+    .rw-sumi-progress--fine .rw-sumi-progress__track,
+    .rw-sumi-progress--fine .rw-sumi-progress__fill {
+      background-size: 100% 100%;
+    }
+
+    /* 마커 베이스 */
+    .rw-sumi-progress__marker {
+      position: absolute;
+      top: 50%;
+      left: var(--rw-progress, 0%);
+      transform: translate(-45%, -50%);
+      width: 18px;
+      height: 18px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
+      transition: left 0.35s ease;
+    }
+
+    /* 옵션 1: 흑묵 서예 점획 마커 (영자팔법 側 획) */
+    .rw-sumi-progress__marker--ink {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E");
+    }
+
+    /* 옵션 2: 주사(朱砂) 붉은 인주 서예 붓점 마커 */
+    .rw-sumi-progress__marker--seal {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E");
+    }
+
+
+    /* --------------------------------------------------------------------------
+       13. 수묵 인터랙티브 슬라이더 (.rw-sumi-slider-box)
+           - 불필요한 네이티브 박스 외곽선 100% 완전 제거
+           - 프로그레스 바와 동일한 화선지 위 수묵 붓선 트랙 및 농묵 채움
+           - 서예 점획 손잡이(Thumb) 마우스/터치 드래그 인터랙션 지원
+       -------------------------------------------------------------------------- */
+    .rw-sumi-slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .rw-sumi-slider-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .rw-sumi-slider-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-sumi-slider-val {
+      font-family: var(--rw-font-sans);
+      color: var(--rw-sumi-seal);
+      font-weight: 700;
+    }
+
+    .rw-sumi-slider-box {
+      position: relative;
+      width: 100%;
+      height: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* 1. 배경 담묵 붓선 트랙 (네이티브 핸들 중심 가동 범위인 좌우 10px에 맞춤 정렬) */
+    .rw-sumi-slider-box__track {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      background: url('assets/sumi-stroke-track.png') no-repeat center / 100% 100%;
+      pointer-events: none;
+    }
+
+    /* 2. 동적 농묵 붓선 채움 (네이티브 핸들 중심 가동 범위인 좌우 10px에 맞춤 정렬 & 핸들과 1:1 일치) */
+    .rw-sumi-slider-box__fill {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      background: url('assets/sumi-stroke-fill.png') no-repeat center / 100% 100%;
+      clip-path: inset(0 calc(100% - var(--rw-val, 50%)) 0 0);
+      pointer-events: none;
+    }
+
+    /* 3. 투명 인터랙티브 input[type="range"] (네이티브 외곽선 100% 제거) */
+    .rw-sumi-slider-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+
+    .rw-sumi-slider-input:focus,
+    .rw-sumi-slider-input:focus-visible {
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .rw-sumi-slider-input::-webkit-slider-runnable-track {
+      background: transparent;
+      border: none;
+      height: 100%;
+    }
+    .rw-sumi-slider-input::-moz-range-track {
+      background: transparent;
+      border: none;
+      height: 100%;
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 1. 서예 붓점 손잡이 (미니멀 붉은 인주)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-slider-input,
+    .rw-sumi-slider-input--dot {
+      /* 기본 */
+    }
+    .rw-sumi-slider-input::-webkit-slider-thumb,
+    .rw-sumi-slider-input--dot::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      margin-top: -4px;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+      cursor: grab;
+      transition: transform 0.12s ease;
+    }
+    .rw-sumi-slider-input:active::-webkit-slider-thumb,
+    .rw-sumi-slider-input--dot:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+    .rw-sumi-slider-input::-moz-range-thumb,
+    .rw-sumi-slider-input--dot::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: none !important;
+      cursor: grab;
+      transition: transform 0.12s ease;
+    }
+    .rw-sumi-slider-input:active::-moz-range-thumb,
+    .rw-sumi-slider-input--dot:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 2. 서예 모필(毛筆) 브러시 손잡이 (붓대 + 붓촉 맞물림)
+       - 붓대(상단)는 위로 솟고, 뾰족한 붓촉 끝(하단)이 먹선의 중심축에 정확히 안착!
+       -------------------------------------------------------------------------- */
+    .rw-sumi-slider-input--brush::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 36px;
+      margin-top: -27px; /* 붓촉 끝이 붓선 중앙 궤적에 완벽 일치 */
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 40'%3E%3Cpath d='M8 2 C8 1 14 1 14 2 L13.5 19 L8.5 19 Z' fill='%23a8865f' stroke='%236e5335' stroke-width='0.8'/%3E%3Crect x='8.5' y='19' width='5' height='3' rx='0.5' fill='%23b8281d'/%3E%3Cpath d='M8.5 22 C8.5 22 7.2 28 11 38 C14.8 28 13.5 22 13.5 22 Z' fill='%23111316'/%3E%3Cellipse cx='11' cy='24' rx='2.2' ry='1.4' fill='%232c3038'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.22)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .rw-sumi-slider-input--brush:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.12) translateY(-2px);
+    }
+    .rw-sumi-slider-input--brush::-moz-range-thumb {
+      width: 20px;
+      height: 36px;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 40'%3E%3Cpath d='M8 2 C8 1 14 1 14 2 L13.5 19 L8.5 19 Z' fill='%23a8865f' stroke='%236e5335' stroke-width='0.8'/%3E%3Crect x='8.5' y='19' width='5' height='3' rx='0.5' fill='%23b8281d'/%3E%3Cpath d='M8.5 22 C8.5 22 7.2 28 11 38 C14.8 28 13.5 22 13.5 22 Z' fill='%23111316'/%3E%3Cellipse cx='11' cy='24' rx='2.2' ry='1.4' fill='%232c3038'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.22)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .rw-sumi-slider-input--brush:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: scale(1.12) translateY(-2px);
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 3. 서첩 척(尺) 눈금 + 인주 가늠자 손잡이 (단위 계측형)
+       - 가늠자 지시침이 먹선 중심과 하단 눈금을 정확히 잇도록 정렬!
+       -------------------------------------------------------------------------- */
+    .rw-sumi-slider-input--tick::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 24px;
+      margin-top: -7px; /* 둥근 몸통이 먹선 중심에 완벽히 올라오고 뾰족한 끝이 눈금을 지시 */
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26'%3E%3Cpath d='M11 25 L5.5 13 C3.5 9 5.5 3 11 3 C16.5 3 18.5 9 16.5 13 Z' fill='%23b8281d' stroke='%238f1f16' stroke-width='0.8'/%3E%3Ccircle cx='11' cy='9' r='2.8' fill='%23fdfbf7' opacity='0.95'/%3E%3Ccircle cx='11' cy='9' r='1.3' fill='%23b8281d'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: drop-shadow(0 1px 2px rgba(184, 40, 29, 0.35)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .rw-sumi-slider-input--tick:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+    .rw-sumi-slider-input--tick::-moz-range-thumb {
+      width: 20px;
+      height: 24px;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26'%3E%3Cpath d='M11 25 L5.5 13 C3.5 9 5.5 3 11 3 C16.5 3 18.5 9 16.5 13 Z' fill='%23b8281d' stroke='%238f1f16' stroke-width='0.8'/%3E%3Ccircle cx='11' cy='9' r='2.8' fill='%23fdfbf7' opacity='0.95'/%3E%3Ccircle cx='11' cy='9' r='1.3' fill='%23b8281d'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      filter: drop-shadow(0 1px 2px rgba(184, 40, 29, 0.35)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .rw-sumi-slider-input--tick:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+
+    /* 서첩 눈금자 틱마크 레이아웃 (HTML5 시맨틱 datalist 태그 완벽 지원) */
+    .rw-sumi-slider-tick-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    datalist.rw-sumi-slider-ticks,
+    .rw-sumi-slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 10px; /* 네이티브 핸들 중심(10px)과 1:1 일치 */
+      box-sizing: border-box;
+      margin: 2px 0 0 0;
+      font-size: 0.74rem;
+      color: var(--rw-sumi-wash);
+      font-family: var(--rw-font-serif);
+      user-select: none;
+    }
+    datalist.rw-sumi-slider-ticks option {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 20px;
+      margin: 0 -10px;
+    }
+    datalist.rw-sumi-slider-ticks option::before {
+      content: "";
+      display: block;
+      width: 1.5px;
+      height: 5px;
+      background: var(--rw-sumi-line);
+      border-radius: 1px;
+    }
+    datalist.rw-sumi-slider-ticks option[value="0"]::before,
+    datalist.rw-sumi-slider-ticks option[value="50"]::before,
+    datalist.rw-sumi-slider-ticks option[value="100"]::before {
+      height: 7px;
+      width: 2px;
+      background: var(--rw-sumi-wash);
+    }
+
+    /* 레거시 div 구조 호환성 보존 */
+    .rw-sumi-tick-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .rw-sumi-tick-bar {
+      width: 1.5px;
+      height: 5px;
+      background: var(--rw-sumi-line);
+      border-radius: 1px;
+    }
+    .rw-sumi-tick-item.is-major .rw-sumi-tick-bar {
+      height: 7px;
+      background: var(--rw-sumi-wash);
+      width: 2px;
+    }
+
+    /* 옵션: 흑묵(濃墨) 서예 점획 손잡이 (.rw-sumi-slider-input--ink) 보존 */
+    .rw-sumi-slider-input--ink::-webkit-slider-thumb {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E") !important;
+      filter: none !important;
+    }
+    .rw-sumi-slider-input--ink::-moz-range-thumb {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E") !important;
+      filter: none !important;
+    }
+
+
+    /* --------------------------------------------------------------------------
+       14. 전통 서첩 발문(跋文) / 저자 서명란 (.rw-sumi-colophon)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-colophon {
+      margin-top: 3.5rem;
+      padding-top: 1.8rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .rw-colophon-divider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: url('assets/brush-divider-1.png') no-repeat center / 100% 100%;
+      opacity: 0.65;
+    }
+
+    .rw-colophon-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .rw-colophon-meta {
+      font-size: 0.88rem;
+      color: var(--rw-sumi-wash);
+      line-height: 1.7;
+      font-family: var(--rw-font-serif);
+    }
+    .rw-colophon-meta strong {
+      color: var(--rw-sumi-ink);
+      font-weight: 700;
+    }
+
+    .rw-colophon-signature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-left: 1.25rem;
+      border-left: 1px dashed rgba(45, 38, 30, 0.18);
+    }
+
+
+    .rw-colophon-sign-text {
+      text-align: right;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .rw-colophon-author {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--rw-sumi-ink);
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -950,15 +1395,14 @@
       <!-- H2 섹션 -->
       <h2 id="section-ref">H2. The art of Refined Technical Documentation: Integration</h2>
       <p>
-        The Art of Refined Technical Documentation: Integrating Traditional Aesthetics and is designed under for to proven, minisrate the perfect rage to senunze upon traditional aesthetics.
-        우리의 목표는 단순한 장식적 과시가 아닌, <strong>종이와 먹의 본질적인 대비와 여백(余白)</strong>을 통해 장시간 독서 시 눈의 피로를 최소화하고 지적 전달력을 극대화하는 것입니다.
+        <span class="rw-sumi-dropcap">우</span>리의 목표는 단순한 장식적 과시가 아닌, <strong>종이와 먹의 본질적인 농담(濃淡)과 여백(余白)</strong>을 통해 장시간 독서 시 눈의 피로를 최소화하고 지적 전달력을 극대화하는 것입니다. 옛 서예가들이 화선지 위에 첫 획을 그을 때 깊게 숨을 들이쉬며 먹을 듬뿍 머금어 기필(起筆)했듯, 문서의 시작을 단단하고 묵직하게 열어줍니다.
       </p>
 
       <!-- H3 섹션 -->
       <h3 id="core-concepts">H3. Core Concepts</h3>
       <p>
         In any concepted technisalic consex features unmic and mal design and the first that writes concerences of chanmed concons and change.
-        텍스트의 계층 구조는 인위적인 박스 테두리가 아니라 <strong>농묵(濃墨)과 담묵(淡墨)의 필압 대비</strong>로 자연스럽게 정돈됩니다.
+        텍스트의 계층 구조는 인위적인 박스 테두리가 아니라 <strong class="rw-sumi-ink">농묵(濃墨)</strong>과 <strong class="rw-sumi-wash">담묵(淡墨)</strong>의 <strong>필압 대비</strong>로 자연스럽게 정돈됩니다.
       </p>
 
       <!-- H3 섹션 & 코드 블록 -->
@@ -1233,6 +1677,196 @@
         </div>
       </div>
 
+      <!-- ====================================================================
+           수묵 확장 컴포넌트: 수묵 갈필(渴筆) 프로그레스 게이지 쇼케이스
+           ==================================================================== -->
+      <div class="rw-showcase-card" style="margin-top: 2.5rem; background: var(--rw-sumi-paper-surface); border: 1px solid var(--rw-sumi-line); border-radius: 6px; padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--rw-sumi-line); padding-bottom: 0.6rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: var(--rw-sumi-ink);">
+            수묵 갈필(渴筆) 프로그레스 게이지 (<code style="font-size:0.9rem;">.rw-sumi-progress</code>)
+          </h3>
+          <span class="rw-seal-badge rw-seal-badge--solid">신규 기능</span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--rw-sumi-charcoal); line-height: 1.6; margin-bottom: 1.25rem;">
+          기계적인 직사각형 막대 형태를 탈피하여, 화선지 위에 서예 붓으로 그은 <strong>유기적 수묵 붓터치 실루엣</strong>을 그대로 적용한 프로그레스 바입니다. 붓이 멈춘 자리를 나타내는 마커로 <strong>서예 점획(側·點) 마커</strong> 2종을 취향에 맞게 선택할 수 있습니다.
+        </p>
+
+        <div class="rw-sumi-progress-group">
+          <!-- 1. 주사 붉은 인주 붓점 마커 (.rw-sumi-progress__marker--seal) -->
+          <div class="rw-sumi-progress-item">
+            <div class="rw-sumi-progress-label-row">
+              <span>스타일 A. 묵직한 대필(大筆) 수묵선 + 주사(朱砂) 붉은 인주 붓점</span>
+              <span class="rw-sumi-progress-val">78%</span>
+            </div>
+            <div class="rw-sumi-progress" style="--rw-progress: 78%;">
+              <div class="rw-sumi-progress__track"></div>
+              <div class="rw-sumi-progress__fill"></div>
+              <div class="rw-sumi-progress__marker rw-sumi-progress__marker--seal"></div>
+            </div>
+          </div>
+
+          <!-- 2. 흑묵 서예 점획 마커 (.rw-sumi-progress__marker--ink) -->
+          <div class="rw-sumi-progress-item">
+            <div class="rw-sumi-progress-label-row">
+              <span>스타일 B. 먹물 번짐(墨痕) 서예 점획 마커 (순수 흑백)</span>
+              <span class="rw-sumi-progress-val" style="color: var(--rw-sumi-ink);">45%</span>
+            </div>
+            <div class="rw-sumi-progress" style="--rw-progress: 45%;">
+              <div class="rw-sumi-progress__track"></div>
+              <div class="rw-sumi-progress__fill"></div>
+              <div class="rw-sumi-progress__marker rw-sumi-progress__marker--ink"></div>
+            </div>
+          </div>
+
+          <!-- 3. 세필 갈필 수묵선 (.rw-sumi-progress--fine) -->
+          <div class="rw-sumi-progress-item">
+            <div class="rw-sumi-progress-label-row">
+              <span>스타일 C. 섬세한 세필(細筆) 갈필 수묵선</span>
+              <span class="rw-sumi-progress-val">92%</span>
+            </div>
+            <div class="rw-sumi-progress rw-sumi-progress--fine" style="--rw-progress: 92%;">
+              <div class="rw-sumi-progress__track"></div>
+              <div class="rw-sumi-progress__fill"></div>
+              <div class="rw-sumi-progress__marker rw-sumi-progress__marker--seal"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.35rem;">사용 예시 (HTML)</strong>
+          <code style="display: block; background: rgba(0,0,0,0.04); padding: 0.6rem 0.85rem; border-radius: 4px; font-size: 0.82rem; color: var(--rw-sumi-charcoal); line-height: 1.5;">
+            &lt;!-- 주사(朱砂) 붉은 인주 붓점 마커 --&gt;<br>
+            &lt;div class="rw-sumi-progress" style="--rw-progress: 78%;"&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__track"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__fill"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__marker rw-sumi-progress__marker--seal"&gt;&lt;/div&gt;<br>
+            &lt;/div&gt;<br><br>
+            &lt;!-- 흑묵(濃墨) 서예 점획 마커 --&gt;<br>
+            &lt;div class="rw-sumi-progress" style="--rw-progress: 45%;"&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__track"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__fill"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-progress__marker rw-sumi-progress__marker--ink"&gt;&lt;/div&gt;<br>
+            &lt;/div&gt;
+          </code>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           수묵 확장 컴포넌트: 수묵 인터랙티브 슬라이더 쇼케이스 (input[type="range"])
+           ==================================================================== -->
+      <div class="rw-showcase-card" style="margin-top: 2.5rem; background: var(--rw-sumi-paper-surface); border: 1px solid var(--rw-sumi-line); border-radius: 6px; padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--rw-sumi-line); padding-bottom: 0.6rem; margin-bottom: 1rem;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: var(--rw-sumi-ink);">
+            수묵 인터랙티브 슬라이더 (<code style="font-size:0.9rem;">input[type="range"]</code>)
+          </h3>
+          <span class="rw-seal-badge rw-seal-badge--solid" style="background: var(--rw-sumi-seal); color: #fff; border-color: var(--rw-sumi-seal);">3종 스타일 완비</span>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--rw-sumi-charcoal); line-height: 1.6; margin-bottom: 1.25rem;">
+          네이티브 직사각형 테두리를 <strong>100% 완전 투명화</strong>하고, 읽기 전용 프로그레스 바와의 시각적·기능적 차별성을 위해 <strong>서예 붓점(미니멀), 모필 브러시(도구 일체형), 서첩 척 눈금자(계측형)</strong> 3대 정예 스타일을 지원합니다.
+        </p>
+
+        <div class="rw-sumi-slider-group">
+          <!-- 스타일 1: 기본 서예 붓점 손잡이 -->
+          <div class="rw-sumi-slider-item">
+            <div class="rw-sumi-slider-label-row">
+              <span>스타일 1. 서예 붓점 슬라이더 (미니멀 붉은 인주)</span>
+              <span class="rw-sumi-slider-val" id="sumiSliderVal1">72%</span>
+            </div>
+            <div class="rw-sumi-slider-box" id="sumiSliderBox1" style="--rw-val: 72%;">
+              <div class="rw-sumi-slider-box__track"></div>
+              <div class="rw-sumi-slider-box__fill"></div>
+              <input type="range" class="rw-sumi-slider-input rw-sumi-slider-input--dot" min="0" max="100" value="72"
+                     oninput="updateSumiSlider('sumiSliderBox1', 'sumiSliderVal1', this.value)">
+            </div>
+          </div>
+
+          <!-- 스타일 2: 서예 모필(毛筆) 브러시 손잡이 (제안 1) -->
+          <div class="rw-sumi-slider-item" style="margin-top: 0.8rem;">
+            <div class="rw-sumi-slider-label-row">
+              <span>스타일 2. 서예 모필(毛筆) 브러시 슬라이더 (붓대 + 붓촉 맞물림)</span>
+              <span class="rw-sumi-slider-val" id="sumiSliderVal2" style="color: var(--rw-sumi-ink);">65%</span>
+            </div>
+            <div class="rw-sumi-slider-box" id="sumiSliderBox2" style="--rw-val: 65%; margin-top: 0.4rem;">
+              <div class="rw-sumi-slider-box__track"></div>
+              <div class="rw-sumi-slider-box__fill"></div>
+              <input type="range" class="rw-sumi-slider-input rw-sumi-slider-input--brush" min="0" max="100" value="65"
+                     oninput="updateSumiSlider('sumiSliderBox2', 'sumiSliderVal2', this.value)">
+            </div>
+          </div>
+
+          <!-- 스타일 3: 전통 서첩 척(尺) 눈금 + 인주 가늠자 손잡이 (제안 2) -->
+          <div class="rw-sumi-slider-item" style="margin-top: 0.6rem;">
+            <div class="rw-sumi-slider-label-row">
+              <span>스타일 3. 전통 서첩 척(尺) 눈금 + 인주 가늠자 슬라이더 (단위 계측형)</span>
+              <span class="rw-sumi-slider-val" id="sumiSliderVal3">50%</span>
+            </div>
+            <div class="rw-sumi-slider-tick-wrap">
+              <div class="rw-sumi-slider-box" id="sumiSliderBox3" style="--rw-val: 50%;">
+                <div class="rw-sumi-slider-box__track"></div>
+                <div class="rw-sumi-slider-box__fill"></div>
+                <input type="range" list="sumiSliderTicks" class="rw-sumi-slider-input rw-sumi-slider-input--tick" min="0" max="100" value="50"
+                       oninput="updateSumiSlider('sumiSliderBox3', 'sumiSliderVal3', this.value)">
+              </div>
+              <datalist id="sumiSliderTicks" class="rw-sumi-slider-ticks">
+                <option value="0" label="0">0</option>
+                <option value="25" label="25">25</option>
+                <option value="50" label="50">50</option>
+                <option value="75" label="75">75</option>
+                <option value="100" label="100">100</option>
+              </datalist>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.35rem;">사용 예시 (HTML &amp; JS)</strong>
+          <code style="display: block; background: rgba(0,0,0,0.04); padding: 0.6rem 0.85rem; border-radius: 4px; font-size: 0.82rem; color: var(--rw-sumi-charcoal); line-height: 1.5;">
+            &lt;!-- 스타일 3. 서첩 눈금자: 시맨틱 &lt;datalist&gt; 표준 구조 --&gt;<br>
+            &lt;div class="rw-sumi-slider-tick-wrap"&gt;<br>
+            &nbsp;&nbsp;&lt;div class="rw-sumi-slider-box" style="--rw-val: 50%;"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="rw-sumi-slider-box__track"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="rw-sumi-slider-box__fill"&gt;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="range" list="my-ticks" class="rw-sumi-slider-input rw-sumi-slider-input--tick" min="0" max="100" value="50"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oninput="this.parentElement.style.setProperty('--rw-val', this.value + '%')"&gt;<br>
+            &nbsp;&nbsp;&lt;/div&gt;<br>
+            &nbsp;&nbsp;&lt;datalist id="my-ticks" class="rw-sumi-slider-ticks"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="0" label="0"&gt;0&lt;/option&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="25" label="25"&gt;25&lt;/option&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="50" label="50"&gt;50&lt;/option&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="75" label="75"&gt;75&lt;/option&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="100" label="100"&gt;100&lt;/option&gt;<br>
+            &nbsp;&nbsp;&lt;/datalist&gt;<br>
+            &lt;/div&gt;
+          </code>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           수묵 확장 컴포넌트: 전통 서첩 발문(跋文) / 저자 서명란
+           ==================================================================== -->
+      <footer class="rw-sumi-colophon">
+        <div class="rw-colophon-divider"></div>
+        <div class="rw-colophon-body">
+          <div class="rw-colophon-meta">
+            <div><strong>讀書正本 第參卷</strong> · Readwell Architecture v0.2.0</div>
+            <div style="font-size: 0.82rem; color: var(--rw-sumi-dilute);">歲次 丙午年 秋九月 (2026. 09. 05) 完本</div>
+            <div style="font-style: italic; margin-top: 0.25rem;">"본 문서는 수묵(水墨)과 화선지의 전통 조판 규격에 따라 정식 검증을 필하였음."</div>
+          </div>
+          <div class="rw-colophon-signature">
+            <div class="rw-colophon-sign-text">
+              <div style="font-size: 0.78rem; color: var(--rw-sumi-dilute);">草堂 筆者 識</div>
+              <div class="rw-colophon-author">Anon None</div>
+            </div>
+            <!-- 정밀 전각 직인 도장 컴포넌트 -->
+            <span class="rw-seal-chop rw-seal-chop--lg" title="讀書正本">
+              <span>讀</span><span>書</span>
+              <span>正</span><span>本</span>
+            </span>
+            <span class="rw-seal-badge rw-seal-badge--solid">검증필</span>
+          </div>
+        </div>
+      </footer>
+
     </main>
 
     <!-- 우측 메타 사이드바 (상단 Search ☰ 및 메타 레일) -->
@@ -1311,13 +1945,10 @@
 
   </div>
 
-  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글 및 흑묵(다크) 모드 -->
+  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글 -->
   <div class="rw-control-panel">
     <button type="button" class="rw-control-btn" id="btnToggleTexture" onclick="toggleHanjiTexture()">
       <span>🌾 한지 닥나무 결: <strong id="textureStatus">켬 (ON)</strong></span>
-    </button>
-    <button type="button" class="rw-control-btn" id="btnToggleTheme" onclick="toggleDarkSumi()">
-      <span>🌗 흑묵(야간 흑지) 모드 전환</span>
     </button>
   </div>
 
@@ -1330,14 +1961,15 @@
       statusEl.textContent = isActive ? '켬 (ON)' : '끔 (OFF - 단색 화선지)';
     }
 
-    // 백묵(화선지) <-> 흑묵(먹물 흑지) 실시간 토글
-    function toggleDarkSumi() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      if (current === 'dark') {
-        html.removeAttribute('data-theme');
-      } else {
-        html.setAttribute('data-theme', 'dark');
+    // 수묵 인터랙티브 슬라이더 값 실시간 업데이트 핸들러
+    function updateSumiSlider(boxId, valId, value) {
+      const box = document.getElementById(boxId);
+      const valEl = document.getElementById(valId);
+      if (box) {
+        box.style.setProperty('--rw-val', value + '%');
+      }
+      if (valEl) {
+        valEl.textContent = value + '%';
       }
     }
   </script>
