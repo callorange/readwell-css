@@ -311,25 +311,39 @@
   2. **스타일 2. 원상(圓相, Enso) 서클 (Circle Enso)**:
      - 붓을 멈추지 않고 한 번에 휘돌려 닫히기 직전의 완결미를 지닌 도넛형 원상 붓터치. 외곽을 스쳐 지나가는 섬세한 비백(飛白) 선율이 회전 궤적을 강조합니다.
      - 클래스: `.rw-sumi-spinner--enso-ink`(농묵), `.rw-sumi-spinner--enso-seal`(주사), `.rw-sumi-spinner--enso-wash`(담묵)
-* **애니메이션 모드**:
-  - **유장한 순환 (기본, `1.1s linear`)**: 붓터치 자체의 굵기 차이로 인해 일정한 회전에서도 스스로 자연스러운 속도감이 표현됨.
-  - **기운생동 완급 펄스 (`.rw-sumi-spinner--pulse`, `1.5s cubic-bezier(0.4, 0.0, 0.2, 1)`)**: 서예가가 붓을 종이에 대어 힘을 주었다가 거두는 호흡과 율동감을 구현한 서예 특화 애니메이션.
+* **애니메이션 모드 & 서예 동세(動勢) 7종**:
+  - **기본 등속 회전 (`1.1s linear`)**: 붓터치 자체의 굵기와 농담 차이로 인해 멈칫거림 없이 매끄럽게 연속 회전.
+  - **속도 프리셋**: `.rw-sumi-spinner--slow`(정중동 2.2s 우아한 호흡), `.rw-sumi-spinner--fast`(0.75s 경쾌한 속도), `.rw-sumi-spinner--reverse`(역회전).
+  - **동세 애니메이션 변형 7종**:
+    1. `.rw-sumi-spinner--flow`: 유수(流水) 사인 곡선 가감속 (멈춤 없는 부드러운 완급)
+    2. `.rw-sumi-spinner--breathe`: 호흡(呼吸) 미세 수축·팽창 (`scale: 0.93 ~ 1.06`)
+    3. `.rw-sumi-spinner--fade`: 훈염(暈染) 농담 번짐 (`opacity: 0.38 ~ 1.0`)
+    4. `.rw-sumi-spinner--sweep`: 부채꼴 운필(運筆) 왕복 진자 (`-35deg ~ 235deg`)
+    5. `.rw-sumi-spinner--ghost`: 훈염 잔상(殘影) 추적 (뒤따르는 먹물 꼬리 잔상 레이어)
+    6. `.rw-sumi-spinner--dual` (또는 `.rw-sumi-spinner-dual`): 음양(陰陽) 이중 엇갈림 역회전 (바깥 시계 1.1s + 안쪽 좌우반전 붉은주사 반시계 역회전 1.7s)
+    7. `.rw-sumi-spinner--dual-sync` (또는 `.rw-sumi-spinner-dual--sync`): 동심(同心) 순방향 이중회전 (바깥 느린 시계 1.4s + 안쪽 빠른 주사 시계 0.85s 추격 회전)
 * **크기 규격**: `--sm`(20px, 인라인/배지용), 기본(36px), `--lg`(52px, 섹션 로더), `--xl`(72px, 전체 페이지 로더).
 * **접근성**: `prefers-reduced-motion: reduce` 지원 (회전 대신 은은한 수묵 호흡 펄스로 자동 전환).
 
 ```html
-<!-- 1. 기본 비백호 농묵 스피너 -->
+<!-- 1. 기본 비백호 농묵 스피너 (1.1s 등속) -->
 <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink" role="status" aria-label="로딩 중"></div>
 
-<!-- 2. 주사(朱砂) 붉은 인주 스피너 + 기운생동 완급 펄스 -->
-<div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" role="status" aria-label="처리 중"></div>
+<!-- 2. 정중동(靜中動) 슬로우 모드 (2.2s) -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--slow" role="status" aria-label="처리 중"></div>
 
-<!-- 3. 원상(Enso) 대형 스피너 -->
-<div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--lg" role="status" aria-label="불러오는 중"></div>
+<!-- 3. 서예 동세 애니메이션 7종 예시 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--flow"></div>       <!-- 1) 유수 가감속 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--breathe"></div>    <!-- 2) 호흡 수축팽창 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-wash rw-sumi-spinner--fade"></div>       <!-- 3) 훈염 농담번짐 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--sweep"></div>        <!-- 4) 부채꼴 왕복 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--ghost"></div>       <!-- 5) 훈염 잔상추적 -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual"></div>        <!-- 6) 음양 역회전 (바깥 시계 + 안쪽 반전주사 반시계) -->
+<div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual-sync"></div>   <!-- 7) 동심 순회전 (바깥 1.4s + 안쪽 빠른 0.85s 시계방향) -->
 
 <!-- 4. 텍스트 결합 로딩 레이아웃 -->
 <div class="rw-sumi-loading-box">
-  <div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--pulse" aria-hidden="true"></div>
+  <div class="rw-sumi-spinner rw-sumi-spinner--brush-seal rw-sumi-spinner--breathe" aria-hidden="true"></div>
   <div>
     <div class="rw-sumi-loading-text">墨痕 寫入中... (문서 로딩 중)</div>
     <div class="rw-sumi-loading-subtext">화선지 조판 규격을 초기화하고 있습니다</div>
@@ -360,9 +374,15 @@
 | `sumi-spinner-brush-ink.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 칠흑 농묵(濃墨) 붓터치 스피너 에셋 |
 | `sumi-spinner-brush-seal.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 전통 주사(朱砂) 붉은 인주 붓터치 스피너 에셋 |
 | `sumi-spinner-brush-wash.png` | 256x256 | PNG (Alpha) | 비백호(飛白弧) 오픈 링 은은한 담묵(淡墨) 붓터치 스피너 에셋 |
+| `sumi-spinner-brush-ink-rev.png` | 256x256 | PNG (Alpha) | 비백호 농묵 좌우 반전 에셋 (반시계 역회전용, 11시 기필 선두) |
+| `sumi-spinner-brush-seal-rev.png` | 256x256 | PNG (Alpha) | 비백호 주사 좌우 반전 에셋 (반시계 역회전용, 11시 기필 선두) |
+| `sumi-spinner-brush-wash-rev.png` | 256x256 | PNG (Alpha) | 비백호 담묵 좌우 반전 에셋 (반시계 역회전용, 11시 기필 선두) |
 | `sumi-spinner-enso-ink.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 농묵(濃墨) 서클 붓터치 스피너 에셋 |
 | `sumi-spinner-enso-seal.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 주사(朱砂) 인주 서클 붓터치 스피너 에셋 |
 | `sumi-spinner-enso-wash.png` | 256x256 | PNG (Alpha) | 원상(圓相, Enso) 일필휘지 담묵(淡墨) 서클 붓터치 스피너 에셋 |
+| `sumi-spinner-enso-ink-rev.png` | 256x256 | PNG (Alpha) | 원상 농묵 좌우 반전 서클 에셋 (반시계 역회전용) |
+| `sumi-spinner-enso-seal-rev.png` | 256x256 | PNG (Alpha) | 원상 주사 좌우 반전 서클 에셋 (반시계 역회전용) |
+| `sumi-spinner-enso-wash-rev.png` | 256x256 | PNG (Alpha) | 원상 담묵 좌우 반전 서클 에셋 (반시계 역회전용) |
 | `ink-drop.png` | 24x24 | PNG (Alpha) | 콜아웃 제목 앞 수묵 묵적(먹방울) 불릿 |
 | `avatar.png` | 48x48 | PNG (Alpha) | 서예가 프로필 원형 아바타 |
 | `seal-author.png` | 32x32 | PNG (Alpha) | 작성자 옆 주사 낙관 인장 |
