@@ -761,8 +761,6 @@
     .rw-seal-chop--tilted {
       transform: rotate(-1.5deg);
     }
-      transform: rotate(-1.5deg);
-    }
 
     /* --------------------------------------------------------------------------
        9. 플로팅 컨트롤러: 한지 결 On/Off 토글
@@ -1471,6 +1469,233 @@
       color: var(--rw-sumi-wash);
       margin-top: 0.15rem;
     }
+
+    /* 선택형 서체 전환 모드 (버튼 클릭 시에만 명조로 전환) */
+    body.rw-sumi-body.font-serif-active {
+      font-family: var(--rw-font-serif);
+    }
+
+    /* --------------------------------------------------------------------------
+       16. 실시간 상단 수묵 스크롤 독서 게이지 (.rw-sumi-scroll-indicator)
+       최소 침범(Minimal): 3px 슬림 수묵선, 스크롤 진행 시에만 부드럽게 노출
+       -------------------------------------------------------------------------- */
+    .rw-sumi-scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 1000;
+      pointer-events: none;
+      background: transparent;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .rw-sumi-scroll-indicator.is-scrolled {
+      opacity: 1;
+    }
+
+    .rw-sumi-scroll-indicator__fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--rw-sumi-charcoal), var(--rw-sumi-ink));
+      box-shadow: 0 0 6px rgba(18, 19, 22, 0.4);
+      transition: width 0.05s linear;
+    }
+
+    /* --------------------------------------------------------------------------
+       17. 고서 전통 세로쓰기(縱書) & 전각 두인(頭印) 인용구
+       -------------------------------------------------------------------------- */
+    .rw-sumi-quote {
+      position: relative;
+      margin: 2rem 0;
+      padding: 1.4rem 1.8rem 1.4rem 2.2rem;
+      border-left: 3px solid var(--rw-sumi-ink);
+      background: rgba(220, 205, 185, 0.1);
+      border-radius: 0 6px 6px 0;
+      font-family: var(--rw-font-serif);
+    }
+
+    .rw-seal-head {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 7px;
+      border: 1.5px solid var(--rw-sumi-seal);
+      border-radius: 12px;
+      color: var(--rw-sumi-seal);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-right: 0.65rem;
+      vertical-align: middle;
+      box-shadow: 0 0 3px rgba(184, 40, 29, 0.2);
+    }
+
+    .rw-sumi-quote-body {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--rw-sumi-charcoal);
+      font-style: italic;
+    }
+
+    .rw-sumi-quote-source {
+      margin-top: 0.75rem;
+      font-size: 0.84rem;
+      color: var(--rw-sumi-wash);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .rw-sumi-vertical-wrap {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.8rem 2.2rem;
+      background: rgba(220, 205, 185, 0.12);
+      border: 1px solid rgba(45, 38, 30, 0.08);
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .rw-sumi-vertical-body {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      height: 230px;
+      font-family: var(--rw-font-serif);
+      letter-spacing: 0.15em;
+      line-height: 2.3;
+    }
+
+    .rw-sumi-vertical-body p {
+      margin: 0 0 0 1.6rem !important;
+      padding: 0 !important;
+      display: inline-block;
+      height: 100%;
+      font-size: 0.96rem;
+      color: var(--rw-sumi-charcoal);
+      vertical-align: top;
+    }
+
+    .rw-sumi-vertical-title {
+      font-size: 1.2rem !important;
+      font-weight: 700 !important;
+      color: var(--rw-sumi-ink) !important;
+      border-left: 2px solid var(--rw-sumi-ink);
+      padding-left: 0.5rem;
+    }
+
+    .rw-sumi-vertical-colophon {
+      font-size: 0.82rem;
+      color: var(--rw-sumi-dilute);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-left: 0.8rem !important;
+    }
+
+    /* --------------------------------------------------------------------------
+       18. 모바일 전용 목차(TOC) 바텀시트 오프캔버스 드로어
+       -------------------------------------------------------------------------- */
+    .rw-mobile-toc-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 19, 22, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 1500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .rw-mobile-toc-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .rw-mobile-toc-sheet {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: 75vh;
+      background: var(--rw-sumi-paper);
+      background-image: url('assets/hanji-bg.jpg');
+      background-size: cover;
+      border-top: 2px solid var(--rw-sumi-ink);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+      z-index: 1501;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.5rem 1.5rem 2.5rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .rw-mobile-toc-sheet.is-open {
+      transform: translateY(0);
+    }
+
+    .rw-mobile-toc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px dashed var(--rw-sumi-line);
+      margin-bottom: 1.2rem;
+    }
+
+    .rw-mobile-toc-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-mobile-toc-close {
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--rw-sumi-charcoal);
+      cursor: pointer;
+      padding: 0.4rem;
+      line-height: 1;
+    }
+
+    .rw-mobile-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .rw-mobile-toc-item {
+      margin-bottom: 0.6rem;
+    }
+
+    .rw-mobile-toc-link {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--rw-sumi-charcoal);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(45, 38, 30, 0.05);
+    }
+
+    .rw-mobile-toc-link:hover,
+    .rw-mobile-toc-link:active {
+      color: var(--rw-sumi-seal);
+      font-weight: 600;
+    }
+
+    .rw-btn-mobile-toc {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .rw-btn-mobile-toc {
+        display: inline-flex !important;
+      }
+    }
   </style>
 </head>
 <body class="rw-sumi-body hanji-texture-active">
@@ -1492,6 +1717,11 @@
 
   <!-- 천연 닥나무 화선지 고정 캔버스 (z-index 충돌 없는 100% 무결점 렌더링) -->
   <div class="rw-sumi-hanji-canvas" aria-hidden="true"></div>
+
+  <!-- 상단 고정 실시간 수묵 스크롤 게이지 (3px 슬림선) -->
+  <div class="rw-sumi-scroll-indicator" id="sumiScrollIndicator" aria-hidden="true">
+    <div class="rw-sumi-scroll-indicator__fill" id="sumiScrollFill"></div>
+  </div>
 
   <!-- 3컬럼 문서 레이아웃 (컨셉 이미지 1:1 대칭 완벽 일치 구조) -->
   <div class="rw-sumi-layout">
@@ -1518,7 +1748,7 @@
 
       <div class="rw-sidebar-group">
         <a href="#content" class="rw-sidebar-link">Content</a>
-        <a href="#styling-guide-2" class="rw-sidebar-link">Styling Guide</a>
+        <a href="#sumi-vertical" class="rw-sidebar-link">Vertical &amp; Quotes</a>
         <a href="#sumi-spinners" class="rw-sidebar-link">Sumi Spinners</a>
 
         <!-- 수묵 갈필(渴筆) 붓선 3 -->
@@ -1660,6 +1890,46 @@
           <strong>3. 스티키 내비게이션 & 메타 레일</strong>:
           좌우 사이드바는 <code>position: sticky</code>로 고정되어 장문 독서 중에도 메뉴와 인장 메타 정보가 시야에서 벗어나지 않고 우아하게 유지됩니다.
         </p>
+      </div>
+
+      <!-- ====================================================================
+           수묵 확장 컴포넌트: 전각 두인(頭印) 인용구 & 고서 전통 세로쓰기(縱書)
+           ==================================================================== -->
+      <h3 id="sumi-vertical">H3. Classical Quotes &amp; Vertical Calligraphy (두인 인용구와 세로쓰기)</h3>
+      <p>
+        동양 전통 서화의 시작을 알리는 <strong>타원형 두인(頭印, 引首印)</strong>이 어우러진 인용구 컴포넌트와, 고서 서첩 특유의 우측에서 좌측으로 흐르는 <strong>세로쓰기(縱書, <code>writing-mode: vertical-rl</code>)</strong> 조판을 지원합니다.
+      </p>
+
+      <!-- 1. 두인(頭印) 인용구 컴포넌트 -->
+      <blockquote class="rw-sumi-quote">
+        <p class="rw-sumi-quote-body">
+          <span class="rw-seal-head" title="두인">悠然</span>
+          "서예는 획 하나로 천지의 기운을 담고, 종이의 여백으로 만물의 호흡을 품는다. 글자가 곧 칼이요, 먹물이 곧 정신이다."
+        </p>
+        <div class="rw-sumi-quote-source">
+          <span>— 추사 김정희 (秋史 金正喜), 『완당전집(阮堂全集)』 필담 중에서</span>
+          <span class="rw-seal-chop rw-seal-chop--2" role="img" aria-label="추사 인장" title="추사">
+            <span>秋</span>
+            <span>史</span>
+          </span>
+        </div>
+      </blockquote>
+
+      <!-- 2. 고서 전통 세로쓰기(縱書) 카드 -->
+      <div class="rw-sumi-vertical-wrap">
+        <div class="rw-sumi-vertical-body">
+          <p class="rw-sumi-vertical-title">歲寒然後知松柏之後凋也 (세한연후 지송백지후조야)</p>
+          <p>날이 차가워진 뒤에야 소나무와 잣나무가 늦게 시드는 것을 안다.</p>
+          <p>한지 위에 스며든 붓글씨의 뼈대는 혹한의 겨울에도 푸르름을 잃지 않는 선비의 절개와 같다.</p>
+          <p>장문의 기술 문서를 조판함에 있어 화려한 기교보다 흔들림 없는 가독성의 골격을 세움이 이와 같음이다.</p>
+          <p class="rw-sumi-vertical-colophon">
+            <span>歲次 丙午年 秋九月</span>
+            <span class="rw-seal-chop rw-seal-chop--2" role="img" aria-label="완당 직인" title="완당">
+              <span>阮</span>
+              <span>堂</span>
+            </span>
+          </p>
+        </div>
       </div>
 
       <!-- 서예 색상표 테이블 -->
@@ -2222,12 +2492,34 @@
 
   </div>
 
-  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글 -->
+  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글, 명조체 토글, 모바일 목차 버튼 -->
   <div class="rw-control-panel">
+    <button type="button" class="rw-control-btn rw-btn-mobile-toc" onclick="toggleMobileToc(true)" aria-label="목차 열기">
+      <span>📜 목차 (TOC)</span>
+    </button>
+    <button type="button" class="rw-control-btn" id="btnToggleFont" onclick="toggleFontFamily()">
+      <span>✒️ 명조체 보기: <strong id="fontStatus">끔 (기본 산세리프)</strong></span>
+    </button>
     <button type="button" class="rw-control-btn" id="btnToggleTexture" onclick="toggleHanjiTexture()">
       <span>🌾 한지 닥나무 결: <strong id="textureStatus">켬 (ON)</strong></span>
     </button>
   </div>
+
+  <!-- 모바일 전용 목차(TOC) 바텀시트 오프캔버스 드로어 -->
+  <div class="rw-mobile-toc-overlay" id="mobileTocOverlay" onclick="toggleMobileToc(false)" aria-hidden="true"></div>
+  <aside class="rw-mobile-toc-sheet" id="mobileTocSheet" aria-label="모바일 목차">
+    <div class="rw-mobile-toc-header">
+      <span class="rw-mobile-toc-title">목차 (目錄)</span>
+      <button type="button" class="rw-mobile-toc-close" onclick="toggleMobileToc(false)" aria-label="닫기">✕</button>
+    </div>
+    <ul class="rw-mobile-toc-list">
+      <li class="rw-mobile-toc-item"><a href="#content" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">시작하기 (Overview)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-vertical" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">두인 인용구와 세로쓰기 (Quotes &amp; Vertical)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#color-palette" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">수묵 색상표 (Color Matrix)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#seal-badges" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">낙관 도장 뱃지 (Seal Stamp Badges)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-spinners" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">수묵 스피너 (Sumi Spinners)</a></li>
+    </ul>
+  </aside>
 
   <script>
     // 한지 섬유 결 실시간 토글 (기본 ON, 클릭 시 깔끔한 단색 화선지로 전환)
@@ -2237,6 +2529,46 @@
       const isActive = body.classList.toggle('hanji-texture-active');
       statusEl.textContent = isActive ? '켬 (ON)' : '끔 (OFF - 단색 화선지)';
     }
+
+    // 명조(Serif) 서체 실시간 토글 (기본 OFF-산세리프, 클릭 시 고풍스러운 명조체로 전환)
+    function toggleFontFamily() {
+      const body = document.body;
+      const statusEl = document.getElementById('fontStatus');
+      const isActive = body.classList.toggle('font-serif-active');
+      statusEl.textContent = isActive ? '켬 (명조 활성화)' : '끔 (기본 산세리프)';
+    }
+
+    // 모바일 목차(TOC) 바텀시트 열기/닫기
+    function toggleMobileToc(open) {
+      const overlay = document.getElementById('mobileTocOverlay');
+      const sheet = document.getElementById('mobileTocSheet');
+      if (!overlay || !sheet) return;
+      if (open) {
+        overlay.classList.add('is-open');
+        sheet.classList.add('is-open');
+      } else {
+        overlay.classList.remove('is-open');
+        sheet.classList.remove('is-open');
+      }
+    }
+
+    // 상단 고정 실시간 수묵 스크롤 게이지 (3px 슬림 수묵선)
+    window.addEventListener('scroll', function () {
+      const indicator = document.getElementById('sumiScrollIndicator');
+      const fill = document.getElementById('sumiScrollFill');
+      if (!indicator || !fill) return;
+
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+      fill.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      if (scrollTop > 10) {
+        indicator.classList.add('is-scrolled');
+      } else {
+        indicator.classList.remove('is-scrolled');
+      }
+    }, { passive: true });
 
     // 수묵 인터랙티브 슬라이더 값 실시간 업데이트 핸들러
     function updateSumiSlider(boxId, valId, value) {
