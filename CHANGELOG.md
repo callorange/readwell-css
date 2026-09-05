@@ -7,7 +7,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-05
+
 ### Added
+- **예제 폴더 파일명 직관화 및 4대 레이아웃 1:1 매핑**:
+  - `examples/article.html` ➔ `examples/reading.html` (Reading 48rem 1컬럼 장문 독서)
+  - `examples/issues.html` ➔ `examples/fluid.html` (Fluid 100% 전폭 백오피스/ERP 대용량 테이블)
+  - 4대 정예 레이아웃 아키타입(`reading.html`, `docs.html`, `workspace.html`, `fluid.html`)과 예제 파일명의 1:1 직관적 연계 완성
+  - `examples/index.html`, `README.md`, `docs/README.md`, `scripts/dev.js` 등 전체 프로젝트 링크 동기화
+- **Mode Switcher 일시적(Ephemeral) 프리뷰 전환**:
+  - `localStorage` 지속성 저장을 전면 제거하여 다른 페이지 이동 시 이전 페이지의 레이아웃이 잔존하거나 강제 덮어쓰여지지 않도록 개선
+  - 모든 예제 페이지 진입 시 각 페이지 HTML에 선언된 고유 기본 레이아웃/테마(`originalLayout`, `originalTheme`)로 항상 깨끗하게 로드
+  - 스위처의 조작은 현재 페이지의 일시적 프리뷰 테스트용으로만 휘발성 동작
+- **스마트 프리셋 (Convention over Configuration) 체계 및 `data-rw-layout` 승격**:
+  - 모호했던 `data-rw-surface`를 화면 골격과 목적을 명확히 대변하는 **`data-rw-layout`**으로 표준화하고, 기존 코드 보호를 위한 CSS 선택자 별칭(`:where([data-rw-layout], [data-rw-surface])`) 완비
+  - `data-rw-layout` 선언 하나만으로 최적의 여백 밀도가 자동 부여되는 4대 정예 레이아웃 아키타입 완비:
+    - `reading`: 48rem(768px) 폭 + 1.75 행간 + **기본 Cozy 밀도 자동 연동** (1컬럼 장문 독서/에세이)
+    - `docs`: 80rem(1280px) 폭 + **기본 Comfortable 밀도 자동 연동** (2컬럼 기술 문서 및 가이드)
+    - `workspace`: 90rem(1440px) 폭 + **기본 Comfortable 밀도 자동 연동** (3패널 노션형 지식베이스 & 어드민 대시보드)
+    - `fluid`: 100% 전폭 + **기본 Compact 초소형 밀도 자동 연동** (백오피스, ERP, 대용량 테이블, 구 records/dense 호환)
+  - 3패널 앱 셸(`.rw-app-shell--seamless`)에서 중앙 본문이 고립되고 좌우 사이드바가 양끝으로 찢어지던 와이드 스크린 공백 결함 완전 해소
+  - `data-rw-density`는 스마트 프리셋을 덮어쓰는 **미세 조절(Override) 속성**으로 역할 경계를 명확히 분리
+  - Live Mode Switcher(`switcher.js`) 컨트롤러에 4대 정예 레이아웃 및 2x2 정밀 그리드 동기화 적용
+- **야간 종이 테마 (Dark / Charcoal Paper Theme)**:
+  - 칠흑 블랙이 아닌 눈부심 없는 흑연 먹빛 톤의 저자극 다크 테마(`:root[data-rw-theme="dark"]`, `[data-rw-theme="dark"]`) 및 전용 Semantic Color Matrix 추가
+  - 사용자가 테마를 명시하지 않은 기본 상태에서 OS 다크 모드(`@media (prefers-color-scheme: dark)`) 자동 연동
+  - 퓨어 페이퍼 테마 트리오(Pure Paper Trio: `Light 📄` 내추럴 백상지, `Warm Paper 📖` 단행본 크림지, `Dark 🌙` 먹빛 흑연 야간지) 확장 및 Live Controls 스위처 연동
+- **출판물 수준 인쇄 및 PDF 최적화 (`@media print`)**:
+  - 브라우저 인쇄(`Ctrl+P`) 및 PDF 저장 시 내비게이션, 툴바, 버튼, 스위처 등 인터랙티브 UI 자동 숨김 (`display: none !important`)
+  - 100% 흑백 대비 및 잉크 절약을 위한 순백색 배경과 순먹색 텍스트 강제
+  - 표, 카드, 인용구, 코드 블록의 중간 페이지 잘림 방지 (`break-inside: avoid; page-break-inside: avoid;`) 및 제목 분리 방지 (`break-after: avoid;`)
+  - 본문 독서 영역(`.rw-reading`) 내 외부 링크 URL 자동 각주화 (`a[href^="http"]::after { content: " (" attr(href) ")"; }`)
+- **Tufte 스타일 사이드노트 및 본문 각주 (Sidenotes & Footnotes)**:
+  - 에드워드 터프티(Edward Tufte) 스타일의 장문 독서용 순수 CSS 사이드노트(`.rw-sidenote`, `.rw-sidenote-number`) 및 마진노트(`.rw-marginnote`, `.rw-marginnote-symbol`) 추가
+  - 데스크톱(너비 1080px 이상)에서 본문 독서 영역 우측 마진으로 부유하여 시선 분산 없이 동일 행에서 읽을 수 있는 레이아웃 적용
+  - 모바일/태블릿에서 인라인 체크박스 토글(`.rw-sidenote-toggle`) 기반의 접이식 카드로 자동 반응형 전환
+  - 학술 및 마크다운 표준 하단 각주 리스트(`.rw-footnotes`) 및 역참조 링크(`.rw-footnote-backref`) 스타일 추가
+- **Windows 고대비 모드(`forced-colors`) 및 웹 접근성(A11y) 강화**:
+  - 커스텀 체크박스, 라디오, 토글 스위치, 슬라이더 레인지에 `@media (forced-colors: active)` 시스템 색상 키워드(`Canvas`, `CanvasText`, `Highlight`, `HighlightText`) 바인딩
+  - 고대비 환경에서 체크/선택 상태 가시성 및 키보드 포커스 링(`:focus-visible`) 가시성 100% 보장
+- **실무 UI 패턴 4종 추가**:
+  - 인라인 칩/태그 컴포넌트(`.rw-chip`, `.rw-tag`, 인터랙티브 호버, 닫기 버튼 `.rw-chip__remove`, 6종 시맨틱 수식어)
+  - 신청서 및 단계별 절차 안내용 순수 CSS 프로세스 스테퍼(`.rw-steps`, `.rw-step`, `.is-active`, `.is-complete`)
+  - 코드 블록 타이틀 헤더(`.rw-code-block`, `.rw-code-header`, `.rw-code-title`, `.rw-code-lang`)
+  - 모바일 테이블 가로 스크롤 암시 큐(`.rw-table-container--scrollable`)
+- **Zero-Dependency v3 CSS 소스맵(`.css.map`) 생성 및 빌드 스크립트 고도화 (`scripts/build.js`)**:
+  - 외부 의존성 없이 표준 Base64 VLQ 인코더를 자체 내장하여 `dist/readwell.css.map` 및 `dist/readwell.min.css.map` 자동 생성 (브라우저 DevTools 원본 소스 파일 매핑 완비)
+  - 따옴표 문자열 및 `url(...)` 리터럴 임시 토큰 마스킹을 통한 안전한 CSS 압축(`safeMinifyCSS`) 구현 (문법 손상 원천 방지)
+- **문서 포털(Docs Portal) 파셜 모듈화 및 자동 조립 빌더 도입 (`docs/partials/`, `scripts/build-docs.js`)**:
+  - 12개 HTML 파셜 파일로 분할하여 유지보수성 극대화
+  - `docs/index.html` 및 `examples/docs.html` 원클릭 자동 조립 스크립트 구축 및 `npm run build` 통합
+- **`scripts/test-build.js` 회귀 테스트 전면 강화**:
+  - 신규 8대 핵심 선택자, v3 소스맵 무결성, 371쌍 CSS 중괄호 짝 밸런스, 60KB 번들 크기 예산(Size Budget), 문서 포털 조립 정합성 자동 검증 추가
 - 드롭업(Dropup) 위쪽 전개 지원 수식어(`.rw-dropdown--up`, `.rw-dropup`) 및 부드러운 상향 슬라이드 애니메이션(`@keyframes rw-dropup-show`) 추가
 - 스플릿 버튼 그룹(`.rw-button-group`)과 연동 시 드롭다운 메뉴가 작은 화살표에 국한되지 않고 일반 드롭다운처럼 **버튼 그룹 전체의 아래쪽/좌측 기준(`left: 0`)으로 자연스럽게 펼쳐지도록** 위치 컨텍스트 최적화
 - 버튼 그룹(`.rw-button-group`)과 드롭다운(`details.rw-dropdown`)을 결합한 일체형 스플릿 버튼 드롭다운(Split Button Dropdown / Action Split Button) 순수 CSS 지원 및 공식 문서/쇼케이스 데모 추가

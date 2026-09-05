@@ -75,11 +75,12 @@
 
 ## 7. 예제 페이지
 
-- [x] article 예제가 있다 (`examples/article.html`).
-- [x] workspace/docs 예제가 있다 (`examples/workspace.html`).
-- [x] news/community 예제가 있다 (`examples/community.html`).
-- [x] dashboard/backoffice 예제가 있다 (`examples/dashboard.html`).
-- [x] issue list/dense data 예제가 있다 (`examples/issues.html`).
+- [x] 5종 실사용 예제 템플릿 구현
+  - [x] reading 예제가 있다 (`examples/reading.html`).
+  - [x] workspace 예제가 있다 (`examples/workspace.html`).
+  - [x] community 예제가 있다 (`examples/community.html`).
+  - [x] dashboard 예제가 있다 (`examples/dashboard.html`).
+  - [x] fluid/issue list 예제가 있다 (`examples/fluid.html`).
 - [x] 종합 키친싱크 카탈로그가 있다 (`examples/components.html`).
 - [x] 각 예제가 같은 디자인 언어를 공유한다.
 - [x] 예제에서 CSS variable override를 보여준다.

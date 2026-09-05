@@ -1,0 +1,46 @@
+      <section id="modes" class="docs-section">
+        <h2 class="docs-section-title">7. Modes & Customization (모드 및 커스터마이징)</h2>
+
+        <!-- Layout Archetypes & Smart Presets -->
+        <article id="mode-surface" class="rw-card rw-stack docs-card">
+          <h3>Layout Archetypes & Smart Presets (레이아웃 및 스마트 프리셋)</h3>
+          <p class="rw-meta"><code>data-rw-layout</code> 속성으로 용도별 화면 특성을 지정하면 최적의 밀도가 <strong>자동 연동</strong>됩니다. (기존 <code>data-rw-surface</code>와도 100% 호환됩니다.)</p>
+          <ul>
+            <li><code>reading</code>: 1컬럼 장문 독서 최적화 (본문 폭 48rem, 넉넉한 1.75 행간 + <strong>기본 Cozy 밀도 자동 연동</strong>)</li>
+            <li><code>docs</code>: 2컬럼 공식 기술 문서 (컨테이너 80rem, 목차 TOC + 본문 가이드 + <strong>기본 Comfortable 밀도 자동 연동</strong>)</li>
+            <li><code>workspace</code>: 3패널 협업 도구 및 대시보드 뷰 (컨테이너 90rem, 사이드바 + 본문 + 속성 패널 + <strong>기본 Comfortable 밀도 자동 연동</strong>)</li>
+            <li><code>fluid</code> (records/dense): 전폭 백오피스 및 고밀도 데이터 테이블 (폭 100% + <strong>기본 Compact 밀도 자동 연동</strong>)</li>
+          </ul>
+        </article>
+
+        <!-- Density Fine-tuning -->
+        <article id="mode-density" class="rw-card rw-stack docs-card">
+          <h3>Density Fine-tuning (여백 밀도 미세 조절 & 오버라이드)</h3>
+          <p class="rw-meta">스마트 프리셋 기본값을 변경하고 싶을 때 <code>data-rw-density</code> 속성으로 버튼, 인풋, 테이블, 그리드 여백을 수동 오버라이드합니다.</p>
+          <ul>
+            <li><code>cozy</code>: 터치 인터페이스 및 여유로운 독서 여백</li>
+            <li><code>comfortable</code>: 표준 균형 데스크톱 여백</li>
+            <li><code>compact</code>: 대량 데이터 조회를 위한 압축 초소형 뷰</li>
+          </ul>
+        </article>
+
+        <!-- E-Ink Mode -->
+        <article id="mode-eink" class="rw-card rw-stack docs-card">
+          <h3>E-Ink Mode (전자종이 정적 렌더링 모드)</h3>
+          <p class="rw-meta"><code>data-rw-eink="true"</code> 속성 또는 <code>@media (update: slow)</code> 환경에서 모든 애니메이션과 전환 효과를 차단하여 눈 피로를 완벽히 제거합니다.</p>
+        </article>
+
+        <!-- Print Mode -->
+        <article id="mode-print" class="rw-card rw-stack docs-card">
+          <h3>Print Optimization (@media print)</h3>
+          <p class="rw-meta">
+            브라우저 인쇄(Ctrl+P) 또는 PDF 내보내기 시 별도의 조작 없이 출판물 규격으로 자동 최적화됩니다.
+          </p>
+          <ul>
+            <li><strong>UI 자동 숨김</strong>: 내비게이션 바, 툴바, 버튼, 컨트롤 패널 등 인터랙티브 UI 자동 제외</li>
+            <li><strong>순백색 & 순먹색 전환</strong>: 잉크 절약 및 100% 흑백 대비 보장</li>
+            <li><strong>페이지 나눔 방지</strong>: 표, 카드, 인용구, 코드 블록 중간에서 페이지가 잘리는 현상 방지</li>
+            <li><strong>링크 각주 표기</strong>: 본문 내 외부 링크 URL 자동 각주화 (<code>a[href]::after</code>)</li>
+          </ul>
+        </article>
+      </section>

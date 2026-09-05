@@ -78,76 +78,59 @@ Readwell CSS는 HTML5 `data-*` 속성을 통해 전체 레이아웃과 종이 �
 
 | HTML 속성 | 속성 값 (Values) | 기본값 | 적용 레이어 및 역할 |
 | :--- | :--- | :--- | :--- |
-| `data-rw-theme` | `light`, `warm` | `light` | **테마 색온도**: 내추럴 백상지 vs 단행본 크림지 질감 |
-| `data-rw-surface` | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **표면 패밀리**: 용도별 최적화된 레이아웃 및 컴포넌트 프리셋 |
-| `data-rw-density` | `cozy`, `comfortable`, `compact` | `comfortable` | **밀도 시스템**: 행간, 패딩, 간격(spacing)의 압축률 제어 |
+| `data-rw-theme` | `light`, `warm`, `dark` | `light` | **테마 색온도**: 내추럴 백상지 vs 단행본 크림지 vs 흑연 야간지 질감 |
+| `data-rw-layout`<br>*(구 surface 호환)* | `reading`, `docs`, `workspace`, `fluid` | `reading` | **레이아웃 아키타입 & 스마트 프리셋**: 용도별 최적 폭 및 기본 밀도 자동 연동 |
+| `data-rw-density` | `cozy`, `comfortable`, `compact` | 프리셋 연동 | **밀도 미세 조절 (오버라이드)**: 행간, 패딩, 간격(spacing)의 개별 수동 조절 |
 | `data-rw-eink` | `true`, `false` | `false` | **전자종이 정적 모드**: 애니메이션/트랜지션을 차단하여 눈 피로 최소화 |
 
-## 3. Surface family
+## 3. Layout Archetypes (레이아웃 아키타입)
 
-### 2.1 Reading Surface
-
-용도:
-
-- article
-- docs article
-- blog
-- community 본문
-
-특징:
-
-- 본문 폭 강하게 제한
-- 여백 넉넉함
-- 주변 UI 조용함
-- 카드/패널보다 콘텐츠 흐름 우선
-
-### 2.2 Workspace Surface
+### 3.1 Reading Layout (`data-rw-layout="reading"`)
 
 용도:
-
-- 노트 앱
-- 위키형 도구
-- 가이드/문서 편집 화면
-- 속성 패널이 있는 협업 도구
+- article, blog, 장문 에세이, 가독성 최우선 콘텐츠
 
 특징:
+- 본문 폭 48rem(768px) 제한 및 1.75 행간
+- 기본 `cozy` 밀도 자동 연동
+- 카드/패널보다 텍스트 콘텐츠 흐름 우선
 
-- 중앙 문서 + 좌우 패널 공존
-- section, property row, callout 구분감 강화
-- 문서형 가독성과 앱형 구조감의 균형
-
-### 2.3 Dashboard Surface
+### 3.2 Docs Layout (`data-rw-layout="docs"`)
 
 용도:
-
-- 운영 콘솔
-- analytics
-- admin dashboard
+- 공식 기술 문서, API 레퍼런스, 2패널 가이드 문서
 
 특징:
+- 컨테이너 폭 80rem(1280px) 안정적인 문서 작업 폭
+- 기본 `comfortable` 밀도 자동 연동
+- 좌측 목차(TOC) 사이드바 + 중앙 본문 가이드의 2패널 표준
 
-- stat card, system status, recent activity, quick action을 분명히 구분
-- semantic color를 실용적으로 활용
-- panel 단위 정보 묶음 강조
-- 숫자와 상태의 빠른 판독 우선
-
-### 2.4 Dense Data Surface
+### 3.3 Workspace & Dashboard Layout (`data-rw-layout="workspace"`)
 
 용도:
-
-- issue tracker
-- repository list
-- data table
-- filter/list 중심 제품 화면
+- 노션형 협업 도구, 팀 지식베이스, 어드민 관제 대시보드
 
 특징:
+- 컨테이너 폭 90rem(1440px) 와이드 스크린 최적화
+- 기본 `comfortable` 밀도 자동 연동
+- 좌측 사이드바 + 중앙 작업창 + 우측 속성 패널의 3패널 앱 셸(`.rw-app-shell--seamless`)
+- 4열 스탯 카드 및 지표 차트 그리드와 완벽한 조화
 
-- row 구분감 강화
-- compact density 지원
+### 3.4 Fluid Layout (`data-rw-layout="fluid"`, records/dense 호환)
+
+용도:
+- issue tracker, repository list, data table, ERP, 스프레드시트, 백오피스
+
+특징:
+- 폭 100% 전폭(Fluid) 레이아웃
+- 기본 `compact` 초소형 밀도 자동 연동
+- 셀 패딩 최소화 및 대량 데이터 한눈에 조회
+- 필터바 및 대용량 테이블 화면 최적화
+- row 구분감 강화 및 compact density 지원
 - filter bar / summary row / table body가 섞여 보이지 않도록 구분
 - badge/status 가독성 강화
 
-## 3. Density system
+## 4. Density system
 
 Readwell은 화면에 따라 밀도를 조절할 수 있어야 합니다.
 
@@ -159,9 +142,15 @@ Readwell은 화면에 따라 밀도를 조절할 수 있어야 합니다.
 
 밀도는 component shape를 바꾸기보다 spacing, row height, padding, gap을 조절하는 방향으로 설계합니다.
 
-## 4. Semantic color for meaning
+## 5. Pure Paper Themes & Semantic Colors
 
-### 4.1 의미 체계
+### 5.1 Pure Paper Trio (3대 종이 테마)
+
+- **Light 📄 (내추럴 백상지)**: 맑고 정갈한 기본 백색 종이 질감
+- **Warm Paper 📖 (단행본 크림지)**: 장시간 독서 시 눈이 가장 편안한 미색 크림톤 종이 질감
+- **Dark 🌙 (먹빛 흑연 야간지)**: 칠흑 블랙이 아닌 눈부심 없는 흑연 먹빛 저자극 야간 종이 질감
+
+### 5.2 의미 체계
 
 | Semantic color | 용도 |
 |---|---|
@@ -172,7 +161,7 @@ Readwell은 화면에 따라 밀도를 조절할 수 있어야 합니다.
 | danger | 오류, 실패, 삭제 |
 | info | 안내, 진행 중, 정보성 상태 |
 
-### 4.2 색상 성격
+### 5.3 색상 성격
 
 기본 테마에서 다음 방향을 유지합니다.
 
@@ -183,7 +172,7 @@ Readwell은 화면에 따라 밀도를 조절할 수 있어야 합니다.
 - Danger: muted red
 - Info: blue-gray
 
-### 4.3 사용 단계
+### 5.4 사용 단계
 
 모든 semantic color는 최소한 다음 단계가 있어야 합니다.
 
@@ -219,7 +208,7 @@ Readwell은 화면에 따라 밀도를 조절할 수 있어야 합니다.
 --rw-info-strong
 ```
 
-### 4.4 사용 방식
+### 5.5 사용 방식
 
 색상은 주로 다음과 같이 제한적으로 사용합니다.
 
@@ -241,59 +230,59 @@ Card나 Panel 전체 배경을 상태 컬러로 강하게 칠하는 것보다는
 - 매우 연한 semantic background
 - 필요한 부분에서만 높은 대비 사용
 
-## 5. Component principles
+## 6. Component principles
 
-### 5.1 Panel
+### 6.1 Panel
 
 - 화면 내부 구획 표현
 - workspace/dashboard에서 핵심
 - subtle border + quiet background
 - dense UI에서는 heading과 body separation 강화
 
-### 5.2 Card
+### 6.2 Card
 
 - 독립 콘텐츠 단위
 - shadow보다 border, spacing, title hierarchy 우선
 - list 반복 구조에서 사용
 
-### 5.3 Stat card
+### 6.3 Stat card
 
 - dashboard 전용 핵심 패턴
 - 숫자, 보조 설명, 증감 상태를 명확히 구분
 - 상태 강조는 accent line, small icon, delta text 위주
 
-### 5.4 Toolbar / Filter bar
+### 6.4 Toolbar / Filter bar
 
 - dense data UI에서 중요
 - control row와 content row의 경계가 명확해야 함
 - input/select/button이 하나의 cluster로 보이도록 설계
 
-### 5.5 Status list / Activity list
+### 6.5 Status list / Activity list
 
 - 작은 상태 정보가 빠르게 읽혀야 함
 - 아이콘, semantic text, time/meta를 명확히 분리
 
-### 5.6 Table
+### 6.6 Table
 
 - 선과 간격 중심
 - dense surface에서는 row separation 강화
 - badge/status/align rules로 판독성 확보
 
-## 6. Typography rules
+## 7. Typography rules
 
 - 본문은 읽기용 line-height 확보
 - dense UI에서도 heading, label, helper text의 위계를 분명히 유지
 - 큰 제목은 serif 또는 차분한 display tone을 부분적으로 허용할 수 있으나, 제품 전반은 안정적인 가독성 우선
 - meta text는 너무 흐리지 않게 유지
 
-## 7. Accessibility
+## 8. Accessibility
 
 - semantic color는 색상만으로 의미를 전달하지 않음
 - contrast는 WCAG 기준을 고려
 - focus ring과 keyboard focus는 항상 식별 가능해야 함
 - dense data 화면에서도 row focus, selected state, active filter가 분명해야 함
 
-## 8. 결과적으로 지향하는 인상
+## 9. 결과적으로 지향하는 인상
 
 Readwell이 주는 인상은 다음과 같아야 합니다.
 

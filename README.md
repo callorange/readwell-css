@@ -11,9 +11,9 @@ Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분�
 ## ✨ 핵심 특징 (Key Highlights)
 
 - **E-Ink 영감의 절제된 페이퍼 미학**: 불필요한 장식 색상, 과한 그림자, 시각적 소음이 되는 애니메이션을 억제하고 단정한 선과 여백으로 정보를 전달합니다.
-- **퓨어 페이퍼 테마 듀오 (Pure Paper Duo)**: 맑고 정갈한 내추럴 백상지(`Light 📄`)와 장시간 독서 시 눈이 가장 편안한 단행본 크림지(`Warm Paper 📖`) 2가지 엄선된 종이 질감을 지원합니다.
+- **퓨어 페이퍼 테마 트리오 (Pure Paper Trio)**: 맑고 정갈한 내추럴 백상지(`Light 📄`), 장시간 독서 시 눈이 가장 편안한 단행본 크림지(`Warm Paper 📖`), 눈부심 없는 먹빛 흑연 야간지(`Dark 🌙`) 3가지 엄선된 종이 질감을 지원합니다.
 - **저채도 Semantic Color Matrix**: 6종의 의미 기반 상태 컬러(`primary`, `secondary`, `success`, `warning`, `danger`, `info`)를 종이의 색온도에 맞추어 저채도로 정밀하게 지원합니다.
-- **Surface Family & Density System**: Reading(독서/블로그), Workspace(문서 협업), Dashboard(운영 콘솔), Dense Data(고밀도 테이블) 환경에 최적화된 표면과 밀도(`cozy`, `comfortable`, `compact`)를 제공합니다.
+- **4대 정예 레이아웃 아키타입 & 스마트 프리셋 (`data-rw-layout`)**: Reading(48rem 1컬럼 독서), Docs(80rem 2컬럼 기술문서), Workspace(90rem 3패널 지식베이스 & 4열 대시보드), Fluid(100% 전폭 고밀도 데이터 백오피스)에 최적화된 화면 골격과 기본 밀도(Cozy, Comfortable, Compact) 자동 연동을 제공합니다.
 - **Zero Runtime JavaScript & Zero Dependencies**: 100% 순수 HTML5 시맨틱 태그(`dialog`, `details`, `progress` 등)와 CSS3 `@layer`만으로 빌드 및 동작합니다.
 
 ---
@@ -26,22 +26,22 @@ Readwell CSS는 별도의 JavaScript 없이, HTML 태그(`<html>` 또는 `<body>
 
 | 제어 축 (Attribute) | 사용 가능한 옵션 값 (Values) | 기본값 | 시각적 특징 및 권장 사용처 |
 | :--- | :--- | :--- | :--- |
-| **`data-rw-theme`** | `light`, `warm` | `light` | **테마 색온도**: `light`(맑고 정갈한 내추럴 백상지) vs `warm`(장시간 독서에 눈이 편안한 단행본 크림지) |
-| **`data-rw-surface`** | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **화면 용도별 표면**: `reading`(아티클/에세이/블로그), `workspace`(문서 협업/노션형), `dashboard`(운영 콘솔/지표), `dense`(데이터 테이블/백오피스) |
-| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | `comfortable` | **여백 및 컴포넌트 밀도**: `cozy`(터치 친화 여유 여백), `comfortable`(표준 균형 여백), `compact`(밀집된 데이터 뷰) |
+| **`data-rw-theme`** | `light`, `warm`, `dark` | `light` | **테마 색온도**: `light`(맑고 정갈한 내추럴 백상지) vs `warm`(단행본 크림지) vs `dark`(먹빛 흑연 야간지) |
+| **`data-rw-layout`**<br>*(구 surface 호환)* | `reading`, `docs`, `workspace`, `fluid` | `reading` | **레이아웃 아키타입 & 스마트 프리셋**: 화면 목적별 최적 폭 및 기본 밀도 자동 연동 (`reading[48rem]`➔cozy, `docs[80rem]`➔comfortable, `workspace[90rem]`➔comfortable, `fluid[100%]`➔compact) |
+| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | 프리셋 연동 | **밀도 미세 조절 (오버라이드)**: 스마트 프리셋을 덮어쓰고 개별 패딩·여백을 수동 미세 조정 (`cozy`, `comfortable`, `compact`) |
 | **`data-rw-eink`** | `true`, `false` | `false` | **전자종이 정적 모드**: 모든 전환 효과 및 애니메이션(`transition: none`)을 차단하여 눈 피로 최소화 |
 
 ### 마크업 적용 예시
 
 ```html
-<!-- 1. 기술 블로그 / 장문 아티클 (미색 크림지 + 장문 독서 표면 + 여유로운 밀도) -->
-<body data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy">
+<!-- 1. 기술 블로그 / 장문 아티클 (미색 크림지 + 1컬럼 독서 레이아웃 -> cozy 밀도 자동 연동) -->
+<body data-rw-theme="warm" data-rw-layout="reading">
 
-<!-- 2. 문서형 협업 도구 / 노션형 위키 (백상지 + 협업 문서 표면 + 표준 밀도) -->
-<body data-rw-surface="workspace" data-rw-density="comfortable">
+<!-- 2. 문서형 협업 도구 / 노션형 위키 / 대시보드 (백상지 + 3패널 작업 레이아웃 -> comfortable 밀도 자동 연동) -->
+<body data-rw-layout="workspace">
 
-<!-- 3. 고밀도 백오피스 / 이슈 트래커 (고밀도 표 표면 + 압축 밀도) -->
-<body data-rw-surface="dense" data-rw-density="compact">
+<!-- 3. 고밀도 백오피스 / 대량 데이터 테이블 (먹빛 야간지 + 전폭 백오피스 레이아웃 -> compact 밀도 자동 연동) -->
+<body data-rw-theme="dark" data-rw-layout="fluid">
 
 <!-- 4. 전자종이(E-Ink) 기기 최적화 무모션 모드 -->
 <body data-rw-eink="true">
@@ -72,13 +72,13 @@ npm test
 
 ## 📂 예제 템플릿 및 쇼케이스 (`examples/`)
 
-- [**공식 문서 포털 (Docs Portal)**](examples/docs.html): 카테고리별 라이브 프리뷰 및 복사 가능한 코드 블록
+- [**공식 문서 포털 (Docs Portal)**](examples/docs.html): 카테고리별 라이브 프리뷰 및 복사 가능한 코드 블록 (Docs 레이아웃, 80rem)
 - [**종합 컴포넌트 카탈로그 (Kitchen Sink)**](examples/components.html): 모든 타이포그래피, 폼 유효성 검사, 아코디언, 모달, 탭, 드롭다운, 엠프티 스테이트 쇼케이스
-- [**Article / Long-form Page**](examples/article.html): Reading Surface (장문 독서/기술 블로그)
-- [**Workspace / Documentation**](examples/workspace.html): Workspace Surface (문서형 협업 도구)
-- [**News & Community Feed**](examples/community.html): Community Surface (뉴스 및 스레드 피드)
-- [**Dashboard & Backoffice**](examples/dashboard.html): Dashboard Surface (운영 콘솔 및 지표)
-- [**Issue Tracker & Dense Table**](examples/issues.html): Dense Data Surface (고밀도 이슈 관리)
+- [**Reading / Long-form Page**](examples/reading.html): Reading 레이아웃 (48rem, 1컬럼 장문 독서/기술 블로그)
+- [**Workspace / Team Docs**](examples/workspace.html): Workspace 레이아웃 (90rem, 3패널 노션형 지식베이스)
+- [**News & Community Feed**](examples/community.html): Reading 레이아웃 오버라이드 (48rem, 커뮤니티 피드)
+- [**Dashboard & Backoffice**](examples/dashboard.html): Workspace 레이아웃 (90rem, 4열 운영 콘솔 및 지표)
+- [**Fluid / Issue Tracker & Table**](examples/fluid.html): Fluid 레이아웃 (100% 전폭 고밀도 데이터 백오피스/ERP)
 
 ---
 

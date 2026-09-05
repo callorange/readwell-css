@@ -8,22 +8,24 @@
   <link rel="stylesheet" href="switcher.css">
   <script src="switcher.js" defer></script>
 </head>
-<body data-rw-surface="workspace" data-rw-density="comfortable">
+<body data-rw-layout="workspace">
   <!-- Top Navigation Bar -->
-  <header class="rw-border-bottom" style="padding: 0.75rem 1.5rem; background-color: var(--rw-paper);">
-    <nav class="rw-nav" style="padding: 0; align-items: center; justify-content: space-between;">
-      <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
-        <a href="index.html" style="font-weight: 700; text-decoration: none; color: var(--rw-text); font-size: 1.05rem;">📖 Readwell CSS</a>
-        <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">Workspace</span>
-        <span class="rw-meta" style="font-size: 0.85rem;">프로덕트 팀 가이드</span>
-      </div>
-      <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
-        <a href="docs.html" style="font-weight: 600; text-decoration: none; color: var(--rw-primary-strong);">📖 Docs</a>
-        <a href="index.html" style="text-decoration: none; color: var(--rw-text); font-size: 0.9rem;">허브</a>
-        <button class="rw-button rw-button--secondary rw-button--sm">공유</button>
-        <button class="rw-button rw-button--primary rw-button--sm">저장</button>
-      </div>
-    </nav>
+  <header class="rw-border-bottom" style="background-color: var(--rw-paper);">
+    <div class="rw-container" style="padding-block: 0.75rem;">
+      <nav class="rw-nav" style="padding: 0; align-items: center; justify-content: space-between;">
+        <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+          <a href="index.html" style="font-weight: 700; text-decoration: none; color: var(--rw-text); font-size: 1.05rem;">📖 Readwell CSS</a>
+          <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">Workspace Layout</span>
+          <span class="rw-meta" style="font-size: 0.85rem;">프로덕트 팀 가이드</span>
+        </div>
+        <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+          <a href="docs.html" style="font-weight: 600; text-decoration: none; color: var(--rw-primary-strong);">📖 Docs</a>
+          <a href="index.html" style="text-decoration: none; color: var(--rw-text); font-size: 0.9rem;">허브</a>
+          <button class="rw-button rw-button--secondary rw-button--sm">공유</button>
+          <button class="rw-button rw-button--primary rw-button--sm">저장</button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- Main Seamless Workspace Layout -->
@@ -54,7 +56,7 @@
     </aside>
 
     <!-- Center Document Content Area -->
-    <article class="rw-reading rw-stack" style="margin-left: auto; margin-right: auto; width: 100%;">
+    <article class="rw-stack" style="max-width: 56rem; margin-inline: auto; width: 100%;">
       <h1>리드웰 CSS 도입 가이드</h1>
       
       <div class="rw-grid-2" style="font-size: 0.9em; gap: 0.5rem; margin-top: 0.5rem;">

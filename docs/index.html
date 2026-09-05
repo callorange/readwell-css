@@ -122,13 +122,13 @@
     }
   </style>
 </head>
-<body data-rw-surface="workspace">
+<body data-rw-layout="docs">
   <!-- Top Global Header -->
   <header class="rw-container rw-border-bottom" style="padding-block: 0.85rem;">
     <nav class="rw-nav" style="align-items: center; justify-content: space-between;">
       <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
         <a href="index.html" style="font-weight: 700; text-decoration: none; color: var(--rw-text); font-size: 1.05rem;">📖 Readwell CSS</a>
-        <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">v0.1.0</span>
+        <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">v0.2.0</span>
         <span class="rw-meta" style="font-size: 0.85rem;">공식 문서 포털</span>
       </div>
       <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
@@ -150,7 +150,7 @@
             <li><a href="#overview">개요 및 철학</a></li>
             <li><a href="#quickstart">빠른 시작 (Installation)</a></li>
             <li><a href="#attributes">4대 제어 속성 (data-rw-*)</a></li>
-            <li><a href="#themes">테마 듀오 (Pure Paper Duo)</a></li>
+            <li><a href="#themes">테마 트리오 (Pure Paper Trio)</a></li>
           </ul>
         </div>
 
@@ -168,6 +168,7 @@
           <div class="docs-sidebar-title">Typography & Content</div>
           <ul class="docs-sidebar-links">
             <li><a href="#content-typography">Typography (Headings & Body)</a></li>
+            <li><a href="#content-sidenote">Sidenotes & Footnotes (각주)</a></li>
             <li><a href="#content-blockquote">Blockquote & Code</a></li>
             <li><a href="#content-table">Tables & Modifiers (스트라이프·고정)</a></li>
             <li><a href="#content-badge">Badges & Meta</a></li>
@@ -193,6 +194,8 @@
             <li><a href="#comp-button">Button & Busy Indicator</a></li>
             <li><a href="#comp-spinner">Spinner (독립 회전 스피너)</a></li>
             <li><a href="#comp-tooltip">Pure CSS Tooltip (말풍선)</a></li>
+            <li><a href="#comp-chip">Chips & Tags (인라인 칩)</a></li>
+            <li><a href="#comp-steps">Stepper (단계 표시기)</a></li>
             <li><a href="#comp-avatar">Avatar (프로필 & 이니셜)</a></li>
             <li><a href="#comp-card">Card & Panel</a></li>
             <li><a href="#comp-callout">Callout / Alerts (4종)</a></li>
@@ -210,6 +213,7 @@
           <ul class="docs-sidebar-links">
             <li><a href="#pattern-stat">Stat Card (지표 카드)</a></li>
             <li><a href="#pattern-summary">Summary Row & Empty State</a></li>
+            <li><a href="#pattern-code-header">Code Header (코드 블록 타이틀)</a></li>
           </ul>
         </div>
 
@@ -219,6 +223,7 @@
             <li><a href="#mode-surface">Surface Family</a></li>
             <li><a href="#mode-density">Density System</a></li>
             <li><a href="#mode-eink">E-Ink Mode</a></li>
+            <li><a href="#mode-print">Print Optimization (인쇄 최적화)</a></li>
           </ul>
         </div>
       </nav>
@@ -264,7 +269,7 @@
 &lt;link rel="stylesheet" href="https://callorange.github.io/readwell-css/dist/readwell.min.css"&gt;
 
 &lt;!-- 기본 HTML 마크업 예시 --&gt;
-&lt;main class="rw-container" data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy"&gt;
+&lt;main class="rw-container" data-rw-theme="warm" data-rw-layout="reading"&gt;
   &lt;article class="rw-reading"&gt;
     &lt;h1&gt;읽는 시간이 길수록 조용한 화면이 좋아진다.&lt;/h1&gt;
     &lt;p&gt;본문 내용을 편안하게 작성하세요...&lt;/p&gt;
@@ -276,7 +281,7 @@
         <!-- 4 Control Attributes -->
         <article id="attributes" class="rw-card rw-stack docs-card">
           <h3>🎛️ 4대 HTML 제어 속성 (data-rw-*)</h3>
-          <p class="rw-meta">HTML <code>&lt;body&gt;</code> 또는 <code>&lt;html&gt;</code> 태그에 속성을 부여하여 전역 모드를 선언적으로 제어합니다.</p>
+          <p class="rw-meta">HTML <code>&lt;body&gt;</code> 또는 <code>&lt;html&gt;</code> 태그에 속성을 부여하여 전역 모드를 선언적으로 제어합니다. 스마트 프리셋 체계로 <code>data-rw-layout</code>만 지정해도 최적의 밀도가 자동 연동됩니다.</p>
           
           <div class="rw-table-container">
             <table class="docs-table" style="width: 100%;">
@@ -291,21 +296,21 @@
               <tbody>
                 <tr>
                   <td><code style="white-space: nowrap;">data-rw-theme</code></td>
-                  <td><code>light</code>, <code>warm</code></td>
+                  <td><code>light</code>, <code>warm</code>, <code>dark</code></td>
                   <td><code>light</code></td>
-                  <td><strong>테마 색온도</strong>: 내추럴 백상지(Light) vs 단행본 미색 크림지(Warm)</td>
+                  <td><strong>테마 색온도</strong>: 내추럴 백상지(Light) vs 단행본 미색 크림지(Warm) vs 먹빛 흑연 야간지(Dark)</td>
                 </tr>
                 <tr>
-                  <td><code style="white-space: nowrap;">data-rw-surface</code></td>
-                  <td><code>reading</code>, <code>workspace</code>, <code>dashboard</code>, <code>dense</code></td>
+                  <td><code style="white-space: nowrap;">data-rw-layout</code><br><span class="rw-meta" style="font-size:0.75rem;">(구 surface 호환)</span></td>
+                  <td><code>reading</code>, <code>docs</code>, <code>workspace</code>, <code>fluid</code></td>
                   <td><code>reading</code></td>
-                  <td><strong>화면 표면</strong>: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 표</td>
+                  <td><strong>레이아웃 아키타입 & 스마트 프리셋</strong>: 화면 목적별 최적 폭 및 기본 밀도 자동 연동 (reading[48rem]➔cozy, docs[80rem]➔comfortable, workspace[90rem]➔comfortable, fluid[100%]➔compact)</td>
                 </tr>
                 <tr>
                   <td><code style="white-space: nowrap;">data-rw-density</code></td>
                   <td><code>cozy</code>, <code>comfortable</code>, <code>compact</code></td>
-                  <td><code>comfortable</code></td>
-                  <td><strong>여백 밀도</strong>: 여유로운 여백 / 표준 균형 / 압축 데이터 뷰</td>
+                  <td>스마트 프리셋 연동</td>
+                  <td><strong>밀도 미세 조절 (오버라이드)</strong>: 스마트 프리셋 기본값을 덮어쓰고 개별 패딩·여백을 수동 미세 조정할 때 사용</td>
                 </tr>
                 <tr>
                   <td><code style="white-space: nowrap;">data-rw-eink</code></td>
@@ -318,11 +323,11 @@
           </div>
         </article>
 
-        <!-- Theme Duo -->
+        <!-- Theme Trio -->
         <article id="themes" class="rw-card rw-stack docs-card">
-          <h3>퓨어 페이퍼 테마 듀오 (Pure Paper Duo)</h3>
-          <p class="rw-meta">E-Ink 및 인쇄 종이 매체의 자연스러운 질감을 살린 2종의 표준 테마입니다.</p>
-          <div class="rw-grid-2">
+          <h3>퓨어 페이퍼 테마 트리오 (Pure Paper Trio)</h3>
+          <p class="rw-meta">E-Ink 및 인쇄 종이 매체의 자연스러운 질감을 살린 3종의 표준 종이 테마입니다.</p>
+          <div class="rw-grid-3">
             <!-- Light Specimen Card -->
             <div class="rw-panel rw-stack" style="background-color: #faf8f3; color: #1f1f1f; border: 1.5px solid #b8b2a4; padding: 1.25rem;">
               <div class="rw-cluster" style="justify-content: space-between;">
@@ -353,10 +358,29 @@
               </p>
               <div style="background-color: #faf6ec; border: 1px solid #ded4c0; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
                 <span style="font-weight: 600; font-size: 0.95rem;">단행본 질감의 편안함</span>
-                <p style="margin: 0; font-size: 0.85rem; color: #756c60;">실제 출판 책의 미색 용지 색온도를 재현하여 야간 독서에 적합합니다.</p>
+                <p style="margin: 0; font-size: 0.85rem; color: #756c60;">실제 출판 책의 미색 용지 색온도를 재현하여 편안한 시야를 유지합니다.</p>
                 <div class="rw-cluster" style="margin-top: 0.25rem;">
                   <button type="button" class="rw-button rw-button--primary rw-button--sm" style="background-color: #e0e8f0; border-color: #516b88; color: #364d68;">읽기 시작</button>
                   <button type="button" class="rw-button rw-button--secondary rw-button--sm" style="background-color: #e2e8df; border-color: #6e786b; color: #4f584d;">목차</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dark Slate Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #1a1d20; color: #e2ded5; border: 1.5px solid #4f5761; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Dark 🌙 (먹빛 흑연 야간지)</strong>
+                <span class="rw-badge" style="background-color: #233140; color: #9bbde3; border-color: #6c93be; font-size: 0.75rem;">야간 저자극</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #8e8b82;">
+                칠흑 블랙 대신 눈부심 없는 흑연 먹빛으로 장시간 야간 독서 및 코딩에 적합합니다.
+              </p>
+              <div style="background-color: #22262b; border: 1px solid #353b42; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem; color: #e2ded5;">먹지 질감의 차분함</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #8e8b82;">어두운 방에서도 대비 자극 없이 정보를 또렷하게 판독할 수 있습니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm" style="background-color: #233140; border-color: #6c93be; color: #9bbde3;">야간 실행</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm" style="background-color: #28312a; border-color: #859187; color: #aab7ad;">설정</button>
                 </div>
               </div>
             </div>
@@ -371,13 +395,13 @@
         <!-- Container & Reading -->
         <article id="layout-container" class="rw-card rw-stack docs-card">
           <h3>Container & Reading</h3>
-          <p class="rw-meta"><code>.rw-container</code>는 페이지 최대 폭(72rem)을 안정적으로 제한하며, <code>.rw-reading</code>은 긴 글 가독성을 위해 본문 폭을 44rem으로 최적화합니다.</p>
+          <p class="rw-meta"><code>.rw-container</code>는 페이지 최대 폭(80rem)을 안정적으로 제한하며, <code>.rw-reading</code>은 긴 글 가독성을 위해 본문 폭을 48rem으로 최적화합니다.</p>
 
           <div class="docs-preview">
             <div class="rw-container" style="background-color: var(--rw-paper-3); padding: 1rem; border: 1px dashed var(--rw-line-strong); text-align: center;">
               .rw-container (기본 컨테이너 영역)
               <div class="rw-reading" style="background-color: var(--rw-paper-1); margin: 0.75rem auto; padding: 1rem; border: 1px solid var(--rw-line); text-align: left;">
-                .rw-reading (최대 44rem 독서 최적화 영역)
+                .rw-reading (최대 48rem 독서 최적화 영역)
               </div>
             </div>
           </div>
@@ -663,6 +687,55 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
           </div>
         </article>
 
+        <!-- Tufte Sidenotes & Footnotes -->
+        <article id="content-sidenote" class="rw-card rw-stack docs-card">
+          <h3>Tufte-Style Sidenotes & Footnotes (사이드노트 및 본문 각주)</h3>
+          <p class="rw-meta">
+            에드워드 터프티(Edward Tufte) 스타일의 장문 독서 최적화 각주 시스템입니다.
+            데스크톱(1080px 이상)에서는 본문 우측 마진에 나란히 배치되고, 모바일에서는 접이식 인라인 카드로 자동 반응형 전환됩니다.
+          </p>
+
+          <div class="docs-preview">
+            <div class="rw-reading" style="position: relative; max-width: 32rem; margin: 0 auto; padding-right: 1rem;">
+              <p>
+                긴 기술 문서나 아티클을 읽을 때 본문의 시선 흐름을 깨뜨리지 않고 참고 자료를 전달하는 것은 대단히 중요합니다.<label for="sn-demo-1" class="rw-sidenote-number"></label>
+                <input type="checkbox" id="sn-demo-1" class="rw-sidenote-toggle rw-sr-only">
+                <span class="rw-sidenote">사이드노트는 데스크톱에서 본문과 동일한 행 높이의 우측 여백에 배치되어 시선 분산을 방지합니다.</span>
+                번호가 필요 없는 보조 메모의 경우 기호형 마진노트를 사용할 수도 있습니다.<label for="mn-demo-1" class="rw-marginnote-symbol">⊕</label>
+                <input type="checkbox" id="mn-demo-1" class="rw-marginnote-toggle rw-sr-only">
+                <span class="rw-marginnote">마진노트는 번호 없이 자연스러운 주석 메모를 남길 때 유용합니다.</span>
+              </p>
+
+              <!-- Standard Bottom Footnotes Section -->
+              <section class="rw-footnotes" aria-label="Footnotes">
+                <ol>
+                  <li id="fn-demo-1">마크다운 및 출판 표준 규격의 하단 각주 예시입니다. <a href="#content-sidenote" class="rw-footnote-backref">↩</a></li>
+                </ol>
+              </section>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 1. 표준 사이드노트 (번호 자동 매김) --&gt;
+본문 텍스트입니다.&lt;label for="sn-1" class="rw-sidenote-number"&gt;&lt;/label&gt;
+&lt;input type="checkbox" id="sn-1" class="rw-sidenote-toggle rw-sr-only"&gt;
+&lt;span class="rw-sidenote"&gt;데스크톱에서는 우측 마진에 부유하고 모바일에서는 접이식으로 변환됩니다.&lt;/span&gt;
+
+&lt;!-- 2. 기호형 마진노트 (번호 없음) --&gt;
+참고 문장입니다.&lt;label for="mn-1" class="rw-marginnote-symbol"&gt;⊕&lt;/label&gt;
+&lt;input type="checkbox" id="mn-1" class="rw-marginnote-toggle rw-sr-only"&gt;
+&lt;span class="rw-marginnote"&gt;단순 보조 메모용 마진노트입니다.&lt;/span&gt;
+
+&lt;!-- 3. 학술/출판 하단 각주 목록 --&gt;
+&lt;section class="rw-footnotes" aria-label="Footnotes"&gt;
+  &lt;ol&gt;
+    &lt;li id="fn-1"&gt;각주 설명 문구 &lt;a href="#fnref-1" class="rw-footnote-backref"&gt;↩&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+        </article>
+
         <!-- Blockquote & Code -->
         <article id="content-blockquote" class="rw-card rw-stack docs-card">
           <h3>Blockquote & Code Block</h3>
@@ -684,7 +757,7 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
         <article id="content-table" class="rw-card rw-stack docs-card">
           <h3>Tables & Modifiers (데이터 표 및 확장 수식어)</h3>
           <p class="rw-meta">
-            선과 여백 중심의 미니멀 데이터 테이블로, 줄무늬 행(<code>.rw-table--striped</code>), 행 호버 강조(<code>.rw-table--hoverable</code>), 고정 헤더(<code>.rw-table--sticky-header</code>) 수식어를 지원합니다.
+            선과 여백 중심의 미니멀 데이터 테이블로, 줄무늬 행(<code>.rw-table--striped</code>), 행 호버 강조(<code>.rw-table--hoverable</code>), 고정 헤더(<code>.rw-table--sticky-header</code>), 가로 스크롤 큐(<code>.rw-table-container--scrollable</code>) 수식어를 지원합니다.
           </p>
 
           <div class="docs-preview rw-stack" style="gap: 1.5rem;">
@@ -744,8 +817,8 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
                   <tbody>
                     <tr>
                       <td>v0.2.0</td>
-                      <td>2026-09-03</td>
-                      <td>6대 신규 컴포넌트 추가 및 5대 기존 컴포넌트 고도화</td>
+                      <td>2026-09-05</td>
+                      <td>4대 정예 레이아웃 아키타입, 스마트 프리셋, 다크 테마 및 컴포넌트 확장</td>
                     </tr>
                     <tr>
                       <td>v0.1.0</td>
@@ -1248,6 +1321,106 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
           </div>
         </article>
 
+        <!-- Chips & Tags -->
+        <article id="comp-chip" class="rw-card rw-stack docs-card">
+          <h3>Chips & Tags (.rw-chip, .rw-tag)</h3>
+          <p class="rw-meta">
+            태그 필터, 카테고리 라벨 및 선택 항목 표시를 위한 콤팩트 인라인 컴포넌트입니다.
+            인터랙티브 호버, 닫기 버튼(<code>.rw-chip__remove</code>) 및 6종 시맨틱 수식어를 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <!-- Semantic Chips -->
+            <div class="rw-cluster">
+              <span class="rw-chip">기본 칩</span>
+              <span class="rw-chip rw-chip--primary">Primary</span>
+              <span class="rw-chip rw-chip--secondary">Secondary</span>
+              <span class="rw-chip rw-chip--success">완료됨</span>
+              <span class="rw-chip rw-chip--warning">대기 중</span>
+              <span class="rw-chip rw-chip--danger">오류</span>
+              <span class="rw-chip rw-chip--info">공지</span>
+            </div>
+
+            <!-- Removable & Interactive Chips -->
+            <div class="rw-cluster">
+              <span class="rw-chip">
+                <span>UI/UX 디자인</span>
+                <button type="button" class="rw-chip__remove" aria-label="삭제">✕</button>
+              </span>
+              <span class="rw-chip rw-chip--primary">
+                <span>CSS Framework</span>
+                <button type="button" class="rw-chip__remove" aria-label="삭제">✕</button>
+              </span>
+              <a href="#comp-chip" class="rw-chip rw-chip--interactive">클릭 가능한 태그 링크 →</a>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 기본 칩 & 시맨틱 변형 --&gt;
+&lt;span class="rw-chip"&gt;기본 칩&lt;/span&gt;
+&lt;span class="rw-chip rw-chip--primary"&gt;Primary&lt;/span&gt;
+&lt;span class="rw-chip rw-chip--success"&gt;완료&lt;/span&gt;
+
+&lt;!-- 삭제 버튼이 포함된 칩 --&gt;
+&lt;span class="rw-chip"&gt;
+  &lt;span&gt;카테고리&lt;/span&gt;
+  &lt;button type="button" class="rw-chip__remove" aria-label="삭제"&gt;✕&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- 클릭 가능한 인터랙티브 칩 --&gt;
+&lt;a href="#" class="rw-chip rw-chip--interactive"&gt;클릭 태그&lt;/a&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Process Stepper -->
+        <article id="comp-steps" class="rw-card rw-stack docs-card">
+          <h3>Process Stepper (.rw-steps, .rw-step)</h3>
+          <p class="rw-meta">
+            온보딩, 결제, 신청서 및 단계별 워크플로우를 직관적으로 안내하는 순수 CSS 가로 단계 표시기입니다.
+            완료(<code>.is-complete</code>) 및 현재 진행 중(<code>.is-active</code>, <code>[aria-current="step"]</code>) 상태를 지원합니다.
+          </p>
+
+          <div class="docs-preview">
+            <ol class="rw-steps">
+              <li class="rw-step is-complete">
+                <span class="rw-step-badge">✓</span>
+                <span>계정 생성</span>
+              </li>
+              <li class="rw-step is-active" aria-current="step">
+                <span class="rw-step-badge">2</span>
+                <span>프로필 작성</span>
+              </li>
+              <li class="rw-step">
+                <span class="rw-step-badge">3</span>
+                <span>플랜 선택</span>
+              </li>
+              <li class="rw-step">
+                <span class="rw-step-badge">4</span>
+                <span>완료</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;ol class="rw-steps"&gt;
+  &lt;li class="rw-step is-complete"&gt;
+    &lt;span class="rw-step-badge"&gt;✓&lt;/span&gt;
+    &lt;span&gt;1단계: 완료&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="rw-step is-active" aria-current="step"&gt;
+    &lt;span class="rw-step-badge"&gt;2&lt;/span&gt;
+    &lt;span&gt;2단계: 진행 중&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="rw-step"&gt;
+    &lt;span class="rw-step-badge"&gt;3&lt;/span&gt;
+    &lt;span&gt;3단계: 대기&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+        </article>
+
         <!-- Avatar Component -->
         <article id="comp-avatar" class="rw-card rw-stack docs-card">
           <h3>Avatar (.rw-avatar)</h3>
@@ -1321,7 +1494,7 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
           <p class="rw-meta">안내, 성공, 경고, 오류 알림 박스입니다.</p>
 
           <div class="docs-preview rw-stack">
-            <div class="rw-callout rw-callout--info"><strong>Info</strong>: 새로운 버전 v0.1.0이 배포되었습니다.</div>
+            <div class="rw-callout rw-callout--info"><strong>Info</strong>: 새로운 버전 v0.2.0이 배포되었습니다.</div>
             <div class="rw-callout rw-callout--success"><strong>Success</strong>: 작업이 정상적으로 완료되었습니다.</div>
             <div class="rw-callout rw-callout--warning"><strong>Warning</strong>: 저장되지 않은 변경사항이 있습니다.</div>
             <div class="rw-callout rw-callout--danger"><strong>Danger</strong>: 연결이 끊어졌습니다. 다시 시도하세요.</div>
@@ -1657,32 +1830,68 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
 &lt;/div&gt;</code></pre>
           </div>
         </article>
+
+        <!-- Code Block Header -->
+        <article id="pattern-code-header" class="rw-card rw-stack docs-card">
+          <h3>Code Block Header (.rw-code-block, .rw-code-header)</h3>
+          <p class="rw-meta">
+            코드 블록 상단에 파일명과 언어 뱃지를 단정하게 표시하는 개발자 친화적인 문서 패턴입니다.
+          </p>
+
+          <div class="docs-preview">
+            <div class="rw-code-block">
+              <div class="rw-code-header">
+                <span class="rw-code-title">📄 server.ts</span>
+                <span class="rw-code-lang">TypeScript</span>
+              </div>
+              <pre><code>import http from 'node:http';
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello from Readwell CSS!');
+});
+
+server.listen(3000);</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-code-block"&gt;
+  &lt;div class="rw-code-header"&gt;
+    &lt;span class="rw-code-title"&gt;📄 server.ts&lt;/span&gt;
+    &lt;span class="rw-code-lang"&gt;TypeScript&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;console.log("Hello Readwell");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
       </section>
 
       <!-- 7. Modes & Customization -->
       <section id="modes" class="docs-section">
         <h2 class="docs-section-title">7. Modes & Customization (모드 및 커스터마이징)</h2>
 
-        <!-- Surface Family -->
+        <!-- Layout Archetypes & Smart Presets -->
         <article id="mode-surface" class="rw-card rw-stack docs-card">
-          <h3>Surface Family (화면 표면)</h3>
-          <p class="rw-meta"><code>data-rw-surface</code> 속성으로 용도별 화면 특성을 지정합니다.</p>
+          <h3>Layout Archetypes & Smart Presets (레이아웃 및 스마트 프리셋)</h3>
+          <p class="rw-meta"><code>data-rw-layout</code> 속성으로 용도별 화면 특성을 지정하면 최적의 밀도가 <strong>자동 연동</strong>됩니다. (기존 <code>data-rw-surface</code>와도 100% 호환됩니다.)</p>
           <ul>
-            <li><code>reading</code>: 장문 독서 최적화 (본문 폭 48rem 제한 및 넉넉한 타이포 행간)</li>
-            <li><code>workspace</code>: 문서형 협업 도구 및 사이드바 레이아웃 (컨테이너 80rem)</li>
-            <li><code>dashboard</code>: 운영 콘솔 및 지표 그리드 (컨테이너 84rem)</li>
-            <li><code>dense</code>: 고밀도 데이터 테이블 및 필터 (컴팩트 밀도 자동 활성화)</li>
+            <li><code>reading</code>: 1컬럼 장문 독서 최적화 (본문 폭 48rem, 넉넉한 1.75 행간 + <strong>기본 Cozy 밀도 자동 연동</strong>)</li>
+            <li><code>docs</code>: 2컬럼 공식 기술 문서 (컨테이너 80rem, 목차 TOC + 본문 가이드 + <strong>기본 Comfortable 밀도 자동 연동</strong>)</li>
+            <li><code>workspace</code>: 3패널 협업 도구 및 대시보드 뷰 (컨테이너 90rem, 사이드바 + 본문 + 속성 패널 + <strong>기본 Comfortable 밀도 자동 연동</strong>)</li>
+            <li><code>fluid</code> (records/dense): 전폭 백오피스 및 고밀도 데이터 테이블 (폭 100% + <strong>기본 Compact 밀도 자동 연동</strong>)</li>
           </ul>
         </article>
 
-        <!-- Density System -->
+        <!-- Density Fine-tuning -->
         <article id="mode-density" class="rw-card rw-stack docs-card">
-          <h3>Density System (여백 밀도)</h3>
-          <p class="rw-meta"><code>data-rw-density</code> 속성으로 테이블 셀, 버튼, 인풋, 그리드 여백을 유기적으로 조절합니다.</p>
+          <h3>Density Fine-tuning (여백 밀도 미세 조절 & 오버라이드)</h3>
+          <p class="rw-meta">스마트 프리셋 기본값을 변경하고 싶을 때 <code>data-rw-density</code> 속성으로 버튼, 인풋, 테이블, 그리드 여백을 수동 오버라이드합니다.</p>
           <ul>
             <li><code>cozy</code>: 터치 인터페이스 및 여유로운 독서 여백</li>
-            <li><code>comfortable</code>: 표준 균형 여백 (기본값)</li>
-            <li><code>compact</code>: 대량 데이터 조회를 위한 압축 뷰</li>
+            <li><code>comfortable</code>: 표준 균형 데스크톱 여백</li>
+            <li><code>compact</code>: 대량 데이터 조회를 위한 압축 초소형 뷰</li>
           </ul>
         </article>
 
@@ -1691,8 +1900,21 @@ H&lt;sub&gt;2&lt;/sub&gt;O / E = mc&lt;sup&gt;2&lt;/sup&gt;
           <h3>E-Ink Mode (전자종이 정적 렌더링 모드)</h3>
           <p class="rw-meta"><code>data-rw-eink="true"</code> 속성 또는 <code>@media (update: slow)</code> 환경에서 모든 애니메이션과 전환 효과를 차단하여 눈 피로를 완벽히 제거합니다.</p>
         </article>
-      </section>
 
+        <!-- Print Mode -->
+        <article id="mode-print" class="rw-card rw-stack docs-card">
+          <h3>Print Optimization (@media print)</h3>
+          <p class="rw-meta">
+            브라우저 인쇄(Ctrl+P) 또는 PDF 내보내기 시 별도의 조작 없이 출판물 규격으로 자동 최적화됩니다.
+          </p>
+          <ul>
+            <li><strong>UI 자동 숨김</strong>: 내비게이션 바, 툴바, 버튼, 컨트롤 패널 등 인터랙티브 UI 자동 제외</li>
+            <li><strong>순백색 & 순먹색 전환</strong>: 잉크 절약 및 100% 흑백 대비 보장</li>
+            <li><strong>페이지 나눔 방지</strong>: 표, 카드, 인용구, 코드 블록 중간에서 페이지가 잘리는 현상 방지</li>
+            <li><strong>링크 각주 표기</strong>: 본문 내 외부 링크 URL 자동 각주화 (<code>a[href]::after</code>)</li>
+          </ul>
+        </article>
+      </section>
       <!-- Global Footer -->
       <footer class="rw-card rw-cluster" style="justify-content: space-between; margin-top: 2rem;">
         <span class="rw-meta">© 2026 Readwell Team · Released under the MIT License.</span>

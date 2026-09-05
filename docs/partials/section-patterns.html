@@ -1,0 +1,93 @@
+      <section id="patterns" class="docs-section">
+        <h2 class="docs-section-title">6. Product Patterns (제품형 UI 패턴)</h2>
+
+        <!-- Stat Card -->
+        <article id="pattern-stat" class="rw-card rw-stack docs-card">
+          <h3>Stat Card (지표/통계 카드)</h3>
+          <p class="rw-meta">대시보드와 모니터링 콘솔에 사용되는 메트릭 카드입니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-grid-2">
+              <div class="rw-stat rw-panel">
+                <span class="rw-meta">월간 활성 독자</span>
+                <div class="rw-stat__value">128,450</div>
+                <div class="rw-stat__diff" style="color: var(--rw-success-strong);">↑ 14.2% 전월 대비</div>
+              </div>
+              <div class="rw-stat rw-panel">
+                <span class="rw-meta">평균 완독률</span>
+                <div class="rw-stat__value">84.6%</div>
+                <div class="rw-stat__diff" style="color: var(--rw-primary-strong);">↑ 3.1% 전월 대비</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-stat rw-panel"&gt;
+  &lt;span class="rw-meta"&gt;지표 명칭&lt;/span&gt;
+  &lt;div class="rw-stat__value"&gt;128,450&lt;/div&gt;
+  &lt;div class="rw-stat__diff"&gt;↑ 14.2% 증가&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Summary & Empty State -->
+        <article id="pattern-summary" class="rw-card rw-stack docs-card">
+          <h3>Empty State (.rw-empty)</h3>
+          <p class="rw-meta">데이터가 없을 때 보여주는 단정한 엠프티 스테이트입니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-empty">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600;">등록된 문서가 없습니다</p>
+              <p class="rw-meta" style="margin: 0 0 1rem 0;">새로운 글을 작성하여 지식 베이스를 구축해 보세요.</p>
+              <button class="rw-button--primary">첫 글 작성하기</button>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-empty"&gt;
+  &lt;p&gt;데이터가 없습니다&lt;/p&gt;
+  &lt;button class="rw-button--primary"&gt;생성하기&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Code Block Header -->
+        <article id="pattern-code-header" class="rw-card rw-stack docs-card">
+          <h3>Code Block Header (.rw-code-block, .rw-code-header)</h3>
+          <p class="rw-meta">
+            코드 블록 상단에 파일명과 언어 뱃지를 단정하게 표시하는 개발자 친화적인 문서 패턴입니다.
+          </p>
+
+          <div class="docs-preview">
+            <div class="rw-code-block">
+              <div class="rw-code-header">
+                <span class="rw-code-title">📄 server.ts</span>
+                <span class="rw-code-lang">TypeScript</span>
+              </div>
+              <pre><code>import http from 'node:http';
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello from Readwell CSS!');
+});
+
+server.listen(3000);</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-code-block"&gt;
+  &lt;div class="rw-code-header"&gt;
+    &lt;span class="rw-code-title"&gt;📄 server.ts&lt;/span&gt;
+    &lt;span class="rw-code-lang"&gt;TypeScript&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;console.log("Hello Readwell");&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 7. Modes & Customization -->

@@ -3,18 +3,22 @@
  * Zero-dependency demo controller for previewing Theme, Surface, Density & E-Ink modes.
  */
 (function () {
-  const STORAGE_KEY = 'readwell_live_preview_settings';
+  // Clean up any legacy localStorage cache to guarantee fresh page defaults
+  try {
+    localStorage.removeItem('readwell_live_preview_settings');
+  } catch (e) {}
 
   const THEMES = [
     { id: 'light', label: 'Light 📄', sub: '백상지', desc: 'Light 테마: 맑고 정갈한 기본 백색 종이 질감' },
-    { id: 'warm', label: 'Warm 📖', sub: '미색지', desc: 'Warm 테마: 눈이 편안한 단행본 크림톤 미색 종이 질감' }
+    { id: 'warm', label: 'Warm 📖', sub: '미색지', desc: 'Warm 테마: 눈이 편안한 단행본 크림톤 미색 종이 질감' },
+    { id: 'dark', label: 'Dark 🌙', sub: '먹지/야간', desc: 'Dark 테마: 눈부심 없는 흑연 먹빛 저자극 야간 종이 질감' }
   ];
 
-  const SURFACES = [
-    { id: 'reading', label: 'Reading', sub: '장문 독서', desc: 'Reading 표면: 아티클·블로그에 최적화된 좁은 본문 폭과 편안한 행간' },
-    { id: 'workspace', label: 'Workspace', sub: '문서 협업', desc: 'Workspace 표면: 사이드바와 본문 카드가 조화된 지식 문서·노션형 뷰' },
-    { id: 'dashboard', label: 'Dashboard', sub: '운영 콘솔', desc: 'Dashboard 표면: 카드 그리드와 지표 중심의 관리자 대시보드 뷰' },
-    { id: 'dense', label: 'Dense', sub: '고밀도 표', desc: 'Dense 표면: 데이터 테이블과 백오피스용 밀집 정보 뷰' }
+  const LAYOUTS = [
+    { id: 'reading', label: 'Reading', sub: '1컬럼 독서', desc: 'Reading 레이아웃: 48rem(768px) 폭 + 기본 Cozy(여유) 밀도 (장문 독서/에세이)', defaultDensity: 'cozy' },
+    { id: 'docs', label: 'Docs', sub: '2컬럼 기술문서', desc: 'Docs 레이아웃: 80rem(1280px) 폭 + 기본 Comfortable(표준) 밀도 (목차 TOC + 본문 가이드)', defaultDensity: 'comfortable' },
+    { id: 'workspace', alias: 'dashboard', label: 'Workspace', sub: '3패널/대시보드', desc: 'Workspace 레이아웃: 90rem(1440px) 폭 + 기본 Comfortable(표준) 밀도 (3패널 노션형 위키 & 대시보드 콘솔)', defaultDensity: 'comfortable' },
+    { id: 'fluid', alias: 'records', label: 'Fluid', sub: '전폭 백오피스', desc: 'Fluid/Records 레이아웃: 100% 전폭 + 기본 Compact(밀집) 밀도 (ERP/대용량 테이블)', defaultDensity: 'compact' }
   ];
 
   const DENSITIES = [
@@ -28,43 +32,44 @@
     desc: 'E-Ink 모드: 모든 전환 효과 및 애니메이션을 차단하여 눈 피로 최소화'
   };
 
-  // Capture original page defaults
-  const originalTheme = (document.documentElement.dataset.rwTheme || document.body.dataset.rwTheme) === 'warm' ? 'warm' : 'light';
-  const originalSurface = document.body.dataset.rwSurface || 'reading';
-  const originalDensity = document.body.dataset.rwDensity || 'comfortable';
+  // Capture original page defaults - Each page always starts with its own designed defaults
+  const currentAttrTheme = document.documentElement.dataset.rwTheme || document.body.dataset.rwTheme;
+  const originalTheme = currentAttrTheme === 'warm' ? 'warm' : (currentAttrTheme === 'dark' ? 'dark' : 'light');
+  const rawLayout = document.body.dataset.rwLayout || document.body.dataset.rwSurface || 'reading';
+  let originalLayout = rawLayout;
+  if (originalLayout === 'dense' || originalLayout === 'records') originalLayout = 'fluid';
+  if (originalLayout === 'dashboard') originalLayout = 'workspace';
+  const matchedLayoutObj = LAYOUTS.find(l => l.id === originalLayout || l.alias === originalLayout);
+  const originalDensity = document.body.dataset.rwDensity || matchedLayoutObj?.defaultDensity || 'comfortable';
   const originalEink = document.body.dataset.rwEink === 'true';
 
-  // Load saved or current
-  let savedSettings = null;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) savedSettings = JSON.parse(raw);
-  } catch (e) {}
-
-  let currentTheme = (savedSettings?.theme === 'warm' || savedSettings?.theme === 'light') ? savedSettings.theme : originalTheme;
-  let currentSurface = savedSettings?.surface || originalSurface;
-  let currentDensity = savedSettings?.density || originalDensity;
-  let currentEink = savedSettings?.eink !== undefined ? savedSettings.eink : originalEink;
+  // State is purely ephemeral for testing the current page (no cross-page persistence)
+  let currentTheme = originalTheme;
+  let currentLayout = originalLayout;
+  let currentDensity = originalDensity;
+  let currentEink = originalEink;
 
   function getActiveSummary() {
     const t = THEMES.find(item => item.id === currentTheme)?.sub || currentTheme;
-    const s = SURFACES.find(item => item.id === currentSurface)?.sub || currentSurface;
-    const d = DENSITIES.find(item => item.id === currentDensity)?.sub || currentDensity;
+    const lObj = LAYOUTS.find(item => item.id === currentLayout || item.alias === currentLayout) || LAYOUTS[0];
+    const l = lObj.sub;
+    const dObj = DENSITIES.find(item => item.id === currentDensity) || DENSITIES[1];
+    const isPreset = lObj.defaultDensity === currentDensity;
+    const dText = isPreset ? `기본 ${dObj.sub} 연동` : `${dObj.sub} 오버라이드`;
     const e = currentEink ? ' · E-Ink 정적' : '';
-    return `현재: ${t} · ${s} · ${d}${e}`;
+    return `현재: ${t} · ${l} (${dText})${e}`;
   }
 
   // Apply immediately
   function applyModes() {
-    if (currentTheme === 'warm') {
-      document.documentElement.dataset.rwTheme = 'warm';
-      document.body.dataset.rwTheme = 'warm';
-    } else {
-      delete document.documentElement.dataset.rwTheme;
-      delete document.body.dataset.rwTheme;
+    if (currentTheme) {
+      document.documentElement.dataset.rwTheme = currentTheme;
+      document.body.dataset.rwTheme = currentTheme;
     }
-    if (currentSurface) {
-      document.body.dataset.rwSurface = currentSurface;
+    if (currentLayout) {
+      document.body.dataset.rwLayout = currentLayout;
+      // Backward compatibility alias for [data-rw-surface]
+      document.body.dataset.rwSurface = currentLayout === 'records' ? 'dense' : currentLayout;
     }
     if (currentDensity) {
       document.body.dataset.rwDensity = currentDensity;
@@ -74,17 +79,6 @@
     } else {
       delete document.body.dataset.rwEink;
     }
-  }
-
-  function saveSettings() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        theme: currentTheme,
-        surface: currentSurface,
-        density: currentDensity,
-        eink: currentEink
-      }));
-    } catch (e) {}
   }
 
   applyModes();
@@ -109,7 +103,7 @@
             <label class="rw-switcher-label">Theme Mode</label>
             <span class="rw-switcher-info-badge" data-tooltip="종이 질감 색온도 선택" tabindex="0">ⓘ</span>
           </div>
-          <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr;" id="rw-theme-btns">
+          <div class="rw-switcher-grid" style="grid-template-columns: repeat(3, 1fr);" id="rw-theme-btns">
             ${THEMES.map(t => `
               <button type="button" class="rw-switcher-btn ${t.id === currentTheme ? 'is-active' : ''}" data-theme="${t.id}" title="${t.desc}" aria-label="${t.label} - ${t.sub}">
                 <span class="rw-btn-title">${t.label}</span>
@@ -121,14 +115,14 @@
 
         <div class="rw-switcher-section">
           <div class="rw-switcher-section-head">
-            <label class="rw-switcher-label">Surface Family</label>
-            <span class="rw-switcher-info-badge" data-tooltip="화면 용도별 레이아웃 및 스타일 프리셋" tabindex="0">ⓘ</span>
+            <label class="rw-switcher-label">Layout Archetype</label>
+            <span class="rw-switcher-info-badge" data-tooltip="화면 용도별 최적 레이아웃 및 스마트 기본 밀도 자동 연동" tabindex="0">ⓘ</span>
           </div>
-          <div class="rw-switcher-grid" id="rw-surface-btns">
-            ${SURFACES.map(s => `
-              <button type="button" class="rw-switcher-btn ${s.id === currentSurface ? 'is-active' : ''}" data-surface="${s.id}" title="${s.desc}" aria-label="${s.label} - ${s.sub}">
-                <span class="rw-btn-title">${s.label}</span>
-                <span class="rw-btn-desc">${s.sub}</span>
+          <div class="rw-switcher-grid" style="grid-template-columns: repeat(2, 1fr);" id="rw-layout-btns">
+            ${LAYOUTS.map(l => `
+              <button type="button" class="rw-switcher-btn ${l.id === currentLayout || l.alias === currentLayout ? 'is-active' : ''}" data-layout="${l.id}" title="${l.desc}" aria-label="${l.label} - ${l.sub}">
+                <span class="rw-btn-title">${l.label}</span>
+                <span class="rw-btn-desc">${l.sub}</span>
               </button>
             `).join('')}
           </div>
@@ -136,8 +130,8 @@
 
         <div class="rw-switcher-section">
           <div class="rw-switcher-section-head">
-            <label class="rw-switcher-label">Density System</label>
-            <span class="rw-switcher-info-badge" data-tooltip="행간 및 컴포넌트 여백 밀도" tabindex="0">ⓘ</span>
+            <label class="rw-switcher-label">Density Fine-tuning</label>
+            <span class="rw-switcher-info-badge" data-tooltip="행간 및 컴포넌트 여백 밀도 (수동 오버라이드 가능)" tabindex="0">ⓘ</span>
           </div>
           <div class="rw-switcher-grid" style="grid-template-columns: 1fr 1fr 1fr;" id="rw-density-btns">
             ${DENSITIES.map(d => `
@@ -183,7 +177,7 @@
     const toggleBtn = wrap.querySelector('#rw-switcher-toggle');
     const closeBtn = wrap.querySelector('#rw-switcher-close');
     const themeBtns = wrap.querySelectorAll('#rw-theme-btns button');
-    const surfaceBtns = wrap.querySelectorAll('#rw-surface-btns button');
+    const layoutBtns = wrap.querySelectorAll('#rw-layout-btns button');
     const densityBtns = wrap.querySelectorAll('#rw-density-btns button');
     const einkSwitch = wrap.querySelector('#rw-eink-switch');
     const resetBtn = wrap.querySelector('#rw-switcher-reset');
@@ -235,14 +229,13 @@
         btn.classList.add('is-active');
         currentTheme = btn.dataset.theme;
         applyModes();
-        saveSettings();
         resetHint();
       });
     });
 
-    // Surface buttons
-    surfaceBtns.forEach(btn => {
-      const item = SURFACES.find(s => s.id === btn.dataset.surface);
+    // Layout buttons (with Smart Preset density auto-sync)
+    layoutBtns.forEach(btn => {
+      const item = LAYOUTS.find(l => l.id === btn.dataset.layout);
       if (item) {
         btn.addEventListener('mouseenter', () => updateHint(item.desc));
         btn.addEventListener('focus', () => updateHint(item.desc));
@@ -250,16 +243,22 @@
         btn.addEventListener('blur', resetHint);
       }
       btn.addEventListener('click', () => {
-        surfaceBtns.forEach(b => b.classList.remove('is-active'));
+        layoutBtns.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
-        currentSurface = btn.dataset.surface;
+        currentLayout = btn.dataset.layout;
+
+        // 스마트 프리셋: 레이아웃에 최적화된 기본 밀도로 자동 연동
+        if (item && item.defaultDensity) {
+          currentDensity = item.defaultDensity;
+          densityBtns.forEach(b => b.classList.toggle('is-active', b.dataset.density === currentDensity));
+        }
+
         applyModes();
-        saveSettings();
         resetHint();
       });
     });
 
-    // Density buttons
+    // Density buttons (Explicit fine-tuning override)
     densityBtns.forEach(btn => {
       const item = DENSITIES.find(d => d.id === btn.dataset.density);
       if (item) {
@@ -273,7 +272,6 @@
         btn.classList.add('is-active');
         currentDensity = btn.dataset.density;
         applyModes();
-        saveSettings();
         resetHint();
       });
     });
@@ -289,22 +287,21 @@
     einkSwitch.addEventListener('change', () => {
       currentEink = einkSwitch.checked;
       applyModes();
-      saveSettings();
       resetHint();
     });
 
     // Reset button
     resetBtn.addEventListener('click', () => {
       try {
-        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem('readwell_live_preview_settings');
       } catch (e) {}
       currentTheme = originalTheme;
-      currentSurface = originalSurface;
+      currentLayout = originalLayout;
       currentDensity = originalDensity;
       currentEink = originalEink;
 
       themeBtns.forEach(b => b.classList.toggle('is-active', b.dataset.theme === currentTheme));
-      surfaceBtns.forEach(b => b.classList.toggle('is-active', b.dataset.surface === currentSurface));
+      layoutBtns.forEach(b => b.classList.toggle('is-active', b.dataset.layout === currentLayout));
       densityBtns.forEach(b => b.classList.toggle('is-active', b.dataset.density === currentDensity));
       einkSwitch.checked = currentEink;
 

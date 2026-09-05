@@ -1,0 +1,45 @@
+      <!-- Global Footer -->
+      <footer class="rw-card rw-cluster" style="justify-content: space-between; margin-top: 2rem;">
+        <span class="rw-meta">© 2026 Readwell Team · Released under the MIT License.</span>
+        <a href="#overview" style="font-size: 0.9rem;">맨 위로 이동 ↑</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Live Mode Switcher Script -->
+  <script src="../examples/switcher.js"></script>
+  <script>
+    // Copy Code Helper Function
+    function copyCode(button) {
+      const codeBlock = button.parentElement.querySelector('code');
+      if (!codeBlock) return;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerText;
+        button.innerText = '✓ 복사됨';
+        button.style.backgroundColor = 'var(--rw-primary-soft)';
+        button.style.color = 'var(--rw-primary-strong)';
+        setTimeout(() => {
+          button.innerText = originalText;
+          button.style.backgroundColor = '';
+          button.style.color = '';
+        }, 1500);
+      });
+    }
+
+    // Light-Dismiss handler for details.rw-dropdown (Click Outside & ESC)
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('details.rw-dropdown[open]').forEach(d => {
+        if (!d.contains(e.target) || e.target.closest('.rw-dropdown-item')) {
+          d.removeAttribute('open');
+        }
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('details.rw-dropdown[open]').forEach(d => d.removeAttribute('open'));
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+      <section id="components" class="docs-section">
+        <h2 class="docs-section-title">5. Components (컴포넌트)</h2>
+
+        <!-- Buttons -->
+        <article id="comp-button" class="rw-card rw-stack docs-card">
+          <h3>Button Sizes & Variants (버튼 크기 및 스타일)</h3>
+          <p class="rw-meta">
+            3종 크기(<code>.rw-button--sm</code>, 기본 Medium, <code>.rw-button--lg</code>), 전체 폭 블록(<code>.rw-button--block</code>), 외곽선(<code>.rw-button--outline</code>) 및 <code>.rw-button-group</code>을 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <!-- Sizes -->
+            <div>
+              <span class="rw-meta"><strong>버튼 크기 체계 (Button Sizes)</strong></span>
+              <div class="rw-cluster" style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button rw-button--sm">Small (sm)</button>
+                <button type="button" class="rw-button">Default (Medium)</button>
+                <button type="button" class="rw-button rw-button--lg">Large (lg)</button>
+              </div>
+            </div>
+
+            <!-- Variants -->
+            <div>
+              <span class="rw-meta"><strong>스타일 변형 (Variants)</strong></span>
+              <div class="rw-cluster" style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button">Default</button>
+                <button type="button" class="rw-button rw-button--primary">Primary</button>
+                <button type="button" class="rw-button rw-button--secondary">Secondary</button>
+                <button type="button" class="rw-button rw-button--danger">Danger</button>
+                <button type="button" class="rw-button rw-button--outline">Outline</button>
+              </div>
+            </div>
+
+            <!-- Block -->
+            <div>
+              <span class="rw-meta"><strong>전체 폭 블록 버튼 (.rw-button--block)</strong></span>
+              <div style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button rw-button--primary rw-button--block">전체 폭 블록 버튼 (Full Width Block)</button>
+              </div>
+            </div>
+
+            <!-- Loading / Busy State -->
+            <div>
+              <span class="rw-meta"><strong>로딩 및 비지 상태 ([aria-busy="true"])</strong></span>
+              <div class="rw-cluster" style="margin-top: 0.4rem;">
+                <button type="button" class="rw-button rw-button--primary" aria-busy="true">저장 중...</button>
+                <button type="button" class="rw-button" aria-busy="true">데이터 동기화 중...</button>
+              </div>
+            </div>
+
+            <!-- Button Group -->
+            <div>
+              <span class="rw-meta"><strong>버튼 그룹 (.rw-button-group)</strong></span>
+              <div class="rw-button-group" style="margin-top: 0.4rem;">
+                <button type="button" class="is-active" aria-pressed="true">좌측</button>
+                <button type="button" aria-pressed="false">중앙</button>
+                <button type="button" aria-pressed="false">우측</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 크기 --&gt;
+&lt;button class="rw-button rw-button--sm"&gt;Small&lt;/button&gt;
+&lt;button class="rw-button"&gt;Default&lt;/button&gt;
+&lt;button class="rw-button rw-button--lg"&gt;Large&lt;/button&gt;
+
+&lt;!-- 로딩 / 비지 상태 (순수 CSS 스피너 자동 렌더링) --&gt;
+&lt;button class="rw-button rw-button--primary" aria-busy="true"&gt;저장 중...&lt;/button&gt;
+&lt;button class="rw-button" aria-busy="true"&gt;동기화 중...&lt;/button&gt;
+
+&lt;!-- 스타일 --&gt;
+&lt;button class="rw-button rw-button--primary"&gt;Primary&lt;/button&gt;
+&lt;button class="rw-button rw-button--outline"&gt;Outline&lt;/button&gt;
+&lt;button class="rw-button rw-button--block rw-button--primary"&gt;Block Button&lt;/button&gt;
+
+&lt;!-- 버튼 그룹 --&gt;
+&lt;div class="rw-button-group"&gt;
+  &lt;button class="is-active" aria-pressed="true"&gt;옵션 1&lt;/button&gt;
+  &lt;button aria-pressed="false"&gt;옵션 2&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Loading Spinner -->
+        <article id="comp-spinner" class="rw-card rw-stack docs-card">
+          <h3>Loading Spinner (.rw-spinner)</h3>
+          <p class="rw-meta">
+            외부 이미지나 폰트 아이콘 없이 순수 CSS로 구동되는 부드러운 회전 스피너 컴포넌트입니다.
+          </p>
+
+          <div class="docs-preview rw-cluster" style="align-items: center; gap: 1.5rem;">
+            <div class="rw-cluster" style="align-items: center; gap: 0.5rem;">
+              <span class="rw-spinner rw-spinner--sm"></span>
+              <span class="rw-meta">Small (sm)</span>
+            </div>
+            <div class="rw-cluster" style="align-items: center; gap: 0.5rem;">
+              <span class="rw-spinner"></span>
+              <span class="rw-meta">Default</span>
+            </div>
+            <div class="rw-cluster" style="align-items: center; gap: 0.5rem;">
+              <span class="rw-spinner rw-spinner--lg"></span>
+              <span class="rw-meta">Large (lg)</span>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 독립 스피너 --&gt;
+&lt;span class="rw-spinner rw-spinner--sm"&gt;&lt;/span&gt;
+&lt;span class="rw-spinner"&gt;&lt;/span&gt;
+&lt;span class="rw-spinner rw-spinner--lg"&gt;&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Pure CSS Tooltip -->
+        <article id="comp-tooltip" class="rw-card rw-stack docs-card">
+          <h3>Pure CSS Tooltip ([data-tooltip])</h3>
+          <p class="rw-meta">
+            자바스크립트 없이 <code>data-tooltip="안내 문구"</code> 속성만으로 마우스 호버 및 키보드 포커스 시 상단에 말풍선 툴팁이 슬라이드 노출됩니다.
+          </p>
+
+          <div class="docs-preview rw-cluster" style="gap: 1.5rem; align-items: center; padding-top: 2rem;">
+            <button type="button" class="rw-button" data-tooltip="새로운 문서를 작성합니다">문서 작성</button>
+            <button type="button" class="rw-button rw-button--primary" data-tooltip="변경사항이 즉시 발행됩니다">발행하기</button>
+            <span class="rw-badge rw-badge--info" data-tooltip="버전 0.2.0 최신 패키지">v0.2.0</span>
+            <span data-tooltip="용어 설명: E-Ink 전자종이 감성의 흑백 웜톤 미학">전자종이 미학</span>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 버튼 툴팁 --&gt;
+&lt;button class="rw-button" data-tooltip="새로운 문서를 작성합니다"&gt;문서 작성&lt;/button&gt;
+&lt;button class="rw-button rw-button--primary" data-tooltip="즉시 발행됩니다"&gt;발행하기&lt;/button&gt;
+
+&lt;!-- 텍스트 / 배지 툴팁 --&gt;
+&lt;span class="rw-badge" data-tooltip="도움말 메시지"&gt;안내 배지&lt;/span&gt;
+&lt;span data-tooltip="단어의 상세한 뜻을 표시합니다"&gt;용어 설명&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Chips & Tags -->
+        <article id="comp-chip" class="rw-card rw-stack docs-card">
+          <h3>Chips & Tags (.rw-chip, .rw-tag)</h3>
+          <p class="rw-meta">
+            태그 필터, 카테고리 라벨 및 선택 항목 표시를 위한 콤팩트 인라인 컴포넌트입니다.
+            인터랙티브 호버, 닫기 버튼(<code>.rw-chip__remove</code>) 및 6종 시맨틱 수식어를 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <!-- Semantic Chips -->
+            <div class="rw-cluster">
+              <span class="rw-chip">기본 칩</span>
+              <span class="rw-chip rw-chip--primary">Primary</span>
+              <span class="rw-chip rw-chip--secondary">Secondary</span>
+              <span class="rw-chip rw-chip--success">완료됨</span>
+              <span class="rw-chip rw-chip--warning">대기 중</span>
+              <span class="rw-chip rw-chip--danger">오류</span>
+              <span class="rw-chip rw-chip--info">공지</span>
+            </div>
+
+            <!-- Removable & Interactive Chips -->
+            <div class="rw-cluster">
+              <span class="rw-chip">
+                <span>UI/UX 디자인</span>
+                <button type="button" class="rw-chip__remove" aria-label="삭제">✕</button>
+              </span>
+              <span class="rw-chip rw-chip--primary">
+                <span>CSS Framework</span>
+                <button type="button" class="rw-chip__remove" aria-label="삭제">✕</button>
+              </span>
+              <a href="#comp-chip" class="rw-chip rw-chip--interactive">클릭 가능한 태그 링크 →</a>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 기본 칩 & 시맨틱 변형 --&gt;
+&lt;span class="rw-chip"&gt;기본 칩&lt;/span&gt;
+&lt;span class="rw-chip rw-chip--primary"&gt;Primary&lt;/span&gt;
+&lt;span class="rw-chip rw-chip--success"&gt;완료&lt;/span&gt;
+
+&lt;!-- 삭제 버튼이 포함된 칩 --&gt;
+&lt;span class="rw-chip"&gt;
+  &lt;span&gt;카테고리&lt;/span&gt;
+  &lt;button type="button" class="rw-chip__remove" aria-label="삭제"&gt;✕&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- 클릭 가능한 인터랙티브 칩 --&gt;
+&lt;a href="#" class="rw-chip rw-chip--interactive"&gt;클릭 태그&lt;/a&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Process Stepper -->
+        <article id="comp-steps" class="rw-card rw-stack docs-card">
+          <h3>Process Stepper (.rw-steps, .rw-step)</h3>
+          <p class="rw-meta">
+            온보딩, 결제, 신청서 및 단계별 워크플로우를 직관적으로 안내하는 순수 CSS 가로 단계 표시기입니다.
+            완료(<code>.is-complete</code>) 및 현재 진행 중(<code>.is-active</code>, <code>[aria-current="step"]</code>) 상태를 지원합니다.
+          </p>
+
+          <div class="docs-preview">
+            <ol class="rw-steps">
+              <li class="rw-step is-complete">
+                <span class="rw-step-badge">✓</span>
+                <span>계정 생성</span>
+              </li>
+              <li class="rw-step is-active" aria-current="step">
+                <span class="rw-step-badge">2</span>
+                <span>프로필 작성</span>
+              </li>
+              <li class="rw-step">
+                <span class="rw-step-badge">3</span>
+                <span>플랜 선택</span>
+              </li>
+              <li class="rw-step">
+                <span class="rw-step-badge">4</span>
+                <span>완료</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;ol class="rw-steps"&gt;
+  &lt;li class="rw-step is-complete"&gt;
+    &lt;span class="rw-step-badge"&gt;✓&lt;/span&gt;
+    &lt;span&gt;1단계: 완료&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="rw-step is-active" aria-current="step"&gt;
+    &lt;span class="rw-step-badge"&gt;2&lt;/span&gt;
+    &lt;span&gt;2단계: 진행 중&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="rw-step"&gt;
+    &lt;span class="rw-step-badge"&gt;3&lt;/span&gt;
+    &lt;span&gt;3단계: 대기&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Avatar Component -->
+        <article id="comp-avatar" class="rw-card rw-stack docs-card">
+          <h3>Avatar (.rw-avatar)</h3>
+          <p class="rw-meta">
+            사용자 프로필 사진 및 이니셜 텍스트를 담아내는 컴포넌트로, 원형 및 라운드 사각(<code>.rw-avatar--rounded</code>)과 3종 크기를 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">이니셜 텍스트 아바타 (3종 크기)</span>
+              <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+                <span class="rw-avatar rw-avatar--sm">SM</span>
+                <span class="rw-avatar">홍</span>
+                <span class="rw-avatar rw-avatar--lg">JD</span>
+              </div>
+            </div>
+
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">라운드 사각 아바타 (.rw-avatar--rounded) & 이미지 지원</span>
+              <div class="rw-cluster" style="align-items: center; gap: 0.75rem;">
+                <span class="rw-avatar rw-avatar--rounded rw-avatar--sm">팀</span>
+                <span class="rw-avatar rw-avatar--rounded">RW</span>
+                <span class="rw-avatar rw-avatar--rounded rw-avatar--lg">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23496a8b'%3E%3Crect width='100' height='100' fill='%23dfe8f0'/%3E%3Ccircle cx='50' cy='38' r='20'/%3E%3Cpath d='M20 85 C20 65 35 60 50 60 C65 60 80 65 80 85 Z'/%3E%3C/svg%3E" alt="Avatar Demo">
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 이니셜 아바타 --&gt;
+&lt;span class="rw-avatar rw-avatar--sm"&gt;SM&lt;/span&gt;
+&lt;span class="rw-avatar"&gt;홍&lt;/span&gt;
+&lt;span class="rw-avatar rw-avatar--lg"&gt;JD&lt;/span&gt;
+
+&lt;!-- 라운드 사각 및 이미지 아바타 --&gt;
+&lt;span class="rw-avatar rw-avatar--rounded"&gt;RW&lt;/span&gt;
+&lt;span class="rw-avatar rw-avatar--lg"&gt;
+  &lt;img src="profile.jpg" alt="사용자 프로필"&gt;
+&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Card & Panel -->
+        <article id="comp-card" class="rw-card rw-stack docs-card">
+          <h3>Card (.rw-card) vs Panel (.rw-panel)</h3>
+          <p class="rw-meta"><code>.rw-card</code>는 독립된 콘텐츠 단위(기사, 상품)를, <code>.rw-panel</code>은 화면의 구조적 구획(사이드바, 설정 박스)을 담당합니다.</p>
+
+          <div class="docs-preview rw-grid-2">
+            <div class="rw-card rw-stack">
+              <h4>.rw-card (콘텐츠 카드)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">독립된 읽기 단위를 표현합니다.</p>
+            </div>
+            <div class="rw-panel rw-stack">
+              <h4>.rw-panel (구조 패널)</h4>
+              <p style="margin: 0; font-size: 0.9rem;">배경 및 구조적 영역을 분할합니다.</p>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;article class="rw-card"&gt;카드 콘텐츠&lt;/article&gt;
+&lt;div class="rw-panel"&gt;패널 구획&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Callouts -->
+        <article id="comp-callout" class="rw-card rw-stack docs-card">
+          <h3>Callouts / Alerts (4종 알림 메시지)</h3>
+          <p class="rw-meta">안내, 성공, 경고, 오류 알림 박스입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <div class="rw-callout rw-callout--info"><strong>Info</strong>: 새로운 버전 v0.2.0이 배포되었습니다.</div>
+            <div class="rw-callout rw-callout--success"><strong>Success</strong>: 작업이 정상적으로 완료되었습니다.</div>
+            <div class="rw-callout rw-callout--warning"><strong>Warning</strong>: 저장되지 않은 변경사항이 있습니다.</div>
+            <div class="rw-callout rw-callout--danger"><strong>Danger</strong>: 연결이 끊어졌습니다. 다시 시도하세요.</div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-callout rw-callout--info"&gt;안내 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--success"&gt;성공 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--warning"&gt;주의 메시지&lt;/div&gt;
+&lt;div class="rw-callout rw-callout--danger"&gt;오류 메시지&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Accordion -->
+        <article id="comp-accordion" class="rw-card rw-stack docs-card">
+          <h3>Accordion / Disclosure (details.rw-accordion)</h3>
+          <p class="rw-meta">
+            HTML5 표준 <code>&lt;details&gt;</code> 태그에 브라우저 기본 화살표를 제거하고,
+            Paper & Ink 감성의 미니멀 쉐브론 화살표가 열림(<code>[open]</code>) 시 180° 매끄럽게 회전하는 순수 CSS 인터랙션을 적용했습니다.
+          </p>
+
+          <div class="docs-preview rw-stack">
+            <details class="rw-accordion" open>
+              <summary>자주 묻는 질문 1: Readwell CSS는 자바스크립트가 필요한가요?</summary>
+              <div style="padding-top: 0.5rem; font-size: 0.9rem;">
+                아닙니다. 100% 순수 CSS와 HTML5 표준 태그만으로 모든 컴포넌트와 애니메이션이 동작합니다.
+              </div>
+            </details>
+            <details class="rw-accordion">
+              <summary>자주 묻는 질문 2: E-Ink 테마와 다크 모드는 어떻게 적용하나요?</summary>
+              <div style="padding-top: 0.5rem; font-size: 0.9rem;">
+                HTML 태그에 <code>data-rw-theme="warm"</code> 및 <code>data-rw-mode="night"</code> 속성을 지정하면 즉시 전환됩니다.
+              </div>
+            </details>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;details class="rw-accordion"&gt;
+  &lt;summary&gt;아코디언 제목 (클릭 시 쉐브론 회전)&lt;/summary&gt;
+  &lt;p&gt;펼쳐지는 상세 본문 내용...&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Modal Dialog -->
+        <article id="comp-modal" class="rw-card rw-stack docs-card">
+          <h3>Modal Dialog (&lt;dialog&gt;)</h3>
+          <p class="rw-meta">
+            HTML5 네이티브 <code>&lt;dialog&gt;</code> 태그 및 내부 <code>&lt;article&gt;</code> 구조(헤더, 본문, 푸터 버튼 그룹)를 완벽히 지원하는 모달 스타일입니다.
+          </p>
+
+          <div class="docs-preview">
+            <button type="button" class="rw-button rw-button--primary" onclick="document.getElementById('doc-demo-dialog').showModal()">구조화 모달 열기 데모</button>
+
+            <dialog id="doc-demo-dialog" class="rw-dialog">
+              <article>
+                <header>
+                  <h4 style="margin: 0; font-size: 1.15rem;">새 문서 작성</h4>
+                  <button type="button" class="rw-button rw-button--sm" onclick="document.getElementById('doc-demo-dialog').close()" style="border: none; background: transparent; font-size: 1.1rem; padding: 0.2rem 0.4rem; cursor: pointer;">✕</button>
+                </header>
+                <form method="dialog" class="rw-stack" style="gap: 1rem;">
+                  <div>
+                    <label class="rw-meta">문서 제목</label>
+                    <input type="text" placeholder="제목을 입력하세요..." style="margin-top: 0.25rem;">
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--rw-text-muted);">
+                    헤더와 푸터가 깔끔하게 구분되며, 백드롭과 ESC 키 닫기 접근성이 네이티브로 보장됩니다.
+                  </p>
+                  <footer>
+                    <button type="button" class="rw-button rw-button--secondary" onclick="document.getElementById('doc-demo-dialog').close()">취소</button>
+                    <button type="submit" class="rw-button rw-button--primary">저장 및 발행</button>
+                  </footer>
+                </form>
+              </article>
+            </dialog>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;dialog id="my-dialog" class="rw-dialog"&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h4&gt;모달 제목&lt;/h4&gt;
+      &lt;button onclick="this.closest('dialog').close()"&gt;✕&lt;/button&gt;
+    &lt;/header&gt;
+    &lt;form method="dialog" class="rw-stack"&gt;
+      &lt;p&gt;모달 상세 본문...&lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button type="button" onclick="this.closest('dialog').close()"&gt;취소&lt;/button&gt;
+        &lt;button type="submit" class="rw-button rw-button--primary"&gt;확인&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/form&gt;
+  &lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Dropdown -->
+        <article id="comp-dropdown" class="rw-card rw-stack docs-card">
+          <h3>Dropdown & Dropup (네이티브 드롭다운, 상/하 위치, 스플릿 버튼)</h3>
+          <p class="rw-meta">
+            <code>details.rw-dropdown</code> 구조로 자바스크립트 없이 메뉴가 열리며, 아래/위 방향(<code>.rw-dropdown--up</code>)과 좌/우 정렬(<code>.rw-dropdown--right</code>), 그리고 버튼 그룹과 결합한 <strong>스플릿 버튼 드롭다운</strong>을 완벽히 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1.5rem;">
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">1. 위치 방향 및 정렬 (아래 / 위 / 좌측 / 우측)</span>
+              <div class="rw-cluster" style="justify-content: space-between; align-items: center; gap: 1rem;">
+                <!-- Downward Left (Default) -->
+                <details class="rw-dropdown">
+                  <summary class="rw-button">아래 좌측 (기본) ▾</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">프로필 설정</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">팀 워크스페이스</a></li>
+                    <li class="rw-dropdown-divider"></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">로그아웃</a></li>
+                  </ul>
+                </details>
+
+                <!-- Downward Right -->
+                <details class="rw-dropdown rw-dropdown--right">
+                  <summary class="rw-button rw-button--primary">아래 우측 정렬 ▾</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">문서 내보내기</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">Markdown 복사</a></li>
+                    <li class="rw-dropdown-divider"></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">문서 삭제</a></li>
+                  </ul>
+                </details>
+
+                <!-- Upward (Dropup) -->
+                <details class="rw-dropdown rw-dropdown--up">
+                  <summary class="rw-button">위로 열기 (.rw-dropdown--up) ▴</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">최근 열람 문서</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">북마크 바로가기</a></li>
+                    <li class="rw-dropdown-divider"></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">휴지통</a></li>
+                  </ul>
+                </details>
+
+                <!-- Upward Right -->
+                <details class="rw-dropdown rw-dropdown--up rw-dropdown--right">
+                  <summary class="rw-button rw-button--secondary">위로 우측 정렬 ▴</summary>
+                  <ul class="rw-dropdown-menu">
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">환경 설정</a></li>
+                    <li><a href="#comp-dropdown" class="rw-dropdown-item">단축키 안내</a></li>
+                  </ul>
+                </details>
+              </div>
+            </div>
+
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.5rem;">2. 일체형 스플릿 버튼 드롭다운 (버튼 전체 아래로 자연스럽게 전개)</span>
+              <div class="rw-cluster" style="align-items: center; gap: 1.5rem;">
+                <!-- Primary Split Button (Downward below whole button group) -->
+                <div class="rw-button-group">
+                  <button type="button" class="rw-button rw-button--primary">저장 및 발행</button>
+                  <details class="rw-dropdown">
+                    <summary class="rw-button rw-button--primary" aria-label="추가 옵션">▾</summary>
+                    <ul class="rw-dropdown-menu">
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item">초안(Draft)으로 보관</a></li>
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item">비공개로 저장</a></li>
+                      <li class="rw-dropdown-divider"></li>
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item" style="color: var(--rw-danger-strong);">삭제 및 휴지통 이동</a></li>
+                    </ul>
+                  </details>
+                </div>
+
+                <!-- Secondary Split Button (Upward Dropup) -->
+                <div class="rw-button-group">
+                  <button type="button" class="rw-button">내보내기 (PDF)</button>
+                  <details class="rw-dropdown rw-dropdown--up">
+                    <summary class="rw-button" aria-label="포맷 선택">▴</summary>
+                    <ul class="rw-dropdown-menu">
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item">Markdown (.md)</a></li>
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item">HTML 웹 페이지</a></li>
+                      <li><a href="#comp-dropdown" class="rw-dropdown-item">텍스트 (.txt)</a></li>
+                    </ul>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 1. 아래로 열림 (기본 좌측 / 우측 정렬) --&gt;
+&lt;details class="rw-dropdown"&gt;
+  &lt;summary class="rw-button"&gt;아래 좌측 ▾&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;details class="rw-dropdown rw-dropdown--right"&gt;
+  &lt;summary class="rw-button"&gt;아래 우측 ▾&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;!-- 2. 위로 열림 (Dropup: .rw-dropdown--up) --&gt;
+&lt;details class="rw-dropdown rw-dropdown--up"&gt;
+  &lt;summary class="rw-button"&gt;위로 열기 ▴&lt;/summary&gt;
+  &lt;ul class="rw-dropdown-menu"&gt;...&lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;!-- 3. 일체형 스플릿 버튼 드롭다운 (버튼 전체 아래로 펼쳐짐) --&gt;
+&lt;div class="rw-button-group"&gt;
+  &lt;button type="button" class="rw-button rw-button--primary"&gt;저장 및 발행&lt;/button&gt;
+  &lt;details class="rw-dropdown"&gt;
+    &lt;summary class="rw-button rw-button--primary" aria-label="추가 옵션"&gt;▾&lt;/summary&gt;
+    &lt;ul class="rw-dropdown-menu"&gt;
+      &lt;li&gt;&lt;a href="#" class="rw-dropdown-item"&gt;초안으로 보관&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#" class="rw-dropdown-item"&gt;비공개로 저장&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Pagination -->
+        <article id="comp-pagination" class="rw-card rw-stack docs-card">
+          <h3>Pagination (.rw-pagination)</h3>
+          <p class="rw-meta">
+            현재 페이지 활성화(<code>aria-current="page"</code>) 및 비활성화(<code>[aria-disabled="true"]</code>) 상태를 지원하는 접근성 친화적 페이지네이션입니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">기본 페이지네이션 (첫 페이지 - 이전 버튼 비활성화)</span>
+              <nav class="rw-pagination" aria-label="Article pagination">
+                <span class="rw-pagination-prev" aria-disabled="true">‹ 이전</span>
+                <span aria-current="page">1</span>
+                <a href="#comp-pagination">2</a>
+                <a href="#comp-pagination">3</a>
+                <a href="#comp-pagination" class="rw-pagination-next">다음 ›</a>
+              </nav>
+            </div>
+
+            <div>
+              <span class="rw-meta" style="display: block; margin-bottom: 0.4rem;">중간 페이지 활성화 상태</span>
+              <nav class="rw-pagination" aria-label="Search results pagination">
+                <a href="#comp-pagination" class="rw-pagination-prev">‹ 이전</a>
+                <a href="#comp-pagination">1</a>
+                <span aria-current="page">2</span>
+                <a href="#comp-pagination">3</a>
+                <a href="#comp-pagination">4</a>
+                <a href="#comp-pagination" class="rw-pagination-next">다음 ›</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;nav class="rw-pagination" aria-label="Pagination"&gt;
+  &lt;span class="rw-pagination-prev" aria-disabled="true"&gt;‹ 이전&lt;/span&gt;
+  &lt;span aria-current="page"&gt;1&lt;/span&gt;
+  &lt;a href="#"&gt;2&lt;/a&gt;
+  &lt;a href="#"&gt;3&lt;/a&gt;
+  &lt;a href="#" class="rw-pagination-next"&gt;다음 ›&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Progress -->
+        <article id="comp-progress" class="rw-card rw-stack docs-card">
+          <h3>Progress Bar (&lt;progress&gt;)</h3>
+          <p class="rw-meta">HTML5 표준 진행률 표시줄입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <progress value="65" max="100" style="width: 100%;"></progress>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;progress value="65" max="100" style="width: 100%;"&gt;&lt;/progress&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 6. Product Patterns -->

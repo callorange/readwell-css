@@ -3,11 +3,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from './build.js';
+import { buildDocs } from './build-docs.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const srcDir = path.join(rootDir, 'src');
+const partialsDir = path.join(rootDir, 'docs', 'partials');
 const PORT = process.env.PORT || 3000;
 
 const MIME_TYPES = {
@@ -25,6 +27,9 @@ const MIME_TYPES = {
 if (fs.existsSync(path.join(srcDir, 'index.css'))) {
   try {
     build();
+    if (fs.existsSync(partialsDir)) {
+      buildDocs();
+    }
   } catch (e) {
     console.error('Initial build warning:', e.message);
   }
@@ -37,11 +42,29 @@ if (fs.existsSync(srcDir)) {
     if (filename && filename.endsWith('.css')) {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        console.log(`\n\x1b[36m[watch]\x1b[0m File changed: ${filename}, rebuilding...`);
+        console.log(`\n\x1b[36m[watch]\x1b[0m CSS File changed: ${filename}, rebuilding...`);
         try {
           build();
         } catch (err) {
           console.error('\x1b[31mRebuild error:\x1b[0m', err.message);
+        }
+      }, 100);
+    }
+  });
+}
+
+// 2.2 Watch docs/partials/ directory
+if (fs.existsSync(partialsDir)) {
+  let debounceDocsTimer;
+  fs.watch(partialsDir, { recursive: true }, (eventType, filename) => {
+    if (filename && filename.endsWith('.html')) {
+      clearTimeout(debounceDocsTimer);
+      debounceDocsTimer = setTimeout(() => {
+        console.log(`\n\x1b[36m[watch]\x1b[0m Docs partial changed: ${filename}, assembling docs...`);
+        try {
+          buildDocs();
+        } catch (err) {
+          console.error('\x1b[31mDocs rebuild error:\x1b[0m', err.message);
         }
       }, 100);
     }
@@ -75,7 +98,7 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  // Fallback: check inside examples/ if file not found at root (e.g. /article.html -> /examples/article.html)
+  // Fallback: check inside examples/ if file not found at root (e.g. /reading.html -> /examples/reading.html)
   if (!fs.existsSync(targetPath) || !fs.statSync(targetPath).isFile()) {
     const examplesFallback = path.join(rootDir, 'examples', reqPath);
     if (fs.existsSync(examplesFallback) && fs.statSync(examplesFallback).isFile()) {

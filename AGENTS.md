@@ -423,3 +423,43 @@ AI 에이전트는 코드 및 문서를 작성할 때 원본 의미를 보호하
 
 이 섹션의 규칙은 이 프로젝트에만 적용합니다.
 같은 적용 범위에서 위 Template Managed Content의 일반 규칙과 충돌하면 이 섹션의 더 구체적인 규칙을 우선합니다.
+
+---
+
+## 🏷️ 버전 관리 규칙 (Version Management & Release Governance)
+
+### 1. 단일 진실 공급원 (SSOT, Single Source of Truth)
+- 본 프로젝트의 버전 원본은 루트 `package.json`의 `"version"` 필드입니다.
+- 모든 빌드 산출물, 배너, 문서 포털, 예제 페이지의 버전 표기는 항상 `package.json`의 버전과 완전히 일치해야 합니다.
+
+### 2. SemVer 정책 (Semantic Versioning 2.0.0)
+`MAJOR.MINOR.PATCH` 버저닝 규칙을 엄격히 준수합니다.
+- **MAJOR (x.0.0)**: 기존 CSS 클래스명·변수명 제거, 지원 중단 또는 하위 호환성을 깨뜨리는 파괴적 변경.
+- **MINOR (0.x.0)**: 신규 레이아웃 아키타입, 새 컴포넌트, 신규 테마 모드 추가 등 하위 호환되는 기능 확장.
+- **PATCH (0.0.x)**: CSS 버그 수정, 린트/타이포그래피 오타 보정, 문서/예제 링크 정합성 패치 등 비파괴적 수정.
+
+### 3. 버전 갱신 시 필수 동기화 대상 (Atomic Synchronization Targets)
+버전이 변경(Bump)될 때 아래 대상 파일들을 누락 없이 원자적(Atomic)으로 함께 갱신해야 합니다.
+1. **`package.json`**: `"version": "x.y.z"` 갱신.
+2. **`scripts/build.js`**: `package.json`의 버전을 읽어 `dist/readwell.css` 및 `dist/readwell.min.css`의 상단 배너 주석(`/*! Readwell CSS vx.y.z ... */`)에 자동 반영.
+3. **`CHANGELOG.md`**: [Keep a Changelog 1.1.0](https://keepachangelog.com/ko/1.1.0/)에 따라 `[Unreleased]` 내용을 해당 버전 구획(`## [x.y.z] - YYYY-MM-DD`)으로 승격하고, 상단에 빈 `## [Unreleased]` 헤더 유지.
+4. **공식 문서 포털 (Docs Portal)**:
+   - `docs/partials/header.html`: 상단 내비게이션 바 버전 뱃지(`vx.y.z`).
+   - `docs/partials/section-components.html`: 관련 컴포넌트 안내 콜아웃/뱃지.
+   - `npm run build:docs` (또는 `npm run build`)를 실행하여 `docs/index.html` 및 `examples/docs.html`에 일괄 자동 조립 반영.
+5. **예제 쇼케이스 (`examples/`)**:
+   - `examples/index.html`: 메인 브랜딩 헤더 버전 뱃지.
+   - `examples/dashboard.html`: 최근 관리 활동 로그 내 배포 버전.
+   - `examples/components.html`: 컴포넌트 카탈로그 개요 탭 내 버전 안내 텍스트.
+
+### 4. 릴리즈 필수 기계 검증 (Mechanical Validation Gate)
+버전 갱신 및 산출물 빌드 후 반드시 다음 검증 명령을 실행하여 회귀 오류가 없음을 확인합니다:
+```bash
+npm run build && npm test
+```
+- **검증 항목**:
+  1. 번들 내 28개 이상 핵심 CSS 선택자 및 기능 무결성
+  2. Base64 VLQ 기반 v3 소스맵(`.css.map`) 유효성
+  3. CSS 중괄호 밸런스(Pair matching)
+  4. 압축 번들 크기 예산 준수 (60KB 이하)
+  5. 문서 포털 파셜 조립 정합성 (`docs/index.html`, `examples/docs.html`)

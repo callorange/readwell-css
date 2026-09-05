@@ -1,6 +1,6 @@
 {
   "name": "readwell-css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "E-Ink 디스플레이에서 영감을 얻은 긴 글 가독성과 제품 UI를 위한 저자극 순수 CSS 프레임워크",
   "main": "dist/readwell.css",
@@ -18,7 +18,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "node scripts/build.js",
+    "build:css": "node scripts/build.js",
+    "build:docs": "node scripts/build-docs.js",
+    "build": "node scripts/build.js && node scripts/build-docs.js",
     "dev": "node scripts/dev.js",
     "start": "node scripts/dev.js",
     "test": "node scripts/test-build.js"

@@ -355,4 +355,52 @@
     font-size: 0.9em;
     white-space: nowrap;
   }
+
+  /* High Contrast Mode (Windows forced-colors) */
+  @media (forced-colors: active) {
+    input[type="checkbox"]:not([role="switch"]),
+    input[type="radio"],
+    input[role="switch"] {
+      forced-color-adjust: none;
+      background-color: Canvas !important;
+      border-color: CanvasText !important;
+    }
+
+    input[type="checkbox"]:not([role="switch"]):checked,
+    input[type="radio"]:checked,
+    input[role="switch"]:checked {
+      background-color: Highlight !important;
+      border-color: Highlight !important;
+    }
+
+    input[type="radio"]:checked::before {
+      background-color: HighlightText !important;
+    }
+
+    input[role="switch"]::before {
+      background-color: CanvasText !important;
+    }
+
+    input[role="switch"]:checked::before {
+      background-color: HighlightText !important;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track,
+    input[type="range"]::-moz-range-track {
+      background-color: CanvasText !important;
+    }
+
+    input[type="range"]::-webkit-slider-thumb,
+    input[type="range"]::-moz-range-thumb {
+      background-color: Highlight !important;
+      border-color: HighlightText !important;
+    }
+
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible {
+      outline: 2px solid Highlight !important;
+    }
+  }
 }

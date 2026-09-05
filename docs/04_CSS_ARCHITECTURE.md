@@ -27,7 +27,7 @@ Readwell CSS는 완전한 classless CSS가 아니라 **semantic-first + class-fr
 | components | card, panel, badge, nav, breadcrumb, pagination, tabs 등 |
 | patterns | toolbar, filter bar, stat card, status list, activity list |
 | utilities | muted, serif, inverse 등 소수 utility |
-| modes | eink, reduced-motion, density, theme, surface mode |
+| modes | eink, forced-colors, print, density, theme, layout mode |
 
 ## 3. Prefix 규칙
 
@@ -44,7 +44,7 @@ Readwell CSS는 완전한 classless CSS가 아니라 **semantic-first + class-fr
 --rw-primary
 --rw-success-soft
 --rw-danger-strong
---rw-reading-width
+--rw-container-width
 --rw-density-gap
 
 .rw-container
@@ -53,9 +53,10 @@ Readwell CSS는 완전한 classless CSS가 아니라 **semantic-first + class-fr
 .rw-panel
 .rw-stat
 
-[data-rw-eink="true"]
-[data-rw-surface="dashboard"]
+[data-rw-theme="warm"]
+[data-rw-layout="workspace"]
 [data-rw-density="compact"]
+[data-rw-eink="true"]
 ```
 
 ## 4. Token 구조
@@ -147,19 +148,19 @@ Readwell CSS는 4종의 `data-rw-*` 속성을 통해 테마 색온도, 화면 �
 
 | 제어 속성 (Attribute) | 옵션 값 (Values) | 기본값 | 시각적 특징 및 역할 |
 | :--- | :--- | :--- | :--- |
-| **`data-rw-theme`** | `light`, `warm` | `light` | **테마 색온도**: 맑고 정갈한 내추럴 백상지 vs 눈이 편안한 단행본 미색 크림지 |
-| **`data-rw-surface`** | `reading`, `workspace`, `dashboard`, `dense` | `reading` | **화면 표면**: 장문 독서 / 문서 협업 / 운영 콘솔 / 고밀도 데이터 테이블 |
-| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | `comfortable` | **여백 밀도**: 터치 친화 여유 여백 / 표준 균형 / 압축 데이터 뷰 |
+| **`data-rw-theme`** | `light`, `warm`, `dark` | `light` | **테마 색온도**: 내추럴 백상지 vs 단행본 미색 크림지 vs 먹빛 흑연 야간지 |
+| **`data-rw-layout`**<br>*(구 surface 호환)* | `reading`, `docs`, `workspace`, `fluid` | `reading` | **레이아웃 아키타입 & 스마트 프리셋**: 화면 폭 + 최적 밀도 자동 연동 (reading[48rem]➔cozy, docs[80rem]➔comfortable, workspace[90rem]➔comfortable, fluid[100%]➔compact) |
+| **`data-rw-density`** | `cozy`, `comfortable`, `compact` | 프리셋 연동 | **밀도 미세 조절 (오버라이드)**: 스마트 프리셋을 덮어쓰고 개별 패딩·여백을 수동 미세 조정 |
 | **`data-rw-eink`** | `true`, `false` | `false` | **전자종이 정적 모드**: 모든 애니메이션 및 전환 효과(`transition: none`) 차단 |
 
 ### 마크업 적용 예시
 
 ```html
-<!-- 블로그 / 기술 문서 (미색지 + 장문 독서 + 여유 밀도) -->
-<body data-rw-theme="warm" data-rw-surface="reading" data-rw-density="cozy">
+<!-- 블로그 / 장문 에세이 (미색지 + 1컬럼 독서 레이아웃 -> cozy 밀도 자동 연동) -->
+<body data-rw-theme="warm" data-rw-layout="reading">
 
-<!-- 고밀도 백오피스 (백상지 + 고밀도 표 + 압축 밀도) -->
-<body data-rw-surface="dense" data-rw-density="compact">
+<!-- 백오피스 / 대용량 데이터 테이블 (백상지 + 전폭 백오피스 레이아웃 -> compact 밀도 자동 연동) -->
+<body data-rw-layout="fluid">
 ```
 
 ## 6. Class API 명세
@@ -265,42 +266,56 @@ Readwell은 CSS framework이며 JavaScript component framework가 아닙니다.
 
 ## 8. HTML 사용 예시
 
-### Reading surface
+### Reading 레이아웃 (48rem, Cozy 기본 연동)
 
 ```html
-<main class="rw-container" data-rw-surface="reading" data-rw-density="cozy">
+<main class="rw-container" data-rw-layout="reading">
   <article class="rw-reading">
-    <p class="rw-meta">2026.08.30 · 읽기 7분</p>
+    <p class="rw-meta">2026.09.05 · 읽기 7분</p>
     <h1>읽는 시간이 길수록 조용한 화면이 좋아진다.</h1>
     <p>본문</p>
   </article>
 </main>
 ```
 
-### Workspace surface
+### Docs 레이아웃 (80rem, Comfortable 기본 연동)
 
 ```html
-<main class="rw-app-shell" data-rw-surface="workspace" data-rw-density="comfortable">
-  <aside class="rw-panel">탐색</aside>
-  <article class="rw-reading">
-    <h1>리드웰 CSS 도입 가이드</h1>
-    <div class="rw-callout rw-callout--info">안내</div>
-  </article>
-  <aside class="rw-panel">목차 / 속성</aside>
-</main>
+<body data-rw-layout="docs">
+  <header class="rw-container">...</header>
+  <main class="rw-container rw-sidebar-layout--left">
+    <aside class="docs-sidebar">목차 (TOC)</aside>
+    <article class="rw-reading">본문 가이드</article>
+  </main>
+</body>
 ```
 
-### Dashboard surface
+### Workspace 레이아웃 (90rem, Comfortable 기본 연동)
 
 ```html
-<section class="rw-grid rw-grid-3" data-rw-surface="dashboard" data-rw-density="comfortable">
-  <div class="rw-stat">
-    <p class="rw-meta">총 매출</p>
-    <strong>₩128,540,000</strong>
-    <span class="rw-badge rw-badge--success">+12.4%</span>
-  </div>
-</section>
+<body data-rw-layout="workspace">
+  <main class="rw-app-shell rw-app-shell--seamless">
+    <aside class="rw-panel">좌측 탐색 사이드바</aside>
+    <article class="rw-reading">중앙 본문</article>
+    <aside class="rw-panel">우측 속성/목차 패널</aside>
+  </main>
+</body>
 ```
+
+### Fluid 레이아웃 (100% 전폭, Compact 기본 연동)
+
+```html
+<body data-rw-layout="fluid">
+  <header class="rw-container">...</header>
+  <main class="rw-container rw-stack">
+    <div class="rw-filterbar">...</div>
+    <table class="rw-table--striped rw-table--hoverable">...</table>
+  </main>
+</body>
+```
+
+> [!NOTE]
+> 하위 호환성을 위해 `data-rw-surface` 속성(`reading`, `workspace`, `dashboard`, `dense`/`records`)도 CSS 선택자 별칭으로 완벽하게 지원됩니다.
 
 ## 9. CSS 파일 분리 계획
 

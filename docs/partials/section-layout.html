@@ -1,0 +1,176 @@
+      <section id="layout" class="docs-section">
+        <h2 class="docs-section-title">2. Layout (레이아웃)</h2>
+
+        <!-- Container & Reading -->
+        <article id="layout-container" class="rw-card rw-stack docs-card">
+          <h3>Container & Reading</h3>
+          <p class="rw-meta"><code>.rw-container</code>는 페이지 최대 폭(80rem)을 안정적으로 제한하며, <code>.rw-reading</code>은 긴 글 가독성을 위해 본문 폭을 48rem으로 최적화합니다.</p>
+
+          <div class="docs-preview">
+            <div class="rw-container" style="background-color: var(--rw-paper-3); padding: 1rem; border: 1px dashed var(--rw-line-strong); text-align: center;">
+              .rw-container (기본 컨테이너 영역)
+              <div class="rw-reading" style="background-color: var(--rw-paper-1); margin: 0.75rem auto; padding: 1rem; border: 1px solid var(--rw-line); text-align: left;">
+                .rw-reading (최대 48rem 독서 최적화 영역)
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;div class="rw-container"&gt;
+  &lt;article class="rw-reading"&gt;
+    &lt;h1&gt;장문 아티클 제목&lt;/h1&gt;
+    &lt;p&gt;한 줄의 길이가 너무 길지 않아 눈이 피로하지 않습니다.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Grid -->
+        <article id="layout-grid" class="rw-card rw-stack docs-card">
+          <h3>Grid (그리드 체계: 1열·2열·3열·4열 & 자동 맞춤)</h3>
+          <p class="rw-meta">
+            Readwell CSS는 <strong>총 5종의 그리드 유틸리티</strong>(<code>.rw-grid-1</code>, <code>.rw-grid-2</code>, <code>.rw-grid-3</code>, <code>.rw-grid-4</code>, <code>.rw-grid</code>)를 제공합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <!-- 2-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-2 (2열 그리드)</strong></span>
+              <div class="rw-grid-2" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Column 1 of 2</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Column 2 of 2</div>
+              </div>
+            </div>
+
+            <!-- 3-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-3 (3열 그리드)</strong></span>
+              <div class="rw-grid-3" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 1 of 3</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 2 of 3</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 3 of 3</div>
+              </div>
+            </div>
+
+            <!-- 4-col -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-4 (4열 그리드)</strong></span>
+              <div class="rw-grid-4" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 1/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 2/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 3/4</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Col 4/4</div>
+              </div>
+            </div>
+
+            <!-- 12-Column Grid with Spans -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid-12 (12칸 반응형 그리드 & 컬럼 스팬 .rw-col-span-*)</strong></span>
+              <div class="rw-grid-12" style="margin-top: 0.4rem; font-size: 0.82rem;">
+                <div class="rw-panel rw-col-span-12" style="text-align: center; padding: 0.6rem;">.rw-col-span-12 (전체 12칸 / 100%)</div>
+                <div class="rw-panel rw-col-span-8" style="text-align: center; padding: 0.6rem;">.rw-col-span-8 (8칸 / 66.6%)</div>
+                <div class="rw-panel rw-col-span-4" style="text-align: center; padding: 0.6rem;">.rw-col-span-4 (4칸 / 33.3%)</div>
+                <div class="rw-panel rw-col-span-6" style="text-align: center; padding: 0.6rem;">.rw-col-span-6 (6칸 / 50%)</div>
+                <div class="rw-panel rw-col-span-6" style="text-align: center; padding: 0.6rem;">.rw-col-span-6 (6칸 / 50%)</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+                <div class="rw-panel rw-col-span-3" style="text-align: center; padding: 0.6rem;">span-3</div>
+              </div>
+            </div>
+
+            <!-- Auto-fit -->
+            <div>
+              <span class="rw-meta"><strong>.rw-grid (반응형 자동 맞춤: minmax 240px)</strong></span>
+              <div class="rw-grid" style="margin-top: 0.4rem;">
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item A</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item B</div>
+                <div class="rw-panel" style="text-align: center; padding: 0.75rem;">Auto Item C</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 12칸 그리드 및 컬럼 분할 --&gt;
+&lt;div class="rw-grid-12"&gt;
+  &lt;div class="rw-col-span-8"&gt;8칸 메인 영역 (66.6%)&lt;/div&gt;
+  &lt;div class="rw-col-span-4"&gt;4칸 사이드바 (33.3%)&lt;/div&gt;
+  &lt;div class="rw-col-span-6"&gt;6칸 좌측 (50%)&lt;/div&gt;
+  &lt;div class="rw-col-span-6"&gt;6칸 우측 (50%)&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 2열 / 3열 / 4열 그리드 --&gt;
+&lt;div class="rw-grid-2"&gt;...&lt;/div&gt;
+&lt;div class="rw-grid-3"&gt;...&lt;/div&gt;
+&lt;div class="rw-grid-4"&gt;...&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Stack & Cluster -->
+        <article id="layout-stack" class="rw-card rw-stack docs-card">
+          <h3>Stack (.rw-stack) & Cluster (.rw-cluster)</h3>
+          <p class="rw-meta">
+            <code>.rw-stack</code>은 수직 흐름에 일정한 간격(밀도 토큰 <code>--rw-density-gap</code>)을 부여하며, <code>.rw-cluster</code>는 버튼이나 태그의 수평 나열(줄바꿈 지원)에 활용됩니다.
+          </p>
+
+          <div class="docs-preview rw-grid-2">
+            <!-- Stack Live Preview -->
+            <div style="border: 1px solid var(--rw-line); border-radius: var(--rw-radius); padding: 1rem;">
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">.rw-stack (수직 스택 흐름)</span>
+              <div class="rw-stack">
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 1 (상단)</div>
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 2 (중간)</div>
+                <div class="rw-panel" style="padding: 0.6rem;">스택 아이템 3 (하단)</div>
+              </div>
+            </div>
+
+            <!-- Cluster Live Preview -->
+            <div style="border: 1px solid var(--rw-line); border-radius: var(--rw-radius); padding: 1rem;">
+              <span class="rw-meta" style="font-weight: 600; display: block; margin-bottom: 0.5rem;">.rw-cluster (수평 클러스터 나열)</span>
+              <div class="rw-cluster" style="margin-top: 0.5rem;">
+                <button type="button" class="rw-button rw-button--primary rw-button--sm">Cluster 1</button>
+                <button type="button" class="rw-button rw-button--secondary rw-button--sm">Cluster 2</button>
+                <button type="button" class="rw-button rw-button--sm">Cluster 3</button>
+                <span class="rw-badge rw-badge--success">Badge</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 수직 흐름 스택 --&gt;
+&lt;div class="rw-stack"&gt;
+  &lt;div class="rw-panel"&gt;상단 영역&lt;/div&gt;
+  &lt;div class="rw-panel"&gt;하단 영역&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 수평 클러스터 --&gt;
+&lt;div class="rw-cluster"&gt;
+  &lt;button class="rw-button"&gt;버튼 1&lt;/button&gt;
+  &lt;button class="rw-button"&gt;버튼 2&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Sidebar Layout -->
+        <article id="layout-sidebar" class="rw-card rw-stack docs-card">
+          <h3>Sidebar Layout & App Shell</h3>
+          <p class="rw-meta">
+            <code>.rw-sidebar-layout--left</code>는 좌측 사이드바(250px 고정)와 우측 본문(1fr) 구조를,
+            <code>.rw-sidebar-layout</code>은 좌측 본문(1fr)과 우측 목차(260px) 구조를 지원합니다.
+          </p>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 좌측 사이드바 + 우측 본문 문서 레이아웃 --&gt;
+&lt;div class="rw-container rw-sidebar-layout--left"&gt;
+  &lt;aside&gt;사이드바 메뉴 (250px)&lt;/aside&gt;
+  &lt;main&gt;본문 콘텐츠 영역 (1fr)&lt;/main&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 3. Typography & Content -->

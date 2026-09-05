@@ -1,0 +1,148 @@
+      <!-- 1. Getting Started -->
+      <section id="overview" class="docs-section">
+        <h2 class="docs-section-title">1. Getting Started (시작하기)</h2>
+
+        <!-- Overview -->
+        <article class="rw-card rw-stack docs-card">
+          <h3>개요 및 디자인 철학</h3>
+          <p>
+            Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분한 가독성과 실제 상용 제품 UI(Workspace, Dashboard, Backoffice)에 필요한 구조적 명확성을 함께 제공합니다.
+          </p>
+          <ul>
+            <li><strong>절제된 페이퍼 미학</strong>: 화려한 그림자, 과한 테두리 반경, 불필요한 모션을 억제하고 단정한 선과 여백으로 위계를 표현합니다.</li>
+            <li><strong>저채도 Semantic Matrix</strong>: 6종 상태 색상(<code>primary</code>, <code>secondary</code>, <code>success</code>, <code>warning</code>, <code>danger</code>, <code>info</code>)을 저채도로 조화롭게 적용합니다.</li>
+            <li><strong>Zero Runtime Dependencies</strong>: 별도의 자바스크립트 없이 HTML5 표준 요소만으로 컴포넌트가 완성됩니다.</li>
+          </ul>
+        </article>
+
+        <!-- Quick Start -->
+        <article id="quickstart" class="rw-card rw-stack docs-card">
+          <h3>빠른 시작 (Installation)</h3>
+          <p class="rw-meta">단일 CDN 링크 또는 로컬 빌드 파일을 HTML 문서 상단에 삽입하면 즉시 적용됩니다.</p>
+          
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- CDN 링크로 빠르게 불러오기 --&gt;
+&lt;link rel="stylesheet" href="https://callorange.github.io/readwell-css/dist/readwell.min.css"&gt;
+
+&lt;!-- 기본 HTML 마크업 예시 --&gt;
+&lt;main class="rw-container" data-rw-theme="warm" data-rw-layout="reading"&gt;
+  &lt;article class="rw-reading"&gt;
+    &lt;h1&gt;읽는 시간이 길수록 조용한 화면이 좋아진다.&lt;/h1&gt;
+    &lt;p&gt;본문 내용을 편안하게 작성하세요...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- 4 Control Attributes -->
+        <article id="attributes" class="rw-card rw-stack docs-card">
+          <h3>🎛️ 4대 HTML 제어 속성 (data-rw-*)</h3>
+          <p class="rw-meta">HTML <code>&lt;body&gt;</code> 또는 <code>&lt;html&gt;</code> 태그에 속성을 부여하여 전역 모드를 선언적으로 제어합니다. 스마트 프리셋 체계로 <code>data-rw-layout</code>만 지정해도 최적의 밀도가 자동 연동됩니다.</p>
+          
+          <div class="rw-table-container">
+            <table class="docs-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th style="width: 160px;">제어 속성</th>
+                  <th style="width: 230px;">옵션 값</th>
+                  <th style="width: 120px;">기본값</th>
+                  <th>설명 및 권장 용도</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code style="white-space: nowrap;">data-rw-theme</code></td>
+                  <td><code>light</code>, <code>warm</code>, <code>dark</code></td>
+                  <td><code>light</code></td>
+                  <td><strong>테마 색온도</strong>: 내추럴 백상지(Light) vs 단행본 미색 크림지(Warm) vs 먹빛 흑연 야간지(Dark)</td>
+                </tr>
+                <tr>
+                  <td><code style="white-space: nowrap;">data-rw-layout</code><br><span class="rw-meta" style="font-size:0.75rem;">(구 surface 호환)</span></td>
+                  <td><code>reading</code>, <code>docs</code>, <code>workspace</code>, <code>fluid</code></td>
+                  <td><code>reading</code></td>
+                  <td><strong>레이아웃 아키타입 & 스마트 프리셋</strong>: 화면 목적별 최적 폭 및 기본 밀도 자동 연동 (reading[48rem]➔cozy, docs[80rem]➔comfortable, workspace[90rem]➔comfortable, fluid[100%]➔compact)</td>
+                </tr>
+                <tr>
+                  <td><code style="white-space: nowrap;">data-rw-density</code></td>
+                  <td><code>cozy</code>, <code>comfortable</code>, <code>compact</code></td>
+                  <td>스마트 프리셋 연동</td>
+                  <td><strong>밀도 미세 조절 (오버라이드)</strong>: 스마트 프리셋 기본값을 덮어쓰고 개별 패딩·여백을 수동 미세 조정할 때 사용</td>
+                </tr>
+                <tr>
+                  <td><code style="white-space: nowrap;">data-rw-eink</code></td>
+                  <td><code>true</code>, <code>false</code></td>
+                  <td><code>false</code></td>
+                  <td><strong>전자종이 정적 모드</strong>: 모든 전환 효과 및 애니메이션 차단</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Theme Trio -->
+        <article id="themes" class="rw-card rw-stack docs-card">
+          <h3>퓨어 페이퍼 테마 트리오 (Pure Paper Trio)</h3>
+          <p class="rw-meta">E-Ink 및 인쇄 종이 매체의 자연스러운 질감을 살린 3종의 표준 종이 테마입니다.</p>
+          <div class="rw-grid-3">
+            <!-- Light Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #faf8f3; color: #1f1f1f; border: 1.5px solid #b8b2a4; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Light 📄 (내추럴 백상지)</strong>
+                <span class="rw-badge rw-badge--primary" style="font-size: 0.75rem;">기본 테마</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #6b6b6b;">
+                맑고 정갈한 순수 종이 질감으로 깔끔하고 현대적인 가독성을 제공합니다.
+              </p>
+              <div style="background-color: #fcfbf8; border: 1px solid #e2ddd2; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem;">조용한 화면이 만드는 집중</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #6b6b6b;">긴 글 읽기와 업무용 워크스페이스에 최적화된 시각 대비를 선사합니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm">확인</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm">취소</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Warm Paper Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #f4efe2; color: #28231d; border: 1.5px solid #b8ab94; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Warm Paper 📖 (단행본 크림지)</strong>
+                <span class="rw-badge rw-badge--warning" style="font-size: 0.75rem;">눈 피로 완화</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #756c60;">
+                단행본 출판 도서의 미색 크림지 질감으로 장시간 독서 시 블루라이트 자극을 줄입니다.
+              </p>
+              <div style="background-color: #faf6ec; border: 1px solid #ded4c0; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem;">단행본 질감의 편안함</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #756c60;">실제 출판 책의 미색 용지 색온도를 재현하여 편안한 시야를 유지합니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm" style="background-color: #e0e8f0; border-color: #516b88; color: #364d68;">읽기 시작</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm" style="background-color: #e2e8df; border-color: #6e786b; color: #4f584d;">목차</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dark Slate Specimen Card -->
+            <div class="rw-panel rw-stack" style="background-color: #1a1d20; color: #e2ded5; border: 1.5px solid #4f5761; padding: 1.25rem;">
+              <div class="rw-cluster" style="justify-content: space-between;">
+                <strong>Dark 🌙 (먹빛 흑연 야간지)</strong>
+                <span class="rw-badge" style="background-color: #233140; color: #9bbde3; border-color: #6c93be; font-size: 0.75rem;">야간 저자극</span>
+              </div>
+              <p style="margin: 0; font-size: 0.88rem; color: #8e8b82;">
+                칠흑 블랙 대신 눈부심 없는 흑연 먹빛으로 장시간 야간 독서 및 코딩에 적합합니다.
+              </p>
+              <div style="background-color: #22262b; border: 1px solid #353b42; border-radius: var(--rw-radius); padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.95rem; color: #e2ded5;">먹지 질감의 차분함</span>
+                <p style="margin: 0; font-size: 0.85rem; color: #8e8b82;">어두운 방에서도 대비 자극 없이 정보를 또렷하게 판독할 수 있습니다.</p>
+                <div class="rw-cluster" style="margin-top: 0.25rem;">
+                  <button type="button" class="rw-button rw-button--primary rw-button--sm" style="background-color: #233140; border-color: #6c93be; color: #9bbde3;">야간 실행</button>
+                  <button type="button" class="rw-button rw-button--secondary rw-button--sm" style="background-color: #28312a; border-color: #859187; color: #aab7ad;">설정</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 2. Layout -->

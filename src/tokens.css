@@ -40,7 +40,11 @@
     --rw-font-serif: "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Nanum Myeongjo", serif;
     --rw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     --rw-reading-width: 44rem;
-    --rw-container-width: 72rem;
+    --rw-width-reading: 48rem;
+    --rw-width-docs: 80rem;
+    --rw-width-workspace: 90rem;
+    --rw-width-fluid: 100%;
+    --rw-container-width: var(--rw-width-docs);
     --rw-line-height-body: 1.7;
     --rw-line-height-heading: 1.25;
     --rw-radius: 4px;

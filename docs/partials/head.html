@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readwell CSS Documentation - 공식 가이드 및 컴포넌트 명세</title>
+  <link rel="stylesheet" href="../dist/readwell.min.css">
+  <link rel="stylesheet" href="../examples/switcher.css">
+  <style>
+    /* Documentation Portal Custom Styles */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 1.5rem;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      padding-right: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rw-line-strong) transparent;
+    }
+
+    .docs-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .docs-sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--rw-line-strong);
+      border-radius: 4px;
+    }
+
+    .docs-sidebar-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--rw-text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .docs-sidebar-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .docs-sidebar-links a {
+      color: var(--rw-text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--rw-radius);
+      display: block;
+      transition: background-color 0.12s ease, color 0.12s ease;
+    }
+
+    .docs-sidebar-links a:hover {
+      background-color: var(--rw-paper-3);
+      color: var(--rw-primary-strong);
+    }
+
+    .docs-section {
+      margin-bottom: 3rem;
+    }
+
+    .docs-section-title {
+      font-size: 1.75rem;
+      border-bottom: 2px solid var(--rw-line-strong);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-card {
+      margin-bottom: 2rem;
+    }
+
+    .docs-preview {
+      background-color: var(--rw-paper-2);
+      border: 1px solid var(--rw-line);
+      border-radius: var(--rw-radius);
+      padding: 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .docs-code-wrap {
+      position: relative;
+      margin-top: 0.75rem;
+    }
+
+    .docs-copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      background-color: var(--rw-paper-3);
+      border: 1px solid var(--rw-line-strong);
+      border-radius: var(--rw-radius);
+      cursor: pointer;
+      color: var(--rw-text);
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+
+    .docs-copy-btn:hover {
+      background-color: var(--rw-primary-soft);
+      border-color: var(--rw-primary);
+      color: var(--rw-primary-strong);
+    }
+
+    .docs-code-wrap pre {
+      margin: 0;
+    }
+  </style>
+</head>

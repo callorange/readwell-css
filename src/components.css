@@ -528,4 +528,140 @@
   .rw-avatar--rounded {
     border-radius: var(--rw-radius);
   }
+
+  /* 8. Chips & Tags (Compact Inline Tokens) */
+  .rw-chip,
+  .rw-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.2em 0.65em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background-color: var(--rw-paper-3);
+    color: var(--rw-text);
+    border: 1px solid var(--rw-line);
+    line-height: 1.2;
+    user-select: none;
+    vertical-align: middle;
+    transition: background-color 0.12s ease, border-color 0.12s ease;
+  }
+
+  .rw-chip--interactive,
+  a.rw-chip,
+  button.rw-chip {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .rw-chip--interactive:hover,
+  a.rw-chip:hover,
+  button.rw-chip:hover {
+    background-color: var(--rw-paper-2);
+    border-color: var(--rw-line-strong);
+    color: var(--rw-text);
+  }
+
+  .rw-chip__remove,
+  .rw-chip-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15em;
+    height: 1.15em;
+    margin-right: -0.25em;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--rw-text-muted);
+    cursor: pointer;
+    font-size: 0.9em;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .rw-chip__remove:hover,
+  .rw-chip-remove:hover {
+    background-color: var(--rw-line-strong);
+    color: var(--rw-text);
+  }
+
+  .rw-chip--primary { background: var(--rw-primary-soft); color: var(--rw-primary-strong); border-color: var(--rw-primary); }
+  .rw-chip--secondary { background: var(--rw-secondary-soft); color: var(--rw-secondary-strong); border-color: var(--rw-secondary); }
+  .rw-chip--success { background: var(--rw-success-soft); color: var(--rw-success-strong); border-color: var(--rw-success); }
+  .rw-chip--warning { background: var(--rw-warning-soft); color: var(--rw-warning-strong); border-color: var(--rw-warning); }
+  .rw-chip--danger { background: var(--rw-danger-soft); color: var(--rw-danger-strong); border-color: var(--rw-danger); }
+  .rw-chip--info { background: var(--rw-info-soft); color: var(--rw-info-strong); border-color: var(--rw-info); }
+
+  /* 9. Process Steps & Stepper (.rw-steps) */
+  .rw-steps {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: var(--rw-space-3) 0;
+    width: 100%;
+    gap: var(--rw-space-2);
+  }
+
+  .rw-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--rw-text-muted);
+    position: relative;
+    flex: 1;
+  }
+
+  .rw-step:not(:last-child)::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background-color: var(--rw-line);
+    margin-left: 0.5rem;
+  }
+
+  .rw-step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: var(--rw-paper-3);
+    border: 1px solid var(--rw-line-strong);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--rw-text);
+    flex-shrink: 0;
+  }
+
+  .rw-step.is-active,
+  .rw-step[aria-current="step"] {
+    color: var(--rw-text);
+    font-weight: 600;
+  }
+
+  .rw-step.is-active .rw-step-badge,
+  .rw-step[aria-current="step"] .rw-step-badge {
+    background-color: var(--rw-primary);
+    border-color: var(--rw-primary-strong);
+    color: #ffffff;
+  }
+
+  .rw-step.is-complete {
+    color: var(--rw-text);
+  }
+
+  .rw-step.is-complete .rw-step-badge {
+    background-color: var(--rw-success-soft);
+    border-color: var(--rw-success);
+    color: var(--rw-success-strong);
+  }
+
+  .rw-step.is-complete:not(:last-child)::after {
+    background-color: var(--rw-success);
+  }
 }

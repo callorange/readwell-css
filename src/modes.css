@@ -1,19 +1,35 @@
 @layer modes {
-  /* Surface modifiers */
-  [data-rw-surface="reading"] {
+  /* 1. Layout Archetypes (Container Width & Line Height) */
+  :where([data-rw-layout="reading"], [data-rw-surface="reading"]) {
     --rw-line-height-body: 1.75;
-    --rw-container-width: 48rem;
+    --rw-container-width: var(--rw-width-reading, 48rem);
   }
 
-  [data-rw-surface="workspace"] {
-    --rw-container-width: 80rem;
+  :where([data-rw-layout="docs"]) {
+    --rw-container-width: var(--rw-width-docs, 80rem);
   }
 
-  [data-rw-surface="dashboard"] {
-    --rw-container-width: 84rem;
+  :where([data-rw-layout="workspace"], [data-rw-surface="workspace"], [data-rw-layout="dashboard"], [data-rw-surface="dashboard"]) {
+    --rw-container-width: var(--rw-width-workspace, 90rem);
   }
 
-  [data-rw-surface="dense"] {
+  :where([data-rw-layout="fluid"], [data-rw-layout="records"], [data-rw-layout="dense"], [data-rw-surface="dense"], [data-rw-layout="full"]) {
+    --rw-container-width: var(--rw-width-fluid, 100%);
+  }
+
+  /* 2. Smart Density Presets (Layout-driven Default Density) */
+  /* Reading Layout -> Cozy Density by default */
+  :where([data-rw-layout="reading"], [data-rw-surface="reading"]):not([data-rw-density]) {
+    --rw-density-gap: 1.5rem;
+    --rw-density-row: 3rem;
+    --rw-density-panel-padding: 1.5rem;
+    --rw-density-btn-padding: 0.6em 1.2em;
+    --rw-density-input-padding: 0.6em 0.9em;
+    --rw-density-table-padding: 0.85em 1.1em;
+  }
+
+  /* Fluid/Records/Dense Layout -> Compact Density by default (except full) */
+  :where([data-rw-layout="fluid"], [data-rw-layout="records"], [data-rw-layout="dense"], [data-rw-surface="dense"]):not([data-rw-density]) {
     --rw-density-gap: 0.5rem;
     --rw-density-row: 1.8rem;
     --rw-density-panel-padding: 0.75rem;
@@ -22,7 +38,7 @@
     --rw-density-table-padding: 0.32em 0.55em;
   }
 
-  /* Density modifiers */
+  /* 3. Explicit Density Modifiers (Fine-tuning & Overrides) */
   [data-rw-density="cozy"] {
     --rw-density-gap: 1.5rem;
     --rw-density-row: 3rem;
@@ -30,6 +46,15 @@
     --rw-density-btn-padding: 0.6em 1.2em;
     --rw-density-input-padding: 0.6em 0.9em;
     --rw-density-table-padding: 0.85em 1.1em;
+  }
+
+  [data-rw-density="comfortable"] {
+    --rw-density-gap: 1rem;
+    --rw-density-row: 2.5rem;
+    --rw-density-panel-padding: 1.25rem;
+    --rw-density-btn-padding: 0.45em 0.9em;
+    --rw-density-input-padding: 0.45em 0.7em;
+    --rw-density-table-padding: 0.55em 0.8em;
   }
 
   [data-rw-density="compact"] {
@@ -58,6 +83,44 @@
       box-shadow: none !important;
       text-shadow: none !important;
     }
+  }
+
+  /* Theme: Light Paper (Natural White Paper / 내추럴 백상지 기본 테마) */
+  :root[data-rw-theme="light"],
+  [data-rw-theme="light"] {
+    --rw-paper: #faf8f3;
+    --rw-paper-2: #fcfbf8;
+    --rw-paper-3: #efece4;
+    --rw-text: #1f1f1f;
+    --rw-text-muted: #6b6b6b;
+    --rw-line: #e2ddd2;
+    --rw-line-strong: #b8b2a4;
+    --rw-focus: #2e6ad2;
+
+    /* Semantic Matrix - Light Paper */
+    --rw-primary: #496a8b;
+    --rw-primary-soft: #dfe8f0;
+    --rw-primary-strong: #334f6b;
+
+    --rw-secondary: #68736a;
+    --rw-secondary-soft: #e3e7e2;
+    --rw-secondary-strong: #4d574f;
+
+    --rw-success: #62835b;
+    --rw-success-soft: #e4efe0;
+    --rw-success-strong: #446340;
+
+    --rw-warning: #b2853f;
+    --rw-warning-soft: #f6eddc;
+    --rw-warning-strong: #866327;
+
+    --rw-danger: #a36460;
+    --rw-danger-soft: #f4e5e4;
+    --rw-danger-strong: #7f4a47;
+
+    --rw-info: #61788a;
+    --rw-info-soft: #e4ebf0;
+    --rw-info-strong: #445968;
   }
 
   /* Theme: Warm Paper (Cream Book Paper / 단행본 크림지 테마) */
@@ -96,6 +159,153 @@
     --rw-info: #5f778c;
     --rw-info-soft: #e2ecf2;
     --rw-info-strong: #41576a;
+  }
+
+  /* Theme: Dark Paper (Ink Slate / 먹빛 흑연 야간 테마) */
+  :root[data-rw-theme="dark"],
+  [data-rw-theme="dark"] {
+    --rw-paper: #1a1d20;
+    --rw-paper-2: #22262b;
+    --rw-paper-3: #2d3339;
+    --rw-text: #e2ded5;
+    --rw-text-muted: #8e8b82;
+    --rw-line: #353b42;
+    --rw-line-strong: #4f5761;
+    --rw-focus: #5c8bd6;
+
+    /* Semantic Matrix - Dark Paper */
+    --rw-primary: #6c93be;
+    --rw-primary-soft: #233140;
+    --rw-primary-strong: #9bbde3;
+
+    --rw-secondary: #859187;
+    --rw-secondary-soft: #28312a;
+    --rw-secondary-strong: #aab7ad;
+
+    --rw-success: #7aa170;
+    --rw-success-soft: #233122;
+    --rw-success-strong: #a2c899;
+
+    --rw-warning: #c8994b;
+    --rw-warning-soft: #382d1b;
+    --rw-warning-strong: #e6ba70;
+
+    --rw-danger: #be726d;
+    --rw-danger-soft: #382221;
+    --rw-danger-strong: #db9591;
+
+    --rw-info: #7592a8;
+    --rw-info-soft: #23303a;
+    --rw-info-strong: #a2bed4;
+  }
+
+  /* OS Preferences Dark Scheme (Fallback when no theme attribute is explicitly set) */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-rw-theme]),
+    :root:not([data-rw-theme]) body {
+      --rw-paper: #1a1d20;
+      --rw-paper-2: #22262b;
+      --rw-paper-3: #2d3339;
+      --rw-text: #e2ded5;
+      --rw-text-muted: #8e8b82;
+      --rw-line: #353b42;
+      --rw-line-strong: #4f5761;
+      --rw-focus: #5c8bd6;
+
+      --rw-primary: #6c93be;
+      --rw-primary-soft: #233140;
+      --rw-primary-strong: #9bbde3;
+
+      --rw-secondary: #859187;
+      --rw-secondary-soft: #28312a;
+      --rw-secondary-strong: #aab7ad;
+
+      --rw-success: #7aa170;
+      --rw-success-soft: #233122;
+      --rw-success-strong: #a2c899;
+
+      --rw-warning: #c8994b;
+      --rw-warning-soft: #382d1b;
+      --rw-warning-strong: #e6ba70;
+
+      --rw-danger: #be726d;
+      --rw-danger-soft: #382221;
+      --rw-danger-strong: #db9591;
+
+      --rw-info: #7592a8;
+      --rw-info-soft: #23303a;
+      --rw-info-strong: #a2bed4;
+    }
+  }
+
+  /* Print Layout & Publication Optimization */
+  @media print {
+    *, *::before, *::after {
+      background: transparent !important;
+      color: #000000 !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    html, body {
+      background-color: #ffffff !important;
+      color: #111111 !important;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    @page {
+      margin: 20mm 15mm;
+    }
+
+    /* Hide screen-only interactive UI */
+    .rw-nav,
+    .rw-toolbar,
+    .rw-filterbar,
+    .rw-pagination,
+    .rw-tabs,
+    .rw-dropdown,
+    .rw-switcher,
+    .rw-switcher-panel,
+    .rw-switcher-toggle,
+    .rw-switcher-backdrop,
+    button:not(.rw-button--print),
+    .rw-button:not(.rw-button--print),
+    [data-tooltip]::before,
+    [data-tooltip]::after,
+    dialog,
+    .rw-dialog {
+      display: none !important;
+    }
+
+    /* Page break rules */
+    h1, h2, h3, h4, h5, h6 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    table, tr, figure, blockquote, pre, .rw-card, .rw-panel, .rw-callout {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Print URL Footnotes for Reading */
+    .rw-reading a[href^="http"]::after,
+    article a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      font-weight: normal;
+      color: #555555 !important;
+    }
+
+    /* Preserve borders for structure */
+    table, th, td, hr, blockquote, .rw-card, .rw-panel, .rw-callout {
+      border-color: #cccccc !important;
+    }
+
+    th {
+      border-bottom: 2px solid #000000 !important;
+    }
   }
 }
 

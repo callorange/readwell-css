@@ -48,11 +48,11 @@
 | RW-CSS-013 | surface modifier 작성 | RW-D-005, RW-CSS-004, RW-CSS-007 | reading/workspace/dashboard/dense mode |
 | RW-CSS-014 | density modifier 작성 | RW-D-005, RW-CSS-004, RW-CSS-005, RW-CSS-007 | cozy/comfortable/compact spacing |
 | RW-CSS-015 | product pattern 작성 | RW-CSS-007, RW-CSS-012, RW-CSS-013 | toolbar/filterbar/stat/status/activity/summary |
-| RW-EX-001 | article 예제 작성 | RW-CSS-003 | `examples/article.html` |
+| RW-EX-001 | reading 예제 작성 | RW-CSS-003 | `examples/reading.html` |
 | RW-EX-002 | workspace/docs 예제 작성 | RW-CSS-007, RW-CSS-013 | `examples/workspace.html` |
 | RW-EX-003 | news/community 예제 작성 | RW-CSS-007, RW-CSS-008 | `examples/community.html` |
 | RW-EX-004 | dashboard/backoffice 예제 작성 | RW-CSS-012, RW-CSS-013, RW-CSS-015 | `examples/dashboard.html` |
-| RW-EX-005 | issue list/dense data 예제 작성 | RW-CSS-012, RW-CSS-014, RW-CSS-015 | `examples/issues.html` |
+| RW-EX-005 | fluid/issue list 예제 작성 | RW-CSS-012, RW-CSS-014, RW-CSS-015 | `examples/fluid.html` |
 | RW-QA-001 | 모바일 레이아웃 확인 | RW-EX-001~005 | responsive fix |
 | RW-QA-002 | neutral/semantic contrast 점검 | RW-D-004, RW-CSS-012 | WCAG 기준 색상 보정 |
 | RW-QA-003 | class API 정리 | RW-CSS-004~015 | README 업데이트 |

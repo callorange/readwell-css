@@ -114,4 +114,133 @@
     padding: 0.1em 0.3em;
     border-radius: 2px;
   }
+
+  /* Tufte-Style Sidenotes & Marginnotes */
+  article, .rw-reading, .rw-reading-centered, main {
+    counter-reset: rw-sidenote-counter;
+  }
+
+  .rw-sidenote-number {
+    counter-increment: rw-sidenote-counter;
+    vertical-align: super;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--rw-primary-strong);
+    cursor: pointer;
+    user-select: none;
+    padding: 0 0.15em;
+  }
+
+  .rw-sidenote-number::after {
+    content: counter(rw-sidenote-counter);
+  }
+
+  .rw-marginnote-symbol {
+    vertical-align: super;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--rw-text-muted);
+    cursor: pointer;
+    user-select: none;
+    padding: 0 0.15em;
+  }
+
+  .rw-sidenote,
+  .rw-marginnote {
+    font-size: 0.825rem;
+    line-height: 1.5;
+    color: var(--rw-text-muted);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    display: block;
+    position: relative;
+  }
+
+  .rw-sidenote::before {
+    content: counter(rw-sidenote-counter) ". ";
+    font-weight: 600;
+    color: var(--rw-primary-strong);
+  }
+
+  /* Desktop View: Float Right into Margin */
+  @media (min-width: 1080px) {
+    .rw-reading .rw-sidenote,
+    .rw-reading .rw-marginnote,
+    .rw-reading-centered .rw-sidenote,
+    .rw-reading-centered .rw-marginnote {
+      float: right;
+      clear: right;
+      margin-right: -21rem;
+      width: 18rem;
+      margin-top: 0.15rem;
+      margin-bottom: 0.75rem;
+      padding-left: 0.6rem;
+      border-left: 2px solid var(--rw-line);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .rw-reading .rw-sidenote:hover,
+    .rw-reading .rw-marginnote:hover {
+      border-left-color: var(--rw-primary);
+      color: var(--rw-text);
+    }
+
+    /* Hide toggle checkboxes on desktop */
+    .rw-sidenote-toggle,
+    .rw-marginnote-toggle {
+      display: none !important;
+    }
+  }
+
+  /* Mobile & Tablet View: Inline Foldable Card */
+  @media (max-width: 1079px) {
+    .rw-sidenote-toggle:not(:checked) ~ .rw-sidenote,
+    .rw-marginnote-toggle:not(:checked) ~ .rw-marginnote {
+      display: none;
+    }
+
+    .rw-sidenote-toggle:checked ~ .rw-sidenote,
+    .rw-marginnote-toggle:checked ~ .rw-marginnote {
+      display: block;
+      float: none;
+      clear: both;
+      width: 100%;
+      margin: 0.6rem 0;
+      padding: 0.6rem 0.85rem;
+      background-color: var(--rw-paper-2);
+      border: 1px solid var(--rw-line);
+      border-left: 3px solid var(--rw-primary);
+      border-radius: var(--rw-radius);
+    }
+  }
+
+  /* Standard Bottom Footnotes Section */
+  .rw-footnotes {
+    margin-top: var(--rw-space-5);
+    padding-top: var(--rw-space-3);
+    border-top: 1px solid var(--rw-line);
+    font-size: 0.875rem;
+    color: var(--rw-text-muted);
+  }
+
+  .rw-footnotes ol {
+    padding-left: 1.25rem;
+    margin: var(--rw-space-2) 0;
+  }
+
+  .rw-footnotes li {
+    margin-bottom: 0.5rem;
+    word-break: keep-all;
+  }
+
+  .rw-footnote-backref {
+    text-decoration: none;
+    color: var(--rw-primary-strong);
+    margin-left: 0.25rem;
+    font-weight: 600;
+  }
+
+  .rw-footnote-backref:hover {
+    text-decoration: underline;
+  }
 }

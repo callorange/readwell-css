@@ -103,14 +103,26 @@
   .rw-app-shell {
     display: grid;
     gap: var(--rw-space-4);
-    grid-template-columns: 240px 1fr 260px;
+    grid-template-columns: 240px minmax(0, 1fr) 260px;
+    width: 100%;
+    max-width: var(--rw-container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--rw-space-3);
+    padding-right: var(--rw-space-3);
   }
 
   .rw-app-shell--seamless {
     display: grid;
     gap: 0;
-    grid-template-columns: 260px 1fr 260px;
+    grid-template-columns: 260px minmax(0, 1fr) 260px;
+    width: 100%;
+    max-width: var(--rw-container-width);
+    margin-left: auto;
+    margin-right: auto;
     min-height: calc(100vh - 60px);
+    border-left: 1px solid var(--rw-line);
+    border-right: 1px solid var(--rw-line);
   }
 
   .rw-app-shell--seamless > :first-child {
@@ -119,7 +131,8 @@
   }
 
   .rw-app-shell--seamless > :nth-child(2) {
-    padding: var(--rw-space-4);
+    padding: var(--rw-space-4) var(--rw-space-5);
+    min-width: 0;
   }
 
   .rw-app-shell--seamless > :last-child {

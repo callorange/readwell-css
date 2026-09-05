@@ -1,0 +1,225 @@
+      <section id="forms" class="docs-section">
+        <h2 class="docs-section-title">4. Forms & Validation (폼 컨트롤 및 유효성 검증)</h2>
+
+        <!-- Input & Select -->
+        <article id="forms-input" class="rw-card rw-stack docs-card">
+          <h3>Input, Select & Textarea</h3>
+          <p class="rw-meta">밀도 시스템과 연동되는 기본 폼 컨트롤입니다.</p>
+
+          <div class="docs-preview rw-stack">
+            <div class="rw-grid-2">
+              <div>
+                <label for="doc-demo-name" class="rw-meta">사용자 이름</label>
+                <input type="text" id="doc-demo-name" placeholder="홍길동" style="margin-top: 0.25rem;">
+              </div>
+              <div>
+                <label for="doc-demo-role" class="rw-meta">역할 선택</label>
+                <select id="doc-demo-role" style="margin-top: 0.25rem;">
+                  <option>소프트웨어 엔지니어</option>
+                  <option>프로덕트 디자이너</option>
+                  <option>기술 문서 작성자</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="doc-demo-bio" class="rw-meta">소개 (Textarea)</label>
+              <textarea id="doc-demo-bio" rows="3" placeholder="소개를 입력하세요..." style="margin-top: 0.25rem;"></textarea>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label class="rw-meta"&gt;이름&lt;/label&gt;
+&lt;input type="text" placeholder="홍길동"&gt;
+
+&lt;label class="rw-meta"&gt;소개&lt;/label&gt;
+&lt;textarea rows="3" placeholder="내용 입력..."&gt;&lt;/textarea&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Checkbox & Radio -->
+        <article id="forms-checkbox" class="rw-card rw-stack docs-card">
+          <h3>Custom Checkbox & Radio</h3>
+          <p class="rw-meta">
+            Paper & Ink 철학에 부합하는 순수 CSS 사각/원형 커스텀 컨트롤입니다. 완벽한 네이티브 포커스 링과 라벨 클릭 토글을 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-cluster" style="gap: 1.5rem;">
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="chk-doc-1" checked> <span>알림 수신 동의 (Checked)</span>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="chk-doc-2"> <span>마케팅 정보 수신</span>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="radio" name="doc-radio" id="rad-doc-1" checked> <span>옵션 A (Radio)</span>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="radio" name="doc-radio" id="rad-doc-2"> <span>옵션 B</span>
+            </label>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" checked&gt; 동의함
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="radio" name="group" checked&gt; 옵션 A
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;input type="radio" name="group"&gt; 옵션 B
+&lt;/label&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Switch -->
+        <article id="forms-switch" class="rw-card rw-stack docs-card">
+          <h3>Toggle Switch (슬라이더 스위치)</h3>
+          <p class="rw-meta">
+            표준 체크박스에 <code>role="switch"</code> 속성만 부여하면 슬라이더 토글 스위치로 자동 전환됩니다.
+          </p>
+
+          <div class="docs-preview rw-cluster" style="gap: 2rem;">
+            <label style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+              <input type="checkbox" role="switch" id="sw-doc-1" checked>
+              <span>자동 저장 활성화 (On)</span>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+              <input type="checkbox" role="switch" id="sw-doc-2">
+              <span>야간 모드 (Off)</span>
+            </label>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" role="switch" checked&gt; 자동 저장 활성화
+&lt;/label&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Slider Range Control -->
+        <article id="forms-range" class="rw-card rw-stack docs-card">
+          <h3>Slider Range Control (&lt;input type="range"&gt;)</h3>
+          <p class="rw-meta">
+            E-Ink 독서 화면의 글자 크기, 줄 간격, 화면 밀도 등을 부드럽게 조절할 수 있는 미니멀 Paper & Ink 슬라이더입니다.
+            호버 시 썸(Thumb) 확대 피드백과 네이티브 포커스 링을 지원합니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1.25rem;">
+            <div>
+              <div class="rw-cluster" style="justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem;">
+                <label for="doc-range-fontsize" class="rw-meta">독서 글자 크기 조절 (Font Size)</label>
+                <span class="rw-meta" id="doc-range-val">기본값: 16px</span>
+              </div>
+              <input type="range" id="doc-range-fontsize" min="12" max="24" value="16" oninput="document.getElementById('doc-range-val').textContent = this.value + 'px'">
+            </div>
+
+            <div>
+              <label class="rw-meta" style="display: block; margin-bottom: 0.35rem;">비활성화 슬라이더 (Disabled)</label>
+              <input type="range" min="0" max="100" value="70" disabled>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 표준 슬라이더 컨트롤 --&gt;
+&lt;label class="rw-meta"&gt;글자 크기&lt;/label&gt;
+&lt;input type="range" min="12" max="24" value="16"&gt;
+
+&lt;!-- 비활성화 상태 --&gt;
+&lt;input type="range" disabled&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Input Group -->
+        <article id="forms-input-group" class="rw-card rw-stack docs-card">
+          <h3>Input Group (결합 입력창 .rw-input-group)</h3>
+          <p class="rw-meta">
+            텍스트 입력 필드 좌우에 고정 단위(₩, $, %), 프로토콜(https://), 검색 버튼 등을 시각적 경계 없이 매끄럽게 연결하는 플렉스 래퍼입니다.
+          </p>
+
+          <div class="docs-preview rw-stack" style="gap: 1rem;">
+            <div>
+              <label class="rw-meta" style="display: block; margin-bottom: 0.35rem;">URL 도메인 입력 (Prefix Addon + Input + Button)</label>
+              <div class="rw-input-group">
+                <span class="rw-input-group-addon">https://</span>
+                <input type="text" placeholder="workspace.readwell.design">
+                <button type="button" class="rw-button rw-button--primary">이동</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="rw-meta" style="display: block; margin-bottom: 0.35rem;">가격 및 통화 입력 (Prefix & Suffix Addons)</label>
+              <div class="rw-input-group">
+                <span class="rw-input-group-addon">₩</span>
+                <input type="text" placeholder="15,000" style="text-align: right;">
+                <span class="rw-input-group-addon">원 / 월</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="rw-meta" style="display: block; margin-bottom: 0.35rem;">통합 검색창 (Input + Button)</label>
+              <div class="rw-input-group">
+                <input type="search" placeholder="아티클 및 도서 검색...">
+                <button type="button" class="rw-button">검색</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 접두사 + 인풋 + 버튼 결합 --&gt;
+&lt;div class="rw-input-group"&gt;
+  &lt;span class="rw-input-group-addon"&gt;https://&lt;/span&gt;
+  &lt;input type="text" placeholder="my-service.com"&gt;
+  &lt;button class="rw-button rw-button--primary"&gt;연결&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- 양방향 애드온 결합 (통화 표기) --&gt;
+&lt;div class="rw-input-group"&gt;
+  &lt;span class="rw-input-group-addon"&gt;₩&lt;/span&gt;
+  &lt;input type="text" value="25,000"&gt;
+  &lt;span class="rw-input-group-addon"&gt;원&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </article>
+
+        <!-- Validation States -->
+        <article id="forms-validation" class="rw-card rw-stack docs-card">
+          <h3>Valid & Invalid 유효성 검증 상태</h3>
+          <p class="rw-meta">
+            웹 접근성 표준 <code>aria-invalid="false"</code>(성공) 및 <code>aria-invalid="true"</code>(오류) 속성을 통해 명확한 테두리 및 도움말 메시지를 표시합니다.
+          </p>
+
+          <div class="docs-preview rw-grid-2">
+            <div>
+              <label for="val-doc-valid" class="rw-meta">접속 도메인 (Valid / 성공)</label>
+              <input type="text" id="val-doc-valid" value="readwell.design" aria-invalid="false" style="margin-top: 0.25rem;">
+              <span class="rw-form-success">✓ 사용 가능한 도메인입니다.</span>
+            </div>
+            <div>
+              <label for="val-doc-invalid" class="rw-meta">이메일 주소 (Invalid / 오류)</label>
+              <input type="email" id="val-doc-invalid" value="invalid-email-format" aria-invalid="true" style="margin-top: 0.25rem;">
+              <span class="rw-form-error">✕ 올바른 이메일 형식을 입력하세요.</span>
+            </div>
+          </div>
+
+          <div class="docs-code-wrap">
+            <button type="button" class="docs-copy-btn" onclick="copyCode(this)">복사</button>
+            <pre><code>&lt;!-- 성공 상태 (Valid) --&gt;
+&lt;label class="rw-meta"&gt;도메인&lt;/label&gt;
+&lt;input type="text" value="readwell.design" aria-invalid="false"&gt;
+&lt;span class="rw-form-success"&gt;✓ 사용 가능한 도메인입니다.&lt;/span&gt;
+
+&lt;!-- 오류 상태 (Invalid) --&gt;
+&lt;label class="rw-meta"&gt;이메일&lt;/label&gt;
+&lt;input type="email" value="wrong-email" aria-invalid="true"&gt;
+&lt;span class="rw-form-error"&gt;✕ 올바른 이메일 형식이 아닙니다.&lt;/span&gt;</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- 5. Components -->
