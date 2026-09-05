@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **동양 서예 & 수묵화 (Sumi-e) 테마 쇼케이스 (`examples/sumi/`)**:
+  - 천연 닥나무 화선지 고정 캔버스(`position: fixed`)로 무한 스크롤 및 동적 길이에 100% 무결점 대응
+  - `border-image-slice: 17` 기반 5종 서예 붓선 콜아웃 프레임 배리에이션:
+    - 기본 방필 중필형 (`callout-frame-clean.png`)
+    - 먹 번짐 & 미세 붓 떨림 손맛형 (`callout-frame-brush.png`)
+    - 세필 날렵형 (`callout-frame-fine.png`)
+    - 대각선 대칭 보완형 (`callout-frame-variant.png`)
+    - 원필 곡선형 (`callout-frame-round.png`)
+  - 동양화 육채(六彩) 원칙에 기반한 농묵(`--rw-sumi-ink: #121316`), 중묵(`--rw-sumi-charcoal: #424754`), 담묵(`--rw-sumi-wash: #787f90`), 주사(`--rw-sumi-seal: #b8281d`)의 확연한 수묵 계조 대비 시스템 및 야간 흑지(Dark) 모드 구축
+  - 순수 HTML/CSS(2x2 Grid) 및 SVG 스탬프 압착·전각 칼맛 필터 기반 전통 사각 전각 직인(Chop) 컴포넌트(`.rw-seal-chop`) 구축 (4글자 한자/한글 전각 포치 여백 최적화, 음각 백문, 이중 테두리 쌍선인, 2글자/1글자 방인)
+  - `examples/sumi/README.md` 기획, 디자인 시스템, 아키텍처 및 에셋 인벤토리 명세서 구축
+  - `examples/index.html` 예제 허브 페이지에 수묵 테마 쇼케이스 연동 카드 등록
+
 ## [0.2.0] - 2026-09-05
 
 ### Added

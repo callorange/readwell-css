@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sumi-e & Calligraphy Theme - Readwell CSS</title>
+  <link rel="stylesheet" href="../../dist/readwell.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       Readwell CSS - Pure Calligraphy & Sumi-e (서예와 먹) Theme
+       High-Fidelity Concept Implementation with Transparent Alpha Assets
+       ========================================================================== */
+
+    :root {
+      /* 화선지(宣紙) & 송연묵(松煙墨) 순수 서예 팔레트 */
+      --rw-sumi-paper: #f8f5ee;              /* 맑고 따뜻한 미색(米色) 화선지 바탕 */
+      --rw-sumi-paper-surface: #fcfbf7;      /* 콜아웃 및 패널의 정갈한 표면 */
+      --rw-sumi-paper-sunken: #ece6d8;
+      
+      --rw-sumi-ink: #121316;                /* 농묵(濃墨): 깊고 강렬한 칠흑의 대제목 및 핵심 키워드 */
+      --rw-sumi-charcoal: #424754;           /* 중묵(中墨): 장시간 편안한 독서를 위한 부드러운 먹빛 본문 */
+      --rw-sumi-wash: #787f90;               /* 담묵(淡墨): 메타데이터, 날짜, 작성자, 은은한 맑은 수묵 그레이 */
+      --rw-sumi-dilute: #a5abb8;             /* 연한 먹색 */
+      --rw-sumi-line: #dfd8cb;               /* 엷은 지선(紙線) 테두리 */
+      
+      /* 서예의 화룡점정: 주사(朱砂) 낙관 인장 */
+      --rw-sumi-seal: #b8281d;               /* 정통 붉은 낙관 도장 색상 */
+      --rw-sumi-seal-soft: rgba(184, 40, 29, 0.08); /* 인장 배경 */
+      --rw-sumi-seal-border: #d45d52;
+      
+      --rw-font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      --rw-font-serif: "Noto Serif KR", Georgia, serif;
+    }
+
+    /* 흑묵(Dark Sumi: 흑지에 백옥묵) 테마 */
+    [data-theme="dark"] {
+      --rw-sumi-paper: #121316;              /* 먹물로 물들인 흑지 바탕 */
+      --rw-sumi-paper-surface: #181a1f;      /* 짙은 먹빛 카드 표면 */
+      --rw-sumi-paper-sunken: #0c0d0f;
+      
+      --rw-sumi-ink: #fcfbf9;                /* 백묵(白墨): 맑은 백옥빛 텍스트 */
+      --rw-sumi-charcoal: #d6d3cb;           /* 은은한 담묵빛 본문 */
+      --rw-sumi-wash: #9c978d;               /* 보조 텍스트 */
+      --rw-sumi-dilute: #656972;
+      --rw-sumi-line: #2c2f38;
+      
+      --rw-sumi-seal: #e54b3d;
+      --rw-sumi-seal-soft: rgba(229, 75, 61, 0.15);
+      --rw-sumi-seal-border: #9e352b;
+    }
+
+    /* --------------------------------------------------------------------------
+       1. 한지 배경: Full-bleed 천연 닥나무 화선지 캔버스 레이어
+          z-index 충돌 없는 독립 뷰포트 고정 캔버스로 무한 스크롤 & 동적 길이 100% 대응
+       -------------------------------------------------------------------------- */
+    html {
+      background-color: var(--rw-sumi-paper);
+      min-height: 100%;
+    }
+
+    body.rw-sumi-body {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      color: var(--rw-sumi-charcoal);
+      font-family: var(--rw-font-sans);
+      min-height: 100vh;
+      line-height: 1.75;
+      position: relative;
+      transition: color 0.25s ease;
+    }
+
+    /* 화면 전체를 덮는 고정 한지 닥나무 결 캔버스 */
+    .rw-sumi-hanji-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/hanji-bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 1;
+      transition: opacity 0.25s ease, filter 0.25s ease;
+    }
+
+    body.rw-sumi-body:not(.hanji-texture-active) .rw-sumi-hanji-canvas {
+      opacity: 0;
+    }
+
+    [data-theme="dark"] .rw-sumi-hanji-canvas {
+      background-blend-mode: multiply;
+      background-color: #121316;
+      filter: invert(1) brightness(0.22) contrast(1.25);
+    }
+
+    /* strong, b 태그: 칠흑 농묵으로 확실한 강조 및 가독성 확보 */
+    strong, b {
+      font-weight: 700 !important;
+      color: var(--rw-sumi-ink) !important;
+    }
+
+    /* --------------------------------------------------------------------------
+       2. 3컬럼 레이아웃 아키텍처 (컨셉 이미지 1:1 대칭 구조)
+          상단 전체를 가로지르는 인위적인 헤더 바를 제거하고,
+          좌측 사이드바(Reading), 중앙 본문, 우측 메타 레일이 수직으로 시원하게 열린 구조
+       -------------------------------------------------------------------------- */
+    .rw-sumi-layout {
+      max-width: 1440px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr) 340px;
+      gap: 0;
+      align-items: stretch;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1180px) {
+      .rw-sumi-layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+      .rw-sumi-aside {
+        grid-column: 2;
+        margin-top: 3rem;
+        height: auto !important;
+        position: static !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .rw-sumi-layout {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+      }
+      .rw-sumi-sidebar {
+        display: none;
+      }
+      .rw-sumi-aside {
+        grid-column: 1;
+        padding: 1rem 0 !important;
+        height: auto !important;
+        position: static !important;
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       3. 좌측 사이드바: 메뉴 및 실제 수묵 갈필(渴筆) 붓선
+          (컨셉아트 실측 Delta 4~6 일치: 튀지 않고 극도로 은은한 한지 고지 틴트)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: rgba(220, 205, 185, 0.12); /* 원본 시안과 정확히 일치하는 미세하고 은은한 고지 틴트 */
+      border-right: 1px solid rgba(45, 38, 30, 0.08); /* 극도로 섬세한 1px 지선 경계 */
+      border-radius: 0;
+      padding: 2.2rem 1.6rem 3rem 2.2rem;
+      box-sizing: border-box;
+    }
+
+    [data-theme="dark"] .rw-sumi-sidebar {
+      background: rgba(255, 255, 255, 0.025);
+      border-right-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .rw-sidebar-brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--rw-sumi-ink);
+      margin-bottom: 2.2rem;
+      display: block;
+      letter-spacing: -0.015em;
+    }
+
+    .rw-sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .rw-sidebar-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .rw-sidebar-link {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--rw-sumi-charcoal);
+      text-decoration: none;
+      padding: 0.2rem 0;
+      line-height: 1.5;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    .rw-sidebar-link:hover {
+      color: var(--rw-sumi-seal);
+      transform: translateX(2px);
+    }
+
+    .rw-sidebar-link.is-active {
+      color: var(--rw-sumi-ink);
+      font-weight: 700;
+    }
+
+    /* 실제 서예 붓 갈필 먹선 (투명 알파 에셋) */
+    .rw-brush-divider {
+      width: 100%;
+      max-width: 165px;
+      height: auto;
+      display: block;
+      margin: 1.1rem 0;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    [data-theme="dark"] .rw-brush-divider {
+      filter: invert(1) brightness(1.2);
+      opacity: 0.65;
+    }
+
+    .rw-sidebar-group:hover .rw-brush-divider {
+      opacity: 1;
+    }
+
+    /* --------------------------------------------------------------------------
+       4. 중앙 본문 아티클
+          (컨셉아트와 동일하게 상단 넉넉한 여백과 최적 가독성 폭으로 정돈)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-content {
+      min-width: 0;
+      max-width: 820px;
+      padding: 4.8rem 4rem 6rem;
+      box-sizing: border-box;
+    }
+
+    .rw-sumi-content h1.rw-doc-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.025em;
+      color: var(--rw-sumi-ink);
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+    }
+
+    .rw-doc-author {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--rw-sumi-wash);
+      margin-bottom: 2.6rem;
+    }
+
+    .rw-doc-avatar {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: inline-block;
+      object-fit: cover;
+      border: 1px solid rgba(25, 30, 40, 0.2);
+    }
+
+    .rw-doc-author-name {
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-doc-dot {
+      opacity: 0.4;
+      font-size: 0.8rem;
+    }
+
+    .rw-sumi-content h2 {
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--rw-sumi-ink);
+      margin-top: 2.6rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.4;
+      border-bottom: none !important; /* 시안과 동일하게 하단 구분선 없이 서예의 순수 여백 유지 */
+    }
+
+    .rw-sumi-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--rw-sumi-ink);
+      margin-top: 2.2rem;
+      margin-bottom: 0.7rem;
+      line-height: 1.4;
+    }
+
+    .rw-sumi-content p {
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      color: var(--rw-sumi-charcoal);
+      font-size: 0.98rem;
+      line-height: 1.82;
+    }
+
+    /* --------------------------------------------------------------------------
+       6. 코드 블록 (이중 여백 버그 완전 해결)
+       -------------------------------------------------------------------------- */
+    .rw-code-sumi {
+      background: #191b20 !important;
+      color: #ede9e0 !important;
+      border-radius: 7px;
+      padding: 1.25rem 1.6rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Cascadia Code", monospace;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      overflow-x: auto;
+      margin: 1.5rem 0 2.2rem;
+      position: relative;
+      box-shadow: 0 4px 14px rgba(10, 12, 16, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* 내부 pre 태그의 중첩 패딩/마진 완전 리셋 */
+    .rw-code-sumi pre {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .rw-code-copy-btn {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      background: transparent;
+      border: none;
+      color: #8a8e99;
+      cursor: pointer;
+      font-size: 0.88rem;
+      padding: 0.2rem;
+      border-radius: 4px;
+      transition: color 0.15s ease;
+    }
+
+    .rw-code-copy-btn:hover {
+      color: #ffffff;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. Callout Box (부드러운 먹 번짐 & 순수 한지 일체화 - 인위적인 흰색 박스 제거)
+          좌하단/우상단 농묵과 훈염 번짐, 좌상단/우하단 열린 여백(Open Gap) 및 필압 테이퍼링 완벽 반영
+       -------------------------------------------------------------------------- */
+    .rw-callout-ink-box {
+      position: relative;
+      border: none;
+      padding: 1.2rem 1.5rem; /* 좌우 1.5rem 완전 대칭 균형 확보 */
+      margin: 1.5rem 0 2.0rem;
+      box-sizing: border-box;
+      background: transparent !important; /* 인위적인 흰색 배경 완전 제거: 한지 닥나무 결이 박스 내부를 자연스럽게 관통 */
+      border-radius: 4px;
+    }
+
+    .rw-callout-ink-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-style: solid;
+      border-width: 17px; /* 슬라이스(17)와 1:1 완벽 정합으로 왜곡 없는 원본 필압 유지 */
+      border-image-source: url('assets/callout-frame-clean.png');
+      border-image-slice: 17; /* 사용자 수정 에셋에 최적화된 균일 17 슬라이스 */
+      border-image-repeat: stretch;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.98;
+    }
+
+    .rw-callout-ink-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    [data-theme="dark"] .rw-callout-ink-box::before {
+      filter: invert(1) brightness(1.2);
+    }
+
+    /* 변형 프레임 1: 대각선 상호보완 필세 (좌상단 기필 농묵, 우하단 맺음, 우상단·좌하단 열린 여백) */
+    .rw-callout-ink-box--variant::before {
+      border-image-source: url('assets/callout-frame-variant.png');
+    }
+
+    /* 변형 프레임 2: 정갈한 세필(細筆) 서예선 (직각 사각형 구조 유지 & 맑고 날렵한 필세) */
+    .rw-callout-ink-box--fine::before {
+      border-image-source: url('assets/callout-frame-fine.png');
+      border-image-slice: 17;
+      border-width: 17px;
+    }
+
+    /* 변형 프레임 3: 유려한 원필(圓筆) 곡선 프레임 (4모서리 둥근 굴림 & 개방형 유기적 수묵선) */
+    .rw-callout-ink-box--round::before,
+    .rw-callout-ink-box--soft::before {
+      border-image-source: url('assets/callout-frame-round.png');
+      border-image-slice: 28 30; /* 사용자 우측 여백 최적화 반영: 상하 28, 좌우 30 정합 */
+      border-width: 18px;
+    }
+
+    /* 변형 프레임 4: 먹의 번짐 & 손맛의 붓 떨림 프레임 (유기적 붓터치와 농담 번짐) */
+    .rw-callout-ink-box--brush::before {
+      border-image-source: url('assets/callout-frame-brush.png');
+      border-image-slice: 17;
+      border-width: 17px;
+    }
+
+    /* 타이틀 헤더 인라인 묵적 (먹방울) - 제목 앞 수묵 불릿 */
+    .rw-callout-inkdrop {
+      width: 13px;
+      height: 13px;
+      margin-right: 0.38rem;
+      vertical-align: -1px;
+      display: inline-block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    [data-theme="dark"] .rw-callout-inkdrop {
+      filter: invert(1) brightness(1.15);
+    }
+
+    .rw-callout-ink-header {
+      display: flex;
+      align-items: flex-start; /* 타이틀이 여러 줄로 길어져도 첫 줄 높이에 인장이 깔끔하게 상단 정렬 */
+      justify-content: space-between;
+      gap: 0.75rem;            /* 타이틀과 낙관 도장 간 충돌 방지 안전 간격 */
+      margin-bottom: 0.25rem;
+    }
+
+    .rw-callout-ink-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--rw-sumi-ink);
+      line-height: 1.45;
+      min-width: 0;
+    }
+
+    .rw-callout-ink-header .rw-seal-badge,
+    .rw-callout-ink-header .rw-seal-stamp {
+      margin-top: 0.15rem; /* 첫 줄 타이틀 텍스트의 중심선과 정렬 */
+    }
+
+    .rw-callout-ink-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(35, 40, 50, 0.08);
+      margin: 0.25rem 0 0.45rem;
+    }
+
+    [data-theme="dark"] .rw-callout-ink-divider {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .rw-callout-ink-desc {
+      font-size: 0.90rem;
+      color: var(--rw-sumi-charcoal);
+      margin: 0;
+      line-height: 1.62;
+    }
+
+    /* --------------------------------------------------------------------------
+       5. 우측 사이드바: 메타데이터, 승인 낙관 인장 구획
+          (컨셉아트와 동일하게 우측 상단 Search ☰ 및 유틸리티 배치 후 메타 레일 전개)
+       -------------------------------------------------------------------------- */
+    .rw-sumi-aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2.2rem 2.2rem 4rem 1.8rem;
+      box-sizing: border-box;
+      font-size: 0.88rem;
+    }
+
+    /* 우측 상단 유틸리티 링크 및 Search (컨셉아트의 🔍 Search ☰ 위치) */
+    .rw-sumi-top-utility {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      font-size: 0.84rem;
+      color: var(--rw-sumi-wash);
+      margin-bottom: 3.5rem;
+      white-space: nowrap;
+    }
+
+    .rw-sumi-top-utility a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .rw-sumi-top-utility a:hover {
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-sumi-search-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.88rem;
+      color: var(--rw-sumi-wash);
+      cursor: pointer;
+    }
+
+    .rw-sumi-search-box:hover {
+      color: var(--rw-sumi-ink);
+    }
+
+    /* 우측 메타 블록 컨테이너 (세로 먹선과 1:1 정렬) */
+    .rw-aside-meta-flow {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    /* 컨셉 이미지 우측 네비게이션 좌측의 세로 먹 효과 (수묵 세로 갈필선) */
+    .rw-aside-vertical-brush {
+      position: absolute;
+      left: 0;
+      top: 0.15rem; /* Approved by 상단 텍스트와 정확히 수평 일치 */
+      width: 8px;
+      height: 165px; /* 두 Approved by 섹션을 자연스럽게 아우르며 하단으로 번져 사라지는 비례 */
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.88;
+      display: block;
+    }
+
+    [data-theme="dark"] .rw-aside-vertical-brush {
+      filter: invert(1) brightness(1.2);
+    }
+
+    .rw-aside-section {
+      margin-bottom: 2rem;
+    }
+
+    .rw-aside-label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .rw-aside-val {
+      color: var(--rw-sumi-wash);
+      line-height: 1.5;
+    }
+
+    .rw-aside-val.rw-aside-val--bold {
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+    }
+
+    .rw-seal-img {
+      display: inline-block;
+      vertical-align: middle;
+      height: 22px;
+      width: auto;
+      user-select: none;
+    }
+
+    .rw-seal-img--large {
+      height: 32px;
+    }
+
+    .rw-tag-vermilion {
+      color: var(--rw-sumi-seal);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .rw-tag-green {
+      color: #276943;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .rw-aside-seal-block {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(35, 40, 50, 0.08);
+    }
+
+    .rw-aside-seal-label {
+      font-size: 0.85rem;
+      color: var(--rw-sumi-wash);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .rw-aside-seal-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--rw-sumi-ink);
+    }
+
+    /* --------------------------------------------------------------------------
+       8. 수묵 낙관 도장 뱃지 (Seal Stamp Badge Component)
+          동양 전통 전각(篆刻) 인장의 주사(朱砂) 인주 번짐과 손맛을 순수 CSS로 완벽 구현
+       -------------------------------------------------------------------------- */
+    .rw-seal-badge,
+    .rw-seal-stamp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.14rem 0.48rem 0.18rem 0.56rem; /* 우측 자간 보정 여백 */
+      border: 1.5px solid var(--rw-sumi-seal);
+      border-radius: 2px 3px 2px 3px;          /* 전각 특유의 미세한 수작업 비대칭 코너 */
+      color: var(--rw-sumi-seal);
+      background-color: var(--rw-sumi-seal-soft);
+      font-family: var(--rw-font-serif);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      /* 인주가 닥나무 결에 은은하게 번져 들어간(ink bleed) 전각 테두리 */
+      box-shadow: 
+        0 0 1px rgba(184, 40, 29, 0.45),
+        inset 0 0 2px rgba(184, 40, 29, 0.12);
+      text-shadow: 0 0 1px rgba(184, 40, 29, 0.25);
+      user-select: none;
+      vertical-align: middle;
+      flex-shrink: 0;       /* 좁은 화면이나 긴 제목에서도 도장이 찌그러지지 않도록 보호 */
+      white-space: nowrap;  /* 도장 내부 텍스트 2줄 줄바꿈 방지 */
+    }
+
+    /* 음각 (백문 白文): 붉은 인주를 꽉 채워 하얗게 파여 나온 도장 */
+    .rw-seal-badge--solid,
+    .rw-seal-stamp--solid {
+      background-color: var(--rw-sumi-seal);
+      color: #fcfbf9;
+      border-color: var(--rw-sumi-seal);
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.7),
+        0 1px 3px rgba(184, 40, 29, 0.2);
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 이중 테두리 (쌍선인 雙線印): 최고급 공문서/정본 인장 */
+    .rw-seal-badge--double {
+      border: 1px solid var(--rw-sumi-seal);
+      padding: 0.20rem 0.54rem 0.22rem 0.62rem;
+      position: relative;
+      box-shadow: 
+        0 0 0 1.5px #fcfbf9,
+        0 0 0 2.5px var(--rw-sumi-seal),
+        0 0 2px 2.5px rgba(184, 40, 29, 0.25);
+    }
+
+    [data-theme="dark"] .rw-seal-badge--double {
+      box-shadow: 
+        0 0 0 1.5px #181716,
+        0 0 0 2.5px var(--rw-sumi-seal),
+        0 0 2px 2.5px rgba(229, 75, 61, 0.35);
+    }
+
+    /* 타원형 두인 (圓印 / 頭印) */
+    .rw-seal-badge--round {
+      border-radius: 999px;
+      padding: 0.14rem 0.56rem 0.16rem 0.64rem;
+    }
+
+    /* 실제 인장처럼 살짝 기울어진 맛 (Handmade Tilt) */
+    .rw-seal-badge--tilted {
+      transform: rotate(-1.5deg);
+    }
+
+    /* --------------------------------------------------------------------------
+       전통 사각 직인(Chop / Seal) 컴포넌트: .rw-seal-chop
+       인주가 한지에 꾹 찍힌 듯한 압착 번짐과 전각 칼맛, 꽉 찬 글자 포치(布置) 완벽 구현
+       -------------------------------------------------------------------------- */
+    .rw-seal-chop {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 33px;
+      height: 33px;
+      padding: 0.5px;
+      gap: 0;
+      border: 2px solid var(--rw-sumi-seal);
+      border-radius: 3.5px 2px 4px 2.5px / 2.5px 4px 2px 3.5px; /* 수작업 전각 돌도장의 미세 비대칭 마모 테두리 */
+      color: var(--rw-sumi-seal);
+      background: radial-gradient(circle at 45% 45%, rgba(184, 40, 29, 0.10) 0%, rgba(184, 40, 29, 0.03) 65%, rgba(184, 40, 29, 0.12) 100%);
+      box-shadow: 
+        0 0 1px 0.5px rgba(184, 40, 29, 0.75),
+        inset 0 0 1.8px rgba(184, 40, 29, 0.3);
+      user-select: none;
+      vertical-align: middle;
+      box-sizing: border-box;
+      font-family: var(--rw-font-serif);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
+      flex-shrink: 0;
+      filter: url(#seal-carve-filter); /* 리얼 전각 칼맛 및 잉크 압착 필터 */
+    }
+
+    .rw-seal-chop span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      text-shadow: 0 0 0.5px rgba(184, 40, 29, 0.6);
+    }
+
+    /* 4글자 전각 포치(布置): 중앙 십자 빈 여백을 좁히고 도장 내부를 꽉 채움 */
+    .rw-seal-chop:not(.rw-seal-chop--1):not(.rw-seal-chop--2) span:nth-child(1) { transform: scale(1.04) translate(0.4px, 0.4px); }
+    .rw-seal-chop:not(.rw-seal-chop--1):not(.rw-seal-chop--2) span:nth-child(2) { transform: scale(1.04) translate(-0.4px, 0.4px); }
+    .rw-seal-chop:not(.rw-seal-chop--1):not(.rw-seal-chop--2) span:nth-child(3) { transform: scale(1.04) translate(0.4px, -0.4px); }
+    .rw-seal-chop:not(.rw-seal-chop--1):not(.rw-seal-chop--2) span:nth-child(4) { transform: scale(1.04) translate(-0.4px, -0.4px); }
+
+    /* 음각 (백문 白文) 사각 직인 */
+    .rw-seal-chop--solid {
+      background: var(--rw-sumi-seal);
+      color: #fbf9f5;
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.8),
+        0 1px 3px rgba(184, 40, 29, 0.3);
+    }
+    .rw-seal-chop--solid span {
+      text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.5);
+    }
+
+    /* 2글자 세로 직인 */
+    .rw-seal-chop--2 {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 22px;
+      height: 34px;
+      font-size: 13.5px;
+    }
+    .rw-seal-chop--2 span:nth-child(1) { transform: scale(1.04) translateY(0.5px); }
+    .rw-seal-chop--2 span:nth-child(2) { transform: scale(1.04) translateY(-0.5px); }
+
+    /* 1글자 방인 */
+    .rw-seal-chop--1 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+    .rw-seal-chop--1 span {
+      transform: scale(1.05);
+    }
+
+    /* 크기 변형: 소형(24px) & 대형(38px) */
+    .rw-seal-chop--sm {
+      width: 24px;
+      height: 24px;
+      font-size: 9.8px;
+      border-width: 1.6px;
+    }
+    .rw-seal-chop--sm span:nth-child(1) { transform: scale(1.04) translate(0.3px, 0.3px); }
+    .rw-seal-chop--sm span:nth-child(2) { transform: scale(1.04) translate(-0.3px, 0.3px); }
+    .rw-seal-chop--sm span:nth-child(3) { transform: scale(1.04) translate(0.3px, -0.3px); }
+    .rw-seal-chop--sm span:nth-child(4) { transform: scale(1.04) translate(-0.3px, -0.3px); }
+
+    .rw-seal-chop--lg {
+      width: 38px;
+      height: 38px;
+      font-size: 15.5px;
+      border-width: 2.2px;
+    }
+    .rw-seal-chop--lg span:nth-child(1) { transform: scale(1.05) translate(0.6px, 0.6px); }
+    .rw-seal-chop--lg span:nth-child(2) { transform: scale(1.05) translate(-0.6px, 0.6px); }
+    .rw-seal-chop--lg span:nth-child(3) { transform: scale(1.05) translate(0.6px, -0.6px); }
+    .rw-seal-chop--lg span:nth-child(4) { transform: scale(1.05) translate(-0.6px, -0.6px); }
+
+    /* 이중 테두리 쌍선 직인 */
+    .rw-seal-chop--double {
+      border-width: 1.2px;
+      box-shadow: 
+        0 0 0 1px #fcfbf9,
+        0 0 0 2.2px var(--rw-sumi-seal),
+        0 0 1.5px 2px rgba(184, 40, 29, 0.35);
+    }
+
+    [data-theme="dark"] .rw-seal-chop {
+      border-color: var(--rw-sumi-seal);
+      color: var(--rw-sumi-seal);
+      background: radial-gradient(circle at 45% 45%, rgba(229, 75, 61, 0.18) 0%, rgba(229, 75, 61, 0.05) 65%, rgba(229, 75, 61, 0.22) 100%);
+      box-shadow: 
+        0 0 1px 0.5px rgba(229, 75, 61, 0.75),
+        inset 0 0 1.8px rgba(229, 75, 61, 0.3);
+    }
+
+    [data-theme="dark"] .rw-seal-chop span {
+      text-shadow: 0 0 0.5px rgba(229, 75, 61, 0.6);
+    }
+
+    [data-theme="dark"] .rw-seal-chop--solid {
+      background: var(--rw-sumi-seal);
+      color: #121316;
+      box-shadow: 
+        0 0 1.5px rgba(229, 75, 61, 0.8),
+        0 1px 3px rgba(229, 75, 61, 0.4);
+    }
+
+    [data-theme="dark"] .rw-seal-chop--double {
+      box-shadow: 
+        0 0 0 1px #181716,
+        0 0 0 2.2px var(--rw-sumi-seal),
+        0 0 1.5px 2px rgba(229, 75, 61, 0.45);
+    }
+
+    .rw-seal-chop--tilted {
+      transform: rotate(-1.5deg);
+    }
+      transform: rotate(-1.5deg);
+    }
+
+    /* --------------------------------------------------------------------------
+       9. 플로팅 컨트롤러: 한지 결 On/Off 토글 및 흑묵(다크) 모드
+       -------------------------------------------------------------------------- */
+    .rw-control-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      z-index: 999;
+    }
+
+    .rw-control-btn {
+      background: var(--rw-sumi-paper-surface);
+      border: 1.5px solid var(--rw-sumi-ink);
+      box-shadow: 2px 2px 0 var(--rw-sumi-ink);
+      padding: 0.55rem 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-align: left;
+      border-radius: 2px;
+      color: var(--rw-sumi-ink);
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .rw-control-btn:hover {
+      background: var(--rw-sumi-seal-soft);
+      border-color: var(--rw-sumi-seal);
+      color: var(--rw-sumi-seal);
+    }
+  </style>
+</head>
+<body class="rw-sumi-body hanji-texture-active">
+
+  <!-- SVG 전각(篆刻) 리얼 인주 도장 스탬프 필터 (한지에 꾹 눌러 찍힌 압착 번짐과 전각 칼맛) -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <filter id="seal-carve-filter" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="3" result="pressNoise" />
+        <feDisplacementMap in="SourceGraphic" in2="pressNoise" scale="1.35" xChannelSelector="R" yChannelSelector="G" result="disp" />
+        <feGaussianBlur in="disp" stdDeviation="0.25" result="glow" />
+        <feMerge>
+          <feMergeNode in="glow" opacity="0.65" />
+          <feMergeNode in="disp" />
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- 천연 닥나무 화선지 고정 캔버스 (z-index 충돌 없는 100% 무결점 렌더링) -->
+  <div class="rw-sumi-hanji-canvas" aria-hidden="true"></div>
+
+  <!-- 3컬럼 문서 레이아웃 (컨셉 이미지 1:1 대칭 완벽 일치 구조) -->
+  <div class="rw-sumi-layout">
+
+    <!-- 좌측 사이드바: 메뉴 및 실제 수묵 갈필(渴筆) 구분선 -->
+    <aside class="rw-sumi-sidebar">
+      <div class="rw-sidebar-brand">Reading</div>
+      
+      <div class="rw-sidebar-group">
+        <a href="#section-ref" class="rw-sidebar-link is-active">Section Reference</a>
+        <a href="#api-ref" class="rw-sidebar-link">API Reference</a>
+        
+        <!-- 수묵 갈필(渴筆) 붓선 1 -->
+        <img src="assets/brush-divider-1.png" class="rw-brush-divider" alt="수묵 구분선">
+      </div>
+
+      <div class="rw-sidebar-group">
+        <a href="#core-concepts" class="rw-sidebar-link">Core Concepts</a>
+        <a href="#styling-guide" class="rw-sidebar-link">Styling Guide</a>
+
+        <!-- 수묵 갈필(渴筆) 붓선 2 -->
+        <img src="assets/brush-divider-2.png" class="rw-brush-divider" alt="수묵 구분선">
+      </div>
+
+      <div class="rw-sidebar-group">
+        <a href="#content" class="rw-sidebar-link">Content</a>
+        <a href="#styling-guide-2" class="rw-sidebar-link">Styling Guide</a>
+        <a href="#styling-api-race" class="rw-sidebar-link">Styling API race</a>
+
+        <!-- 수묵 갈필(渴筆) 붓선 3 -->
+        <img src="assets/brush-divider-3.png" class="rw-brush-divider" alt="수묵 구분선">
+      </div>
+
+      <div class="rw-sidebar-group">
+        <div style="font-size:0.85rem; color:var(--rw-sumi-wash); margin-bottom:0.25rem;">Approved by</div>
+        <div style="font-size:0.88rem; font-weight:600; color:var(--rw-sumi-ink);">Verified /API</div>
+      </div>
+    </aside>
+
+    <!-- 중앙 본문 아티클 -->
+    <main class="rw-sumi-content">
+      
+      <!-- 대제목 -->
+      <h1 class="rw-doc-title">
+        The Art of Refined Technical Documentation: Integrating Traditional Aesthetics
+      </h1>
+
+      <!-- 작성자 메타 (실제 원형 아바타 + 이름 + 낙관 도장 에셋) -->
+      <div class="rw-doc-author">
+        <img src="assets/avatar.png" class="rw-doc-avatar" alt="Anon None">
+        <span class="rw-doc-author-name">Anon None</span>
+        <img src="assets/seal-author.png" class="rw-seal-img" alt="낙관 인장">
+        <span class="rw-doc-dot">•</span>
+        <span>September 5, 2026</span>
+      </div>
+
+      <!-- H2 섹션 -->
+      <h2 id="section-ref">H2. The art of Refined Technical Documentation: Integration</h2>
+      <p>
+        The Art of Refined Technical Documentation: Integrating Traditional Aesthetics and is designed under for to proven, minisrate the perfect rage to senunze upon traditional aesthetics.
+        우리의 목표는 단순한 장식적 과시가 아닌, <strong>종이와 먹의 본질적인 대비와 여백(余白)</strong>을 통해 장시간 독서 시 눈의 피로를 최소화하고 지적 전달력을 극대화하는 것입니다.
+      </p>
+
+      <!-- H3 섹션 -->
+      <h3 id="core-concepts">H3. Core Concepts</h3>
+      <p>
+        In any concepted technisalic consex features unmic and mal design and the first that writes concerences of chanmed concons and change.
+        텍스트의 계층 구조는 인위적인 박스 테두리가 아니라 <strong>농묵(濃墨)과 담묵(淡墨)의 필압 대비</strong>로 자연스럽게 정돈됩니다.
+      </p>
+
+      <!-- H3 섹션 & 코드 블록 -->
+      <h3 id="styling-guide">H3. Code stick styling</h3>
+      <p>
+        The charcoal ink sets the standard and styling out the necessity. It can sanity to clear that contains, mento and the or syntax feel.
+      </p>
+
+      <!-- 코드 블록 (이중 여백 완전 제거) -->
+      <div class="rw-code-sumi">
+        <button class="rw-code-copy-btn" title="Copy code">📋</button>
+<pre><code>export default (code) =&gt; {
+  const state = new default.error();
+  return {
+    system.out.log((const state + 20)),
+    system.out.log(son(stable + 'pre: ', ));
+  };
+};</code></pre>
+      </div>
+
+      <!-- 추가 본문 섹션 -->
+      <h3 id="content">
+        H3. Styling Guide 
+        <span class="rw-tag-green" style="margin-left:0.5rem;">[Verified]</span> 
+        <span class="rw-tag-vermilion">[Stable API]</span>
+      </h3>
+      <p>
+        The styling guide sumirat documentation and defines a staret ecorners of the conton of our layout architecture.
+        화려한 네온 컬러나 인위적인 기하학 대신, 차분한 먹빛과 주사(朱砂) 인장 도장으로 안정적인 개발자 경험을 완성합니다.
+      </p>
+
+      <!-- 인라인 본문용 Callout Box 1: 기본 방필(方筆) 중필형 -->
+      <div class="rw-callout-ink-box">
+        <div class="rw-callout-ink-header">
+          <span class="rw-callout-ink-title">
+            <img src="assets/ink-drop.png" class="rw-callout-inkdrop" alt="수묵 묵적">기본 방필 프레임 (Classic Medium Brush)
+          </span>
+          <span class="rw-seal-badge">안내</span>
+        </div>
+        <div class="rw-callout-ink-divider"></div>
+        <p class="rw-callout-ink-desc">
+          본문 내부에 배치되는 인라인 콜아웃 박스입니다. 정제된 각진 코너와 좌하단 묵직한 농묵(濃墨) 붓선이 한지 위에 안정적으로 안착됩니다.
+        </p>
+      </div>
+
+      <!-- 인라인 본문용 Callout Box 2: 먹 번짐 & 손맛의 붓 떨림형 (신규 ⭐) -->
+      <div class="rw-callout-ink-box rw-callout-ink-box--brush">
+        <div class="rw-callout-ink-header">
+          <span class="rw-callout-ink-title">
+            <img src="assets/ink-drop.png" class="rw-callout-inkdrop" alt="수묵 묵적">먹 번짐 &amp; 붓 떨림 프레임 (Organic Brush Tremor)
+          </span>
+          <span class="rw-seal-badge rw-seal-badge--solid">특선</span>
+        </div>
+        <div class="rw-callout-ink-divider"></div>
+        <p class="rw-callout-ink-desc">
+          기본 방필과 전체적인 사각 외곽 구조는 같지만, 서예가가 숨을 고르며 한지 위에 그을 때 생기는 <strong>미세한 붓의 떨림(tremor)과 닥나무 섬유결을 타고 번진 먹물(ink wash)</strong>의 손맛을 담아낸 프레임입니다. 같은 직각 박스라도 매번 복사한 듯한 느낌 없이 유기적인 변화를 부여합니다.
+        </p>
+      </div>
+
+      <!-- 인라인 본문용 Callout Box 3: 정갈한 세필(細筆) 날렵형 -->
+      <div class="rw-callout-ink-box rw-callout-ink-box--fine">
+        <div class="rw-callout-ink-header">
+          <span class="rw-callout-ink-title">
+            <img src="assets/ink-drop.png" class="rw-callout-inkdrop" alt="수묵 묵적">세필 수묵 프레임 (Fine Brush Variant)
+          </span>
+          <span class="rw-seal-badge rw-seal-badge--round">권고</span>
+        </div>
+        <div class="rw-callout-ink-divider"></div>
+        <p class="rw-callout-ink-desc">
+          기본 방필 프레임과 동일한 직사각형 구조를 유지하면서, 가늘고 날렵한 세필(細筆)의 필압으로 맑고 담백하게 그어낸 배리에이션입니다. 묵직한 본문 속에서 정갈하고 가벼운 시각적 대비를 제공합니다.
+        </p>
+      </div>
+
+      <!-- H2 섹션: 동적 길이 및 무한 스크롤 적응성 검증 -->
+      <h2 id="dynamic-length">H2. Dynamic Length & Infinite Scroll Adaptation</h2>
+      <p>
+        실제 웹 문서는 고정된 이미지 시안과 달리 본문의 길이가 수천 픽셀 이상 유동적으로 길어질 수 있습니다.
+        본 테마는 이러한 웹의 동적 특성에 맞춰 다음 세 가지 기법으로 완벽하게 대응합니다.
+      </p>
+
+      <!-- 긴 다단 콜아웃 박스 (동적 높이 확장 테스트: 대각선 대칭형) -->
+      <div class="rw-callout-ink-box rw-callout-ink-box--variant">
+        <div class="rw-callout-ink-header">
+          <span class="rw-callout-ink-title">
+            <img src="assets/ink-drop.png" class="rw-callout-inkdrop" alt="수묵 묵적">심층 가이드: 동적 길이에 대응하는 서예 레이아웃 아키텍처
+          </span>
+          <span class="rw-seal-badge rw-seal-badge--double">원칙</span>
+        </div>
+        <div class="rw-callout-ink-divider"></div>
+        <p class="rw-callout-ink-desc">
+          <strong>1. 뷰포트 고정형 한지 캔버스 (Fixed Viewport Canvas)</strong>:
+          배경 이미지를 본문 길이에 맞춰 강제로 늘리거나 어설프게 타일링하지 않고, <code>position: fixed</code> 뷰포트 캔버스 위에 본문이 부드럽게 흘러가도록 설계했습니다. 문서가 1페이지이든 100페이지이든 화선지의 섬유결이 결코 늘어나거나 왜곡되지 않습니다.
+        </p>
+        <p class="rw-callout-ink-desc" style="margin-top: 0.75rem;">
+          <strong>2. 부드러운 수묵 훈염(먹 번짐) 벡터 섀도우</strong>:
+          콜아웃 박스의 먹 번짐은 고정 비트맵의 외곽 왜곡을 방지하기 위해 다중 블러 <code>box-shadow</code>와 은은한 담묵 테두리가 결합되어, 내부 콘텐츠가 한 줄이든 수십 줄이든 완벽한 수학적 곡선으로 부드럽게 번져나갑니다.
+        </p>
+        <p class="rw-callout-ink-desc" style="margin-top: 0.75rem;">
+          <strong>3. 스티키 내비게이션 & 메타 레일</strong>:
+          좌우 사이드바는 <code>position: sticky</code>로 고정되어 장문 독서 중에도 메뉴와 인장 메타 정보가 시야에서 벗어나지 않고 우아하게 유지됩니다.
+        </p>
+      </div>
+
+      <!-- 서예 색상표 테이블 -->
+      <h3 id="color-palette">H3. Sumi-e Color Matrix</h3>
+      <p>
+        동양화의 육채(六彩) 원칙(흑·백·농·담·건·습)을 웹 표준 CSS 변수로 정밀하게 정의했습니다.
+      </p>
+      <div style="overflow-x: auto; margin: 1.5rem 0 2.5rem;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--rw-sumi-ink);">
+              <th style="text-align: left; padding: 0.75rem 0.8rem;">명칭 (한자)</th>
+              <th style="text-align: left; padding: 0.75rem 0.8rem;">수묵 색상 견본</th>
+              <th style="text-align: left; padding: 0.75rem 0.8rem;">CSS 변수</th>
+              <th style="text-align: left; padding: 0.75rem 0.8rem;">Hex 색상</th>
+              <th style="text-align: left; padding: 0.75rem 0.8rem;">실제 텍스트 표현 및 가독성 (명확한 계조 대비)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(35, 40, 50, 0.1);">
+              <td style="padding: 0.75rem 0.8rem; font-weight: 700;">농묵 (濃墨)</td>
+              <td style="padding: 0.75rem 0.8rem;">
+                <span style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--rw-sumi-ink); vertical-align: middle; border: 1px solid rgba(0,0,0,0.15); box-shadow: inset 0 0 2px rgba(0,0,0,0.3);"></span>
+              </td>
+              <td style="padding: 0.75rem 0.8rem;"><code>--rw-sumi-ink</code></td>
+              <td style="padding: 0.75rem 0.8rem;"><code style="font-weight: 700;">#121316</code></td>
+              <td style="padding: 0.75rem 0.8rem; color: var(--rw-sumi-ink); font-weight: 800;">
+                대제목과 핵심 키워드를 위한 칠흑 같은 깊은 흑색
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(35, 40, 50, 0.1);">
+              <td style="padding: 0.75rem 0.8rem; font-weight: 700;">중묵 (中墨)</td>
+              <td style="padding: 0.75rem 0.8rem;">
+                <span style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--rw-sumi-charcoal); vertical-align: middle; border: 1px solid rgba(0,0,0,0.15); box-shadow: inset 0 0 2px rgba(0,0,0,0.2);"></span>
+              </td>
+              <td style="padding: 0.75rem 0.8rem;"><code>--rw-sumi-charcoal</code></td>
+              <td style="padding: 0.75rem 0.8rem;"><code style="font-weight: 700;">#424754</code></td>
+              <td style="padding: 0.75rem 0.8rem; color: var(--rw-sumi-charcoal); font-weight: 500;">
+                장시간 독서 시 눈의 피로를 덜어주는 부드럽고 차분한 본문 먹빛
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(35, 40, 50, 0.1);">
+              <td style="padding: 0.75rem 0.8rem; font-weight: 700;">담묵 (淡墨)</td>
+              <td style="padding: 0.75rem 0.8rem;">
+                <span style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--rw-sumi-wash); vertical-align: middle; border: 1px solid rgba(0,0,0,0.15); box-shadow: inset 0 0 2px rgba(0,0,0,0.1);"></span>
+              </td>
+              <td style="padding: 0.75rem 0.8rem;"><code>--rw-sumi-wash</code></td>
+              <td style="padding: 0.75rem 0.8rem;"><code style="font-weight: 700;">#787f90</code></td>
+              <td style="padding: 0.75rem 0.8rem; color: var(--rw-sumi-wash);">
+                메타데이터, 날짜, 작성자, 부가 설명을 위한 맑고 은은한 안개 수묵
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(35, 40, 50, 0.1);">
+              <td style="padding: 0.75rem 0.8rem; font-weight: 700; color: #b8281d;">주사 (朱砂)</td>
+              <td style="padding: 0.75rem 0.8rem;">
+                <span style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--rw-sumi-seal); vertical-align: middle; border: 1px solid rgba(184,40,29,0.3); box-shadow: inset 0 0 2px rgba(0,0,0,0.2);"></span>
+              </td>
+              <td style="padding: 0.75rem 0.8rem;"><code>--rw-sumi-seal</code></td>
+              <td style="padding: 0.75rem 0.8rem;"><code style="font-weight: 700; color: var(--rw-sumi-seal);">#b8281d</code></td>
+              <td style="padding: 0.75rem 0.8rem; color: var(--rw-sumi-seal); font-weight: 700;">
+                전통 낙관 인장, 승인 뱃지, 시각적 악센트 포인트
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 수묵 낙관 도장 뱃지 쇼케이스 (순수 CSS 전각 컴포넌트) -->
+      <h3 id="seal-badges">H3. Seal Stamp Badges (수묵 낙관 도장 뱃지)</h3>
+      <p>
+        동양 전통 전각(篆刻)의 미학을 담아, 주사(朱砂) 인주가 한지에 번져 스며든 손맛을 순수 CSS 컴포넌트로 구현했습니다.
+        이미지 파일 없이 임의의 텍스트를 인장 도장 형태로 즉시 표현할 수 있습니다.
+      </p>
+
+      <div style="background: rgba(35, 40, 50, 0.02); border: 1px solid rgba(35, 40, 50, 0.06); border-radius: 6px; padding: 1.2rem 1.4rem; margin: 1.2rem 0 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.5rem;">1. 기본 양각(주문 朱文) & 음각(백문 白文)</strong>
+          <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+            <span class="rw-seal-badge">안내</span>
+            <span class="rw-seal-badge">원칙</span>
+            <span class="rw-seal-badge">검증필</span>
+            <span class="rw-seal-badge">정본</span>
+            <span class="rw-seal-badge rw-seal-badge--solid">승인</span>
+            <span class="rw-seal-badge rw-seal-badge--solid">필독</span>
+            <span class="rw-seal-badge rw-seal-badge--solid">VERIFIED</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.5rem;">2. 이중 테두리(쌍선인 雙線印) & 타원형 두인(頭印)</strong>
+          <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+            <span class="rw-seal-badge rw-seal-badge--double">공식정본</span>
+            <span class="rw-seal-badge rw-seal-badge--double">승인문서</span>
+            <span class="rw-seal-badge rw-seal-badge--round">안내</span>
+            <span class="rw-seal-badge rw-seal-badge--round">기록</span>
+            <span class="rw-seal-badge rw-seal-badge--round rw-seal-badge--solid">권고</span>
+            <span class="rw-seal-badge rw-seal-badge--tilted">수작업 틸트</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem; margin-bottom: 1rem;">
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.5rem;">3. 전통 사각 전각 직인(Chop / Seal) 컴포넌트: .rw-seal-chop</strong>
+          <p style="font-size: 0.86rem; color: var(--rw-sumi-wash); margin: 0 0 0.75rem;">
+            전각(篆刻)의 2x2 사각 격자 도장으로 원하는 4글자, 2글자, 1글자 텍스트를 실제 도장 형태로 렌더링합니다. SVG 전각 필터가 결합되어 자연스러운 칼맛과 번짐을 부여합니다.
+          </p>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <!-- 한자 4글자 (첨부 이미지 1:1 완벽 구현) -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--rw-sumi-ink);">Approved by</span>
+              <span class="rw-seal-chop rw-seal-chop--lg" title="讀書正本">
+                <span>讀</span><span>書</span>
+                <span>正</span><span>本</span>
+              </span>
+            </div>
+            <!-- 한글 4글자 양각 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span style="font-size: 0.82rem; font-weight: 600; color: var(--rw-sumi-ink);">Approved by</span>
+              <span class="rw-seal-chop" title="인정승인">
+                <span>인</span><span>정</span>
+                <span>승</span><span>인</span>
+              </span>
+            </div>
+            <!-- 음각(백문 白文) -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span class="rw-seal-chop rw-seal-chop--solid rw-seal-chop--lg" title="공식인증">
+                <span>공</span><span>식</span>
+                <span>인</span><span>증</span>
+              </span>
+            </div>
+            <!-- 쌍선 테두리 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span class="rw-seal-chop rw-seal-chop--double rw-seal-chop--lg" title="천하명필">
+                <span>천</span><span>하</span>
+                <span>명</span><span>필</span>
+              </span>
+            </div>
+            <!-- 2글자 세로 직인 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span class="rw-seal-chop rw-seal-chop--2" title="낙관">
+                <span>낙</span>
+                <span>관</span>
+              </span>
+            </div>
+            <!-- 1글자 방인 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span class="rw-seal-chop rw-seal-chop--1 rw-seal-chop--lg" title="인">
+                印
+              </span>
+            </div>
+            <!-- 소형 직인 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.4rem;">
+              <span class="rw-seal-chop rw-seal-chop--sm" title="검증">
+                <span>검</span><span>증</span>
+                <span>완</span><span>료</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <strong style="font-size: 0.88rem; color: var(--rw-sumi-ink); display: block; margin-bottom: 0.35rem;">사용 예시 (HTML)</strong>
+          <code style="display: block; background: rgba(0,0,0,0.04); padding: 0.5rem 0.8rem; border-radius: 4px; font-size: 0.82rem; color: var(--rw-sumi-charcoal); line-height: 1.5;">
+            &lt;!-- 뱃지형 인장 --&gt;<br>
+            &lt;span class="rw-seal-badge"&gt;안내&lt;/span&gt;<br>
+            &lt;span class="rw-seal-badge rw-seal-badge--solid"&gt;승인&lt;/span&gt;<br>
+            &lt;!-- 전통 사각 직인 (Chop) --&gt;<br>
+            &lt;span class="rw-seal-chop rw-seal-chop--lg"&gt;<br>
+            &nbsp;&nbsp;&lt;span&gt;讀&lt;/span&gt;&lt;span&gt;書&lt;/span&gt;&lt;span&gt;正&lt;/span&gt;&lt;span&gt;本&lt;/span&gt;<br>
+            &lt;/span&gt;
+          </code>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 우측 메타 사이드바 (상단 Search ☰ 및 메타 레일) -->
+    <aside class="rw-sumi-aside">
+      
+      <!-- 우측 상단 유틸리티 (컨셉아트의 🔍 Search ☰ 위치 1:1 일치) -->
+      <div class="rw-sumi-top-utility">
+        <a href="../index.html">← 허브</a>
+        <span style="opacity:0.25">/</span>
+        <a href="../../docs/index.html">문서</a>
+        <span style="opacity:0.25">/</span>
+        <span class="rw-sumi-search-box">🔍 Search ☰</span>
+      </div>
+
+      <!-- 우측 메타 콘텐츠 블록 (세로 먹선과 1:1 정렬) -->
+      <div class="rw-aside-meta-flow">
+        <!-- 컨셉 이미지 우측 네비게이션 좌측의 세로 먹선 (수묵 갈필) -->
+        <img src="assets/brush-divider-vertical.png" class="rw-aside-vertical-brush" alt="우측 세로 먹선">
+
+        <!-- 상단 승인 메타 -->
+        <div class="rw-aside-section">
+          <div class="rw-aside-label">
+            <span>Approved by</span>
+            <img src="assets/seal-approved-1.png" class="rw-seal-img" alt="Approved seal">
+          </div>
+          <div class="rw-aside-val rw-aside-val--bold">Tamerer None</div>
+          <div class="rw-aside-val" style="font-size:0.8rem; color:var(--rw-sumi-dilute);">Author</div>
+        </div>
+
+        <div class="rw-aside-section">
+          <div class="rw-aside-label">
+            <span>Approved by</span>
+            <img src="assets/seal-approved-2.png" class="rw-seal-img" alt="Approved seal">
+          </div>
+          <div style="margin-top:0.4rem; display:flex; flex-direction:column; gap:0.3rem;">
+            <span class="rw-tag-green">[Verified]</span>
+            <span class="rw-tag-vermilion">[Stable API]</span>
+          </div>
+        </div>
+
+        <!-- 컨셉아트 위치 1:1 완벽 일치: 우측 레일에 배치된 Callout Box (원필 圓筆 곡선형) -->
+        <div class="rw-callout-ink-box rw-callout-ink-box--round" style="margin-top: 2rem;">
+          <div class="rw-callout-ink-header">
+            <span class="rw-callout-ink-title">
+              <img src="assets/ink-drop.png" class="rw-callout-inkdrop" alt="수묵 묵적">Callout box
+            </span>
+            <span class="rw-seal-badge rw-seal-badge--round">참고</span>
+          </div>
+          <div class="rw-callout-ink-divider"></div>
+          <p class="rw-callout-ink-desc">
+            The sumi callout box features a controlled border and organic wash effect.
+          </p>
+        </div>
+
+        <!-- 우측 하단: 낙관 Approved by 구획 (컴포넌트형 직인 도장 적용) -->
+        <div class="rw-aside-seal-block">
+          <span class="rw-aside-seal-label">낙관 (전각 직인 컴포넌트)</span>
+          <div class="rw-aside-seal-row">
+            <span>Approved by</span>
+            <!-- 순수 HTML/CSS/SVG 전각 직인 도장 (사용자 첨부 이미지 완벽 구현) -->
+            <span class="rw-seal-chop rw-seal-chop--lg" title="讀書正本">
+              <span>讀</span><span>書</span>
+              <span>正</span><span>本</span>
+            </span>
+          </div>
+          <!-- 이미지 에셋과의 비교용 (보존) -->
+          <div class="rw-aside-seal-row" style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--rw-sumi-wash);">
+            <span style="opacity: 0.8;">비트맵:</span>
+            <img src="assets/seal-bottom.png" class="rw-seal-img rw-seal-img--large" alt="낙관 인장 에셋">
+          </div>
+        </div>
+
+      </div> <!-- end .rw-aside-meta-flow -->
+
+    </aside>
+
+  </div>
+
+  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글 및 흑묵(다크) 모드 -->
+  <div class="rw-control-panel">
+    <button type="button" class="rw-control-btn" id="btnToggleTexture" onclick="toggleHanjiTexture()">
+      <span>🌾 한지 닥나무 결: <strong id="textureStatus">켬 (ON)</strong></span>
+    </button>
+    <button type="button" class="rw-control-btn" id="btnToggleTheme" onclick="toggleDarkSumi()">
+      <span>🌗 흑묵(야간 흑지) 모드 전환</span>
+    </button>
+  </div>
+
+  <script>
+    // 한지 섬유 결 실시간 토글 (기본 ON, 클릭 시 깔끔한 단색 화선지로 전환)
+    function toggleHanjiTexture() {
+      const body = document.body;
+      const statusEl = document.getElementById('textureStatus');
+      const isActive = body.classList.toggle('hanji-texture-active');
+      statusEl.textContent = isActive ? '켬 (ON)' : '끔 (OFF - 단색 화선지)';
+    }
+
+    // 백묵(화선지) <-> 흑묵(먹물 흑지) 실시간 토글
+    function toggleDarkSumi() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      if (current === 'dark') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+      }
+    }
+  </script>
+</body>
+</html>
