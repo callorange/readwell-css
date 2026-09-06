@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../../dist/readwell.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sumi.css">
 </head>
 <body class="rw-sumi-body hanji-texture-active">
@@ -339,6 +339,15 @@
               <td><code class="rw-td-bold" style="color: var(--rw-sumi-seal);">#b8281d</code></td>
               <td style="color: var(--rw-sumi-seal); font-weight: 700;">
                 전통 낙관 인장, 승인 뱃지, 시각적 악센트 포인트
+              </td>
+            </tr>
+            <tr>
+              <td class="rw-td-bold" style="color: var(--rw-sumi-gold);">금묵 (金墨)</td>
+              <td><span class="rw-color-dot" style="background: var(--rw-sumi-gold); border-color: rgba(212, 175, 55, 0.4);"></span></td>
+              <td><code>--rw-sumi-gold</code></td>
+              <td><code class="rw-td-bold" style="color: var(--rw-sumi-gold);">#d4af37</code></td>
+              <td style="color: var(--rw-sumi-gold); font-weight: 700;">
+                고서 사경(寫經) 야간 다크 모드 대제목 및 브랜드 헤드라인
               </td>
             </tr>
           </tbody>
@@ -768,6 +777,65 @@
           </div>
         </div>
 
+        <!-- 4. 묵적 3점(點) 인디케이터 (E-Ink 전자종이 및 버튼 특화) -->
+        <div class="rw-showcase-group">
+          <strong class="rw-showcase-label">
+            스타일 4. 묵적 3점(點) 인디케이터 (.rw-sumi-spinner--dots) [E-Ink &amp; 버튼 특화]
+          </strong>
+          <p style="font-size:0.88rem; color:var(--rw-sumi-wash); margin:0.35rem 0 0.85rem 0;">
+            회전 모션을 완전히 배제하여 전자종이(E-Ink)의 물리적 잔상과 화면 번쩍임을 원천 차단한 3-Step 먹물 방울(點) 인디케이터입니다. 단일 태그로 버튼 및 텍스트 인라인에 직관적으로 결합할 수 있습니다.
+          </p>
+
+          <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-bottom:1rem;">
+            <!-- 기본 묵적 3점 (농묵) -->
+            <div style="display:flex; align-items:center; gap:0.5rem; background:rgba(220, 205, 185, 0.15); padding:0.5rem 0.85rem; border:1px solid rgba(45,38,30,0.1); border-radius:4px;">
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots" role="status" aria-label="기본 묵적 로딩"></span>
+              <span style="font-size:0.85rem; font-weight:600; color:var(--rw-sumi-ink);">기본 (농묵)</span>
+            </div>
+
+            <!-- 주사 인장 3점 -->
+            <div style="display:flex; align-items:center; gap:0.5rem; background:rgba(220, 205, 185, 0.15); padding:0.5rem 0.85rem; border:1px solid rgba(45,38,30,0.1); border-radius:4px;">
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-seal" role="status" aria-label="주사 묵적 로딩"></span>
+              <span style="font-size:0.85rem; font-weight:600; color:var(--rw-sumi-seal);">인주 (주사)</span>
+            </div>
+
+            <!-- 담묵 3점 -->
+            <div style="display:flex; align-items:center; gap:0.5rem; background:rgba(220, 205, 185, 0.15); padding:0.5rem 0.85rem; border:1px solid rgba(45,38,30,0.1); border-radius:4px;">
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-wash" role="status" aria-label="담묵 로딩"></span>
+              <span style="font-size:0.85rem; font-weight:600; color:var(--rw-sumi-wash);">담묵 (연한 먹)</span>
+            </div>
+
+            <!-- 크기 변형 -->
+            <div style="display:flex; align-items:center; gap:0.85rem; background:rgba(220, 205, 185, 0.15); padding:0.5rem 0.85rem; border:1px solid rgba(45,38,30,0.1); border-radius:4px;">
+              <span style="font-size:0.8rem; color:var(--rw-sumi-wash);">크기:</span>
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-sm" title="소형 (4px)"></span>
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots" title="기본 (6px)"></span>
+              <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-lg" title="대형 (8px)"></span>
+            </div>
+          </div>
+
+          <!-- 🔘 버튼 로딩 상태 응용 예시 -->
+          <div style="margin-top: 1rem;">
+            <span style="font-size:0.85rem; font-weight:600; color:var(--rw-sumi-ink); display:block; margin-bottom:0.5rem;">
+              🔘 버튼 컴포넌트 로딩 상태 응용 (Button Loading State)
+            </span>
+            <div style="display:flex; flex-wrap:wrap; gap:0.65rem; align-items:center;">
+              <button type="button" class="rw-control-btn rw-control-btn--loading" style="cursor:wait;">
+                <span class="rw-sumi-spinner rw-sumi-spinner--dots"></span>
+                <span>서체 갱신 중...</span>
+              </button>
+              <button type="button" class="rw-control-btn rw-control-btn--loading" style="cursor:wait;">
+                <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-seal"></span>
+                <span>낙관 날인 중...</span>
+              </button>
+              <button type="button" class="rw-control-btn rw-control-btn--loading" style="cursor:wait;">
+                <span class="rw-sumi-spinner rw-sumi-spinner--dots rw-sumi-spinner--dots-wash"></span>
+                <span>화선지 건조 중...</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div style="margin-top: 1.2rem;">
           <strong class="rw-showcase-label rw-showcase-label--sm">사용 예시 (HTML)</strong>
           <code class="rw-showcase-code">
@@ -780,13 +848,19 @@
             &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-wash rw-sumi-spinner--fade"&gt;&lt;/div&gt; &lt;!-- 3) 훈염 농담 번짐 --&gt;<br>
             &lt;div class="rw-sumi-spinner rw-sumi-spinner--enso-ink rw-sumi-spinner--sweep"&gt;&lt;/div&gt; &lt;!-- 4) 부채꼴 운필 왕복 --&gt;<br>
             &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--ghost"&gt;&lt;/div&gt; &lt;!-- 5) 훈염 잔상 추적 --&gt;<br>
-            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual"&gt;&lt;/div&gt; &lt;!-- 6) 음양 엇갈림 역회전 (바깥 농묵 시계 + 안쪽 반전주사 반시계) --&gt;<br>
-            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual-sync"&gt;&lt;/div&gt; &lt;!-- 7) 동심 순방향 이중회전 (바깥 느린 1.4s + 안쪽 빠른 0.85s 시계방향) --&gt;<br><br>
+            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual"&gt;&lt;/div&gt; &lt;!-- 6) 음양 엇갈림 역회전 --&gt;<br>
+            &lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--dual-sync"&gt;&lt;/div&gt; &lt;!-- 7) 동심 순방향 이중회전 --&gt;<br><br>
             &lt;!-- 3. 텍스트 결합 로딩 레이아웃 --&gt;<br>
             &lt;div class="rw-sumi-loading-box"&gt;<br>
             &nbsp;&nbsp;&lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-seal" aria-hidden="true"&gt;&lt;/div&gt;<br>
             &nbsp;&nbsp;&lt;span class="rw-sumi-loading-text"&gt;墨痕 寫入中...&lt;/span&gt;<br>
-            &lt;/div&gt;
+            &lt;/div&gt;<br><br>
+            &lt;!-- 4. 묵적 3점(點) 인디케이터 (E-Ink &amp; 버튼 최적화) --&gt;<br>
+            &lt;span class="rw-sumi-spinner rw-sumi-spinner--dots" role="status" aria-label="로딩 중"&gt;&lt;/span&gt;<br>
+            &lt;button class="rw-control-btn rw-control-btn--loading"&gt;<br>
+            &nbsp;&nbsp;&lt;span class="rw-sumi-spinner rw-sumi-spinner--dots"&gt;&lt;/span&gt;<br>
+            &nbsp;&nbsp;&lt;span&gt;문서 갱신 중...&lt;/span&gt;<br>
+            &lt;/button&gt;
           </code>
         </div>
       </section>
@@ -909,10 +983,16 @@
 
   </div>
 
-  <!-- 플로팅 컨트롤러: 한지 결 On/Off 토글, 명조체 토글, 모바일 목차 버튼, 렌더 엔진 전환 -->
+  <!-- 플로팅 컨트롤러: 야간 사경, E-Ink, 명조체, 한지 결, 활자 크기, 모바일 목차 -->
   <div class="rw-control-panel">
     <button type="button" class="rw-control-btn rw-btn-mobile-toc" onclick="toggleMobileToc(true)" aria-label="목차 열기">
       <span>📜 목차 (TOC)</span>
+    </button>
+    <button type="button" class="rw-control-btn" id="btnToggleDark" onclick="toggleThemeDark()">
+      <span>🌙 야간 사경(Dark): <strong id="darkStatus">끔 (주간 백지)</strong></span>
+    </button>
+    <button type="button" class="rw-control-btn" id="btnToggleEink" onclick="toggleModeEink()">
+      <span>📖 전자종이(E-Ink): <strong id="einkStatus">끔 (일반 디스플레이)</strong></span>
     </button>
     <button type="button" class="rw-control-btn" id="btnToggleFont" onclick="toggleFontFamily()">
       <span>✒️ 명조체 보기: <strong id="fontStatus">끔 (기본 산세리프)</strong></span>
@@ -920,89 +1000,256 @@
     <button type="button" class="rw-control-btn" id="btnToggleTexture" onclick="toggleHanjiTexture()">
       <span>🌾 한지 닥나무 결: <strong id="textureStatus">켬 (ON)</strong></span>
     </button>
+    <div class="rw-control-btn-group">
+      <button type="button" class="rw-control-btn rw-control-btn--sm" onclick="adjustFontSize(-0.1)" aria-label="활자 크기 축소">
+        <span>A- 작게</span>
+      </button>
+      <button type="button" class="rw-control-btn rw-control-btn--sm" onclick="adjustFontSize(0.1)" aria-label="활자 크기 확대">
+        <span>A+ 크게</span>
+      </button>
+      <button type="button" class="rw-control-btn rw-control-btn--sm" onclick="resetFontSize()" aria-label="활자 크기 초기화">
+        <span id="fontSizeStatus">100%</span>
+      </button>
+    </div>
   </div>
 
-  <!-- 모바일 전용 목차(TOC) 바텀시트 오프캔버스 드로어 -->
-  <div class="rw-mobile-toc-overlay" id="mobileTocOverlay" onclick="toggleMobileToc(false)" aria-hidden="true"></div>
-  <aside class="rw-mobile-toc-sheet" id="mobileTocSheet" aria-label="모바일 목차">
+  <!-- 모바일 전용 목차(TOC) 바텀시트: HTML5 시맨틱 <dialog> & Top Layer (드래그 핸들 및 스와이프 닫기 포함) -->
+  <dialog class="rw-mobile-toc-sheet" id="mobileTocDialog" aria-labelledby="mobileTocTitle">
+    <div class="rw-mobile-toc-drag-handle" id="mobileTocDragHandle" aria-hidden="true"></div>
     <div class="rw-mobile-toc-header">
-      <span class="rw-mobile-toc-title">목차 (目錄)</span>
-      <button type="button" class="rw-mobile-toc-close" onclick="toggleMobileToc(false)" aria-label="닫기">✕</button>
+      <span class="rw-mobile-toc-title" id="mobileTocTitle">목차 (目錄)</span>
+      <button type="button" class="rw-mobile-toc-close" onclick="closeMobileToc()" aria-label="닫기">✕</button>
     </div>
     <ul class="rw-mobile-toc-list">
-      <li class="rw-mobile-toc-item"><a href="#content" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">시작하기 (Overview)</a></li>
-      <li class="rw-mobile-toc-item"><a href="#sumi-vertical" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">두인 인용구와 세로쓰기 (Quotes &amp; Vertical)</a></li>
-      <li class="rw-mobile-toc-item"><a href="#color-palette" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">수묵 색상표 (Color Matrix)</a></li>
-      <li class="rw-mobile-toc-item"><a href="#seal-badges" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">낙관 도장 뱃지 (Seal Stamp Badges)</a></li>
-      <li class="rw-mobile-toc-item"><a href="#sumi-sliders" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">수묵 슬라이더 (Sumi Sliders)</a></li>
-      <li class="rw-mobile-toc-item"><a href="#sumi-spinners" class="rw-mobile-toc-link" onclick="toggleMobileToc(false)">수묵 스피너 (Sumi Spinners)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#content" class="rw-mobile-toc-link" onclick="closeMobileToc()">시작하기 (Overview)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-vertical" class="rw-mobile-toc-link" onclick="closeMobileToc()">두인 인용구와 세로쓰기 (Quotes &amp; Vertical)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#color-palette" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 색상표 (Color Matrix)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#seal-badges" class="rw-mobile-toc-link" onclick="closeMobileToc()">낙관 도장 뱃지 (Seal Stamp Badges)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-sliders" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 슬라이더 (Sumi Sliders)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-spinners" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 스피너 (Sumi Spinners)</a></li>
     </ul>
-  </aside>
+  </dialog>
 
   <script>
-    // 한지 섬유 결 실시간 토글 (기본 ON, 클릭 시 깔끔한 단색 화선지로 전환)
-    function toggleHanjiTexture() {
+    // 🎨 화선지 먹물 번짐 View Transitions 래퍼 (초기 복원 시 skipTransition=true로 충돌 및 깜빡임 방지)
+    function applyWithViewTransition(callback, skipTransition = false) {
+      if (skipTransition || !document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        callback();
+        return;
+      }
+      document.startViewTransition(() => {
+        callback();
+      });
+    }
+
+    // 🌙 야간 사경(寫經) / 현묵(玄墨) 다크 모드 토글
+    function toggleThemeDark(forceVal, skipTransition = false) {
+      applyWithViewTransition(() => {
+        const html = document.documentElement;
+        const currentIsDark = html.getAttribute('data-rw-theme') === 'sumi-dark';
+        const isDark = forceVal !== undefined ? forceVal : !currentIsDark;
+        if (isDark) {
+          html.setAttribute('data-rw-theme', 'sumi-dark');
+          document.body.setAttribute('data-rw-theme', 'sumi-dark');
+        } else {
+          html.setAttribute('data-rw-theme', 'light');
+          document.body.setAttribute('data-rw-theme', 'light');
+        }
+        const statusEl = document.getElementById('darkStatus');
+        if (statusEl) {
+          statusEl.textContent = isDark ? '켬 (야간 흑지)' : '끔 (주간 백지)';
+        }
+        localStorage.setItem('rw-sumi-theme', isDark ? 'sumi-dark' : 'light');
+      }, skipTransition);
+    }
+
+    // 📖 Readwell E-Ink (전자종이) 모드 토글
+    function toggleModeEink(forceVal, skipTransition = false) {
+      applyWithViewTransition(() => {
+        const html = document.documentElement;
+        const currentIsEink = html.getAttribute('data-rw-mode') === 'eink';
+        const isEink = forceVal !== undefined ? forceVal : !currentIsEink;
+        if (isEink) {
+          html.setAttribute('data-rw-mode', 'eink');
+          document.body.setAttribute('data-rw-mode', 'eink');
+        } else {
+          html.removeAttribute('data-rw-mode');
+          document.body.removeAttribute('data-rw-mode');
+        }
+        const statusEl = document.getElementById('einkStatus');
+        if (statusEl) {
+          statusEl.textContent = isEink ? '켬 (순백 1-bit)' : '끔 (일반 디스플레이)';
+        }
+        localStorage.setItem('rw-sumi-mode', isEink ? 'eink' : 'normal');
+      }, skipTransition);
+    }
+
+    // ✒️ 명조(Serif) 서체 실시간 토글 (기본 OFF-산세리프, 클릭 시 고풍스러운 명조체로 전환)
+    function toggleFontFamily(forceVal, skipTransition = false) {
+      applyWithViewTransition(() => {
+        const body = document.body;
+        const statusEl = document.getElementById('fontStatus');
+        const isActive = forceVal !== undefined ? forceVal : !body.classList.contains('font-serif-active');
+        if (isActive) {
+          body.classList.add('font-serif-active');
+        } else {
+          body.classList.remove('font-serif-active');
+        }
+        if (statusEl) {
+          statusEl.textContent = isActive ? '켬 (명조 활성화)' : '끔 (기본 산세리프)';
+        }
+        localStorage.setItem('rw-sumi-font', isActive ? 'serif' : 'sans');
+      }, skipTransition);
+    }
+
+    // 🌾 한지 섬유 결 실시간 토글 (기본 ON, 클릭 시 깔끔한 단색 화선지로 전환)
+    function toggleHanjiTexture(forceVal) {
       const body = document.body;
       const statusEl = document.getElementById('textureStatus');
-      const isActive = body.classList.toggle('hanji-texture-active');
-      statusEl.textContent = isActive ? '켬 (ON)' : '끔 (OFF - 단색 화선지)';
+      const isActive = forceVal !== undefined ? forceVal : !body.classList.contains('hanji-texture-active');
+      if (isActive) {
+        body.classList.add('hanji-texture-active');
+      } else {
+        body.classList.remove('hanji-texture-active');
+      }
+      if (statusEl) {
+        statusEl.textContent = isActive ? '켬 (ON)' : '끔 (OFF - 단색 화선지)';
+      }
+      localStorage.setItem('rw-sumi-texture', isActive ? 'on' : 'off');
     }
 
-    // 명조(Serif) 서체 실시간 토글 (기본 OFF-산세리프, 클릭 시 고풍스러운 명조체로 전환)
-    function toggleFontFamily() {
-      const body = document.body;
-      const statusEl = document.getElementById('fontStatus');
-      const isActive = body.classList.toggle('font-serif-active');
-      statusEl.textContent = isActive ? '켬 (명조 활성화)' : '끔 (기본 산세리프)';
+    // 🔍 장문 독서용 활자 크기 조절기 (A- / A+)
+    let currentFontScale = 1.0;
+    function setFontScale(scale) {
+      currentFontScale = Math.min(1.5, Math.max(0.8, Math.round(scale * 10) / 10));
+      document.documentElement.style.setProperty('--rw-sumi-scale', currentFontScale);
+      const statusEl = document.getElementById('fontSizeStatus');
+      if (statusEl) {
+        statusEl.textContent = Math.round(currentFontScale * 100) + '%';
+      }
+      localStorage.setItem('rw-sumi-scale', currentFontScale);
     }
 
-    // 모바일 목차(TOC) 바텀시트 열기/닫기
+    function adjustFontSize(delta) {
+      setFontScale(currentFontScale + delta);
+    }
+
+    function resetFontSize() {
+      setFontScale(1.0);
+    }
+
+    // 📜 모바일 목차(TOC) <dialog> 바텀시트 열기/닫기 및 스와이프 닫기 제스처
+    const mobileTocDialog = document.getElementById('mobileTocDialog');
+
+    function openMobileToc() {
+      if (!mobileTocDialog) return;
+      if (typeof mobileTocDialog.showModal === 'function') {
+        mobileTocDialog.showModal();
+      } else {
+        mobileTocDialog.setAttribute('open', '');
+        mobileTocDialog.classList.add('is-open');
+      }
+    }
+
+    function closeMobileToc() {
+      if (!mobileTocDialog) return;
+      if (typeof mobileTocDialog.close === 'function') {
+        mobileTocDialog.close();
+      } else {
+        mobileTocDialog.removeAttribute('open');
+        mobileTocDialog.classList.remove('is-open');
+      }
+      mobileTocDialog.style.transform = '';
+    }
+
     function toggleMobileToc(open) {
-      const overlay = document.getElementById('mobileTocOverlay');
-      const sheet = document.getElementById('mobileTocSheet');
-      if (!overlay || !sheet) return;
       if (open) {
-        overlay.classList.add('is-open');
-        sheet.classList.add('is-open');
+        openMobileToc();
       } else {
-        overlay.classList.remove('is-open');
-        sheet.classList.remove('is-open');
+        closeMobileToc();
       }
     }
 
-    // 상단 고정 실시간 수묵 스크롤 게이지 (3px 슬림 수묵선)
-    window.addEventListener('scroll', function () {
-      const indicator = document.getElementById('sumiScrollIndicator');
-      const fill = document.getElementById('sumiScrollFill');
-      if (!indicator || !fill) return;
+    if (mobileTocDialog) {
+      // 1. 네이티브 Backdrop 클릭 시 닫기
+      mobileTocDialog.addEventListener('click', function (e) {
+        const rect = mobileTocDialog.getBoundingClientRect();
+        const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+                            rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+        if (!isInDialog) {
+          closeMobileToc();
+        }
+      });
 
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      // 2. 모바일 터치 스와이프 닫기 (Swipe-to-Dismiss) 제스처
+      let touchStartY = 0;
+      let currentTranslateY = 0;
+      let isDragging = false;
 
-      fill.style.width = Math.min(100, Math.max(0, progress)) + '%';
-      if (scrollTop > 10) {
-        indicator.classList.add('is-scrolled');
-      } else {
-        indicator.classList.remove('is-scrolled');
-      }
-    }, { passive: true });
+      mobileTocDialog.addEventListener('touchstart', function (e) {
+        if (mobileTocDialog.scrollTop === 0) {
+          touchStartY = e.touches[0].clientY;
+          isDragging = true;
+          mobileTocDialog.style.transition = 'none';
+        }
+      }, { passive: true });
+
+      mobileTocDialog.addEventListener('touchmove', function (e) {
+        if (!isDragging) return;
+        const currentY = e.touches[0].clientY;
+        const deltaY = currentY - touchStartY;
+        if (deltaY > 0) {
+          currentTranslateY = deltaY;
+          mobileTocDialog.style.transform = `translateY(${deltaY}px)`;
+        }
+      }, { passive: true });
+
+      mobileTocDialog.addEventListener('touchend', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        mobileTocDialog.style.transition = '';
+        if (currentTranslateY > 65) {
+          closeMobileToc();
+        } else {
+          mobileTocDialog.style.transform = '';
+        }
+        currentTranslateY = 0;
+      }, { passive: true });
+    }
+
+    // 🌊 스크롤 독서 게이지: CSS Scroll-Driven Animations 미지원 브라우저 전용 JS 폴백
+    const supportsScrollTimeline = window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()');
+    if (!supportsScrollTimeline) {
+      window.addEventListener('scroll', function () {
+        const indicator = document.getElementById('sumiScrollIndicator');
+        const fill = document.getElementById('sumiScrollFill');
+        if (!indicator || !fill) return;
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        fill.style.width = Math.min(100, Math.max(0, progress)) + '%';
+        if (scrollTop > 10) {
+          indicator.classList.add('is-scrolled');
+        } else {
+          indicator.classList.remove('is-scrolled');
+        }
+      }, { passive: true });
+    }
 
     // 📜 전통 고서 세로쓰기(縱書) UX: 우측 시작점(RTL) 정렬 및 마우스 휠 가로 스크롤 매핑
     function initVerticalWritingUX() {
       const vertWrap = document.querySelector('.rw-sumi-vertical-wrap');
       if (!vertWrap) return;
 
-      // 1. 고서 정통 읽기 시작점인 우측 끝(RTL 시작점)으로 초기 정렬
       function alignRight() {
         vertWrap.scrollLeft = vertWrap.scrollWidth - vertWrap.clientWidth;
       }
       alignRight();
-      // 이미지/웹폰트 로딩 후 크기 변화에 대응
       window.addEventListener('load', alignRight);
       window.addEventListener('resize', alignRight);
 
-      // 2. 마우스 휠 이벤트(deltaY)를 부드러운 가로 스크롤(scrollLeft)로 매핑
       vertWrap.addEventListener('wheel', function (e) {
         if (e.deltaY !== 0) {
           e.preventDefault();
@@ -1017,7 +1264,7 @@
       initVerticalWritingUX();
     }
 
-    // 수묵 인터랙티브 슬라이더 값 실시간 업데이트 핸들러
+    // 🎚️ 수묵 인터랙티브 슬라이더 값 실시간 업데이트 핸들러
     function updateSumiSlider(boxId, valId, value) {
       const box = document.getElementById(boxId);
       const valEl = document.getElementById(valId);
@@ -1027,6 +1274,53 @@
       if (valEl) {
         valEl.textContent = value + '%';
       }
+    }
+
+    // 💾 LocalStorage 설정 자동 저장 및 페이지 재방문 시 영속적 복원
+    function restorePreferences() {
+      // 1. 야간 사경(다크) 모드
+      const savedTheme = localStorage.getItem('rw-sumi-theme');
+      if (savedTheme === 'sumi-dark') {
+        toggleThemeDark(true, true);
+      } else if (savedTheme === 'light') {
+        toggleThemeDark(false, true);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        const darkStatusEl = document.getElementById('darkStatus');
+        if (darkStatusEl) darkStatusEl.textContent = '자동 (시스템 다크)';
+      }
+
+      // 2. Readwell 전자종이(E-Ink) 모드
+      const savedMode = localStorage.getItem('rw-sumi-mode');
+      if (savedMode === 'eink') {
+        toggleModeEink(true, true);
+      } else if (window.matchMedia('(update: slow)').matches) {
+        const einkStatusEl = document.getElementById('einkStatus');
+        if (einkStatusEl) einkStatusEl.textContent = '자동 (E-Ink 감지)';
+      }
+
+      // 3. 서체 (명조)
+      const savedFont = localStorage.getItem('rw-sumi-font');
+      if (savedFont === 'serif') {
+        toggleFontFamily(true, true);
+      }
+
+      // 4. 한지 닥나무 결
+      const savedTexture = localStorage.getItem('rw-sumi-texture');
+      if (savedTexture === 'off') {
+        toggleHanjiTexture(false);
+      }
+
+      // 5. 활자 크기 배율
+      const savedScale = localStorage.getItem('rw-sumi-scale');
+      if (savedScale) {
+        setFontScale(parseFloat(savedScale));
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restorePreferences);
+    } else {
+      restorePreferences();
     }
   </script>
 </body>

@@ -117,25 +117,25 @@ flowchart LR
 ### Phase 3: 모던 웹 표준 & 테마 확장 (다크 모드 & E-Ink)
 > **목표**: 현대 브라우저 표준 API를 탑재하고, 야간 사경 다크 모드와 전자종이(E-Ink) 전용 모드를 완성합니다.
 
-- [ ] **3-1. 모던 웹 표준 인터랙션 전환**
-  - [ ] 스크롤 독서 게이지에 CSS Scroll-Driven Animations(`animation-timeline: scroll()`) 적용 (미지원 브라우저는 기존 JS 폴백)
-  - [ ] 커스텀 모바일 TOC를 HTML5 시맨틱 `<dialog>` 및 Popover API로 전환 (Top Layer, `::backdrop`, ESC 키 자동 닫기)
-  - [ ] 모바일 TOC 바텀시트에 터치 스와이프 닫기(Swipe-to-dismiss) 제스처 추가
-  - [ ] 테마/서체 전환 시 `document.startViewTransition()` 화선지 먹물 번짐 트랜지션 연출
-- [ ] **3-2. 컨셉 확장: 야간 사경(寫經) / 현묵(玄墨) 다크 모드**
-  - [ ] 칠흑 농묵 흑지(黑紙, `#121316`), 백묵(白墨, `#d6dadf`) 본문, 고서 사경의 금묵(金墨, `#d4af37`) 헤드라인 컬러 토큰 정의
-  - [ ] `[data-rw-theme="sumi-dark"]` 및 `@media (prefers-color-scheme: dark)` 토글 지원
-  - [ ] 다크 모드 전용 흑지 질감 캔버스 및 주사 인장 콘트라스트 보정
-- [ ] **3-3. Readwell 정체성 연계: E-Ink (전자종이) 모드**
-  - [ ] 표준 미디어 쿼리 `@media (update: slow)` 자동 감지 지원
-  - [ ] 전자종이 모드(`[data-rw-mode="eink"]`): 한지 비트맵 결 및 그라디언트 비활성화 (순수 단색 화선지 모드)
-  - [ ] 무한 회전 스피너 대신 E-Ink 특화 정적 인디케이터/단계별 스텝 펄스로 전환
-  - [ ] 1-bit / 4-bit 단색 서예 고대비 조판 최적화
-- [ ] **3-4. 수묵 마이크로 인터랙션 & 설정 영속화**
-  - [ ] 본문 텍스트 드래그 선택 시 주사(朱砂) 훈염 하이라이트(`::selection`) 적용
-  - [ ] 플로팅 컨트롤러에 장문 독서용 활자 크기 조절기(A- / A+) 추가
-  - [ ] 서체, 한지 결, 다크 모드, 렌더 엔진 설정을 `localStorage`에 영구 저장 및 재방문 시 자동 복원
-- [ ] **[Phase 3 검증]**: 다크 모드 및 E-Ink 모드 전환 테스트, DevTools 센서 탭에서 `update: slow` 감지 확인, 페이지 새로고침 시 설정 유지 확인
+- [x] **3-1. 모던 웹 표준 인터랙션 전환**
+  - [x] 스크롤 독서 게이지에 CSS Scroll-Driven Animations(`animation-timeline: scroll()`) 적용 (미지원 브라우저는 기존 JS 폴백)
+  - [x] 커스텀 모바일 TOC를 HTML5 시맨틱 `<dialog>` 및 Popover API로 전환 (Top Layer, `::backdrop`, ESC 키 자동 닫기)
+  - [x] 모바일 TOC 바텀시트에 터치 스와이프 닫기(Swipe-to-dismiss) 제스처 추가
+  - [x] 테마/서체 전환 시 `document.startViewTransition()` 화선지 먹물 번짐 트랜지션 연출
+- [x] **3-2. 컨셉 확장: 야간 사경(寫經) / 현묵(玄墨) 다크 모드**
+  - [x] 칠흑 농묵 흑지(黑紙, `#121316`), 백묵(白墨, `#d6dadf`) 본문, 고서 사경의 금묵(金墨, `#d4af37`) 헤드라인 컬러 토큰 정의
+  - [x] `[data-rw-theme="sumi-dark"]` 및 `@media (prefers-color-scheme: dark)` 토글 지원
+  - [x] 다크 모드 전용 흑지 질감 캔버스 및 주사 인장 콘트라스트 보정
+- [x] **3-3. Readwell 정체성 연계: E-Ink (전자종이) 모드**
+  - [x] 표준 미디어 쿼리 `@media (update: slow)` 자동 감지 지원
+  - [x] 전자종이 모드(`[data-rw-mode="eink"]`): 한지 비트맵 결 및 그라디언트 비활성화 (순수 단색 화선지 모드)
+  - [x] 무한 회전 스피너 대신 E-Ink 특화 정적 인디케이터/단계별 스텝 펄스로 전환
+  - [x] 1-bit / 4-bit 단색 서예 고대비 조판 최적화
+- [x] **3-4. 수묵 마이크로 인터랙션 & 설정 영속화**
+  - [x] 본문 텍스트 드래그 선택 시 주사(朱砂) 훈염 하이라이트(`::selection`) 적용
+  - [x] 플로팅 컨트롤러에 장문 독서용 활자 크기 조절기(A- / A+) 추가
+  - [x] 서체, 한지 결, 다크 모드, 렌더 엔진 설정을 `localStorage`에 영구 저장 및 재방문 시 자동 복원
+- [x] **[Phase 3 검증]**: 다크 모드 및 E-Ink 모드 전환 테스트, DevTools 센서 탭에서 `update: slow` 감지 확인, 페이지 새로고침 시 설정 유지 확인 완료 (`test-phase3.js` 및 `npm test` 통과)
 
 ---
 
