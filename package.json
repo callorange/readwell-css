@@ -1,49 +1,29 @@
 {
-  "name": "readwell-css",
-  "version": "0.2.0",
+  "name": "readwell-monorepo",
+  "version": "0.3.0",
+  "private": true,
   "type": "module",
-  "description": "E-Ink 디스플레이에서 영감을 얻은 긴 글 가독성과 제품 UI를 위한 저자극 순수 CSS 프레임워크",
-  "main": "dist/readwell.css",
-  "style": "dist/readwell.css",
-  "exports": {
-    ".": "./dist/readwell.css",
-    "./min": "./dist/readwell.min.css",
-    "./src/*": "./src/*"
-  },
-  "files": [
-    "dist",
-    "src",
-    "README.md",
-    "CHANGELOG.md",
-    "LICENSE"
+  "description": "저자극·자연주의 웹 타이포그래피 및 순수 CSS 프레임워크 모노레포 (readwell-css & sumi-css)",
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build:css": "node scripts/build.js",
-    "build:docs": "node scripts/build-docs.js",
-    "build": "node scripts/build.js && node scripts/build-docs.js",
-    "dev": "node scripts/dev.js",
-    "start": "node scripts/dev.js",
-    "test": "node scripts/test-build.js"
+    "build": "npm run build --workspaces && node scripts/build-portal.js",
+    "build:readwell": "npm run build --workspace=readwell-css",
+    "build:sumi": "npm run build --workspace=sumi-css",
+    "build:portal": "node scripts/build-portal.js",
+    "test": "npm run test --workspaces",
+    "dev": "node scripts/dev-server.js"
   },
   "keywords": [
     "css",
-    "css-framework",
-    "e-ink",
-    "reading",
+    "monorepo",
+    "readwell",
+    "sumi",
     "typography",
-    "minimal-ui",
-    "design-tokens",
-    "zero-dependency",
-    "classless-css"
+    "e-ink",
+    "calligraphy"
   ],
-  "homepage": "https://callorange.github.io/readwell-css/",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/callorange/readwell-css.git"
-  },
-  "bugs": {
-    "url": "https://github.com/callorange/readwell-css/issues"
-  },
   "author": "Readwell Team",
   "license": "MIT"
 }
