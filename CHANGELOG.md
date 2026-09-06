@@ -7,26 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- **동양 서예 & 수묵화 (Sumi-e) 테마 쇼케이스 (`examples/sumi/`)**:
-  - 천연 닥나무 화선지 고정 캔버스(`position: fixed`)로 무한 스크롤 및 동적 길이에 100% 무결점 대응
-  - `border-image-slice: 17` 기반 5종 서예 붓선 콜아웃 프레임 배리에이션:
-    - 기본 방필 중필형 (`callout-frame-clean.png`)
-    - 먹 번짐 & 미세 붓 떨림 손맛형 (`callout-frame-brush.png`)
-    - 세필 날렵형 (`callout-frame-fine.png`)
-    - 대각선 대칭 보완형 (`callout-frame-variant.png`)
-    - 원필 곡선형 (`callout-frame-round.png`)
-  - 동양화 육채(六彩) 원칙에 기반한 농묵(`--rw-sumi-ink: #121316`), 중묵(`--rw-sumi-charcoal: #424754`), 담묵(`--rw-sumi-wash: #787f90`), 주사(`--rw-sumi-seal: #b8281d`)의 확연한 수묵 계조 대비 시스템 및 야간 흑지(Dark) 모드 구축
-  - 순수 HTML/CSS(2x2 Grid) 및 SVG 스탬프 압착·전각 칼맛 필터 기반 전통 사각 전각 직인(Chop) 컴포넌트(`.rw-seal-chop`) 구축 (4글자 한자/한글 전각 포치 여백 최적화, 음각 백문, 이중 테두리 쌍선인, 2글자/1글자 방인)
-  - **수묵 정규 조판 표(`.rw-sumi-table`)**: 2px 상단 농묵선, 1.5px 하단 수필선, 행 호버 효과 및 반응형 래퍼(`.rw-sumi-table-wrap`) 모듈화
-  - **문방사우 코드 신택스 하이라이팅**: WCAG AAA 다크 고명도 대비(백묵, 밝은 주사, 금묵, 은묵, 옥록, 담묵) 토큰 체계 및 원클릭 복사 버튼(`.rw-btn-copy-snippet`)
-  - **난외 배주(Marginalia) 주석 시스템**: 본문 각주 번호(`.rw-marginalia-ref`)와 우측 여백 배주 카드(`.rw-aside-marginalia`, `.rw-aside-note`) 양방향 펄스 하이라이팅 연동
-  - **고서 목판본 인쇄 조판 (`@media print`)**: 흑백 단색화, 화면 전용 UI 숨김, 페이지 분절 방지(`break-inside: avoid`) 및 고서 인쇄 최적화
-  - **전각 두인(頭印) 2종 추가**: 조화와 풍요를 상징하는 표주박 형태 호로인(`.rw-seal-badge--gourd`), 자연미를 살린 자연인(`.rw-seal-badge--natural`)
-  - **인터랙티브 플레이그라운드 패널(`.rw-playground-panel`)**: 4종 전각 직인, 5종 서예 프레임, 4종 수묵 토큰, 인쇄 모드를 실시간 조합·체험하는 대화형 DX 스테이지
-  - **Phase 4 정량 회귀 테스트 검증 스위트 (`scripts/test-phase4.js`)**: 58개 테스트 100% 무결성 검증
-  - `examples/sumi/README.md` 기획, 디자인 시스템, 아키텍처 및 에셋 인벤토리 명세서 구축
-  - `examples/index.html` 예제 허브 페이지에 수묵 테마 쇼케이스 연동 카드 등록
+## [0.3.0] - 2026-09-07
+
+### Monorepo & Repository
+- npm workspaces 기반 대칭 모노레포로 프로젝트 구조 전면 개편 (`packages/*`)
+- 기획 문서를 `docs/readwell/` 및 `docs/sumi/`로 도메인별 네임스페이스 분리
+- GitHub Pages 통합 포털 허브 대문 및 자동 동기화 배포 파이프라인 구축 (`scripts/build-portal.js`)
+- 패키지별 핫 리빌드를 지원하는 순수 Node.js 로컬 개발 서버 구축 (`scripts/dev-server.js`)
+- 전체 워크스페이스 무결성 및 HTTP E2E 스모크 테스트 러너 구축 (`scripts/test-all.js`)
+
+### readwell-css (v0.2.1)
+- `packages/readwell-css/`로 독립 패키지 디렉터리 이관
+- 패키지 전용 Zero-dependency 빌드 및 28개 기능 무결성 테스트 파이프라인 구성
+
+### sumi-css (v0.1.0)
+- `sumi-css` 정식 독립 패키지 승격 (Zero-dependency Standalone)
+- 3,964라인 단일 CSS를 `src/` 내 13개 모듈(@layer 아키텍처)로 체계적 분할
+- 독자 네임스페이스(`.sumi-*`, `--sumi-*`) 전면 개편
+- 64종 수묵 그래픽 에셋(화선지 배경, 브러시 디바이더, 전각 직인, 스피너 등) 무손실 패키지 번들링
+- 비트맵 및 초경량 차세대 SVG 듀얼 렌더링 엔진 정식화
+- 독립 빌드 스크립트 및 6대 무결성(데드링크 0건, 소스맵, 에셋 검증) 테스트 파이프라인 구축
 
 ## [0.2.0] - 2026-09-05
 

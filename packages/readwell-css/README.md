@@ -4,8 +4,11 @@
 
 [![npm version](https://img.shields.io/npm/v/readwell-css.svg)](https://www.npmjs.com/package/readwell-css)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 
-Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분한 가독성과 실제 상용 제품 UI(Workspace, Dashboard, Backoffice)에 필요한 구조적 명확성을 함께 제공하는 제로 런타임 CSS 프레임워크입니다.
+🌐 **[Readwell CSS Live Demo 보러가기](https://callorange.github.io/readwell-css/readwell/)** | 📚 **[공식 문서 포털](https://callorange.github.io/readwell-css/readwell/docs.html)**
+
+Readwell CSS는 장시간 화면을 보아도 눈이 피로하지 않은 차분한 가독성과 실제 상용 제품 UI(Workspace, Dashboard, Backoffice)에 필요한 구조적 명확성을 함께 제공하는 제로 런타임 순수 CSS 프레임워크입니다. 동양 전통 서예 및 수묵화 프리미엄 테마가 필요하시다면 자매 패키지인 [sumi-css](../sumi-css/)를 확인하세요.
 
 ---
 
@@ -96,6 +99,16 @@ npm test
 - `community.html`: 커뮤니티 피드 템플릿
 - `fluid.html`: 전폭 고밀도 데이터 백오피스 템플릿
 - `components.html`: 키친싱크 전 컴포넌트 카탈로그
+
+---
+
+## 📚 상세 설계 문서 (`docs/readwell/`)
+
+- [컨셉 문서 (Concept)](../../docs/readwell/01_CONCEPT.md)
+- [제품 요구사항 정의서 (PRD)](../../docs/readwell/02_PRD.md)
+- [디자인 시스템 명세 (Design System)](../../docs/readwell/03_DESIGN_SYSTEM.md)
+- [CSS 아키텍처 가이드 (CSS Architecture)](../../docs/readwell/04_CSS_ARCHITECTURE.md)
+- [컴포넌트 스코프 명세 (Component Scope)](../../docs/readwell/08_COMPONENT_SCOPE.md)
 
 ---
 
