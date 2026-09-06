@@ -134,6 +134,16 @@ if (sumiAssetCount < 60) {
 }
 console.log(`  ✔ Verified site/sumi/ static assets (including ${sumiAssetCount} visual assets)`);
 
+const siteRootAssetsDir = path.join(siteDir, 'assets');
+if (!fs.existsSync(siteRootAssetsDir)) {
+  throw new Error('site/assets directory missing!');
+}
+const siteRootAssetCount = fs.readdirSync(siteRootAssetsDir).length;
+if (siteRootAssetCount < 60) {
+  throw new Error(`site/assets contains only ${siteRootAssetCount} files (expected at least 60)`);
+}
+console.log(`  ✔ Verified site/assets/ static assets (including ${siteRootAssetCount} visual assets)`);
+
 // 4.4 Check site/dist unified distribution
 const requiredUnifiedDist = [
   'readwell.css',

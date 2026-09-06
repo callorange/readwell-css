@@ -65,10 +65,12 @@ export function buildPortal() {
   const siteSumiAssetsDir = path.join(siteSumiDir, 'assets');
   const siteDistDir = path.join(siteDir, 'dist');
   const siteDistAssetsDir = path.join(siteDistDir, 'assets');
+  const siteAssetsDir = path.join(siteDir, 'assets');
 
   ensureDir(siteReadwellDir);
   ensureDir(siteSumiDir);
   ensureDir(siteDistDir);
+  ensureDir(siteAssetsDir);
 
   let totalCopied = 0;
 
@@ -92,6 +94,7 @@ export function buildPortal() {
   if (fs.existsSync(sumiAssetsDir)) {
     totalCopied += copyDirectoryContents(sumiAssetsDir, siteSumiAssetsDir);
     totalCopied += copyDirectoryContents(sumiAssetsDir, siteDistAssetsDir);
+    totalCopied += copyDirectoryContents(sumiAssetsDir, siteAssetsDir);
   }
 
   // 5. GitHub Pages synchronization: sync portal landing to docs/index.html

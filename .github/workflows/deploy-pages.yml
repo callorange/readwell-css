@@ -30,37 +30,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build CSS & Run Tests
+      - name: Build Portal & Run Tests
         run: |
           npm run build
           npm test
 
-      - name: Assemble Static Site
-        run: |
-          mkdir -p _site/dist _site/examples _site/docs
-          cp -r dist/* _site/dist/
-          cp -r examples/* _site/examples/
-          cp -r docs/* _site/docs/
-          cat << 'EOF' > _site/index.html
-          <!doctype html>
-          <html lang="ko">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Readwell CSS</title>
-            <meta http-equiv="refresh" content="0; url=./examples/">
-            <script>location.replace('./examples/');</script>
-          </head>
-          <body>
-            <p>Redirecting to <a href="./examples/">Readwell CSS Examples Hub</a>...</p>
-          </body>
-          </html>
-          EOF
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          path: 'site'
 
       - name: Deploy to GitHub Pages
         id: deployment

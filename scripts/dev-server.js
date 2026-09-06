@@ -120,6 +120,7 @@ function resolveFilePath(reqUrl) {
     const sub = pathname.slice('/assets/'.length);
     const candidates = [
       path.join(sumiAssetsDir, sub),
+      path.join(siteDir, 'assets', sub),
       path.join(siteDir, 'dist', 'assets', sub)
     ];
     for (const candidate of candidates) {
