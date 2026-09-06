@@ -1,0 +1,1066 @@
+@layer utilities {
+    /* --------------------------------------------------------------------------
+       9. 플로팅 컨트롤러: 한지 결 On/Off 토글
+       -------------------------------------------------------------------------- */
+    .sumi-control-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      z-index: 999;
+    }
+
+    .sumi-control-btn {
+      background: var(--sumi-paper-surface);
+      border: 1.5px solid var(--sumi-ink);
+      box-shadow: 2px 2px 0 var(--sumi-ink);
+      padding: 0.55rem 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-align: left;
+      border-radius: 2px;
+      color: var(--sumi-ink);
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .sumi-control-btn:hover {
+      background: var(--sumi-seal-soft);
+      border-color: var(--sumi-seal);
+      color: var(--sumi-seal);
+    }
+
+    /* 수묵 텍스트 계조 유틸리티 */
+    .sumi-ink {
+      color: var(--sumi-ink);
+      font-weight: 800;
+    }
+    .sumi-wash {
+      color: var(--sumi-wash);
+      font-weight: 700;
+    }
+    .sumi-seal {
+      color: var(--sumi-seal);
+      font-weight: 700;
+    }
+
+
+/* --------------------------------------------------------------------------
+     오프스크린 렌더링 최적화: content-visibility: auto
+     Modern Web Guidance 준수: layout shift 방지를 위한 contain-intrinsic-size 지정
+     -------------------------------------------------------------------------- */
+  .sumi-deferred {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
+  /* --------------------------------------------------------------------------
+     쇼케이스 및 테이블 시맨틱 클래스 (인라인 style 리팩토링)
+     -------------------------------------------------------------------------- */
+  .sumi-showcase-card {
+    margin-top: 2.5rem;
+    background: var(--sumi-paper-surface);
+    border: 1px solid var(--sumi-line);
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+
+  .sumi-showcase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed var(--sumi-line);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .sumi-showcase-title {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--sumi-ink);
+  }
+
+  .sumi-showcase-badge {
+    background: var(--sumi-seal);
+    color: #fff;
+    border-color: var(--sumi-seal);
+  }
+
+  .sumi-showcase-desc {
+    font-size: 0.9rem;
+    color: var(--sumi-charcoal);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .sumi-showcase-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .sumi-showcase-label {
+    font-size: 0.88rem;
+    color: var(--sumi-ink);
+    display: block;
+    margin-bottom: 0.65rem;
+  }
+
+  .sumi-showcase-label--sm {
+    margin-bottom: 0.35rem;
+  }
+
+  .sumi-showcase-preview {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    background: rgba(220, 205, 185, 0.12);
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid rgba(45, 38, 30, 0.08);
+  }
+
+  .sumi-showcase-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sumi-showcase-caption {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sumi-charcoal);
+  }
+
+  .sumi-showcase-caption--ink {
+    color: var(--sumi-ink);
+  }
+
+  .sumi-showcase-caption--seal {
+    color: var(--sumi-seal);
+  }
+
+  .sumi-showcase-caption--wash {
+    color: var(--sumi-wash);
+  }
+
+  .sumi-showcase-code {
+    display: block;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 0.6rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--sumi-charcoal);
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+
+  /* 수묵 정규 표 컴포넌트 */
+  .sumi-table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .sumi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .sumi-table thead tr {
+    border-bottom: 2px solid var(--sumi-ink);
+  }
+
+  .sumi-table th {
+    text-align: left;
+    padding: 0.75rem 0.8rem;
+    color: var(--sumi-ink);
+    font-weight: 700;
+  }
+
+  .sumi-table tbody tr {
+    border-bottom: 1px solid rgba(35, 40, 50, 0.1);
+    transition: background-color 0.15s ease;
+  }
+
+  .sumi-table tbody tr:hover {
+    background-color: rgba(220, 205, 185, 0.08);
+  }
+
+  .sumi-table td {
+    padding: 0.75rem 0.8rem;
+  }
+
+  .sumi-table td.sumi-td-bold {
+    font-weight: 700;
+  }
+
+  .sumi-color-dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .sumi-color-dot--ink {
+    background: var(--sumi-ink);
+  }
+
+  .sumi-color-dot--charcoal {
+    background: var(--sumi-charcoal);
+  }
+
+  .sumi-color-dot--wash {
+    background: var(--sumi-wash);
+  }
+
+  .sumi-color-dot--seal {
+    background: var(--sumi-seal);
+    border-color: rgba(184, 40, 29, 0.3);
+  }
+
+  .sumi-aside-role {
+    font-size: 0.8rem;
+    color: var(--sumi-dilute);
+  }
+
+  .sumi-aside-tag-list {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .sumi-sep {
+    opacity: 0.25;
+  }
+
+  .sumi-showcase-panel {
+    background: rgba(35, 40, 50, 0.02);
+    border: 1px solid rgba(35, 40, 50, 0.06);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0 2rem;
+  }
+
+  .sumi-showcase-group--spaced {
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .sumi-badge-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .sumi-seal-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sumi-seal-item-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sumi-ink);
+  }
+
+  .sumi-colophon-date {
+    font-size: 0.82rem;
+    color: var(--sumi-dilute);
+  }
+
+  .sumi-colophon-quote {
+    font-style: italic;
+    margin-top: 0.25rem;
+  }
+
+  .sumi-colophon-sign-note {
+    font-size: 0.78rem;
+    color: var(--sumi-dilute);
+  }
+
+  .sumi-callout--aside {
+    margin-top: 2rem;
+  }
+
+  /* 플로팅 컨트롤러 버튼 그룹 및 활자 조절기 */
+  .sumi-control-btn-group {
+    display: flex;
+    gap: 0.35rem;
+  }
+  .sumi-control-btn-group .sumi-control-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .sumi-control-btn--sm {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-1. 수묵 정규 표 (Sumi Table): .sumi-table
+     상단 농묵 굵은 획(2px), 하단 수필 획(1.5px), 지선(紙線) 엷은 보더,
+     담묵 행 호버 먹물 번짐 효과가 적용된 동양 고서 조판 정규 표
+     -------------------------------------------------------------------------- */
+  .sumi-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(45, 38, 30, 0.04);
+  }
+
+  .sumi-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: var(--sumi-charcoal);
+    border-top: 2px solid var(--sumi-ink);
+    border-bottom: 1.5px solid var(--sumi-ink);
+    text-align: left;
+  }
+
+  .sumi-table caption {
+    caption-side: top;
+    font-family: var(--sumi-font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sumi-ink);
+    text-align: left;
+    padding: 0.5rem 0.25rem 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .sumi-table caption .sumi-seal-badge {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .sumi-table thead th {
+    padding: 0.85rem 1rem;
+    font-family: var(--sumi-font-serif);
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--sumi-ink);
+    background-color: rgba(45, 38, 30, 0.045);
+    border-bottom: 1.5px solid var(--sumi-ink);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .sumi-table tbody tr {
+    transition: background-color 0.18s ease;
+  }
+
+  .sumi-table tbody tr:hover {
+    background-color: rgba(45, 38, 30, 0.038);
+  }
+
+  .sumi-table tbody td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--sumi-line);
+    vertical-align: middle;
+  }
+
+  .sumi-table tfoot td {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--sumi-wash);
+    border-top: 1px solid var(--sumi-ink);
+    background-color: rgba(45, 38, 30, 0.02);
+  }
+
+  .sumi-table .text-center { text-align: center; }
+  .sumi-table .text-right { text-align: right; }
+  .sumi-table .text-nowrap { white-space: nowrap; }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-1. 동양 고서 난외 배주 (Marginalia) 주석 시스템
+     본문 인장 번호(①) 클릭 시 우측 메타 레일에서 주석이 강조되는 상호작용
+     -------------------------------------------------------------------------- */
+  .sumi-marginalia-ref {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.38em;
+    height: 1.38em;
+    margin: 0 0.22em;
+    padding: 0;
+    border: 1px solid var(--sumi-seal);
+    border-radius: 50%;
+    background: var(--sumi-seal-soft);
+    color: var(--sumi-seal);
+    font-family: var(--sumi-font-serif);
+    font-size: 0.82em;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: 0.28em;
+    transition: all 0.2s ease;
+    user-select: none;
+    box-shadow: 0 0 1px rgba(184, 40, 29, 0.35);
+  }
+
+  .sumi-marginalia-ref:hover,
+  .sumi-marginalia-ref:focus-visible {
+    background-color: var(--sumi-seal);
+    color: #ffffff;
+    transform: scale(1.18);
+    box-shadow: 0 0 7px rgba(184, 40, 29, 0.5);
+    outline: none;
+  }
+
+  .sumi-marginalia-ref.is-highlighted {
+    animation: sumi-marginalia-ref-pulse 2.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  @keyframes sumi-marginalia-ref-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0.7); }
+    25% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(184, 40, 29, 0); background-color: var(--sumi-seal); color: #fff; }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0); }
+  }
+
+  /* 우측 메타 레일 내 배주 구획 */
+  .sumi-aside-marginalia {
+    margin-top: 1.6rem;
+    border-top: 1px dashed var(--sumi-line);
+    padding-top: 1.25rem;
+  }
+
+  .sumi-aside-note {
+    position: relative;
+    margin-bottom: 1.1rem;
+    padding: 0.75rem 0.95rem 0.75rem 1rem;
+    background: rgba(220, 205, 185, 0.14);
+    border-left: 2.5px solid var(--sumi-seal);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem;
+    line-height: 1.58;
+    color: var(--sumi-charcoal);
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+
+  .sumi-aside-note:hover {
+    background: rgba(220, 205, 185, 0.28);
+    transform: translateX(-2px);
+  }
+
+  .sumi-aside-note.is-active {
+    background: rgba(184, 40, 29, 0.08);
+    border-left-color: var(--sumi-seal);
+    box-shadow: 0 2px 10px rgba(184, 40, 29, 0.15);
+    animation: sumi-aside-note-pulse 2.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  @keyframes sumi-aside-note-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0.45); }
+    25% { transform: scale(1.02); box-shadow: 0 0 12px rgba(184, 40, 29, 0.25); }
+    100% { transform: scale(1); box-shadow: 0 2px 6px rgba(184, 40, 29, 0.08); }
+  }
+
+  .sumi-aside-note-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.35rem;
+    font-family: var(--sumi-font-serif);
+    font-weight: 700;
+    color: var(--sumi-seal);
+    font-size: 0.84rem;
+  }
+
+  .sumi-aside-note-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35em;
+    height: 1.35em;
+    background: var(--sumi-seal);
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .sumi-aside-note-text {
+    margin: 0;
+    color: var(--sumi-charcoal);
+  }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-3. 쇼케이스 원클릭 코드 복사 (Copy Snippet) 버튼
+     -------------------------------------------------------------------------- */
+  .sumi-btn-copy-snippet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--sumi-paper-surface);
+    border: 1px solid var(--sumi-line);
+    color: var(--sumi-charcoal);
+    padding: 0.28rem 0.65rem;
+    border-radius: 4px;
+    font-family: var(--sumi-font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+  }
+
+  .sumi-btn-copy-snippet:hover {
+    border-color: var(--sumi-seal);
+    color: var(--sumi-seal);
+    background: var(--sumi-seal-soft);
+  }
+
+  .sumi-btn-copy-snippet.is-copied {
+    background: var(--sumi-seal);
+    color: #ffffff;
+    border-color: var(--sumi-seal);
+    box-shadow: 0 0 8px rgba(184, 40, 29, 0.4);
+  }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-3. 수묵 인터랙티브 플레이그라운드 패널 (Interactive Playground)
+     -------------------------------------------------------------------------- */
+  .sumi-playground-panel {
+    margin: 3rem 0 4rem;
+    padding: 2rem 2.2rem;
+    background: var(--sumi-paper-surface);
+    border: 1.5px solid var(--sumi-line);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(45, 38, 30, 0.07);
+  }
+
+  .sumi-playground-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.35rem;
+    padding-bottom: 0.95rem;
+    border-bottom: 1px solid var(--sumi-line);
+  }
+
+  .sumi-playground-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--sumi-font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sumi-ink);
+    margin: 0;
+  }
+
+  .sumi-playground-desc {
+    font-size: 0.88rem;
+    color: var(--sumi-wash);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+  }
+
+  .sumi-playground-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 2.5rem;
+    background: radial-gradient(circle at center, rgba(220, 205, 185, 0.28) 0%, rgba(220, 205, 185, 0.08) 100%);
+    border: 1px dashed var(--sumi-line);
+    border-radius: 6px;
+    margin-bottom: 1.8rem;
+    transition: all 0.25s ease;
+  }
+
+  .sumi-playground-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sumi-playground-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sumi-playground-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sumi-ink);
+    font-family: var(--sumi-font-serif);
+  }
+
+  .sumi-playground-select {
+    padding: 0.48rem 0.75rem;
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--sumi-ink);
+    background-color: var(--sumi-paper);
+    border: 1px solid var(--sumi-line);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .sumi-playground-select:focus {
+    border-color: var(--sumi-seal);
+    box-shadow: 0 0 0 2px var(--sumi-seal-soft);
+  }
+
+  .sumi-playground-code-wrap {
+    margin-top: 1rem;
+    position: relative;
+  }
+
+  .sumi-playground-code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+
+  .sumi-playground-code-header span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--sumi-wash);
+  }
+
+/* ==========================================================================
+   화선지 먹물 번짐 View Transitions (document.startViewTransition)
+   테마(주간/야간), 서체(고딕/명조), 모드(일반/전자종이) 전환 시
+   화선지에 은은하게 번지는 유기적인 수묵 블러 크로스페이드
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.38s;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: sumi-ink-diffuse-out;
+}
+
+::view-transition-new(root) {
+  animation-name: sumi-ink-diffuse-in;
+}
+
+@keyframes sumi-ink-diffuse-out {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+}
+
+@keyframes sumi-ink-diffuse-in {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   야간 사경(寫經) / 현묵(玄墨) 컴포넌트 특화 스타일링
+   - 흑지(黑紙) 위에서 비트맵 수묵 획이 금묵/백묵으로 살아나도록 필터 변환
+   ========================================================================== */
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-doc-title,
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-sidebar-brand,
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-callout-title {
+  color: var(--sumi-gold);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-brush-divider {
+  filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-callout::before {
+  filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-control-btn {
+  background: var(--sumi-paper-surface);
+  border-color: var(--sumi-gold);
+  color: var(--sumi-ink);
+  box-shadow: 2px 2px 0 var(--sumi-gold);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-control-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-seal-badge {
+  border-color: var(--sumi-seal-border);
+  color: #ff6f61;
+  background: var(--sumi-seal-soft);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-seal-chop {
+  border-color: #ff6f61;
+  color: #ff6f61;
+  box-shadow: 0 0 10px rgba(232, 76, 61, 0.35);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-spinner--dots {
+  --sumi-dots-color: var(--sumi-gold);
+  --sumi-dots-dim: rgba(212, 175, 55, 0.25);
+}
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-spinner--dots-seal {
+  --sumi-dots-color: var(--sumi-seal);
+  --sumi-dots-dim: rgba(232, 76, 61, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-doc-title,
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-sidebar-brand,
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-callout-title {
+    color: var(--sumi-gold);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-brush-divider {
+    filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-callout::before {
+    filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-control-btn {
+    background: var(--sumi-paper-surface);
+    border-color: var(--sumi-gold);
+    color: var(--sumi-ink);
+    box-shadow: 2px 2px 0 var(--sumi-gold);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-control-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #ffd700;
+    color: #ffd700;
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-seal-badge {
+    border-color: var(--sumi-seal-border);
+    color: #ff6f61;
+    background: var(--sumi-seal-soft);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-seal-chop {
+    border-color: #ff6f61;
+    color: #ff6f61;
+    box-shadow: 0 0 10px rgba(232, 76, 61, 0.35);
+  }
+
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-spinner--dots {
+    --sumi-dots-color: var(--sumi-gold);
+    --sumi-dots-dim: rgba(212, 175, 55, 0.25);
+  }
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-spinner--dots-seal {
+    --sumi-dots-color: var(--sumi-seal);
+    --sumi-dots-dim: rgba(232, 76, 61, 0.25);
+  }
+}
+
+/* ==========================================================================
+   Readwell E-Ink (전자종이) 모드 특화 최적화
+   - 1-bit / 4-bit 고대비 흑백 단색 조판
+   - 스피너 4단계 스텝 회전 (플리커/고스팅 방지)
+   - 잔상 방지를 위한 모든 부드러운 애니메이션 및 그림자 제거
+   ========================================================================== */
+
+/* E-Ink 특화 4-단계 스텝 펄스 스피너 (회전형 기존 스피너용) */
+@keyframes sumi-eink-step {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 묵적 3점(點) 인디케이터 전용 E-Ink 1-bit 스텝 점등 키프레임 (부모 opacity 오염 0%, 순수 background-color 전환) */
+@keyframes sumi-eink-dot1 {
+  0% { background-color: #000000; }
+  75%, 100% { background-color: rgba(0, 0, 0, 0.15); }
+}
+
+@keyframes sumi-eink-dot2 {
+  0% { background-color: rgba(0, 0, 0, 0.15); }
+  25% { background-color: #000000; }
+  75%, 100% { background-color: rgba(0, 0, 0, 0.15); }
+}
+
+@keyframes sumi-eink-dot3 {
+  0% { background-color: rgba(0, 0, 0, 0.15); }
+  50% { background-color: #000000; }
+  75%, 100% { background-color: rgba(0, 0, 0, 0.15); }
+}
+
+/* 1. 수동 토글 E-Ink 모드 (:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"])) */
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) * {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  transition: none !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-callout {
+  border: 1.5px solid #000000 !important;
+  background: #ffffff !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-callout::before {
+  display: none !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-control-btn {
+  background: #ffffff !important;
+  border: 1.5px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner:not(.sumi-spinner--dots),
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--ghost::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual::before,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual-sync::before,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual-sync::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner-dual .sumi-spinner {
+  animation: sumi-eink-step 4s steps(4) infinite !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots {
+  --sumi-dots-color: #000000 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  animation: sumi-eink-dot2 1.6s steps(1, end) infinite !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots::before {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: sumi-eink-dot1 1.6s steps(1, end) infinite !important;
+}
+
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots::after {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: sumi-eink-dot3 1.6s steps(1, end) infinite !important;
+}
+
+/* 2. 전자종이 단말기 자동 감지 (@media (update: slow)) */
+@media (update: slow) {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
+
+  .sumi-callout {
+    border: 1.5px solid #000000 !important;
+    background: #ffffff !important;
+  }
+
+  .sumi-callout::before {
+    display: none !important;
+  }
+
+  .sumi-control-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #000000 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .sumi-spinner:not(.sumi-spinner--dots),
+  .sumi-spinner--ghost::after,
+  .sumi-spinner--dual::before,
+  .sumi-spinner--dual::after,
+  .sumi-spinner--dual-sync::before,
+  .sumi-spinner--dual-sync::after,
+  .sumi-spinner-dual .sumi-spinner {
+    animation: sumi-eink-step 4s steps(4) infinite !important;
+  }
+
+  .sumi-spinner--dots {
+    --sumi-dots-color: #000000 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: sumi-eink-dot2 1.6s steps(1, end) infinite !important;
+  }
+
+  .sumi-spinner--dots::before {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: sumi-eink-dot1 1.6s steps(1, end) infinite !important;
+  }
+
+  .sumi-spinner--dots::after {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: sumi-eink-dot3 1.6s steps(1, end) infinite !important;
+  }
+}
+
+/* ==========================================================================
+   Phase 4 다크 모드 (야간 사경 / 현묵) 오버라이드
+   ========================================================================== */
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table-wrap,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table-wrap {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table thead th,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table tbody tr:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note {
+  background: rgba(35, 40, 50, 0.5);
+  color: var(--sumi-charcoal);
+  border-left-color: var(--sumi-seal);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note:hover {
+  background: rgba(35, 40, 50, 0.8);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note.is-active,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note.is-active {
+  background: rgba(232, 76, 61, 0.12);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-playground-panel,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-playground-panel {
+  background: var(--sumi-paper-surface);
+  border-color: var(--sumi-line);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-playground-stage,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-playground-stage {
+  background: radial-gradient(circle at center, rgba(45, 50, 65, 0.4) 0%, rgba(20, 22, 28, 0.6) 100%);
+  border-color: var(--sumi-line);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-btn-copy-snippet,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-btn-copy-snippet {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--sumi-line);
+  color: var(--sumi-charcoal);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-btn-copy-snippet:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-btn-copy-snippet:hover {
+  background: var(--sumi-seal-soft);
+  color: var(--sumi-seal);
+}
+
+:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-showcase-code,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-showcase-code {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Phase 4 E-Ink (전자종이) 모드 추가 오버라이드
+   ========================================================================== */
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table {
+  border-top: 2px solid #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table thead th {
+  background-color: #f0f0f0 !important;
+  border-bottom: 1.5px solid #000000 !important;
+  color: #000000 !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table tbody td {
+  border-bottom: 1px solid #000000 !important;
+  color: #000000 !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table tbody tr:hover {
+  background: transparent !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-aside-note {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-left: 3px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-aside-note-num {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref {
+  border-color: #000000 !important;
+  color: #000000 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref:hover,
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref:focus-visible {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-playground-panel {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-playground-stage {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+}
+:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-btn-copy-snippet {
+  background: #ffffff !important;
+  border: 1.5px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+}

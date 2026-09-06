@@ -1,0 +1,42 @@
+{
+  "name": "sumi-css",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "동양 전통 서예와 수묵화 미학을 계승한 장문 독서 및 기술 문서 특화 순수 CSS 프레임워크",
+  "main": "dist/sumi.css",
+  "style": "dist/sumi.css",
+  "exports": {
+    ".": "./dist/sumi.css",
+    "./min": "./dist/sumi.min.css",
+    "./assets/*": "./dist/assets/*",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "dist",
+    "src",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
+  },
+  "keywords": [
+    "css",
+    "css-framework",
+    "sumi",
+    "calligraphy",
+    "typography",
+    "ink-wash",
+    "hanji",
+    "zero-dependency"
+  ],
+  "homepage": "https://callorange.github.io/readwell-css/sumi/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callorange/readwell-css.git",
+    "directory": "packages/sumi-css"
+  },
+  "license": "MIT"
+}

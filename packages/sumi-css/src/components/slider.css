@@ -1,0 +1,353 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       13. 수묵 인터랙티브 슬라이더 (.sumi-slider-box)
+           - 불필요한 네이티브 박스 외곽선 100% 완전 제거
+           - 프로그레스 바와 동일한 화선지 위 수묵 붓선 트랙 및 농묵 채움
+           - 서예 점획 손잡이(Thumb) 마우스/터치 드래그 인터랙션 지원
+           - WCAG 2.1 접근성: 44px x 44px 터치 타겟 & :focus-visible 주사 훈염 링
+       -------------------------------------------------------------------------- */
+    .sumi-slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .sumi-slider-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .sumi-slider-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--sumi-ink);
+    }
+
+    .sumi-slider-val {
+      font-family: var(--sumi-font-sans);
+      color: var(--sumi-seal);
+      font-weight: 700;
+    }
+
+    .sumi-slider-box {
+      position: relative;
+      width: 100%;
+      height: 12px;
+      margin: 1.25rem 0 0.5rem 0;
+    }
+
+    /* 1. 배경 담묵 붓선 트랙 (네이티브 핸들 중심 가동 범위인 좌우 10px에 맞춤 정렬) */
+    .sumi-slider-box__track {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      background: url("./assets/sumi-stroke-track.png") no-repeat center / 100% 100%;
+      background-image: image-set(
+        url("./assets/sumi-stroke-track.webp") type('image/webp'),
+        url("./assets/sumi-stroke-track.png") type('image/png')
+      );
+      pointer-events: none;
+    }
+
+    /* 2. 동적 농묵 붓선 채움 (네이티브 핸들 중심 가동 범위인 좌우 10px에 맞춤 정렬 & 핸들과 1:1 일치) */
+    .sumi-slider-box__fill {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      background: url("./assets/sumi-stroke-fill.png") no-repeat center / 100% 100%;
+      background-image: image-set(
+        url("./assets/sumi-stroke-fill.webp") type('image/webp'),
+        url("./assets/sumi-stroke-fill.png") type('image/png')
+      );
+      clip-path: inset(0 calc(100% - var(--sumi-val, 50%)) 0 0);
+      pointer-events: none;
+    }
+
+    /* 3. 투명 인터랙티브 input[type="range"] (44px 터치 조작 타겟 확보 & 트랙 정중앙 배치) */
+    .sumi-slider-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 44px; /* 최소 44px 터치 조작 타겟 확보 (WCAG 2.1) */
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* 키보드 초점 시 붉은 인주(朱砂) 훈염 링 (:focus-visible) 표시 */
+    .sumi-slider-input:focus-visible {
+      outline: 2px solid var(--sumi-seal);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 6px var(--sumi-seal-soft) !important;
+      border-radius: 4px;
+    }
+
+    .sumi-slider-input::-webkit-slider-runnable-track {
+      background: transparent;
+      border: none;
+      height: 12px;
+    }
+    .sumi-slider-input::-moz-range-track {
+      background: transparent;
+      border: none;
+      height: 12px;
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 1. 서예 붓점 손잡이 (미니멀 붉은 인주)
+       - 20px 원형 붓점이 12px 트랙 중심(y=6px)에 정확히 안착
+       -------------------------------------------------------------------------- */
+    .sumi-slider-input,
+    .sumi-slider-input--dot {
+      /* 기본 */
+    }
+    .sumi-slider-input::-webkit-slider-thumb,
+    .sumi-slider-input--dot::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      margin-top: -4px !important;
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: none !important;
+      cursor: grab;
+      transition: transform 0.12s ease;
+    }
+    .sumi-slider-input:active::-webkit-slider-thumb,
+    .sumi-slider-input--dot:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+    .sumi-slider-input::-moz-range-thumb,
+    .sumi-slider-input--dot::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      transform: translateY(-4px);
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: none !important;
+      cursor: grab;
+      transition: transform 0.12s ease;
+    }
+    .sumi-slider-input:active::-moz-range-thumb,
+    .sumi-slider-input--dot:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: translateY(-4px) scale(1.15);
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 2. 서예 모필(毛筆) 브러시 손잡이 (붓대 + 붓촉 맞물림)
+       - 붓대(상단)는 위로 솟고, 뾰족한 붓촉 끝(하단)이 12px 먹선 트랙 중심축(y=6px)에 완벽 일치!
+       -------------------------------------------------------------------------- */
+    .sumi-slider-input--brush::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 36px;
+      margin-top: -30px !important; /* 붓촉 끝이 먹선 중심 궤적에 완벽 일치 */
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 40'%3E%3Cpath d='M8 2 C8 1 14 1 14 2 L13.5 19 L8.5 19 Z' fill='%23a8865f' stroke='%236e5335' stroke-width='0.8'/%3E%3Crect x='8.5' y='19' width='5' height='3' rx='0.5' fill='%23b8281d'/%3E%3Cpath d='M8.5 22 C8.5 22 7.2 28 11 38 C14.8 28 13.5 22 13.5 22 Z' fill='%23111316'/%3E%3Cellipse cx='11' cy='24' rx='2.2' ry='1.4' fill='%232c3038'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.22)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .sumi-slider-input--brush:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.12);
+    }
+    .sumi-slider-input--brush::-moz-range-thumb {
+      width: 20px;
+      height: 36px;
+      transform: translateY(-30px);
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 40'%3E%3Cpath d='M8 2 C8 1 14 1 14 2 L13.5 19 L8.5 19 Z' fill='%23a8865f' stroke='%236e5335' stroke-width='0.8'/%3E%3Crect x='8.5' y='19' width='5' height='3' rx='0.5' fill='%23b8281d'/%3E%3Cpath d='M8.5 22 C8.5 22 7.2 28 11 38 C14.8 28 13.5 22 13.5 22 Z' fill='%23111316'/%3E%3Cellipse cx='11' cy='24' rx='2.2' ry='1.4' fill='%232c3038'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.22)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .sumi-slider-input--brush:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: translateY(-30px) scale(1.12);
+    }
+
+    /* --------------------------------------------------------------------------
+       스타일 3. 서첩 척(尺) 눈금 + 인주 가늠자 손잡이 (단위 계측형)
+       - 가늠자 둥근 몸통이 먹선 중심에 안착하고 뾰족한 끝침이 하단 눈금을 지시!
+       -------------------------------------------------------------------------- */
+    .sumi-slider-input--tick::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 24px;
+      margin-top: -10px !important; /* 둥근 몸통이 먹선 중심에 완벽히 올라오고 뾰족한 끝이 눈금을 지시 */
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26'%3E%3Cpath d='M11 25 L5.5 13 C3.5 9 5.5 3 11 3 C16.5 3 18.5 9 16.5 13 Z' fill='%23b8281d' stroke='%238f1f16' stroke-width='0.8'/%3E%3Ccircle cx='11' cy='9' r='2.8' fill='%23fdfbf7' opacity='0.95'/%3E%3Ccircle cx='11' cy='9' r='1.3' fill='%23b8281d'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: drop-shadow(0 1px 2px rgba(184, 40, 29, 0.35)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .sumi-slider-input--tick:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      transform: scale(1.15);
+    }
+    .sumi-slider-input--tick::-moz-range-thumb {
+      width: 20px;
+      height: 24px;
+      transform: translateY(-10px);
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26'%3E%3Cpath d='M11 25 L5.5 13 C3.5 9 5.5 3 11 3 C16.5 3 18.5 9 16.5 13 Z' fill='%23b8281d' stroke='%238f1f16' stroke-width='0.8'/%3E%3Ccircle cx='11' cy='9' r='2.8' fill='%23fdfbf7' opacity='0.95'/%3E%3Ccircle cx='11' cy='9' r='1.3' fill='%23b8281d'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none;
+      outline: none !important;
+      filter: drop-shadow(0 1px 2px rgba(184, 40, 29, 0.35)) !important;
+      cursor: grab;
+      transition: transform 0.1s ease;
+    }
+    .sumi-slider-input--tick:active::-moz-range-thumb {
+      cursor: grabbing;
+      transform: translateY(-10px) scale(1.15);
+    }
+
+    /* 서첩 눈금자 틱마크 레이아웃 (HTML5 시맨틱 datalist 태그 완벽 지원) */
+    .sumi-slider-tick-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    datalist.sumi-slider-ticks,
+    .sumi-slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 10px; /* 네이티브 핸들 중심(10px)과 1:1 일치 */
+      box-sizing: border-box;
+      margin: 2px 0 0 0;
+      font-size: 0.74rem;
+      color: var(--sumi-wash);
+      font-family: var(--sumi-font-serif);
+      user-select: none;
+    }
+    datalist.sumi-slider-ticks option {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 20px;
+      margin: 0 -10px;
+    }
+    datalist.sumi-slider-ticks option::before {
+      content: "";
+      display: block;
+      width: 1.5px;
+      height: 5px;
+      background: var(--sumi-line);
+      border-radius: 1px;
+    }
+    datalist.sumi-slider-ticks option[value="0"]::before,
+    datalist.sumi-slider-ticks option[value="50"]::before,
+    datalist.sumi-slider-ticks option[value="100"]::before {
+      height: 7px;
+      width: 2px;
+      background: var(--sumi-wash);
+    }
+
+    /* 레거시 div 구조 호환성 보존 */
+    .sumi-tick-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .sumi-tick-bar {
+      width: 1.5px;
+      height: 5px;
+      background: var(--sumi-line);
+      border-radius: 1px;
+    }
+    .sumi-tick-item.is-major .sumi-tick-bar {
+      height: 7px;
+      background: var(--sumi-wash);
+      width: 2px;
+    }
+
+    /* 옵션: 흑묵(濃墨) 서예 점획 손잡이 (.sumi-slider-input--ink) 보존 */
+    .sumi-slider-input--ink::-webkit-slider-thumb {
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E") !important;
+      filter: none !important;
+    }
+    .sumi-slider-input--ink::-moz-range-thumb {
+      background: transparent;
+      background-color: transparent !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E") !important;
+      filter: none !important;
+    }
+
+
+}

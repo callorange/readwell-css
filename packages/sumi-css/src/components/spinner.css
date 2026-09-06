@@ -1,0 +1,642 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       15. 수묵 원형 붓터치 스피너 (.sumi-spinner)
+       동양 전통 서예의 '비백호(飛白弧)'와 '원상(圓相, Enso)' 붓터치 모티프
+       -------------------------------------------------------------------------- */
+    .sumi-spinner {
+      --sumi-spinner-size: 36px;
+      width: var(--sumi-spinner-size);
+      height: var(--sumi-spinner-size);
+      display: inline-block;
+      vertical-align: middle;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      box-sizing: border-box;
+      animation: sumi-spin 1.1s linear infinite;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+
+    /* 스타일 1: 비백호(飛白弧) 오픈 링 붓터치 (기필 ~ 갈필 꼬리, 시계방향 순방향용) */
+    .sumi-spinner--brush,
+    .sumi-spinner--brush-ink {
+      background-image: url("./assets/sumi-spinner-brush-ink.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-ink.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-ink.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--brush-seal {
+      background-image: url("./assets/sumi-spinner-brush-seal.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-seal.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-seal.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--brush-wash {
+      background-image: url("./assets/sumi-spinner-brush-wash.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-wash.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-wash.png") type('image/png')
+      );
+    }
+
+    /* 스타일 1-REV: 좌우 반전 비백호 (반시계 역방향 붓터치용) */
+    .sumi-spinner--brush-ink-rev {
+      background-image: url("./assets/sumi-spinner-brush-ink-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-ink-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-ink-rev.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--brush-seal-rev {
+      background-image: url("./assets/sumi-spinner-brush-seal-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-seal-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-seal-rev.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--brush-wash-rev {
+      background-image: url("./assets/sumi-spinner-brush-wash-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-brush-wash-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-brush-wash-rev.png") type('image/png')
+      );
+    }
+
+    /* 스타일 2: 원상(圓相, Enso) 서클 붓터치 (외곽 비백 + 일필휘지 완결형, 시계방향 순방향용) */
+    .sumi-spinner--enso,
+    .sumi-spinner--enso-ink {
+      background-image: url("./assets/sumi-spinner-enso-ink.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-ink.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-ink.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--enso-seal {
+      background-image: url("./assets/sumi-spinner-enso-seal.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-seal.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-seal.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--enso-wash {
+      background-image: url("./assets/sumi-spinner-enso-wash.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-wash.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-wash.png") type('image/png')
+      );
+    }
+
+    /* 스타일 2-REV: 좌우 반전 원상 (반시계 역방향용) */
+    .sumi-spinner--enso-ink-rev {
+      background-image: url("./assets/sumi-spinner-enso-ink-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-ink-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-ink-rev.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--enso-seal-rev {
+      background-image: url("./assets/sumi-spinner-enso-seal-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-seal-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-seal-rev.png") type('image/png')
+      );
+    }
+
+    .sumi-spinner--enso-wash-rev {
+      background-image: url("./assets/sumi-spinner-enso-wash-rev.png");
+      background-image: image-set(
+        url("./assets/sumi-spinner-enso-wash-rev.webp") type('image/webp'),
+        url("./assets/sumi-spinner-enso-wash-rev.png") type('image/png')
+      );
+    }
+
+    /* 크기 규격 */
+    .sumi-spinner--sm {
+      --sumi-spinner-size: 20px;
+    }
+
+    .sumi-spinner--md {
+      --sumi-spinner-size: 36px;
+    }
+
+    .sumi-spinner--lg {
+      --sumi-spinner-size: 52px;
+    }
+
+    .sumi-spinner--xl {
+      --sumi-spinner-size: 72px;
+    }
+
+    /* 회전 속도 및 방향 옵션 */
+    .sumi-spinner--fast {
+      animation-duration: 0.75s;
+    }
+
+    .sumi-spinner--slow {
+      animation-duration: 2.2s; /* 정중동(靜中動): 고요하고 우아한 서예의 호흡 */
+    }
+
+    .sumi-spinner--reverse {
+      animation-direction: reverse;
+    }
+
+    /* --------------------------------------------------------------------------
+       동세(動勢) 애니메이션 변형 6종
+       서예의 필의(筆意)와 수묵의 물리적 번짐을 구현한 특화 모션
+       -------------------------------------------------------------------------- */
+
+    /* 1. 유수(流水) 가감속: 덜컥거림 없는 유려한 사인(Sine) 곡선 완급 */
+    .sumi-spinner--flow {
+      animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      animation-duration: 1.8s;
+    }
+
+    /* 2. 호흡(呼吸): 회전과 함께 붓의 기운이 숨쉬듯 미세 수축·팽창 */
+    .sumi-spinner--breathe {
+      animation-name: sumi-spin-breathe;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes sumi-spin-breathe {
+      0% {
+        transform: rotate(0deg) scale(0.93);
+      }
+      50% {
+        transform: rotate(180deg) scale(1.06);
+      }
+      100% {
+        transform: rotate(360deg) scale(0.93);
+      }
+    }
+
+    /* 3. 훈염(暈染) 농담: 회전과 함께 먹빛이 짙어졌다 옅어지는 농담(濃淡) 진폭 */
+    .sumi-spinner--fade {
+      animation-name: sumi-spin-fade;
+      animation-duration: 1.9s;
+      animation-timing-function: linear;
+    }
+
+    @keyframes sumi-spin-fade {
+      0% {
+        transform: rotate(0deg);
+        opacity: 0.38;
+      }
+      50% {
+        transform: rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(360deg);
+        opacity: 0.38;
+      }
+    }
+
+    /* 4. 부채꼴 운필(運筆) 왕복: 붓으로 호를 긋고 되돌아오는 단아한 진자 */
+    .sumi-spinner--sweep {
+      animation-name: sumi-spin-sweep;
+      animation-duration: 1.7s;
+      animation-timing-function: cubic-bezier(0.42, 0, 0.25, 1);
+    }
+
+    @keyframes sumi-spin-sweep {
+      0% {
+        transform: rotate(-35deg);
+      }
+      50% {
+        transform: rotate(235deg);
+      }
+      100% {
+        transform: rotate(-35deg);
+      }
+    }
+
+    /* 5. 훈염 잔상(殘影) 추적: 회전하는 붓머리 뒤로 은은한 먹물 잔상 꼬리가 따라붙는 효과 */
+    .sumi-spinner--ghost {
+      position: relative;
+    }
+
+    .sumi-spinner--ghost::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-image: inherit;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.35;
+      transform: rotate(-32deg);
+      transform-origin: center center;
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       6. 음양(陰陽) 이중 엇갈림 역회전
+       바깥쪽(시계 1.1s) + 안쪽(반시계 역회전 1.7s)
+       중요: 부모 엘리먼트의 자체 회전을 끄고, ::before(외곽 시계)와 ::after(내부 반시계)로
+             각각 독립 회전시켜 부모 회전 상속으로 인한 반대 회전 왜곡 현상을 원천 차단합니다.
+       -------------------------------------------------------------------------- */
+    .sumi-spinner--dual {
+      position: relative;
+      animation: none !important;
+      background-image: none !important;
+    }
+
+    /* 외곽 링: 시계방향 회전 (1.1s) */
+    .sumi-spinner--dual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: sumi-spin 1.1s linear infinite;
+      transform-origin: center center;
+    }
+
+    /* 내부 링: 좌우 반전(-rev) 에셋 + 반시계 역방향 회전 (1.7s, 68% 크기) */
+    .sumi-spinner--dual::after {
+      content: '';
+      position: absolute;
+      top: 16%;
+      left: 16%;
+      width: 68%;
+      height: 68%;
+      border-radius: 50%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.92;
+      animation: sumi-spin-rev 1.7s linear infinite;
+      transform-origin: center center;
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. 동심(同心) 순방향 이중회전
+       바깥쪽(느린 시계 1.4s) + 안쪽(빠른 시계 0.85s)
+       부모 회전을 끄고 ::before(바깥 1.4s)와 ::after(안쪽 0.85s)로 독립 구동
+       -------------------------------------------------------------------------- */
+    .sumi-spinner--dual-sync {
+      position: relative;
+      animation: none !important;
+      background-image: none !important;
+    }
+
+    .sumi-spinner--dual-sync::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: sumi-spin 1.4s linear infinite;
+      transform-origin: center center;
+    }
+
+    .sumi-spinner--dual-sync::after {
+      content: '';
+      position: absolute;
+      top: 16%;
+      left: 16%;
+      width: 68%;
+      height: 68%;
+      border-radius: 50%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.92;
+      animation: sumi-spin 0.85s linear infinite;
+      transform-origin: center center;
+      pointer-events: none;
+    }
+
+    /* 외곽 링(::before) 에셋 매칭 */
+    .sumi-spinner--brush-ink.sumi-spinner--dual::before,
+    .sumi-spinner--brush-ink.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-brush-ink.png");
+    }
+    .sumi-spinner--brush-seal.sumi-spinner--dual::before,
+    .sumi-spinner--brush-seal.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-brush-seal.png");
+    }
+    .sumi-spinner--brush-wash.sumi-spinner--dual::before,
+    .sumi-spinner--brush-wash.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-brush-wash.png");
+    }
+    .sumi-spinner--enso-ink.sumi-spinner--dual::before,
+    .sumi-spinner--enso-ink.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-enso-ink.png");
+    }
+    .sumi-spinner--enso-seal.sumi-spinner--dual::before,
+    .sumi-spinner--enso-seal.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-enso-seal.png");
+    }
+    .sumi-spinner--enso-wash.sumi-spinner--dual::before,
+    .sumi-spinner--enso-wash.sumi-spinner--dual-sync::before {
+      background-image: url("./assets/sumi-spinner-enso-wash.png");
+    }
+
+    /* 내부 링(::after) 에셋 매칭:
+       --dual(역회전): 좌우 반전(-rev) 주사/농묵 에셋
+       --dual-sync(순회전): 정방향 주사/농묵 에셋 */
+    .sumi-spinner--brush-ink.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-brush-seal-rev.png");
+    }
+    .sumi-spinner--brush-seal.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-brush-ink-rev.png");
+    }
+    .sumi-spinner--brush-wash.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-brush-seal-rev.png");
+    }
+    .sumi-spinner--enso-ink.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-enso-seal-rev.png");
+    }
+    .sumi-spinner--enso-seal.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-enso-ink-rev.png");
+    }
+    .sumi-spinner--enso-wash.sumi-spinner--dual::after {
+      background-image: url("./assets/sumi-spinner-enso-seal-rev.png");
+    }
+
+    .sumi-spinner--brush-ink.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-brush-seal.png");
+    }
+    .sumi-spinner--brush-seal.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-brush-ink.png");
+    }
+    .sumi-spinner--brush-wash.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-brush-seal.png");
+    }
+    .sumi-spinner--enso-ink.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-enso-seal.png");
+    }
+    .sumi-spinner--enso-seal.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-enso-ink.png");
+    }
+    .sumi-spinner--enso-wash.sumi-spinner--dual-sync::after {
+      background-image: url("./assets/sumi-spinner-enso-seal.png");
+    }
+
+    /* 래퍼 구조 지원: 컨테이너 방식 */
+    .sumi-spinner-dual {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--sumi-spinner-size, 36px);
+      height: var(--sumi-spinner-size, 36px);
+      flex-shrink: 0;
+    }
+
+    .sumi-spinner-dual .sumi-spinner:first-child {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      animation: sumi-spin 1.1s linear infinite;
+    }
+
+    /* 기본 래퍼: 역회전 (안쪽 68% 크기, 반시계 역회전 1.7s) */
+    .sumi-spinner-dual .sumi-spinner:last-child {
+      position: absolute;
+      top: 16%;
+      left: 16%;
+      width: 68%;
+      height: 68%;
+      animation: sumi-spin-rev 1.7s linear infinite;
+      opacity: 0.92;
+    }
+
+    /* 순방향 래퍼: 같은 방향 다른 속도 (바깥 1.4s, 안쪽 0.85s 빠른 시계방향) */
+    .sumi-spinner-dual--sync .sumi-spinner:first-child {
+      animation: sumi-spin 1.4s linear infinite;
+    }
+
+    .sumi-spinner-dual--sync .sumi-spinner:last-child {
+      animation: sumi-spin 0.85s linear infinite;
+    }
+
+    @keyframes sumi-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes sumi-spin-rev {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    /* 접근성: prefers-reduced-motion 설정 시 회전 대신 은은한 붓자국 호흡 펄스로 대체 */
+    @media (prefers-reduced-motion: reduce) {
+      .sumi-spinner,
+      .sumi-spinner--ghost::after,
+      .sumi-spinner--dual::before,
+      .sumi-spinner--dual::after,
+      .sumi-spinner--dual-sync::before,
+      .sumi-spinner--dual-sync::after,
+      .sumi-spinner-dual .sumi-spinner {
+        animation: sumi-fade-pulse 1.8s ease-in-out infinite alternate !important;
+      }
+    }
+
+    @keyframes sumi-fade-pulse {
+      from {
+        opacity: 0.35;
+        transform: scale(0.97);
+      }
+      to {
+        opacity: 0.95;
+        transform: scale(1);
+      }
+    }
+
+    /* 중앙 묵적/인주 핵 결합 스피너 */
+    .sumi-spinner-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sumi-spinner-core {
+      position: absolute;
+      width: 22%;
+      height: 22%;
+      border-radius: 50%;
+      pointer-events: none;
+      background-color: var(--sumi-ink);
+      box-shadow: 0 0 4px rgba(18, 19, 22, 0.25);
+    }
+
+    .sumi-spinner-core--seal {
+      background-color: var(--sumi-seal);
+      box-shadow: 0 0 4px rgba(184, 40, 29, 0.35);
+    }
+
+    /* 텍스트 결합 로딩 레이아웃 */
+    .sumi-loading-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(220, 205, 185, 0.15);
+      border: 1px solid rgba(45, 38, 30, 0.1);
+      border-radius: 6px;
+    }
+
+    .sumi-loading-text {
+      font-size: 0.92rem;
+      color: var(--sumi-ink);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .sumi-loading-subtext {
+      font-size: 0.8rem;
+      color: var(--sumi-wash);
+      margin-top: 0.15rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       8. 수묵 묵적 3점(點) 인디케이터 (.sumi-spinner--dots)
+       회전 모션을 완전히 배제하여 전자종이(E-Ink) 잔상 및 플리커 0% 달성
+       단일 태그로 ::before, ::after를 결합해 버튼/텍스트 인라인에 최적화
+       -------------------------------------------------------------------------- */
+    .sumi-spinner.sumi-spinner--dots,
+    .sumi-spinner--dots {
+      --sumi-dot-size: 6px;
+      --sumi-dots-gap: 5px;
+      --sumi-dots-color: var(--sumi-ink);
+      --sumi-dots-dim: rgba(18, 19, 22, 0.22);
+
+      width: var(--sumi-dot-size);
+      height: var(--sumi-dot-size);
+      margin: 0 calc(var(--sumi-dot-size) + var(--sumi-dots-gap));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      position: relative;
+      background-image: none;
+      background-color: var(--sumi-dots-dim);
+      border-radius: 50%;
+      box-shadow: none;
+      transform: none;
+      opacity: 1 !important;
+      animation: sumi-inkdrop-wave 1.2s infinite ease-in-out;
+      animation-delay: 0.22s;
+      box-sizing: content-box;
+    }
+
+    .sumi-spinner--dots::before,
+    .sumi-spinner--dots::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: var(--sumi-dot-size);
+      height: var(--sumi-dot-size);
+      border-radius: 50%;
+      background-color: var(--sumi-dots-dim);
+      opacity: 1 !important;
+      pointer-events: none;
+    }
+
+    /* 좌측 묵적 1 */
+    .sumi-spinner--dots::before {
+      left: calc(-1 * (var(--sumi-dot-size) + var(--sumi-dots-gap)));
+      animation: sumi-inkdrop-wave 1.2s infinite ease-in-out;
+      animation-delay: 0s;
+    }
+
+    /* 우측 묵적 3 */
+    .sumi-spinner--dots::after {
+      right: calc(-1 * (var(--sumi-dot-size) + var(--sumi-dots-gap)));
+      animation: sumi-inkdrop-wave 1.2s infinite ease-in-out;
+      animation-delay: 0.44s;
+    }
+
+    /* 색상 변형: 정통 주사(朱砂) 낙관 인장 레드 */
+    .sumi-spinner--dots-seal {
+      --sumi-dots-color: var(--sumi-seal);
+      --sumi-dots-dim: rgba(184, 40, 29, 0.22);
+    }
+
+    /* 색상 변형: 은은한 담묵(淡墨) */
+    .sumi-spinner--dots-wash {
+      --sumi-dots-color: var(--sumi-wash);
+      --sumi-dots-dim: rgba(120, 127, 144, 0.22);
+    }
+
+    /* 크기 규격 */
+    .sumi-spinner--sm.sumi-spinner--dots,
+    .sumi-spinner--dots-sm {
+      --sumi-dot-size: 4px;
+      --sumi-dots-gap: 3px;
+    }
+
+    .sumi-spinner--lg.sumi-spinner--dots,
+    .sumi-spinner--dots-lg {
+      --sumi-dot-size: 8px;
+      --sumi-dots-gap: 6px;
+    }
+
+    /* 버튼 내부 삽입 시 최적화 스타일 */
+    button .sumi-spinner--dots,
+    .sumi-button .sumi-spinner--dots,
+    .sumi-control-btn .sumi-spinner--dots {
+      --sumi-dot-size: 5px;
+      --sumi-dots-gap: 4px;
+      margin-left: 0.2rem !important;
+      margin-right: calc(0.2rem + var(--sumi-dot-size) + var(--sumi-dots-gap)) !important;
+      vertical-align: middle;
+    }
+
+    .sumi-control-btn--loading {
+      cursor: wait;
+      opacity: 0.88;
+    }
+
+    /* 일반 LCD 모드 먹물 농담 웨이브 펄스 */
+    @keyframes sumi-inkdrop-wave {
+      0%, 80%, 100% {
+        background-color: var(--sumi-dots-dim, rgba(18, 19, 22, 0.22));
+      }
+      40% {
+        background-color: var(--sumi-dots-color, var(--sumi-ink));
+      }
+    }
+
+    /* 접근성: prefers-reduced-motion 설정 시 스케일 변화 없이 투명도만 정적 전환 */
+    @media (prefers-reduced-motion: reduce) {
+      .sumi-spinner--dots,
+      .sumi-spinner--dots::before,
+      .sumi-spinner--dots::after {
+        transform: none !important;
+        animation-duration: 2s !important;
+      }
+    }
+
+}

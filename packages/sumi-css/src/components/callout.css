@@ -1,0 +1,134 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       7. Callout Box (부드러운 먹 번짐 & 순수 한지 일체화 - 인위적인 흰색 박스 제거)
+          좌하단/우상단 농묵과 훈염 번짐, 좌상단/우하단 열린 여백(Open Gap) 및 필압 테이퍼링 완벽 반영
+       -------------------------------------------------------------------------- */
+    .sumi-callout {
+      position: relative;
+      border: none;
+      padding: 1.2rem 1.5rem; /* 좌우 1.5rem 완전 대칭 균형 확보 */
+      margin: 1.5rem 0 2.0rem;
+      box-sizing: border-box;
+      background: transparent; /* 인위적인 흰색 배경 완전 제거: 한지 닥나무 결이 박스 내부를 자연스럽게 관통 */
+      border-radius: 4px;
+    }
+
+    .sumi-callout::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-style: solid;
+      border-width: 17px; /* 슬라이스(17)와 1:1 완벽 정합으로 왜곡 없는 원본 필압 유지 */
+      border-image-source: url("./assets/callout-frame-clean.png");
+      border-image-source: image-set(
+        url("./assets/callout-frame-clean.webp") type('image/webp'),
+        url("./assets/callout-frame-clean.png") type('image/png')
+      );
+      border-image-slice: 17; /* 사용자 수정 에셋에 최적화된 균일 17 슬라이스 */
+      border-image-repeat: stretch;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.98;
+    }
+
+    .sumi-callout > * {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    /* 변형 프레임 1: 대각선 상호보완 필세 (좌상단 기필 농묵, 우하단 맺음, 우상단·좌하단 열린 여백) */
+    .sumi-callout--variant::before {
+      border-image-source: url("./assets/callout-frame-variant.png");
+      border-image-source: image-set(
+        url("./assets/callout-frame-variant.webp") type('image/webp'),
+        url("./assets/callout-frame-variant.png") type('image/png')
+      );
+    }
+
+    /* 변형 프레임 2: 정갈한 세필(細筆) 서예선 (직각 사각형 구조 유지 & 맑고 날렵한 필세) */
+    .sumi-callout--fine::before {
+      border-image-source: url("./assets/callout-frame-fine.png");
+      border-image-source: image-set(
+        url("./assets/callout-frame-fine.webp") type('image/webp'),
+        url("./assets/callout-frame-fine.png") type('image/png')
+      );
+      border-image-slice: 17;
+      border-width: 17px;
+    }
+
+    /* 변형 프레임 3: 유려한 원필(圓筆) 곡선 프레임 (4모서리 둥근 굴림 & 개방형 유기적 수묵선) */
+    .sumi-callout--round::before,
+    .sumi-callout--soft::before {
+      border-image-source: url("./assets/callout-frame-round.png");
+      border-image-source: image-set(
+        url("./assets/callout-frame-round.webp") type('image/webp'),
+        url("./assets/callout-frame-round.png") type('image/png')
+      );
+      border-image-slice: 28 30; /* 사용자 우측 여백 최적화 반영: 상하 28, 좌우 30 정합 */
+      border-width: 18px;
+    }
+
+    /* 변형 프레임 4: 먹의 번짐 & 손맛의 붓 떨림 프레임 (유기적 붓터치와 농담 번짐) */
+    .sumi-callout--brush::before {
+      border-image-source: url("./assets/callout-frame-brush.png");
+      border-image-source: image-set(
+        url("./assets/callout-frame-brush.webp") type('image/webp'),
+        url("./assets/callout-frame-brush.png") type('image/png')
+      );
+      border-image-slice: 17;
+      border-width: 17px;
+    }
+
+    /* 타이틀 헤더 인라인 묵적 (먹방울) - 제목 앞 수묵 불릿 */
+    .sumi-callout-inkdrop {
+      width: 13px;
+      height: 13px;
+      margin-right: 0.38rem;
+      vertical-align: -1px;
+      display: inline-block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+
+    .sumi-callout-header {
+      display: flex;
+      align-items: flex-start; /* 타이틀이 여러 줄로 길어져도 첫 줄 높이에 인장이 깔끔하게 상단 정렬 */
+      justify-content: space-between;
+      gap: 0.75rem;            /* 타이틀과 낙관 도장 간 충돌 방지 안전 간격 */
+      margin-bottom: 0.25rem;
+    }
+
+    .sumi-callout-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--sumi-ink);
+      line-height: 1.45;
+      min-width: 0;
+    }
+
+    .sumi-callout-header .sumi-seal-badge,
+    .sumi-callout-header .sumi-seal-stamp {
+      margin-top: 0.15rem; /* 첫 줄 타이틀 텍스트의 중심선과 정렬 */
+    }
+
+    .sumi-callout-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(35, 40, 50, 0.08);
+      margin: 0.25rem 0 0.45rem;
+    }
+
+
+    .sumi-callout-desc {
+      font-size: 0.90rem;
+      color: var(--sumi-charcoal);
+      margin: 0;
+      line-height: 1.62;
+    }
+
+}

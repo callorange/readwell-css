@@ -1,0 +1,215 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       8. 수묵 낙관 도장 뱃지 (Seal Stamp Badge Component)
+          동양 전통 전각(篆刻) 인장의 주사(朱砂) 인주 번짐과 손맛을 순수 CSS로 완벽 구현
+       -------------------------------------------------------------------------- */
+    .sumi-seal-badge,
+    .sumi-seal-stamp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.14rem 0.48rem 0.18rem 0.56rem; /* 우측 자간 보정 여백 */
+      border: 1.5px solid var(--sumi-seal);
+      border-radius: 2px 3px 2px 3px;          /* 전각 특유의 미세한 수작업 비대칭 코너 */
+      color: var(--sumi-seal);
+      background-color: var(--sumi-seal-soft);
+      font-family: var(--sumi-font-serif);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      /* 인주가 닥나무 결에 은은하게 번져 들어간(ink bleed) 전각 테두리 */
+      box-shadow: 
+        0 0 1px rgba(184, 40, 29, 0.45),
+        inset 0 0 2px rgba(184, 40, 29, 0.12);
+      text-shadow: 0 0 1px rgba(184, 40, 29, 0.25);
+      user-select: none;
+      vertical-align: middle;
+      flex-shrink: 0;       /* 좁은 화면이나 긴 제목에서도 도장이 찌그러지지 않도록 보호 */
+      white-space: nowrap;  /* 도장 내부 텍스트 2줄 줄바꿈 방지 */
+    }
+
+    /* 음각 (백문 白文): 붉은 인주를 꽉 채워 하얗게 파여 나온 도장 */
+    .sumi-seal-badge--solid,
+    .sumi-seal-stamp--solid {
+      background-color: var(--sumi-seal);
+      color: #fcfbf9;
+      border-color: var(--sumi-seal);
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.7),
+        0 1px 3px rgba(184, 40, 29, 0.2);
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 이중 테두리 (쌍선인 雙線印): 최고급 공문서/정본 인장 */
+    .sumi-seal-badge--double {
+      border: 1px solid var(--sumi-seal);
+      padding: 0.20rem 0.54rem 0.22rem 0.62rem;
+      position: relative;
+      box-shadow: 
+        0 0 0 1.5px #fcfbf9,
+        0 0 0 2.5px var(--sumi-seal),
+        0 0 2px 2.5px rgba(184, 40, 29, 0.25);
+    }
+
+
+    /* 타원형 두인 (圓印 / 頭印) */
+    .sumi-seal-badge--round {
+      border-radius: 999px;
+      padding: 0.14rem 0.56rem 0.16rem 0.64rem;
+    }
+
+    /* 실제 인장처럼 살짝 기울어진 맛 (Handmade Tilt) */
+    .sumi-seal-badge--tilted {
+      transform: rotate(-1.5deg);
+    }
+
+    /* Phase 4-3. 표주박형 두인 (호로인 葫蘆印): 상단이 작고 하단이 둥근 조롱박 실루엣 */
+    .sumi-seal-badge--gourd {
+      border-radius: 12px 12px 18px 18px / 9px 9px 24px 24px;
+      padding: 0.22rem 0.64rem 0.26rem 0.68rem;
+      position: relative;
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.55),
+        inset 0 0 3px rgba(184, 40, 29, 0.15);
+    }
+
+    /* Phase 4-3. 자연석형 두인 (자연인 自然印): 원석을 깎아 만든 유기적이고 비대칭인 서예 낙관석 */
+    .sumi-seal-badge--natural {
+      border-radius: 46% 54% 68% 32% / 38% 42% 58% 62%;
+      padding: 0.18rem 0.62rem 0.22rem 0.66rem;
+      transform: rotate(-1deg);
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.5),
+        inset 0 0 2px rgba(184, 40, 29, 0.12);
+    }
+
+    /* --------------------------------------------------------------------------
+       전통 사각 직인(Chop / Seal) 컴포넌트: .sumi-seal-chop
+       인주가 한지에 꾹 찍힌 듯한 압착 번짐과 전각 칼맛, 꽉 찬 글자 포치(布置) 완벽 구현
+       -------------------------------------------------------------------------- */
+    .sumi-seal-chop {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 33px;
+      height: 33px;
+      padding: 0.5px;
+      gap: 0;
+      border: 2px solid var(--sumi-seal);
+      border-radius: 3.5px 2px 4px 2.5px / 2.5px 4px 2px 3.5px; /* 수작업 전각 돌도장의 미세 비대칭 마모 테두리 */
+      color: var(--sumi-seal);
+      background: radial-gradient(circle at 45% 45%, rgba(184, 40, 29, 0.10) 0%, rgba(184, 40, 29, 0.03) 65%, rgba(184, 40, 29, 0.12) 100%);
+      box-shadow: 
+        0 0 1px 0.5px rgba(184, 40, 29, 0.75),
+        inset 0 0 1.8px rgba(184, 40, 29, 0.3);
+      user-select: none;
+      vertical-align: middle;
+      box-sizing: border-box;
+      font-family: var(--sumi-font-serif);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
+      flex-shrink: 0;
+      filter: url(#seal-carve-filter); /* 리얼 전각 칼맛 및 잉크 압착 필터 */
+      writing-mode: horizontal-tb;
+      text-orientation: initial;
+      direction: ltr;
+      letter-spacing: normal;
+    }
+
+    .sumi-seal-chop span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      letter-spacing: normal;
+      writing-mode: horizontal-tb;
+      text-orientation: initial;
+      text-shadow: 0 0 0.5px rgba(184, 40, 29, 0.6);
+    }
+
+    /* 4글자 전각 포치(布置): 중앙 십자 빈 여백을 좁히고 도장 내부를 꽉 채움 */
+    .sumi-seal-chop:not(.sumi-seal-chop--1):not(.sumi-seal-chop--2) span:nth-child(1) { transform: scale(1.04) translate(0.4px, 0.4px); }
+    .sumi-seal-chop:not(.sumi-seal-chop--1):not(.sumi-seal-chop--2) span:nth-child(2) { transform: scale(1.04) translate(-0.4px, 0.4px); }
+    .sumi-seal-chop:not(.sumi-seal-chop--1):not(.sumi-seal-chop--2) span:nth-child(3) { transform: scale(1.04) translate(0.4px, -0.4px); }
+    .sumi-seal-chop:not(.sumi-seal-chop--1):not(.sumi-seal-chop--2) span:nth-child(4) { transform: scale(1.04) translate(-0.4px, -0.4px); }
+
+    /* 음각 (백문 白文) 사각 직인 */
+    .sumi-seal-chop--solid {
+      background: var(--sumi-seal);
+      color: #fbf9f5;
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.8),
+        0 1px 3px rgba(184, 40, 29, 0.3);
+    }
+    .sumi-seal-chop--solid span {
+      text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.5);
+    }
+
+    /* 2글자 세로 직인 */
+    .sumi-seal-chop--2 {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 22px;
+      height: 34px;
+      font-size: 13.5px;
+    }
+    .sumi-seal-chop--2 span:nth-child(1) { transform: scale(1.04) translateY(0.5px); }
+    .sumi-seal-chop--2 span:nth-child(2) { transform: scale(1.04) translateY(-0.5px); }
+
+    /* 1글자 방인 */
+    .sumi-seal-chop--1 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+    .sumi-seal-chop--1 span {
+      transform: scale(1.05);
+    }
+
+    /* 크기 변형: 소형(24px) & 대형(38px) */
+    .sumi-seal-chop--sm {
+      width: 24px;
+      height: 24px;
+      font-size: 9.8px;
+      border-width: 1.6px;
+    }
+    .sumi-seal-chop--sm span:nth-child(1) { transform: scale(1.04) translate(0.3px, 0.3px); }
+    .sumi-seal-chop--sm span:nth-child(2) { transform: scale(1.04) translate(-0.3px, 0.3px); }
+    .sumi-seal-chop--sm span:nth-child(3) { transform: scale(1.04) translate(0.3px, -0.3px); }
+    .sumi-seal-chop--sm span:nth-child(4) { transform: scale(1.04) translate(-0.3px, -0.3px); }
+
+    .sumi-seal-chop--lg {
+      width: 38px;
+      height: 38px;
+      font-size: 15.5px;
+      border-width: 2.2px;
+    }
+    .sumi-seal-chop--lg span:nth-child(1) { transform: scale(1.05) translate(0.6px, 0.6px); }
+    .sumi-seal-chop--lg span:nth-child(2) { transform: scale(1.05) translate(-0.6px, 0.6px); }
+    .sumi-seal-chop--lg span:nth-child(3) { transform: scale(1.05) translate(0.6px, -0.6px); }
+    .sumi-seal-chop--lg span:nth-child(4) { transform: scale(1.05) translate(-0.6px, -0.6px); }
+
+    /* 이중 테두리 쌍선 직인 */
+    .sumi-seal-chop--double {
+      border-width: 1.2px;
+      box-shadow: 
+        0 0 0 1px #fcfbf9,
+        0 0 0 2.2px var(--sumi-seal),
+        0 0 1.5px 2px rgba(184, 40, 29, 0.35);
+    }
+
+
+
+
+
+    .sumi-seal-chop--tilted {
+      transform: rotate(-1.5deg);
+    }
+
+}

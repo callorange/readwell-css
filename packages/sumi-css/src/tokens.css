@@ -1,0 +1,177 @@
+@layer tokens {
+    :root {
+      /* 화선지(宣紙) & 송연묵(松煙墨) 순수 서예 팔레트 */
+      --sumi-paper: #f8f5ee;              /* 맑고 따뜻한 미색(米色) 화선지 바탕 */
+      --sumi-paper-surface: #fcfbf7;      /* 콜아웃 및 패널의 정갈한 표면 */
+      --sumi-paper-sunken: #ece6d8;
+      
+      --sumi-ink: #121316;                /* 농묵(濃墨): 깊고 강렬한 칠흑의 대제목 및 핵심 키워드 */
+      --sumi-charcoal: #424754;           /* 중묵(中墨): 장시간 편안한 독서를 위한 부드러운 먹빛 본문 */
+      --sumi-wash: #787f90;               /* 담묵(淡墨): 메타데이터, 날짜, 작성자, 은은한 맑은 수묵 그레이 */
+      --sumi-dilute: #a5abb8;             /* 연한 먹색 */
+      --sumi-line: #dfd8cb;               /* 엷은 지선(紙線) 테두리 */
+      
+      /* 서예의 화룡점정: 주사(朱砂) 낙관 인장 */
+      --sumi-seal: #b8281d;               /* 정통 붉은 낙관 도장 색상 */
+      --sumi-seal-soft: rgba(184, 40, 29, 0.08); /* 인장 배경 */
+      --sumi-seal-border: #d45d52;
+
+      /* Phase 3: 사경 금묵(金墨) 및 활자 스케일 */
+      --sumi-gold: #d4af37;               /* 고서 사경(寫經) 금묵(金墨) */
+      --sumi-scale: 1;                    /* 장문 독서 활자 크기 배율 (기본 1.0) */
+
+      /* Phase 4: 문방사우(文房四友) 코드 신택스 하이라이팅 토큰 */
+      --sumi-code-keyword: #b8281d;            /* 주사(朱砂): 키워드 (const, return, export 등) */
+      --sumi-code-string: #9e782f;             /* 송화(松花): 문자열 리터럴 */
+      --sumi-code-function: #121316;           /* 농묵(濃墨): 함수명, 식별자 */
+      --sumi-code-comment: #787f90;            /* 담묵(淡墨): 주석 */
+      --sumi-code-variable: #3a3f4d;           /* 중묵(中墨): 변수 및 프로퍼티 */
+      --sumi-code-number: #3e6b5c;             /* 송백(松柏): 숫자 및 불리언 */
+      
+      --sumi-font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "맑은 고딕", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+      --sumi-font-serif: "Cinzel", "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "바탕", "Batang", Georgia, serif;
+    }
+
+    /* --------------------------------------------------------------------------
+       Phase 3-2. 야간 사경(寫經) / 현묵(玄墨) 다크 모드 토큰
+       -------------------------------------------------------------------------- */
+    :root:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]),
+    body:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) {
+      --sumi-paper: #121316;              /* 칠흑 농묵 흑지(黑紙) 바탕 */
+      --sumi-paper-surface: #1a1c22;      /* 흑지 표면 정갈한 패널 */
+      --sumi-paper-sunken: #0c0d0f;       /* 깊은 침강 여백 */
+      --sumi-ink: #f4efe6;                /* 맑은 백묵/금묵 포인트 대비 */
+      --sumi-charcoal: #d6dadf;           /* 백묵(白墨): 야간 가독성 본문 */
+      --sumi-wash: #8a92a2;               /* 은은한 담묵 */
+      --sumi-dilute: #5e6473;             /* 연한 먹색 */
+      --sumi-line: #2d303b;               /* 흑지 지선 테두리 */
+      --sumi-gold: #d4af37;               /* 고서 사경의 금묵(金墨) */
+      --sumi-seal: #e84c3d;               /* 고대비 흑지 전용 주사(朱砂) */
+      --sumi-seal-soft: rgba(232, 76, 61, 0.15);
+      --sumi-seal-border: #f06a5d;
+
+      /* Phase 4: 다크 모드 문방사우 코드 토큰 */
+      --sumi-code-keyword: #e84c3d;
+      --sumi-code-string: #d4af37;             /* 금묵(金墨) */
+      --sumi-code-function: #f4efe6;
+      --sumi-code-comment: #8a92a2;
+      --sumi-code-variable: #d6dadf;
+      --sumi-code-number: #68a88c;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])),
+      body:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) {
+        --sumi-paper: #121316;
+        --sumi-paper-surface: #1a1c22;
+        --sumi-paper-sunken: #0c0d0f;
+        --sumi-ink: #f4efe6;
+        --sumi-charcoal: #d6dadf;
+        --sumi-wash: #8a92a2;
+        --sumi-dilute: #5e6473;
+        --sumi-line: #2d303b;
+        --sumi-gold: #d4af37;
+        --sumi-seal: #e84c3d;
+        --sumi-seal-soft: rgba(232, 76, 61, 0.15);
+        --sumi-seal-border: #f06a5d;
+
+        /* Phase 4: 다크 모드 문방사우 코드 토큰 */
+        --sumi-code-keyword: #e84c3d;
+        --sumi-code-string: #d4af37;
+        --sumi-code-function: #f4efe6;
+        --sumi-code-comment: #8a92a2;
+        --sumi-code-variable: #d6dadf;
+        --sumi-code-number: #68a88c;
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       Phase 3-3. Readwell E-Ink (전자종이) 모드 토큰
+       -------------------------------------------------------------------------- */
+    :root:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]),
+    body:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) {
+      --sumi-paper: #ffffff !important;
+      --sumi-paper-surface: #ffffff !important;
+      --sumi-paper-sunken: #f2f2f2 !important;
+      --sumi-ink: #000000 !important;
+      --sumi-charcoal: #000000 !important;
+      --sumi-wash: #444444 !important;
+      --sumi-dilute: #666666 !important;
+      --sumi-line: #000000 !important;
+      --sumi-gold: #000000 !important;
+      --sumi-seal: #000000 !important;
+      --sumi-seal-soft: rgba(0, 0, 0, 0.06) !important;
+      --sumi-seal-border: #000000 !important;
+
+      /* Phase 4: E-Ink 단색 문방사우 코드 토큰 */
+      --sumi-code-keyword: #000000 !important;
+      --sumi-code-string: #000000 !important;
+      --sumi-code-function: #000000 !important;
+      --sumi-code-comment: #555555 !important;
+      --sumi-code-variable: #000000 !important;
+      --sumi-code-number: #000000 !important;
+    }
+
+    @media (update: slow) {
+      :root, body {
+        --sumi-paper: #ffffff !important;
+        --sumi-paper-surface: #ffffff !important;
+        --sumi-paper-sunken: #f2f2f2 !important;
+        --sumi-ink: #000000 !important;
+        --sumi-charcoal: #000000 !important;
+        --sumi-wash: #444444 !important;
+        --sumi-dilute: #666666 !important;
+        --sumi-line: #000000 !important;
+        --sumi-gold: #000000 !important;
+        --sumi-seal: #000000 !important;
+        --sumi-seal-soft: rgba(0, 0, 0, 0.06) !important;
+        --sumi-seal-border: #000000 !important;
+
+        /* Phase 4: E-Ink 단색 문방사우 코드 토큰 */
+        --sumi-code-keyword: #000000 !important;
+        --sumi-code-string: #000000 !important;
+        --sumi-code-function: #000000 !important;
+        --sumi-code-comment: #555555 !important;
+        --sumi-code-variable: #000000 !important;
+        --sumi-code-number: #000000 !important;
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       Phase 3-4. 주사(朱砂) 훈염 텍스트 드래그 하이라이트 (::selection)
+       -------------------------------------------------------------------------- */
+    ::selection {
+      background-color: rgba(184, 40, 29, 0.22);
+      color: var(--sumi-ink);
+    }
+
+    :root:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) ::selection,
+    body:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) ::selection {
+      background-color: rgba(212, 175, 55, 0.35);
+      color: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) ::selection,
+      body:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) ::selection {
+        background-color: rgba(212, 175, 55, 0.35);
+        color: #ffffff;
+      }
+    }
+
+    :root:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) ::selection,
+    body:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) ::selection {
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+
+    @media (update: slow) {
+      ::selection {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+      }
+    }
+
+
+
+}

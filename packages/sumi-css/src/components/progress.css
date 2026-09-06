@@ -1,0 +1,158 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       12. 수묵 갈필(渴筆) 프로그레스 바 (.sumi-progress)
+       -------------------------------------------------------------------------- */
+    .sumi-progress-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .sumi-progress-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .sumi-progress-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--sumi-ink);
+    }
+
+    .sumi-progress-val {
+      font-family: var(--sumi-font-sans);
+      color: var(--sumi-seal);
+      font-weight: 700;
+    }
+
+    .sumi-progress {
+      position: relative;
+      width: 100%;
+      height: 12px;
+    }
+
+    .sumi-progress__track {
+      position: absolute;
+      inset: 0;
+      background: url("./assets/sumi-stroke-track.png") no-repeat center / 100% 100%;
+      background-image: image-set(
+        url("./assets/sumi-stroke-track.webp") type('image/webp'),
+        url("./assets/sumi-stroke-track.png") type('image/png')
+      );
+      pointer-events: none;
+    }
+
+    .sumi-progress__fill {
+      position: absolute;
+      inset: 0;
+      background: url("./assets/sumi-stroke-fill.png") no-repeat center / 100% 100%;
+      background-image: image-set(
+        url("./assets/sumi-stroke-fill.webp") type('image/webp'),
+        url("./assets/sumi-stroke-fill.png") type('image/png')
+      );
+      clip-path: inset(0 calc(100% - var(--sumi-progress, 0%)) 0 0);
+      transition: clip-path 0.35s ease;
+      pointer-events: none;
+    }
+
+    .sumi-progress--fine {
+      height: 10px;
+    }
+    .sumi-progress--fine .sumi-progress__track,
+    .sumi-progress--fine .sumi-progress__fill {
+      background-size: 100% 100%;
+    }
+
+    /* 마커 베이스 */
+    .sumi-progress__marker {
+      position: absolute;
+      top: 50%;
+      left: var(--sumi-progress, 0%);
+      transform: translate(-45%, -50%);
+      width: 18px;
+      height: 18px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
+      transition: left 0.35s ease;
+    }
+
+    /* 옵션 1: 흑묵 서예 점획 마커 (영자팔법 側 획) */
+    .sumi-progress__marker--ink {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%230e1014'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%23040405' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%230e1014' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%230e1014' opacity='0.6'/%3E%3C/svg%3E");
+    }
+
+    /* 옵션 2: 주사(朱砂) 붉은 인주 서예 붓점 마커 */
+    .sumi-progress__marker--seal {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6C5 7 4 11 7 15C10 19 16 19 18 15C20 11 18 7 13 5C10 3.5 9 5 8 6Z' fill='%23b8281d'/%3E%3Cellipse cx='11.5' cy='12.5' rx='3.5' ry='4' fill='%238f1f16' transform='rotate(-15 11.5 12.5)'/%3E%3Ccircle cx='19.5' cy='8' r='1.2' fill='%23b8281d' opacity='0.85'/%3E%3Ccircle cx='17.5' cy='18' r='0.9' fill='%23b8281d' opacity='0.6'/%3E%3C/svg%3E");
+    }
+
+
+
+    /* --------------------------------------------------------------------------
+       16. 실시간 상단 수묵 스크롤 독서 게이지 (.sumi-scroll-indicator)
+       최소 침범(Minimal): 3px 슬림 수묵선, 스크롤 진행 시에만 부드럽게 노출
+       Phase 3-1: CSS Scroll-Driven Animations (animation-timeline: scroll()) 적용
+       (미지원 브라우저는 JS width 스크롤 리스너로 자연스럽게 폴백)
+       -------------------------------------------------------------------------- */
+    .sumi-scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 1000;
+      pointer-events: none;
+      background: transparent;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .sumi-scroll-indicator.is-scrolled {
+      opacity: 1;
+    }
+
+    .sumi-scroll-indicator__fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--sumi-charcoal), var(--sumi-ink));
+      box-shadow: 0 0 6px rgba(18, 19, 22, 0.4);
+      transition: width 0.05s linear;
+    }
+
+    :is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-scroll-indicator__fill {
+      background: linear-gradient(to right, var(--sumi-gold), var(--sumi-seal));
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    }
+
+    /* CSS Scroll-Driven Animations 네이티브 지원 브라우저 (Chrome 115+, Edge 115+, Safari 26+) */
+    @supports (animation-timeline: scroll()) {
+      @keyframes sumi-scroll-progress {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      .sumi-scroll-indicator {
+        opacity: 1;
+      }
+
+      .sumi-scroll-indicator__fill {
+        width: 100%;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        animation: sumi-scroll-progress auto linear;
+        animation-timeline: scroll();
+        transition: none;
+      }
+    }
+
+}

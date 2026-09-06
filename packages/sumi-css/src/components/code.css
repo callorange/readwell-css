@@ -1,0 +1,154 @@
+@layer components {
+    /* --------------------------------------------------------------------------
+       6. 코드 블록 (이중 여백 버그 완전 해결)
+       -------------------------------------------------------------------------- */
+    .sumi-code {
+      /* 다크 코드 블록 전용: 검은 바탕에서 선명하고 아름다운 고대비 문방사우 토큰 */
+      --sumi-code-keyword: #ff6b5b;            /* 밝고 선명한 주사(朱砂): 키워드/연산자 */
+      --sumi-code-string: #ffd166;             /* 찬란한 금묵(金墨) / 화사한 송화: 문자열 */
+      --sumi-code-function: #ffffff;           /* 맑은 순백 백묵(白墨): 함수명, 식별자 */
+      --sumi-code-comment: #94a3b8;            /* 은은하지만 또렷한 담묵(淡墨): 주석 */
+      --sumi-code-variable: #e2e8f0;           /* 밝은 은묵(銀墨): 변수 및 프로퍼티 */
+      --sumi-code-number: #6ee7b7;             /* 청명한 송백(松柏) / 옥록: 숫자/불리언 */
+      --sumi-code-operator: #ff6b5b;           /* 연산자 */
+      --sumi-code-punct: #cbd5e1;              /* 괄호, 쉼표, 콜론 등 구두점 */
+
+      background: #14161b;
+      color: #f1f5f9;
+      border-radius: 7px;
+      padding: 1.25rem 1.6rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Cascadia Code", monospace;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      overflow-x: auto;
+      margin: 1.5rem 0 2.2rem;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    /* 내부 pre 태그의 중첩 패딩/마진 완전 리셋 */
+    .sumi-code pre {
+      margin: 0 !important;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .sumi-code-copy-btn {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #b0b5c0;
+      cursor: pointer;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      line-height: 1.2;
+      transition: all 0.18s ease;
+      font-family: var(--sumi-font-sans);
+    }
+
+    .sumi-code-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .sumi-code-copy-btn.is-copied {
+      background: var(--sumi-seal);
+      color: #ffffff;
+      border-color: var(--sumi-seal);
+      box-shadow: 0 0 8px rgba(184, 40, 29, 0.5);
+    }
+
+    /* Phase 4-1. 문방사우(文房四友) 코드 신택스 하이라이팅 클래스 (다크 기본: 초고대비) */
+    .sumi-code .token-kw,
+    .sumi-code .token-keyword {
+      color: var(--sumi-code-keyword); /* 밝은 주사(朱砂): 키워드 */
+      font-weight: 600;
+    }
+    .sumi-code .token-str,
+    .sumi-code .token-string {
+      color: var(--sumi-code-string); /* 금묵(金墨)/송화: 문자열 */
+    }
+    .sumi-code .token-fn,
+    .sumi-code .token-function {
+      color: var(--sumi-code-function); /* 순백 백묵(白墨): 함수명 */
+      font-weight: 700;
+    }
+    .sumi-code .token-cm,
+    .sumi-code .token-comment {
+      color: var(--sumi-code-comment); /* 선명한 담묵(淡墨): 주석 */
+      font-style: italic;
+    }
+    .sumi-code .token-var,
+    .sumi-code .token-variable {
+      color: var(--sumi-code-variable); /* 은묵(銀墨): 변수/프로퍼티 */
+    }
+    .sumi-code .token-num,
+    .sumi-code .token-number {
+      color: var(--sumi-code-number); /* 송백(松柏): 숫자/불리언 */
+      font-weight: 600;
+    }
+    .sumi-code .token-op,
+    .sumi-code .token-operator {
+      color: var(--sumi-code-operator, #ff6b5b);
+    }
+    .sumi-code .token-punct {
+      color: var(--sumi-code-punct, #cbd5e1);
+    }
+
+    /* 밝은 화선지 코드 블록 변형 (.sumi-code--paper) */
+    .sumi-code--paper {
+      background: var(--sumi-paper-surface);
+      color: var(--sumi-charcoal);
+      border: 1px solid var(--sumi-line);
+      box-shadow: 0 2px 10px rgba(45, 38, 30, 0.05);
+    }
+    .sumi-code--paper .sumi-code-copy-btn {
+      background: rgba(45, 38, 30, 0.05);
+      border: 1px solid var(--sumi-line);
+      color: var(--sumi-charcoal);
+    }
+    .sumi-code--paper .sumi-code-copy-btn:hover {
+      background: rgba(45, 38, 30, 0.12);
+      color: var(--sumi-ink);
+    }
+    .sumi-code--paper .sumi-code-copy-btn.is-copied {
+      background: var(--sumi-seal);
+      color: #ffffff;
+      border-color: var(--sumi-seal);
+    }
+    .sumi-code--paper .token-kw,
+    .sumi-code--paper .token-keyword {
+      color: var(--sumi-seal);
+    }
+    .sumi-code--paper .token-str,
+    .sumi-code--paper .token-string {
+      color: #9c7014;
+    }
+    .sumi-code--paper .token-fn,
+    .sumi-code--paper .token-function {
+      color: var(--sumi-ink);
+    }
+    .sumi-code--paper .token-cm,
+    .sumi-code--paper .token-comment {
+      color: var(--sumi-wash);
+    }
+    .sumi-code--paper .token-var,
+    .sumi-code--paper .token-variable {
+      color: var(--sumi-charcoal);
+    }
+    .sumi-code--paper .token-num,
+    .sumi-code--paper .token-number {
+      color: #3e6b5c;
+    }
+
+}
