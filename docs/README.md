@@ -117,21 +117,32 @@ Readwell CSS는 4종의 선언적 `data-rw-*` 속성으로 인터페이스의 �
 
 ## 문서 목록
 
+### Readwell CSS (`docs/readwell/`)
+
 | 문서 | 목적 |
 |---|---|
 | `docs/index.html` | Pico CSS 스타일 공식 인터랙티브 문서 웹사이트 |
-| `01_CONCEPT.md` | 제품 컨셉, 철학, 차별점 |
-| `02_PRD.md` | 제품 요구사항과 MVP 범위 |
-| `03_DESIGN_SYSTEM.md` | 색상, 타이포그래피, 컴포넌트 디자인 원칙 |
-| `04_CSS_ARCHITECTURE.md` | CSS 구조, class API, 토큰 설계 |
-| `05_IMPLEMENTATION_PLAN.md` | 작업번호, 의존성, 구현 순서 |
-| `06_CHROME_EXTENSION_PLAN.md` | 기존 사이트에 Readwell 테마를 적용하는 확장 기능 기획 |
-| `07_MVP_CHECKLIST.md` | MVP 완료 기준과 검수 체크리스트 |
-| `08_COMPONENT_SCOPE.md` | 컴포넌트 지원 범위와 제외 범위 |
-| `references/figrow_workspace_reference.png` | 문서형 workspace 참고 시안 |
-| `references/lynq_dashboard_reference.png` | dashboard/backoffice 참고 시안 |
-| `Readwell_CSS_Concept_Deck_v2.pptx` | 기존 컨셉 발표용 PPT |
-| `eink_pico_style_demo.html` | 초기 E-Ink + Pico 스타일 탐구용 프로토타입 (Reference) |
+| `readwell/01_CONCEPT.md` | 제품 컨셉, 철학, 차별점 |
+| `readwell/02_PRD.md` | 제품 요구사항과 MVP 범위 |
+| `readwell/03_DESIGN_SYSTEM.md` | 색상, 타이포그래피, 컴포넌트 디자인 원칙 |
+| `readwell/04_CSS_ARCHITECTURE.md` | CSS 구조, class API, 토큰 설계 |
+| `readwell/05_IMPLEMENTATION_PLAN.md` | 작업번호, 의존성, 구현 순서 |
+| `readwell/06_CHROME_EXTENSION_PLAN.md` | 기존 사이트에 Readwell 테마를 적용하는 확장 기능 기획 |
+| `readwell/07_MVP_CHECKLIST.md` | MVP 완료 기준과 검수 체크리스트 |
+| `readwell/08_COMPONENT_SCOPE.md` | 컴포넌트 지원 범위와 제외 범위 |
+| `readwell/references/figrow_workspace_reference.png` | 문서형 workspace 참고 시안 |
+| `readwell/references/lynq_dashboard_reference.png` | dashboard/backoffice 참고 시안 |
+| `readwell/Readwell_CSS_Concept_Deck_v2.pptx` | 기존 컨셉 발표용 PPT |
+| `readwell/eink_pico_style_demo.html` | 초기 E-Ink + Pico 스타일 탐구용 프로토타입 (Reference) |
+
+### Sumi CSS (`docs/sumi/`)
+
+| 문서 | 목적 |
+|---|---|
+| `sumi/01_CONCEPT.md` | 컨셉 개요, 네이밍 배경, 4대 서예 미학 철학, 레이아웃 아키텍처 |
+| `sumi/02_DESIGN_SYSTEM.md` | 수묵 계조표, 콜아웃 프레임 5종, 전각 직인 도장, 프로그레스, 슬라이더, 스피너 조형 규격 |
+| `sumi/03_ASSET_INVENTORY.md` | 64종 그래픽 에셋 규격, 포맷, 용량 및 압축 절감률 인벤토리 표 |
+| `sumi/04_DUAL_ENGINE.md` | 비트맵 vs 차세대 SVG 듀얼 렌더링 엔진, 5대 평가 지표, 조형 무결성 거버넌스 |
 
 ## 추천 프로젝트 구조
 
