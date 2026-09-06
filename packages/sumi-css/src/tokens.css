@@ -35,8 +35,8 @@
     /* --------------------------------------------------------------------------
        Phase 3-2. 야간 사경(寫經) / 현묵(玄墨) 다크 모드 토큰
        -------------------------------------------------------------------------- */
-    :root:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]),
-    body:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) {
+    :root:is([data-theme="dark"], [data-sumi-theme="dark"]),
+    body:is([data-theme="dark"], [data-sumi-theme="dark"]) {
       --sumi-paper: #121316;              /* 칠흑 농묵 흑지(黑紙) 바탕 */
       --sumi-paper-surface: #1a1c22;      /* 흑지 표면 정갈한 패널 */
       --sumi-paper-sunken: #0c0d0f;       /* 깊은 침강 여백 */
@@ -60,8 +60,8 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])),
-      body:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) {
+      :root:not(:is([data-theme="light"], [data-sumi-theme="light"])),
+      body:not(:is([data-theme="light"], [data-sumi-theme="light"])) {
         --sumi-paper: #121316;
         --sumi-paper-surface: #1a1c22;
         --sumi-paper-sunken: #0c0d0f;
@@ -88,8 +88,8 @@
     /* --------------------------------------------------------------------------
        Phase 3-3. Readwell E-Ink (전자종이) 모드 토큰
        -------------------------------------------------------------------------- */
-    :root:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]),
-    body:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) {
+    :root:is([data-mode="eink"], [data-sumi-mode="eink"]),
+    body:is([data-mode="eink"], [data-sumi-mode="eink"]) {
       --sumi-paper: #ffffff !important;
       --sumi-paper-surface: #ffffff !important;
       --sumi-paper-sunken: #f2f2f2 !important;
@@ -145,22 +145,22 @@
       color: var(--sumi-ink);
     }
 
-    :root:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) ::selection,
-    body:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) ::selection {
+    :root:is([data-theme="dark"], [data-sumi-theme="dark"]) ::selection,
+    body:is([data-theme="dark"], [data-sumi-theme="dark"]) ::selection {
       background-color: rgba(212, 175, 55, 0.35);
       color: #ffffff;
     }
 
     @media (prefers-color-scheme: dark) {
-      :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) ::selection,
-      body:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) ::selection {
+      :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) ::selection,
+      body:not(:is([data-theme="light"], [data-sumi-theme="light"])) ::selection {
         background-color: rgba(212, 175, 55, 0.35);
         color: #ffffff;
       }
     }
 
-    :root:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) ::selection,
-    body:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) ::selection {
+    :root:is([data-mode="eink"], [data-sumi-mode="eink"]) ::selection,
+    body:is([data-mode="eink"], [data-sumi-mode="eink"]) ::selection {
       background-color: #000000 !important;
       color: #ffffff !important;
     }

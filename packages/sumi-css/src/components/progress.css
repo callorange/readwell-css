@@ -125,7 +125,7 @@
       transition: width 0.05s linear;
     }
 
-    :is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-scroll-indicator__fill {
+    :is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-scroll-indicator__fill {
       background: linear-gradient(to right, var(--sumi-gold), var(--sumi-seal));
       box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
     }

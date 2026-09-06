@@ -70,23 +70,23 @@
     }
 
     /* 야간 사경(현묵) 흑지 질감 변환: 화선지 섬유결을 흑지 음각결로 반전 */
-    :root:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-hanji-canvas,
-    body:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-hanji-canvas {
+    :root:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-hanji-canvas,
+    body:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-hanji-canvas {
       filter: invert(0.92) hue-rotate(180deg) brightness(0.55) contrast(1.3);
       opacity: 0.7;
     }
 
     @media (prefers-color-scheme: dark) {
-      :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-hanji-canvas,
-      body:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-hanji-canvas {
+      :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-hanji-canvas,
+      body:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-hanji-canvas {
         filter: invert(0.92) hue-rotate(180deg) brightness(0.55) contrast(1.3);
         opacity: 0.7;
       }
     }
 
     /* E-Ink 전자종이 모드: 한지 질감 및 그라디언트 전면 제거 (순백 화선지) */
-    :root:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-hanji-canvas,
-    body:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-hanji-canvas {
+    :root:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-hanji-canvas,
+    body:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-hanji-canvas {
       display: none !important;
       opacity: 0 !important;
     }

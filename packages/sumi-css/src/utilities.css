@@ -700,99 +700,99 @@
    야간 사경(寫經) / 현묵(玄墨) 컴포넌트 특화 스타일링
    - 흑지(黑紙) 위에서 비트맵 수묵 획이 금묵/백묵으로 살아나도록 필터 변환
    ========================================================================== */
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-doc-title,
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-sidebar-brand,
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-callout-title {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-doc-title,
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-sidebar-brand,
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-callout-title {
   color: var(--sumi-gold);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-brush-divider {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-brush-divider {
   filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-callout::before {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-callout::before {
   filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-control-btn {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-control-btn {
   background: var(--sumi-paper-surface);
   border-color: var(--sumi-gold);
   color: var(--sumi-ink);
   box-shadow: 2px 2px 0 var(--sumi-gold);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-control-btn:hover {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-control-btn:hover {
   background: rgba(212, 175, 55, 0.15);
   border-color: #ffd700;
   color: #ffd700;
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-seal-badge {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-seal-badge {
   border-color: var(--sumi-seal-border);
   color: #ff6f61;
   background: var(--sumi-seal-soft);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-seal-chop {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-seal-chop {
   border-color: #ff6f61;
   color: #ff6f61;
   box-shadow: 0 0 10px rgba(232, 76, 61, 0.35);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-spinner--dots {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-spinner--dots {
   --sumi-dots-color: var(--sumi-gold);
   --sumi-dots-dim: rgba(212, 175, 55, 0.25);
 }
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-spinner--dots-seal {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-spinner--dots-seal {
   --sumi-dots-color: var(--sumi-seal);
   --sumi-dots-dim: rgba(232, 76, 61, 0.25);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-doc-title,
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-sidebar-brand,
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-callout-title {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-doc-title,
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-sidebar-brand,
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-callout-title {
     color: var(--sumi-gold);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-brush-divider {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-brush-divider {
     filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-callout::before {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-callout::before {
     filter: invert(1) brightness(0.85) sepia(0.3) saturate(1.4);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-control-btn {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-control-btn {
     background: var(--sumi-paper-surface);
     border-color: var(--sumi-gold);
     color: var(--sumi-ink);
     box-shadow: 2px 2px 0 var(--sumi-gold);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-control-btn:hover {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-control-btn:hover {
     background: rgba(212, 175, 55, 0.15);
     border-color: #ffd700;
     color: #ffd700;
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-seal-badge {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-seal-badge {
     border-color: var(--sumi-seal-border);
     color: #ff6f61;
     background: var(--sumi-seal-soft);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-seal-chop {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-seal-chop {
     border-color: #ff6f61;
     color: #ff6f61;
     box-shadow: 0 0 10px rgba(232, 76, 61, 0.35);
   }
 
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-spinner--dots {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-spinner--dots {
     --sumi-dots-color: var(--sumi-gold);
     --sumi-dots-dim: rgba(212, 175, 55, 0.25);
   }
-  :root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-spinner--dots-seal {
+  :root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-spinner--dots-seal {
     --sumi-dots-color: var(--sumi-seal);
     --sumi-dots-dim: rgba(232, 76, 61, 0.25);
   }
@@ -832,53 +832,53 @@
   75%, 100% { background-color: rgba(0, 0, 0, 0.15); }
 }
 
-/* 1. 수동 토글 E-Ink 모드 (:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"])) */
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) * {
+/* 1. 수동 토글 E-Ink 모드 (:is([data-mode="eink"], [data-sumi-mode="eink"])) */
+:is([data-mode="eink"], [data-sumi-mode="eink"]) * {
   box-shadow: none !important;
   text-shadow: none !important;
   transition: none !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-callout {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-callout {
   border: 1.5px solid #000000 !important;
   background: #ffffff !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-callout::before {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-callout::before {
   display: none !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-control-btn {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-control-btn {
   background: #ffffff !important;
   border: 1.5px solid #000000 !important;
   color: #000000 !important;
   box-shadow: none !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner:not(.sumi-spinner--dots),
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--ghost::after,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual::before,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual::after,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual-sync::before,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dual-sync::after,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner-dual .sumi-spinner {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner:not(.sumi-spinner--dots),
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--ghost::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dual::before,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dual::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dual-sync::before,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dual-sync::after,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner-dual .sumi-spinner {
   animation: sumi-eink-step 4s steps(4) infinite !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dots {
   --sumi-dots-color: #000000 !important;
   opacity: 1 !important;
   transform: none !important;
   animation: sumi-eink-dot2 1.6s steps(1, end) infinite !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots::before {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dots::before {
   opacity: 1 !important;
   transform: none !important;
   animation: sumi-eink-dot1 1.6s steps(1, end) infinite !important;
 }
 
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-spinner--dots::after {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-spinner--dots::after {
   opacity: 1 !important;
   transform: none !important;
   animation: sumi-eink-dot3 1.6s steps(1, end) infinite !important;
@@ -941,66 +941,66 @@
 /* ==========================================================================
    Phase 4 다크 모드 (야간 사경 / 현묵) 오버라이드
    ========================================================================== */
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table-wrap,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table-wrap {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-table-wrap,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-table-wrap {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table thead th,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table thead th {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-table thead th,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-table thead th {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-table tbody tr:hover,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-table tbody tr:hover {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-table tbody tr:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.04);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-aside-note,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-aside-note {
   background: rgba(35, 40, 50, 0.5);
   color: var(--sumi-charcoal);
   border-left-color: var(--sumi-seal);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note:hover,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note:hover {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-aside-note:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-aside-note:hover {
   background: rgba(35, 40, 50, 0.8);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-aside-note.is-active,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-aside-note.is-active {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-aside-note.is-active,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-aside-note.is-active {
   background: rgba(232, 76, 61, 0.12);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-playground-panel,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-playground-panel {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-playground-panel,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-playground-panel {
   background: var(--sumi-paper-surface);
   border-color: var(--sumi-line);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-playground-stage,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-playground-stage {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-playground-stage,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-playground-stage {
   background: radial-gradient(circle at center, rgba(45, 50, 65, 0.4) 0%, rgba(20, 22, 28, 0.6) 100%);
   border-color: var(--sumi-line);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-btn-copy-snippet,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-btn-copy-snippet {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-btn-copy-snippet,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-btn-copy-snippet {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--sumi-line);
   color: var(--sumi-charcoal);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-btn-copy-snippet:hover,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-btn-copy-snippet:hover {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-btn-copy-snippet:hover,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-btn-copy-snippet:hover {
   background: var(--sumi-seal-soft);
   color: var(--sumi-seal);
 }
 
-:is([data-theme="dark"], [data-sumi-theme="dark"], [data-rw-theme="sumi-dark"]) .sumi-showcase-code,
-:root:not(:is([data-theme="light"], [data-sumi-theme="light"], [data-rw-theme="light"])) .sumi-showcase-code {
+:is([data-theme="dark"], [data-sumi-theme="dark"]) .sumi-showcase-code,
+:root:not(:is([data-theme="light"], [data-sumi-theme="light"])) .sumi-showcase-code {
   background: rgba(255, 255, 255, 0.06);
   color: #f1f5f9;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1009,54 +1009,54 @@
 /* ==========================================================================
    Phase 4 E-Ink (전자종이) 모드 추가 오버라이드
    ========================================================================== */
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-table {
   border-top: 2px solid #000000 !important;
   border-bottom: 2px solid #000000 !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table thead th {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-table thead th {
   background-color: #f0f0f0 !important;
   border-bottom: 1.5px solid #000000 !important;
   color: #000000 !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table tbody td {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-table tbody td {
   border-bottom: 1px solid #000000 !important;
   color: #000000 !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-table tbody tr:hover {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-table tbody tr:hover {
   background: transparent !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-aside-note {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-aside-note {
   background: #ffffff !important;
   border: 1px solid #000000 !important;
   border-left: 3px solid #000000 !important;
   color: #000000 !important;
   box-shadow: none !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-aside-note-num {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-aside-note-num {
   background: #000000 !important;
   color: #ffffff !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-marginalia-ref {
   border-color: #000000 !important;
   color: #000000 !important;
   background: transparent !important;
   box-shadow: none !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref:hover,
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-marginalia-ref:focus-visible {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-marginalia-ref:hover,
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-marginalia-ref:focus-visible {
   background: #000000 !important;
   color: #ffffff !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-playground-panel {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-playground-panel {
   background: #ffffff !important;
   border: 2px solid #000000 !important;
   box-shadow: none !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-playground-stage {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-playground-stage {
   background: #ffffff !important;
   border: 1px solid #000000 !important;
 }
-:is([data-mode="eink"], [data-sumi-mode="eink"], [data-rw-mode="eink"]) .sumi-btn-copy-snippet {
+:is([data-mode="eink"], [data-sumi-mode="eink"]) .sumi-btn-copy-snippet {
   background: #ffffff !important;
   border: 1.5px solid #000000 !important;
   color: #000000 !important;
