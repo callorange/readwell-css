@@ -4,6 +4,9 @@ node_modules/
 # Build outputs & Sites
 dist/
 _site/
+site/readwell/
+site/sumi/
+site/dist/
 
 # Scratch & Temporary
 scratch/

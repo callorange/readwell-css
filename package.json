@@ -12,7 +12,8 @@
     "build:readwell": "npm run build --workspace=readwell-css",
     "build:sumi": "npm run build --workspace=sumi-css",
     "build:portal": "node scripts/build-portal.js",
-    "test": "npm run test --workspaces",
+    "test": "node scripts/test-all.js",
+    "test:workspaces": "npm run test --workspaces",
     "dev": "node scripts/dev-server.js"
   },
   "keywords": [
