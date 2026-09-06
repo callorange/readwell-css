@@ -58,28 +58,28 @@ flowchart LR
 ### Phase 1: 듀얼 렌더링 기반 & 웹 접근성(WCAG 2.1) 안정화
 > **목표**: 기존 에셋 100% 보존 상태에서 WebP 폴백 및 SVG 벡터 엔진 프로토타입을 구축하고, 실시간 비교 스위처 및 긴급 접근성 결함을 해결합니다.
 
-- [ ] **1-1. 에셋 3-Tier 보존 및 점진적 변환**
-  - [ ] 기존 원본 PNG/JPG 에셋 100% 무결점 보존 (`assets/` 내 원본 유지)
-  - [ ] `hanji-bg.jpg`(431KB)의 고압축 WebP(약 70KB) 생성
-  - [ ] 스피너 2대 스타일(`brush`, `enso`)의 알파 마스크 단일화 WebP/PNG 준비
-  - [ ] CSS `image-set()` 및 Cascading Fallback 선언으로 WebP 지원 브라우저 우선 로딩 및 구형 브라우저 완벽 폴백
-  - [ ] 인라인 아바타/인장 `<img>`에 `<picture><source type="image/webp">...` 표준 마크업 적용
-- [ ] **1-2. 차세대 SVG 벡터 엔진 프로토타입 구현**
-  - [ ] 비백호(飛白弧) 및 원상(圓相) 붓터치 스피너 SVG `<path>` 및 서예 회전 구현
-  - [ ] 수묵 프로그레스 & 슬라이더용 12px 벡터 스트로크 SVG 패스 트랙/채움 구현
-  - [ ] 0KB 인라인 SVG `<feTurbulence>` 한지 섬유결 절구 텍스처 타일 구현
-- [ ] **1-3. 실시간 A/B 렌더링 엔진 스위처 및 1:1 비교존 구축**
-  - [ ] 우측 하단 플로팅 컨트롤러에 `🎨 렌더 엔진: [비트맵 (WebP/PNG)] ↔ [SVG 벡터]` 실시간 토글 버튼 추가
-  - [ ] `<body>`의 `data-rw-engine="bitmap" | "svg"` 데이터 속성에 따른 CSS 엔진 실시간 연동
-  - [ ] 쇼케이스 카드 내부에 **[기존 비트맵 방식] vs [신규 SVG 방식] 1:1 Side-by-Side 비교 영역** 구성
-- [ ] **1-4. 웹 접근성(WCAG 2.1) 결함 즉시 해결**
-  - [ ] 슬라이더의 `outline: none !important` 제거 및 키보드 초점 시 붉은 인주 훈염 링(`:focus-visible`) 표시
-  - [ ] `<input type="range">`에 시맨틱 `aria-label="수묵 붓점 조절기"` 추가
-  - [ ] 프로그레스 바에 `role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax` 명시
-  - [ ] 4분면 전각 직인 컴포넌트에 `role="img"`, `aria-label="독서정본 직인"` 부여로 글자 분절 낭독 차단
-  - [ ] 쇼케이스 전시용 스피너들에 `aria-hidden="true"`를 부여하여 스크린 리더 소음 제거
-  - [ ] 12px 슬림 슬라이더에 가상 요소(`::after`)를 적용해 최소 **44px × 44px 터치 조작 타겟** 확보
-- [ ] **[Phase 1 검증]**: 브라우저에서 비트맵/SVG 토글 확인, 키보드 Tab 키 탐색 및 스크린 리더 음성 출력 검증
+- [x] **1-1. 에셋 3-Tier 보존 및 점진적 변환**
+  - [x] 기존 원본 PNG/JPG 에셋 100% 무결점 보존 (`assets/` 내 원본 유지)
+  - [x] `hanji-bg.jpg`(431KB)의 고압축 WebP(약 70KB) 생성
+  - [x] 스피너 2대 스타일(`brush`, `enso`)의 알파 마스크 단일화 WebP/PNG 준비
+  - [x] CSS `image-set()` 및 Cascading Fallback 선언으로 WebP 지원 브라우저 우선 로딩 및 구형 브라우저 완벽 폴백
+  - [x] 인라인 아바타/인장 `<img>`에 `<picture><source type="image/webp">...` 표준 마크업 적용
+- [x] **1-2. 차세대 SVG 벡터 엔진 프로토타입 구현**
+  - [x] 비백호(飛白弧) 및 원상(圓相) 붓터치 스피너 SVG `<path>` 및 서예 회전 구현
+  - [x] 수묵 프로그레스 & 슬라이더용 12px 벡터 스트로크 SVG 패스 트랙/채움 구현
+  - [x] ~~0KB 인라인 SVG `<feTurbulence>` 한지 섬유결 절구 텍스처 타일~~ ➡️ **[폐기]** SVG 배경 폐기 결정: feTurbulence 노이즈의 가독성 저하 및 인위적인 줄무늬 결함으로 전면 폐기하고, 자연스러운 한지 질감은 고압축(72KB) WebP 비트맵으로 일원화
+- [x] **1-3. 실시간 A/B 렌더링 엔진 스위처 및 1:1 비교존 구축**
+  - [x] 우측 하단 플로팅 컨트롤러에 `🎨 렌더 엔진: [비트맵 (WebP/PNG)] ↔ [SVG 벡터]` 실시간 토글 버튼 추가
+  - [x] `<body>`의 `data-rw-engine="bitmap" | "svg"` 데이터 속성에 따른 CSS 엔진 실시간 연동
+  - [x] 쇼케이스 카드 내부에 **[기존 비트맵 방식] vs [신규 SVG 방식] 1:1 Side-by-Side 비교 영역** 구성
+- [x] **1-4. 웹 접근성(WCAG 2.1) 결함 즉시 해결**
+  - [x] 슬라이더의 `outline: none !important` 제거 및 키보드 초점 시 붉은 인주 훈염 링(`:focus-visible`) 표시
+  - [x] `<input type="range">`에 시맨틱 `aria-label="수묵 붓점 조절기"` 추가
+  - [x] 프로그레스 바에 `role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax` 명시
+  - [x] 4분면 전각 직인 컴포넌트에 `role="img"`, `aria-label="독서정본 직인"` 부여로 글자 분절 낭독 차단
+  - [x] 쇼케이스 전시용 스피너들에 `aria-hidden="true"`를 부여하여 스크린 리더 소음 제거
+  - [x] 12px 슬림 슬라이더에 가상 요소(`::after`)를 적용해 최소 **44px × 44px 터치 조작 타겟** 확보
+- [x] **[Phase 1 검증]**: 브라우저에서 비트맵/SVG 토글 확인, 키보드 Tab 키 탐색 및 스크린 리더 음성 출력 검증
 
 ---
 
@@ -120,7 +120,7 @@ flowchart LR
   - [ ] 다크 모드 전용 흑지 질감 캔버스 및 주사 인장 콘트라스트 보정
 - [ ] **3-3. Readwell 정체성 연계: E-Ink (전자종이) 모드**
   - [ ] 표준 미디어 쿼리 `@media (update: slow)` 자동 감지 지원
-  - [ ] 전자종이 모드(`[data-rw-mode="eink"]`): SVG `feTurbulence` 필터 및 그라디언트 비활성화
+  - [ ] 전자종이 모드(`[data-rw-mode="eink"]`): 한지 비트맵 결 및 그라디언트 비활성화 (순수 단색 화선지 모드)
   - [ ] 무한 회전 스피너 대신 E-Ink 특화 정적 인디케이터/단계별 스텝 펄스로 전환
   - [ ] 1-bit / 4-bit 단색 서예 고대비 조판 최적화
 - [ ] **3-4. 수묵 마이크로 인터랙션 & 설정 영속화**
