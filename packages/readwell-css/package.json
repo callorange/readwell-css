@@ -1,0 +1,40 @@
+{
+  "name": "readwell-css",
+  "version": "0.2.1",
+  "type": "module",
+  "description": "E-Ink 디스플레이에서 영감을 얻은 긴 글 가독성과 제품 UI를 위한 저자극 순수 CSS 프레임워크",
+  "main": "dist/readwell.css",
+  "style": "dist/readwell.css",
+  "exports": {
+    ".": "./dist/readwell.css",
+    "./min": "./dist/readwell.min.css",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
+  },
+  "keywords": [
+    "css",
+    "css-framework",
+    "e-ink",
+    "reading",
+    "typography",
+    "minimal-ui",
+    "zero-dependency",
+    "classless-css"
+  ],
+  "homepage": "https://callorange.github.io/readwell-css/readwell/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callorange/readwell-css.git",
+    "directory": "packages/readwell-css"
+  },
+  "license": "MIT"
+}
