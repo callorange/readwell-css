@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - 원필 곡선형 (`callout-frame-round.png`)
   - 동양화 육채(六彩) 원칙에 기반한 농묵(`--rw-sumi-ink: #121316`), 중묵(`--rw-sumi-charcoal: #424754`), 담묵(`--rw-sumi-wash: #787f90`), 주사(`--rw-sumi-seal: #b8281d`)의 확연한 수묵 계조 대비 시스템 및 야간 흑지(Dark) 모드 구축
   - 순수 HTML/CSS(2x2 Grid) 및 SVG 스탬프 압착·전각 칼맛 필터 기반 전통 사각 전각 직인(Chop) 컴포넌트(`.rw-seal-chop`) 구축 (4글자 한자/한글 전각 포치 여백 최적화, 음각 백문, 이중 테두리 쌍선인, 2글자/1글자 방인)
+  - **수묵 정규 조판 표(`.rw-sumi-table`)**: 2px 상단 농묵선, 1.5px 하단 수필선, 행 호버 효과 및 반응형 래퍼(`.rw-sumi-table-wrap`) 모듈화
+  - **문방사우 코드 신택스 하이라이팅**: WCAG AAA 다크 고명도 대비(백묵, 밝은 주사, 금묵, 은묵, 옥록, 담묵) 토큰 체계 및 원클릭 복사 버튼(`.rw-btn-copy-snippet`)
+  - **난외 배주(Marginalia) 주석 시스템**: 본문 각주 번호(`.rw-marginalia-ref`)와 우측 여백 배주 카드(`.rw-aside-marginalia`, `.rw-aside-note`) 양방향 펄스 하이라이팅 연동
+  - **고서 목판본 인쇄 조판 (`@media print`)**: 흑백 단색화, 화면 전용 UI 숨김, 페이지 분절 방지(`break-inside: avoid`) 및 고서 인쇄 최적화
+  - **전각 두인(頭印) 2종 추가**: 조화와 풍요를 상징하는 표주박 형태 호로인(`.rw-seal-badge--gourd`), 자연미를 살린 자연인(`.rw-seal-badge--natural`)
+  - **인터랙티브 플레이그라운드 패널(`.rw-playground-panel`)**: 4종 전각 직인, 5종 서예 프레임, 4종 수묵 토큰, 인쇄 모드를 실시간 조합·체험하는 대화형 DX 스테이지
+  - **Phase 4 정량 회귀 테스트 검증 스위트 (`scripts/test-phase4.js`)**: 58개 테스트 100% 무결성 검증
   - `examples/sumi/README.md` 기획, 디자인 시스템, 아키텍처 및 에셋 인벤토리 명세서 구축
   - `examples/index.html` 예제 허브 페이지에 수묵 테마 쇼케이스 연동 카드 등록
 

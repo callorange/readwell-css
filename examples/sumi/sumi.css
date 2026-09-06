@@ -34,6 +34,14 @@
       /* Phase 3: 사경 금묵(金墨) 및 활자 스케일 */
       --rw-sumi-gold: #d4af37;               /* 고서 사경(寫經) 금묵(金墨) */
       --rw-sumi-scale: 1;                    /* 장문 독서 활자 크기 배율 (기본 1.0) */
+
+      /* Phase 4: 문방사우(文房四友) 코드 신택스 하이라이팅 토큰 */
+      --rw-code-keyword: #b8281d;            /* 주사(朱砂): 키워드 (const, return, export 등) */
+      --rw-code-string: #9e782f;             /* 송화(松花): 문자열 리터럴 */
+      --rw-code-function: #121316;           /* 농묵(濃墨): 함수명, 식별자 */
+      --rw-code-comment: #787f90;            /* 담묵(淡墨): 주석 */
+      --rw-code-variable: #3a3f4d;           /* 중묵(中墨): 변수 및 프로퍼티 */
+      --rw-code-number: #3e6b5c;             /* 송백(松柏): 숫자 및 불리언 */
       
       --rw-font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "맑은 고딕", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
       --rw-font-serif: "Cinzel", "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "바탕", "Batang", Georgia, serif;
@@ -56,6 +64,14 @@
       --rw-sumi-seal: #e84c3d;               /* 고대비 흑지 전용 주사(朱砂) */
       --rw-sumi-seal-soft: rgba(232, 76, 61, 0.15);
       --rw-sumi-seal-border: #f06a5d;
+
+      /* Phase 4: 다크 모드 문방사우 코드 토큰 */
+      --rw-code-keyword: #e84c3d;
+      --rw-code-string: #d4af37;             /* 금묵(金墨) */
+      --rw-code-function: #f4efe6;
+      --rw-code-comment: #8a92a2;
+      --rw-code-variable: #d6dadf;
+      --rw-code-number: #68a88c;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -73,6 +89,14 @@
         --rw-sumi-seal: #e84c3d;
         --rw-sumi-seal-soft: rgba(232, 76, 61, 0.15);
         --rw-sumi-seal-border: #f06a5d;
+
+        /* Phase 4: 다크 모드 문방사우 코드 토큰 */
+        --rw-code-keyword: #e84c3d;
+        --rw-code-string: #d4af37;
+        --rw-code-function: #f4efe6;
+        --rw-code-comment: #8a92a2;
+        --rw-code-variable: #d6dadf;
+        --rw-code-number: #68a88c;
       }
     }
 
@@ -93,6 +117,14 @@
       --rw-sumi-seal: #000000 !important;
       --rw-sumi-seal-soft: rgba(0, 0, 0, 0.06) !important;
       --rw-sumi-seal-border: #000000 !important;
+
+      /* Phase 4: E-Ink 단색 문방사우 코드 토큰 */
+      --rw-code-keyword: #000000 !important;
+      --rw-code-string: #000000 !important;
+      --rw-code-function: #000000 !important;
+      --rw-code-comment: #555555 !important;
+      --rw-code-variable: #000000 !important;
+      --rw-code-number: #000000 !important;
     }
 
     @media (update: slow) {
@@ -109,6 +141,14 @@
         --rw-sumi-seal: #000000 !important;
         --rw-sumi-seal-soft: rgba(0, 0, 0, 0.06) !important;
         --rw-sumi-seal-border: #000000 !important;
+
+        /* Phase 4: E-Ink 단색 문방사우 코드 토큰 */
+        --rw-code-keyword: #000000 !important;
+        --rw-code-string: #000000 !important;
+        --rw-code-function: #000000 !important;
+        --rw-code-comment: #555555 !important;
+        --rw-code-variable: #000000 !important;
+        --rw-code-number: #000000 !important;
       }
     }
 
@@ -542,8 +582,18 @@
        6. 코드 블록 (이중 여백 버그 완전 해결)
        -------------------------------------------------------------------------- */
     .rw-code-sumi {
-      background: #191b20;
-      color: #ede9e0;
+      /* 다크 코드 블록 전용: 검은 바탕에서 선명하고 아름다운 고대비 문방사우 토큰 */
+      --rw-code-keyword: #ff6b5b;            /* 밝고 선명한 주사(朱砂): 키워드/연산자 */
+      --rw-code-string: #ffd166;             /* 찬란한 금묵(金墨) / 화사한 송화: 문자열 */
+      --rw-code-function: #ffffff;           /* 맑은 순백 백묵(白墨): 함수명, 식별자 */
+      --rw-code-comment: #94a3b8;            /* 은은하지만 또렷한 담묵(淡墨): 주석 */
+      --rw-code-variable: #e2e8f0;           /* 밝은 은묵(銀墨): 변수 및 프로퍼티 */
+      --rw-code-number: #6ee7b7;             /* 청명한 송백(松柏) / 옥록: 숫자/불리언 */
+      --rw-code-operator: #ff6b5b;           /* 연산자 */
+      --rw-code-punct: #cbd5e1;              /* 괄호, 쉼표, 콜론 등 구두점 */
+
+      background: #14161b;
+      color: #f1f5f9;
       border-radius: 7px;
       padding: 1.25rem 1.6rem;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Cascadia Code", monospace;
@@ -552,8 +602,8 @@
       overflow-x: auto;
       margin: 1.5rem 0 2.2rem;
       position: relative;
-      box-shadow: 0 4px 14px rgba(10, 12, 16, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.09);
     }
 
     /* 내부 pre 태그의 중첩 패딩/마진 완전 리셋 */
@@ -569,18 +619,115 @@
       position: absolute;
       top: 0.85rem;
       right: 0.85rem;
-      background: transparent;
-      border: none;
-      color: #8a8e99;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #b0b5c0;
       cursor: pointer;
-      font-size: 0.88rem;
-      padding: 0.2rem;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 4px;
-      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      line-height: 1.2;
+      transition: all 0.18s ease;
+      font-family: var(--rw-font-sans);
     }
 
     .rw-code-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
       color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .rw-code-copy-btn.is-copied {
+      background: var(--rw-sumi-seal);
+      color: #ffffff;
+      border-color: var(--rw-sumi-seal);
+      box-shadow: 0 0 8px rgba(184, 40, 29, 0.5);
+    }
+
+    /* Phase 4-1. 문방사우(文房四友) 코드 신택스 하이라이팅 클래스 (다크 기본: 초고대비) */
+    .rw-code-sumi .token-kw,
+    .rw-code-sumi .token-keyword {
+      color: var(--rw-code-keyword); /* 밝은 주사(朱砂): 키워드 */
+      font-weight: 600;
+    }
+    .rw-code-sumi .token-str,
+    .rw-code-sumi .token-string {
+      color: var(--rw-code-string); /* 금묵(金墨)/송화: 문자열 */
+    }
+    .rw-code-sumi .token-fn,
+    .rw-code-sumi .token-function {
+      color: var(--rw-code-function); /* 순백 백묵(白墨): 함수명 */
+      font-weight: 700;
+    }
+    .rw-code-sumi .token-cm,
+    .rw-code-sumi .token-comment {
+      color: var(--rw-code-comment); /* 선명한 담묵(淡墨): 주석 */
+      font-style: italic;
+    }
+    .rw-code-sumi .token-var,
+    .rw-code-sumi .token-variable {
+      color: var(--rw-code-variable); /* 은묵(銀墨): 변수/프로퍼티 */
+    }
+    .rw-code-sumi .token-num,
+    .rw-code-sumi .token-number {
+      color: var(--rw-code-number); /* 송백(松柏): 숫자/불리언 */
+      font-weight: 600;
+    }
+    .rw-code-sumi .token-op,
+    .rw-code-sumi .token-operator {
+      color: var(--rw-code-operator, #ff6b5b);
+    }
+    .rw-code-sumi .token-punct {
+      color: var(--rw-code-punct, #cbd5e1);
+    }
+
+    /* 밝은 화선지 코드 블록 변형 (.rw-code-sumi--paper) */
+    .rw-code-sumi--paper {
+      background: var(--rw-sumi-paper-surface);
+      color: var(--rw-sumi-charcoal);
+      border: 1px solid var(--rw-sumi-line);
+      box-shadow: 0 2px 10px rgba(45, 38, 30, 0.05);
+    }
+    .rw-code-sumi--paper .rw-code-copy-btn {
+      background: rgba(45, 38, 30, 0.05);
+      border: 1px solid var(--rw-sumi-line);
+      color: var(--rw-sumi-charcoal);
+    }
+    .rw-code-sumi--paper .rw-code-copy-btn:hover {
+      background: rgba(45, 38, 30, 0.12);
+      color: var(--rw-sumi-ink);
+    }
+    .rw-code-sumi--paper .rw-code-copy-btn.is-copied {
+      background: var(--rw-sumi-seal);
+      color: #ffffff;
+      border-color: var(--rw-sumi-seal);
+    }
+    .rw-code-sumi--paper .token-kw,
+    .rw-code-sumi--paper .token-keyword {
+      color: var(--rw-sumi-seal);
+    }
+    .rw-code-sumi--paper .token-str,
+    .rw-code-sumi--paper .token-string {
+      color: #9c7014;
+    }
+    .rw-code-sumi--paper .token-fn,
+    .rw-code-sumi--paper .token-function {
+      color: var(--rw-sumi-ink);
+    }
+    .rw-code-sumi--paper .token-cm,
+    .rw-code-sumi--paper .token-comment {
+      color: var(--rw-sumi-wash);
+    }
+    .rw-code-sumi--paper .token-var,
+    .rw-code-sumi--paper .token-variable {
+      color: var(--rw-sumi-charcoal);
+    }
+    .rw-code-sumi--paper .token-num,
+    .rw-code-sumi--paper .token-number {
+      color: #3e6b5c;
     }
 
     /* --------------------------------------------------------------------------
@@ -918,6 +1065,26 @@
     /* 실제 인장처럼 살짝 기울어진 맛 (Handmade Tilt) */
     .rw-seal-badge--tilted {
       transform: rotate(-1.5deg);
+    }
+
+    /* Phase 4-3. 표주박형 두인 (호로인 葫蘆印): 상단이 작고 하단이 둥근 조롱박 실루엣 */
+    .rw-seal-badge--gourd {
+      border-radius: 12px 12px 18px 18px / 9px 9px 24px 24px;
+      padding: 0.22rem 0.64rem 0.26rem 0.68rem;
+      position: relative;
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.55),
+        inset 0 0 3px rgba(184, 40, 29, 0.15);
+    }
+
+    /* Phase 4-3. 자연석형 두인 (자연인 自然印): 원석을 깎아 만든 유기적이고 비대칭인 서예 낙관석 */
+    .rw-seal-badge--natural {
+      border-radius: 46% 54% 68% 32% / 38% 42% 58% 62%;
+      padding: 0.18rem 0.62rem 0.22rem 0.66rem;
+      transform: rotate(-1deg);
+      box-shadow: 
+        0 0 1.5px rgba(184, 40, 29, 0.5),
+        inset 0 0 2px rgba(184, 40, 29, 0.12);
     }
 
     /* --------------------------------------------------------------------------
@@ -2891,6 +3058,343 @@
     padding: 0.45rem 0.65rem;
     font-size: 0.78rem;
   }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-1. 수묵 정규 표 (Sumi Table): .rw-sumi-table
+     상단 농묵 굵은 획(2px), 하단 수필 획(1.5px), 지선(紙線) 엷은 보더,
+     담묵 행 호버 먹물 번짐 효과가 적용된 동양 고서 조판 정규 표
+     -------------------------------------------------------------------------- */
+  .rw-sumi-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(45, 38, 30, 0.04);
+  }
+
+  .rw-sumi-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: var(--rw-sumi-charcoal);
+    border-top: 2px solid var(--rw-sumi-ink);
+    border-bottom: 1.5px solid var(--rw-sumi-ink);
+    text-align: left;
+  }
+
+  .rw-sumi-table caption {
+    caption-side: top;
+    font-family: var(--rw-font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rw-sumi-ink);
+    text-align: left;
+    padding: 0.5rem 0.25rem 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .rw-sumi-table caption .rw-seal-badge {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .rw-sumi-table thead th {
+    padding: 0.85rem 1rem;
+    font-family: var(--rw-font-serif);
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--rw-sumi-ink);
+    background-color: rgba(45, 38, 30, 0.045);
+    border-bottom: 1.5px solid var(--rw-sumi-ink);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .rw-sumi-table tbody tr {
+    transition: background-color 0.18s ease;
+  }
+
+  .rw-sumi-table tbody tr:hover {
+    background-color: rgba(45, 38, 30, 0.038);
+  }
+
+  .rw-sumi-table tbody td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--rw-sumi-line);
+    vertical-align: middle;
+  }
+
+  .rw-sumi-table tfoot td {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--rw-sumi-wash);
+    border-top: 1px solid var(--rw-sumi-ink);
+    background-color: rgba(45, 38, 30, 0.02);
+  }
+
+  .rw-sumi-table .text-center { text-align: center; }
+  .rw-sumi-table .text-right { text-align: right; }
+  .rw-sumi-table .text-nowrap { white-space: nowrap; }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-1. 동양 고서 난외 배주 (Marginalia) 주석 시스템
+     본문 인장 번호(①) 클릭 시 우측 메타 레일에서 주석이 강조되는 상호작용
+     -------------------------------------------------------------------------- */
+  .rw-marginalia-ref {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.38em;
+    height: 1.38em;
+    margin: 0 0.22em;
+    padding: 0;
+    border: 1px solid var(--rw-sumi-seal);
+    border-radius: 50%;
+    background: var(--rw-sumi-seal-soft);
+    color: var(--rw-sumi-seal);
+    font-family: var(--rw-font-serif);
+    font-size: 0.82em;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: 0.28em;
+    transition: all 0.2s ease;
+    user-select: none;
+    box-shadow: 0 0 1px rgba(184, 40, 29, 0.35);
+  }
+
+  .rw-marginalia-ref:hover,
+  .rw-marginalia-ref:focus-visible {
+    background-color: var(--rw-sumi-seal);
+    color: #ffffff;
+    transform: scale(1.18);
+    box-shadow: 0 0 7px rgba(184, 40, 29, 0.5);
+    outline: none;
+  }
+
+  .rw-marginalia-ref.is-highlighted {
+    animation: rw-marginalia-ref-pulse 2.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  @keyframes rw-marginalia-ref-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0.7); }
+    25% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(184, 40, 29, 0); background-color: var(--rw-sumi-seal); color: #fff; }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0); }
+  }
+
+  /* 우측 메타 레일 내 배주 구획 */
+  .rw-aside-marginalia {
+    margin-top: 1.6rem;
+    border-top: 1px dashed var(--rw-sumi-line);
+    padding-top: 1.25rem;
+  }
+
+  .rw-aside-note {
+    position: relative;
+    margin-bottom: 1.1rem;
+    padding: 0.75rem 0.95rem 0.75rem 1rem;
+    background: rgba(220, 205, 185, 0.14);
+    border-left: 2.5px solid var(--rw-sumi-seal);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem;
+    line-height: 1.58;
+    color: var(--rw-sumi-charcoal);
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+
+  .rw-aside-note:hover {
+    background: rgba(220, 205, 185, 0.28);
+    transform: translateX(-2px);
+  }
+
+  .rw-aside-note.is-active {
+    background: rgba(184, 40, 29, 0.08);
+    border-left-color: var(--rw-sumi-seal);
+    box-shadow: 0 2px 10px rgba(184, 40, 29, 0.15);
+    animation: rw-aside-note-pulse 2.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  @keyframes rw-aside-note-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 40, 29, 0.45); }
+    25% { transform: scale(1.02); box-shadow: 0 0 12px rgba(184, 40, 29, 0.25); }
+    100% { transform: scale(1); box-shadow: 0 2px 6px rgba(184, 40, 29, 0.08); }
+  }
+
+  .rw-aside-note-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.35rem;
+    font-family: var(--rw-font-serif);
+    font-weight: 700;
+    color: var(--rw-sumi-seal);
+    font-size: 0.84rem;
+  }
+
+  .rw-aside-note-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35em;
+    height: 1.35em;
+    background: var(--rw-sumi-seal);
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .rw-aside-note-text {
+    margin: 0;
+    color: var(--rw-sumi-charcoal);
+  }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-3. 쇼케이스 원클릭 코드 복사 (Copy Snippet) 버튼
+     -------------------------------------------------------------------------- */
+  .rw-btn-copy-snippet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--rw-sumi-paper-surface);
+    border: 1px solid var(--rw-sumi-line);
+    color: var(--rw-sumi-charcoal);
+    padding: 0.28rem 0.65rem;
+    border-radius: 4px;
+    font-family: var(--rw-font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+  }
+
+  .rw-btn-copy-snippet:hover {
+    border-color: var(--rw-sumi-seal);
+    color: var(--rw-sumi-seal);
+    background: var(--rw-sumi-seal-soft);
+  }
+
+  .rw-btn-copy-snippet.is-copied {
+    background: var(--rw-sumi-seal);
+    color: #ffffff;
+    border-color: var(--rw-sumi-seal);
+    box-shadow: 0 0 8px rgba(184, 40, 29, 0.4);
+  }
+
+  /* --------------------------------------------------------------------------
+     Phase 4-3. 수묵 인터랙티브 플레이그라운드 패널 (Interactive Playground)
+     -------------------------------------------------------------------------- */
+  .rw-playground-panel {
+    margin: 3rem 0 4rem;
+    padding: 2rem 2.2rem;
+    background: var(--rw-sumi-paper-surface);
+    border: 1.5px solid var(--rw-sumi-line);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(45, 38, 30, 0.07);
+  }
+
+  .rw-playground-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.35rem;
+    padding-bottom: 0.95rem;
+    border-bottom: 1px solid var(--rw-sumi-line);
+  }
+
+  .rw-playground-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--rw-font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--rw-sumi-ink);
+    margin: 0;
+  }
+
+  .rw-playground-desc {
+    font-size: 0.88rem;
+    color: var(--rw-sumi-wash);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+  }
+
+  .rw-playground-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 2.5rem;
+    background: radial-gradient(circle at center, rgba(220, 205, 185, 0.28) 0%, rgba(220, 205, 185, 0.08) 100%);
+    border: 1px dashed var(--rw-sumi-line);
+    border-radius: 6px;
+    margin-bottom: 1.8rem;
+    transition: all 0.25s ease;
+  }
+
+  .rw-playground-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rw-playground-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .rw-playground-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--rw-sumi-ink);
+    font-family: var(--rw-font-serif);
+  }
+
+  .rw-playground-select {
+    padding: 0.48rem 0.75rem;
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--rw-sumi-ink);
+    background-color: var(--rw-sumi-paper);
+    border: 1px solid var(--rw-sumi-line);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .rw-playground-select:focus {
+    border-color: var(--rw-sumi-seal);
+    box-shadow: 0 0 0 2px var(--rw-sumi-seal-soft);
+  }
+
+  .rw-playground-code-wrap {
+    margin-top: 1rem;
+    position: relative;
+  }
+
+  .rw-playground-code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+
+  .rw-playground-code-header span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--rw-sumi-wash);
+  }
 }
 
 /* ==========================================================================
@@ -3181,5 +3685,279 @@
     opacity: 1 !important;
     transform: none !important;
     animation: rw-sumi-eink-dot3 1.6s steps(1, end) infinite !important;
+  }
+}
+
+/* ==========================================================================
+   Phase 4 다크 모드 (야간 사경 / 현묵) 오버라이드
+   ========================================================================== */
+[data-rw-theme="sumi-dark"] .rw-sumi-table-wrap,
+:root:not([data-rw-theme="light"]) .rw-sumi-table-wrap {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-rw-theme="sumi-dark"] .rw-sumi-table thead th,
+:root:not([data-rw-theme="light"]) .rw-sumi-table thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-rw-theme="sumi-dark"] .rw-sumi-table tbody tr:hover,
+:root:not([data-rw-theme="light"]) .rw-sumi-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-rw-theme="sumi-dark"] .rw-aside-note,
+:root:not([data-rw-theme="light"]) .rw-aside-note {
+  background: rgba(35, 40, 50, 0.5);
+  color: var(--rw-sumi-charcoal);
+  border-left-color: var(--rw-sumi-seal);
+}
+
+[data-rw-theme="sumi-dark"] .rw-aside-note:hover,
+:root:not([data-rw-theme="light"]) .rw-aside-note:hover {
+  background: rgba(35, 40, 50, 0.8);
+}
+
+[data-rw-theme="sumi-dark"] .rw-aside-note.is-active,
+:root:not([data-rw-theme="light"]) .rw-aside-note.is-active {
+  background: rgba(232, 76, 61, 0.12);
+}
+
+[data-rw-theme="sumi-dark"] .rw-playground-panel,
+:root:not([data-rw-theme="light"]) .rw-playground-panel {
+  background: var(--rw-sumi-paper-surface);
+  border-color: var(--rw-sumi-line);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-rw-theme="sumi-dark"] .rw-playground-stage,
+:root:not([data-rw-theme="light"]) .rw-playground-stage {
+  background: radial-gradient(circle at center, rgba(45, 50, 65, 0.4) 0%, rgba(20, 22, 28, 0.6) 100%);
+  border-color: var(--rw-sumi-line);
+}
+
+[data-rw-theme="sumi-dark"] .rw-btn-copy-snippet,
+:root:not([data-rw-theme="light"]) .rw-btn-copy-snippet {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--rw-sumi-line);
+  color: var(--rw-sumi-charcoal);
+}
+
+[data-rw-theme="sumi-dark"] .rw-btn-copy-snippet:hover,
+:root:not([data-rw-theme="light"]) .rw-btn-copy-snippet:hover {
+  background: var(--rw-sumi-seal-soft);
+  color: var(--rw-sumi-seal);
+}
+
+[data-rw-theme="sumi-dark"] .rw-showcase-code,
+:root:not([data-rw-theme="light"]) .rw-showcase-code {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Phase 4 E-Ink (전자종이) 모드 추가 오버라이드
+   ========================================================================== */
+[data-rw-mode="eink"] .rw-sumi-table {
+  border-top: 2px solid #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+}
+[data-rw-mode="eink"] .rw-sumi-table thead th {
+  background-color: #f0f0f0 !important;
+  border-bottom: 1.5px solid #000000 !important;
+  color: #000000 !important;
+}
+[data-rw-mode="eink"] .rw-sumi-table tbody td {
+  border-bottom: 1px solid #000000 !important;
+  color: #000000 !important;
+}
+[data-rw-mode="eink"] .rw-sumi-table tbody tr:hover {
+  background: transparent !important;
+}
+[data-rw-mode="eink"] .rw-aside-note {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-left: 3px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+[data-rw-mode="eink"] .rw-aside-note-num {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+[data-rw-mode="eink"] .rw-marginalia-ref {
+  border-color: #000000 !important;
+  color: #000000 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+[data-rw-mode="eink"] .rw-marginalia-ref:hover,
+[data-rw-mode="eink"] .rw-marginalia-ref:focus-visible {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+[data-rw-mode="eink"] .rw-playground-panel {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+}
+[data-rw-mode="eink"] .rw-playground-stage {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+}
+[data-rw-mode="eink"] .rw-btn-copy-snippet {
+  background: #ffffff !important;
+  border: 1.5px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   Phase 4-2. 인쇄 미디어 쿼리 (@media print) 고서 목판본 조판
+   배경 텍스처, 플로팅 버튼, 스피너, 사이드바 자동 숨김 & 흑백 목판본 레이아웃
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 18mm 15mm 20mm 15mm;
+  }
+
+  /* 화면 전용 UI 요소 일괄 숨김 */
+  .rw-sumi-hanji-canvas,
+  .rw-sumi-scroll-indicator,
+  .rw-control-panel,
+  .rw-sumi-sidebar,
+  .rw-mobile-toc-sheet,
+  .rw-code-copy-btn,
+  .rw-playground-panel,
+  .rw-sumi-top-utility,
+  .rw-brush-divider,
+  .rw-aside-vertical-brush,
+  .rw-sumi-spinner,
+  .rw-sumi-spinner-wrap,
+  .rw-btn-copy-snippet,
+  #sumiScrollIndicator {
+    display: none !important;
+  }
+
+  /* 고서 목판본 흑백 인쇄 기본 설정 */
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  body.rw-sumi-body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: var(--rw-font-serif, "Noto Serif KR", serif) !important;
+    font-size: 10.5pt !important;
+    line-height: 1.75 !important;
+  }
+
+  .rw-sumi-layout {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  .rw-sumi-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+    font-size: 10.5pt !important;
+  }
+
+  /* 제목 및 섹션 분절 방지 */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    color: #000000 !important;
+    font-family: var(--rw-font-serif, "Noto Serif KR", serif) !important;
+  }
+
+  h1.rw-doc-title {
+    font-size: 20pt !important;
+    margin-bottom: 12pt !important;
+    line-height: 1.3 !important;
+  }
+
+  h2 {
+    font-size: 14pt !important;
+    border-bottom: 1.5pt solid #000000 !important;
+    padding-bottom: 4pt !important;
+    margin-top: 20pt !important;
+  }
+
+  h3 {
+    font-size: 12pt !important;
+    margin-top: 14pt !important;
+  }
+
+  /* 테이블, 코드 블록, 콜아웃 박스 중간 쪼개짐 방지 */
+  table, pre, blockquote, .rw-callout-ink-box, .rw-sumi-table-wrap, .rw-showcase-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .rw-sumi-table {
+    border-top: 2pt solid #000000 !important;
+    border-bottom: 1.5pt solid #000000 !important;
+  }
+
+  .rw-sumi-table thead th {
+    border-bottom: 1.5pt solid #000000 !important;
+    background: #f0f0f0 !important;
+  }
+
+  .rw-sumi-table tbody td {
+    border-bottom: 0.5pt solid #888888 !important;
+  }
+
+  /* 코드 블록 인쇄 최적화 (흰 바탕 흑색 텍스트 + 실선 테두리) */
+  .rw-code-sumi {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1pt solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 8pt 10pt !important;
+    font-size: 9pt !important;
+  }
+
+  .rw-code-sumi pre code {
+    color: #000000 !important;
+  }
+
+  /* 인장 뱃지 및 직인 인쇄 */
+  .rw-seal-badge, .rw-seal-chop {
+    border: 1.5pt solid #000000 !important;
+    color: #000000 !important;
+    background: transparent !important;
+  }
+
+  .rw-seal-badge--solid {
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* 우측 사이드바: 본문 말미에 목판본 미주(Endnotes) 형태로 배치 */
+  .rw-sumi-aside {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    margin-top: 24pt !important;
+    padding-top: 12pt !important;
+    border-top: 1.5pt solid #000000 !important;
+  }
+
+  .rw-aside-meta-flow {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 16pt !important;
   }
 }

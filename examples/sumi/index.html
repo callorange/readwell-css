@@ -70,6 +70,7 @@
         <a href="#sumi-vertical" class="rw-sidebar-link">Vertical &amp; Quotes</a>
         <a href="#sumi-sliders" class="rw-sidebar-link">Sumi Sliders</a>
         <a href="#sumi-spinners" class="rw-sidebar-link">Sumi Spinners</a>
+        <a href="#sumi-playground" class="rw-sidebar-link">Sumi Playground</a>
 
         <!-- 수묵 갈필(渴筆) 붓선 3 -->
         <picture>
@@ -110,32 +111,101 @@
       <!-- H2 섹션 -->
       <h2 id="section-ref">H2. The art of Refined Technical Documentation: Integration</h2>
       <p>
-        <span class="rw-sumi-dropcap">우</span>리의 목표는 단순한 장식적 과시가 아닌, <strong>종이와 먹의 본질적인 농담(濃淡)과 여백(余白)</strong>을 통해 장시간 독서 시 눈의 피로를 최소화하고 지적 전달력을 극대화하는 것입니다. 옛 서예가들이 화선지 위에 첫 획을 그을 때 깊게 숨을 들이쉬며 먹을 듬뿍 머금어 기필(起筆)했듯, 문서의 시작을 단단하고 묵직하게 열어줍니다.
+        <span class="rw-sumi-dropcap">우</span>리의 목표는 단순한 장식적 과시가 아닌, <strong>종이와 먹의 본질적인 농담(濃淡)과 여백(余白)</strong>을 통해 장시간 독서 시 눈의 피로를 최소화하고 지적 전달력을 극대화하는 것입니다. 옛 서예가들이 화선지 위에 첫 획을 그을 때 깊게 숨을 들이쉬며 먹을 듬뿍 머금어 기필(起筆)<button type="button" class="rw-marginalia-ref" id="note-ref-1" data-note="sumi-note-1" aria-describedby="sumi-note-1" title="배주 1: 기필과 수필">①</button>했듯, 문서의 시작을 단단하고 묵직하게 열어줍니다.
       </p>
 
       <!-- H3 섹션 -->
       <h3 id="core-concepts">H3. Core Concepts</h3>
       <p>
         In any concepted technisalic consex features unmic and mal design and the first that writes concerences of chanmed concons and change.
-        텍스트의 계층 구조는 인위적인 박스 테두리가 아니라 <strong class="rw-sumi-ink">농묵(濃墨)</strong>과 <strong class="rw-sumi-wash">담묵(淡墨)</strong>의 <strong>필압 대비</strong>로 자연스럽게 정돈됩니다.
+        텍스트의 계층 구조는 인위적인 박스 테두리가 아니라 <strong class="rw-sumi-ink">농묵(濃墨)</strong>과 <strong class="rw-sumi-wash">담묵(淡墨)</strong>의 <strong>필압 대비</strong><button type="button" class="rw-marginalia-ref" id="note-ref-2" data-note="sumi-note-2" aria-describedby="sumi-note-2" title="배주 2: 농담의 삼단계 조판">②</button>로 자연스럽게 정돈됩니다.
       </p>
 
-      <!-- H3 섹션 & 코드 블록 -->
-      <h3 id="styling-guide">H3. Code stick styling</h3>
+      <!-- H3 섹션 & 코드 블록: 문방사우(文房四友) 신택스 하이라이팅 적용 -->
+      <h3 id="styling-guide">H3. Code stick styling (문방사우 신택스)</h3>
       <p>
         The charcoal ink sets the standard and styling out the necessity. It can sanity to clear that contains, mento and the or syntax feel.
+        <strong class="rw-sumi-seal">주사(朱砂, 키워드)</strong>, <strong style="color:var(--rw-code-string, #9e782f);">송화(松花, 문자열)</strong>, <strong class="rw-sumi-ink">농묵(濃墨, 함수명)</strong>, <strong class="rw-sumi-wash">담묵(淡墨, 주석)</strong>으로 어우러진 정갈한 문방사우 테마입니다.
       </p>
 
-      <!-- 코드 블록 (이중 여백 완전 제거) -->
+      <!-- 코드 블록 (문방사우 신택스 토큰 + 원클릭 복사) -->
       <div class="rw-code-sumi">
-        <button class="rw-code-copy-btn" title="Copy code">📋</button>
-<pre><code>export default (code) =&gt; {
-  const state = new default.error();
-  return {
-    system.out.log((const state + 20)),
-    system.out.log(son(stable + 'pre: ', ));
+        <button type="button" class="rw-code-copy-btn" onclick="copySnippet(this.closest('.rw-code-sumi').querySelector('code').innerText, this)" title="코드 복사">
+          <span>📋 복사</span>
+        </button>
+<pre><code><span class="token-cm">// ✒️ Readwell Sumi-e Architecture Core Controller</span>
+<span class="token-kw">export</span> <span class="token-kw">default</span> (<span class="token-var">code</span>: <span class="token-fn">SumiThemeConfig</span>) =&gt; {
+  <span class="token-kw">const</span> <span class="token-var">state</span> = <span class="token-kw">new</span> <span class="token-fn">SumiState</span>();
+  <span class="token-kw">const</span> <span class="token-var">inkTone</span> = <span class="token-str">"dense-ink"</span>; <span class="token-cm">/* 농묵(濃墨) 기필 */</span>
+  
+  <span class="token-kw">return</span> {
+    <span class="token-var">version</span>: <span class="token-num">0.2</span>,
+    <span class="token-var">verified</span>: <span class="token-kw">true</span>,
+    <span class="token-fn">log</span>: () =&gt; <span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-str">`[Sumi-e] state: <span class="token-op">${</span><span class="token-var">state</span>.<span class="token-var">id</span><span class="token-op">}</span>, tone: <span class="token-op">${</span><span class="token-var">inkTone</span><span class="token-op">}</span>`</span>)
   };
 };</code></pre>
+      </div>
+
+      <!-- Phase 4-1. 수묵 정규 표 (.rw-sumi-table) 컴포넌트 쇼케이스 -->
+      <div class="rw-sumi-table-wrap">
+        <table class="rw-sumi-table">
+          <caption>
+            수묵 동양 조판 규격 명세서 (Sumi Table Specification)
+            <span class="rw-seal-badge rw-seal-badge--solid">정본 규격</span>
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">서예 조판 요소</th>
+              <th scope="col">미학적 상징</th>
+              <th scope="col">모던 CSS 매핑</th>
+              <th scope="col" class="text-right">가독성 &amp; DX 효과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>기필과 수필</strong></td>
+              <td>획의 시작과 끝단 호응</td>
+              <td><code>border-top: 2px / border-bottom: 1.5px</code></td>
+              <td class="text-right">단단한 상하 시각적 닫힘</td>
+            </tr>
+            <tr>
+              <td><strong>삼단계 농담 (濃淡)</strong></td>
+              <td>농묵(濃)·중묵(中)·담묵(淡)</td>
+              <td><code>--rw-sumi-ink / -charcoal / -wash</code></td>
+              <td class="text-right">테두리 없는 자연스러운 위계</td>
+            </tr>
+            <tr>
+              <td><strong>문방사우 신택스</strong></td>
+              <td>주사·송화·농묵·담묵</td>
+              <td><code>.token-kw, .token-str, .token-fn, .token-cm</code></td>
+              <td class="text-right">눈부심 없는 코드 가독성</td>
+            </tr>
+            <tr>
+              <td><strong>전각 낙관 (篆刻)</strong></td>
+              <td>화룡점정 주사 인주</td>
+              <td><code>.rw-seal-badge, .rw-seal-chop</code></td>
+              <td class="text-right">신뢰성 및 승인 상태 직관화</td>
+            </tr>
+            <tr>
+              <td><strong>난외 배주 (Marginalia)</strong></td>
+              <td>동양 고서 여백 주석</td>
+              <td><code>.rw-marginalia-ref, .rw-aside-note</code></td>
+              <td class="text-right">본문 호흡 유지 + 심화 해설</td>
+            </tr>
+            <tr>
+              <td><strong>목판본 인쇄 (@print)</strong></td>
+              <td>고서 목판본 흑백 조판</td>
+              <td><code>@media print { page-break-inside: avoid }</code></td>
+              <td class="text-right">A4/PDF 인쇄 시 잉크 절약</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">歲次 丙午年 秋九月 Readwell Architecture Lab 공인 규격</td>
+              <td class="text-right"><strong>총 6대 표준 조판</strong></td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
 
       <!-- 추가 본문 섹션 -->
@@ -146,7 +216,7 @@
       </h3>
       <p>
         The styling guide sumirat documentation and defines a staret ecorners of the conton of our layout architecture.
-        화려한 네온 컬러나 인위적인 기하학 대신, 차분한 먹빛과 주사(朱砂) 인장 도장으로 안정적인 개발자 경험을 완성합니다.
+        화려한 네온 컬러나 인위적인 기하학 대신, 차분한 먹빛과 주사(朱砂) 인장 도장<button type="button" class="rw-marginalia-ref" id="note-ref-3" data-note="sumi-note-3" aria-describedby="sumi-note-3" title="배주 3: 전각과 낙관의 역할">③</button>으로 안정적인 개발자 경험을 완성합니다.
       </p>
 
       <!-- 인라인 본문용 Callout Box 1: 기본 방필(方筆) 중필형 -->
@@ -378,13 +448,18 @@
         </div>
 
         <div class="rw-showcase-group">
-          <strong class="rw-showcase-label">2. 이중 테두리(쌍선인 雙線印) & 타원형 두인(頭印)</strong>
+          <strong class="rw-showcase-label">2. 이중 테두리(쌍선인), 타원형 두인, 표주박형(호로인 葫蘆印) &amp; 자연석형(자연인 自然印)</strong>
           <div class="rw-badge-row">
             <span class="rw-seal-badge rw-seal-badge--double">공식정본</span>
             <span class="rw-seal-badge rw-seal-badge--double">승인문서</span>
-            <span class="rw-seal-badge rw-seal-badge--round">안내</span>
-            <span class="rw-seal-badge rw-seal-badge--round">기록</span>
+            <span class="rw-seal-badge rw-seal-badge--round">타원두인</span>
             <span class="rw-seal-badge rw-seal-badge--round rw-seal-badge--solid">권고</span>
+            <!-- Phase 4-3 신규: 표주박형 호로인 (葫蘆印) -->
+            <span class="rw-seal-badge rw-seal-badge--gourd" title="표주박형 호로인">葫蘆 표주박</span>
+            <span class="rw-seal-badge rw-seal-badge--gourd rw-seal-badge--solid" title="음각 호로인">吉慶 호로인</span>
+            <!-- Phase 4-3 신규: 자연석형 자연인 (自然印) -->
+            <span class="rw-seal-badge rw-seal-badge--natural" title="자연석형 자연인">自然 자연석</span>
+            <span class="rw-seal-badge rw-seal-badge--natural rw-seal-badge--solid" title="음각 자연인">墨香 자연인</span>
             <span class="rw-seal-badge rw-seal-badge--tilted">수작업 틸트</span>
           </div>
         </div>
@@ -865,7 +940,95 @@
         </div>
       </section>
 
+      <!-- ====================================================================
+           Phase 4-3. 인터랙티브 수묵 플레이그라운드 패널 (Interactive Playground)
+           동세, 크기, 먹색, 컴포넌트 실시간 조작 및 원클릭 코드 생성
+           ==================================================================== -->
+      <section class="rw-playground-panel" id="sumi-playground">
+        <div class="rw-playground-header">
+          <h3 class="rw-playground-title">
+            <span>🎨</span> 수묵 인터랙티브 조판 공방 (Sumi-e Playground)
+          </h3>
+          <span class="rw-seal-badge rw-seal-badge--solid">DX 실시간</span>
+        </div>
+        <p class="rw-playground-desc">
+          서예 컴포넌트의 유형, 먹색 농담(농묵·주사·담묵·금묵), 크기 규격 및 서예 7대 동세(動勢)를 브라우저에서 직접 조작하며 실시간 화선지 렌더링 상태를 확인하고, 완성된 코드를 원클릭으로 복사할 수 있습니다.
+        </p>
 
+        <!-- 1. 화선지 실시간 프리뷰 무대 -->
+        <div class="rw-playground-stage" id="pgStage">
+          <div id="pgPreviewTarget">
+            <div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--flow" role="status" aria-label="수묵 미리보기"></div>
+          </div>
+        </div>
+
+        <!-- 2. 인터랙티브 컨트롤러 폼 -->
+        <div class="rw-playground-controls">
+          <!-- 컴포넌트 종류 -->
+          <div class="rw-playground-field">
+            <label class="rw-playground-label" for="pgComponentSelect">컴포넌트 유형 (Component)</label>
+            <select id="pgComponentSelect" class="rw-playground-select" onchange="updatePlayground()">
+              <option value="spinner-brush" selected>비백호 붓터치 스피너 (Brush Ring)</option>
+              <option value="spinner-enso">원상 일필휘지 스피너 (Enso Circle)</option>
+              <option value="spinner-dots">묵적 3점 인디케이터 (3-Step Dots)</option>
+              <option value="seal-chop">전각 사각 직인 (Chop Seal)</option>
+              <option value="seal-badge">전각 뱃지 / 두인 (Seal Badge)</option>
+              <option value="callout-box">수묵 콜아웃 박스 (Callout Frame)</option>
+            </select>
+          </div>
+
+          <!-- 먹색 안료 -->
+          <div class="rw-playground-field">
+            <label class="rw-playground-label" for="pgColorSelect">먹색 농담 (Ink Tone)</label>
+            <select id="pgColorSelect" class="rw-playground-select" onchange="updatePlayground()">
+              <option value="ink" selected>농묵 (濃墨, Dense Ink)</option>
+              <option value="seal">주사 (朱砂, Vermilion Seal)</option>
+              <option value="wash">담묵 (淡墨, Ink Wash)</option>
+              <option value="gold">금묵 (金墨, Gold Leaf)</option>
+            </select>
+          </div>
+
+          <!-- 크기 규격 -->
+          <div class="rw-playground-field">
+            <label class="rw-playground-label" for="pgSizeSelect">크기 규격 (Scale)</label>
+            <select id="pgSizeSelect" class="rw-playground-select" onchange="updatePlayground()">
+              <option value="sm">소형 (--sm, 20px / 컴팩트)</option>
+              <option value="md" selected>기본 (표준 규격)</option>
+              <option value="lg">대형 (--lg, 52px / 강조)</option>
+              <option value="xl">특대형 (--xl, 72px / 전시)</option>
+            </select>
+          </div>
+
+          <!-- 서예 동세 애니메이션 -->
+          <div class="rw-playground-field">
+            <label class="rw-playground-label" for="pgMotionSelect">서예 동세 (Animation)</label>
+            <select id="pgMotionSelect" class="rw-playground-select" onchange="updatePlayground()">
+              <option value="normal">기본 등속 회전 (1.1s)</option>
+              <option value="slow">정중동 슬로우 (2.2s)</option>
+              <option value="flow" selected>1. 유수 사인 가감속 (--flow)</option>
+              <option value="breathe">2. 호흡 수축·팽창 (--breathe)</option>
+              <option value="fade">3. 훈염 농담 번짐 (--fade)</option>
+              <option value="sweep">4. 부채꼴 운필 왕복 (--sweep)</option>
+              <option value="ghost">5. 훈염 잔상 추적 (--ghost)</option>
+              <option value="dual">6. 음양 역회전 (--dual)</option>
+              <option value="dual-sync">7. 동심 순회전 (--dual-sync)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. 실시간 생성된 HTML 코드 박스 -->
+        <div class="rw-playground-code-wrap">
+          <div class="rw-playground-code-header">
+            <span>생성된 HTML 마크업 (실시간 반영)</span>
+            <button type="button" class="rw-btn-copy-snippet" id="pgCopyBtn" onclick="copySnippet(document.getElementById('pgCodeDisplay').innerText, this)">
+              <span>📋 마크업 복사</span>
+            </button>
+          </div>
+          <div class="rw-code-sumi" style="margin:0;">
+            <pre><code id="pgCodeDisplay">&lt;div class="rw-sumi-spinner rw-sumi-spinner--brush-ink rw-sumi-spinner--flow" role="status" aria-label="수묵 로딩"&gt;&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
 
       <!-- ====================================================================
            수묵 확장 컴포넌트: 전통 서첩 발문(跋文) / 저자 서명란
@@ -956,6 +1119,41 @@
           </p>
         </div>
 
+        <!-- Phase 4-1. 동양 고서 난외 배주 (Marginalia) 주석 시스템 -->
+        <div class="rw-aside-section rw-aside-marginalia" id="sumi-marginalia-aside">
+          <div class="rw-aside-label">
+            <span>난외 배주 (Marginalia)</span>
+            <span class="rw-seal-badge rw-seal-badge--round">고서 주석</span>
+          </div>
+          <div class="rw-aside-note" id="sumi-note-1" data-ref="note-ref-1" tabindex="0" role="complementary" aria-label="배주 1: 기필과 수필">
+            <div class="rw-aside-note-header">
+              <span class="rw-aside-note-num">①</span>
+              <span>기필(起筆)과 수필(收筆)</span>
+            </div>
+            <p class="rw-aside-note-text">
+              붓을 처음 종이에 대는 시작점을 기필(起筆), 획을 거두어 마감하는 지점을 수필(收筆)이라 합니다. 농묵의 기필은 독서의 주의를 환기하고 날렵한 수필은 여백으로의 시선 전환을 돕습니다.
+            </p>
+          </div>
+          <div class="rw-aside-note" id="sumi-note-2" data-ref="note-ref-2" tabindex="0" role="complementary" aria-label="배주 2: 농담의 삼단계 조판">
+            <div class="rw-aside-note-header">
+              <span class="rw-aside-note-num">②</span>
+              <span>농담(濃淡)의 삼단계 조판</span>
+            </div>
+            <p class="rw-aside-note-text">
+              농묵(진한 먹)은 제목과 강조, 중묵(보통 먹)은 본문 가독성, 담묵(연한 먹)은 메타데이터와 지선(紙線)에 적용하여 인위적 테두리 없이 시각적 위계를 완성합니다.
+            </p>
+          </div>
+          <div class="rw-aside-note" id="sumi-note-3" data-ref="note-ref-3" tabindex="0" role="complementary" aria-label="배주 3: 전각과 낙관의 역할">
+            <div class="rw-aside-note-header">
+              <span class="rw-aside-note-num">③</span>
+              <span>전각(篆刻)과 낙관의 역할</span>
+            </div>
+            <p class="rw-aside-note-text">
+              붉은 주사(朱砂) 인장은 흑백 단색 조판 위에 생명력을 불어넣는 화룡점정(畫龍點睛)의 시각적 앵커이자 문서의 신뢰성을 보증하는 도장 역할을 합니다.
+            </p>
+          </div>
+        </div>
+
         <!-- 우측 하단: 낙관 Approved by 구획 (컴포넌트형 직인 도장 적용) -->
         <div class="rw-aside-seal-block">
           <span class="rw-aside-seal-label">낙관 (전각 직인 컴포넌트)</span>
@@ -1027,6 +1225,7 @@
       <li class="rw-mobile-toc-item"><a href="#seal-badges" class="rw-mobile-toc-link" onclick="closeMobileToc()">낙관 도장 뱃지 (Seal Stamp Badges)</a></li>
       <li class="rw-mobile-toc-item"><a href="#sumi-sliders" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 슬라이더 (Sumi Sliders)</a></li>
       <li class="rw-mobile-toc-item"><a href="#sumi-spinners" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 스피너 (Sumi Spinners)</a></li>
+      <li class="rw-mobile-toc-item"><a href="#sumi-playground" class="rw-mobile-toc-link" onclick="closeMobileToc()">수묵 공방 (Playground)</a></li>
     </ul>
   </dialog>
 
@@ -1262,6 +1461,162 @@
       document.addEventListener('DOMContentLoaded', initVerticalWritingUX);
     } else {
       initVerticalWritingUX();
+    }
+
+    // 📋 원클릭 코드 복사 헬퍼 (Copy Snippet)
+    async function copySnippet(text, btnElement) {
+      if (!text) return;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (btnElement) {
+          const originalHTML = btnElement.innerHTML;
+          btnElement.classList.add('is-copied');
+          btnElement.innerHTML = '<span>✔ 복사됨!</span>';
+          setTimeout(() => {
+            btnElement.classList.remove('is-copied');
+            btnElement.innerHTML = originalHTML;
+          }, 2000);
+        }
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
+    }
+
+    // 📜 동양 고서 난외 배주 (Marginalia) 상호작용
+    function initMarginalia() {
+      // 본문 참조 번호 클릭 시 우측 레일 해당 주석으로 스크롤 및 펄스 하이라이트
+      const refs = document.querySelectorAll('.rw-marginalia-ref');
+      refs.forEach(ref => {
+        ref.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('data-note');
+          const noteEl = document.getElementById(targetId);
+          if (noteEl) {
+            noteEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            noteEl.classList.remove('is-active');
+            void noteEl.offsetWidth;
+            noteEl.classList.add('is-active');
+            if (typeof noteEl.focus === 'function') {
+              noteEl.focus({ preventScroll: true });
+            }
+            setTimeout(() => {
+              noteEl.classList.remove('is-active');
+            }, 3000);
+          }
+        });
+      });
+
+      // 우측 주석 클릭 시 본문 해당 번호로 역스크롤 및 펄스 강조
+      const notes = document.querySelectorAll('.rw-aside-note');
+      notes.forEach(note => {
+        note.addEventListener('click', function () {
+          const refId = this.getAttribute('data-ref');
+          const refEl = document.getElementById(refId);
+          if (refEl) {
+            refEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            refEl.classList.remove('is-highlighted');
+            void refEl.offsetWidth;
+            refEl.classList.add('is-highlighted');
+            setTimeout(() => {
+              refEl.classList.remove('is-highlighted');
+            }, 2500);
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMarginalia);
+    } else {
+      initMarginalia();
+    }
+
+    // 🎨 수묵 인터랙티브 플레이그라운드 실시간 갱신 함수
+    function updatePlayground() {
+      const compType = document.getElementById('pgComponentSelect')?.value || 'spinner-brush';
+      const colorType = document.getElementById('pgColorSelect')?.value || 'ink';
+      const sizeType = document.getElementById('pgSizeSelect')?.value || 'md';
+      const motionType = document.getElementById('pgMotionSelect')?.value || 'flow';
+
+      const target = document.getElementById('pgPreviewTarget');
+      const codeDisplay = document.getElementById('pgCodeDisplay');
+      if (!target || !codeDisplay) return;
+
+      let htmlCode = '';
+
+      if (compType === 'spinner-brush' || compType === 'spinner-enso') {
+        const prefix = compType === 'spinner-brush' ? 'brush' : 'enso';
+        const colorClass = `rw-sumi-spinner--${prefix}-${colorType}`;
+        const sizeClass = sizeType === 'md' ? '' : `rw-sumi-spinner--${sizeType}`;
+        let motionClass = '';
+        if (motionType === 'slow') motionClass = 'rw-sumi-spinner--slow';
+        else if (motionType !== 'normal') motionClass = `rw-sumi-spinner--${motionType}`;
+
+        const classes = ['rw-sumi-spinner', colorClass, sizeClass, motionClass].filter(Boolean).join(' ');
+        htmlCode = `<div class="${classes}" role="status" aria-label="수묵 로딩"></div>`;
+        target.innerHTML = htmlCode;
+      } else if (compType === 'spinner-dots') {
+        const colorClass = colorType === 'ink' ? '' : `rw-sumi-spinner--dots-${colorType}`;
+        const sizeClass = sizeType === 'md' ? '' : `rw-sumi-spinner--dots-${sizeType}`;
+        const classes = ['rw-sumi-spinner', 'rw-sumi-spinner--dots', colorClass, sizeClass].filter(Boolean).join(' ');
+        htmlCode = `<span class="${classes}" role="status" aria-label="묵적 로딩"></span>`;
+        target.innerHTML = htmlCode;
+      } else if (compType === 'seal-chop') {
+        const solidClass = colorType === 'seal' ? 'rw-seal-chop--solid' : '';
+        const sizeClass = (sizeType === 'lg' || sizeType === 'xl') ? 'rw-seal-chop--lg' : '';
+        const classes = ['rw-seal-chop', solidClass, sizeClass].filter(Boolean).join(' ');
+        htmlCode = `<span class="${classes}" role="img" aria-label="독서정본 직인" title="讀書正本">
+  <span>讀</span><span>書</span>
+  <span>正</span><span>本</span>
+</span>`;
+        target.innerHTML = htmlCode;
+      } else if (compType === 'seal-badge') {
+        let badgeVariant = '';
+        if (motionType === 'flow' || motionType === 'breathe') badgeVariant = 'rw-seal-badge--gourd';
+        else if (motionType === 'fade' || motionType === 'sweep') badgeVariant = 'rw-seal-badge--natural';
+        else if (motionType === 'ghost') badgeVariant = 'rw-seal-badge--double';
+        else if (motionType === 'dual') badgeVariant = 'rw-seal-badge--round';
+        else badgeVariant = colorType === 'seal' ? 'rw-seal-badge--solid' : '';
+
+        const classes = ['rw-seal-badge', badgeVariant].filter(Boolean).join(' ');
+        htmlCode = `<span class="${classes}">정본 승인</span>`;
+        target.innerHTML = htmlCode;
+      } else if (compType === 'callout-box') {
+        let boxVariant = '';
+        if (motionType === 'flow' || motionType === 'breathe') boxVariant = 'rw-callout-ink-box--brush';
+        else if (motionType === 'fade' || motionType === 'sweep') boxVariant = 'rw-callout-ink-box--fine';
+        else if (motionType === 'dual') boxVariant = 'rw-callout-ink-box--round';
+
+        const classes = ['rw-callout-ink-box', boxVariant].filter(Boolean).join(' ');
+        htmlCode = `<div class="${classes}" style="max-width: 480px; width: 100%;">
+  <div class="rw-callout-ink-header">
+    <span class="rw-callout-ink-title">수묵 프레임워크 안내</span>
+    <span class="rw-seal-badge">안내</span>
+  </div>
+  <div class="rw-callout-ink-divider"></div>
+  <p class="rw-callout-ink-desc">화선지 위에 번진 유기적인 먹물과 정제된 수묵 조판 규격을 제공합니다.</p>
+</div>`;
+        target.innerHTML = htmlCode;
+      }
+
+      codeDisplay.textContent = htmlCode;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updatePlayground);
+    } else {
+      updatePlayground();
     }
 
     // 🎚️ 수묵 인터랙티브 슬라이더 값 실시간 업데이트 핸들러
