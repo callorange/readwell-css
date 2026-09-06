@@ -68,10 +68,10 @@ flowchart LR
   - [x] 비백호(飛白弧) 및 원상(圓相) 붓터치 스피너 SVG `<path>` 및 서예 회전 구현
   - [x] 수묵 프로그레스 & 슬라이더용 12px 벡터 스트로크 SVG 패스 트랙/채움 구현
   - [x] ~~0KB 인라인 SVG `<feTurbulence>` 한지 섬유결 절구 텍스처 타일~~ ➡️ **[폐기]** SVG 배경 폐기 결정: feTurbulence 노이즈의 가독성 저하 및 인위적인 줄무늬 결함으로 전면 폐기하고, 자연스러운 한지 질감은 고압축(72KB) WebP 비트맵으로 일원화
-- [x] **1-3. 실시간 A/B 렌더링 엔진 스위처 및 1:1 비교존 구축**
-  - [x] 우측 하단 플로팅 컨트롤러에 `🎨 렌더 엔진: [비트맵 (WebP/PNG)] ↔ [SVG 벡터]` 실시간 토글 버튼 추가
-  - [x] `<body>`의 `data-rw-engine="bitmap" | "svg"` 데이터 속성에 따른 CSS 엔진 실시간 연동
-  - [x] 쇼케이스 카드 내부에 **[기존 비트맵 방식] vs [신규 SVG 방식] 1:1 Side-by-Side 비교 영역** 구성
+- [x] **1-3. ~~실시간 A/B 렌더링 엔진 스위처 및 1:1 비교존 구축~~ ➡️ [폐기/일원화 확정]**
+  - [x] 서예 전통의 갈필(渴筆)과 번짐 손맛을 SVG로 완벽히 재현하기 어렵다는 사용자 미학적 판단에 따라, **SVG 벡터 엔진 및 1:1 비교존 전면 폐기**
+  - [x] 플로팅 엔진 토글러, 비교존 마크업, 듀얼 엔진 CSS 오버라이드 완전 정리
+  - [x] 전통 수묵 질감은 고압축 WebP 비트맵으로 최종 일원화 확정
 - [x] **1-4. 웹 접근성(WCAG 2.1) 결함 즉시 해결**
   - [x] 슬라이더의 `outline: none !important` 제거 및 키보드 초점 시 붉은 인주 훈염 링(`:focus-visible`) 표시
   - [x] `<input type="range">`에 시맨틱 `aria-label="수묵 붓점 조절기"` 추가
@@ -79,30 +79,38 @@ flowchart LR
   - [x] 4분면 전각 직인 컴포넌트에 `role="img"`, `aria-label="독서정본 직인"` 부여로 글자 분절 낭독 차단
   - [x] 쇼케이스 전시용 스피너들에 `aria-hidden="true"`를 부여하여 스크린 리더 소음 제거
   - [x] 12px 슬림 슬라이더에 가상 요소(`::after`)를 적용해 최소 **44px × 44px 터치 조작 타겟** 확보
-- [x] **[Phase 1 검증]**: 브라우저에서 비트맵/SVG 토글 확인, 키보드 Tab 키 탐색 및 스크린 리더 음성 출력 검증
+- [x] **[Phase 1 검증]**: WebP 비트맵 일원화, 키보드 Tab 키 탐색 및 스크린 리더 음성 출력 검증 완료
 
 ---
 
 ### Phase 2: 아키텍처 모듈화 & 동양 전통 조판(CJK) 정밀화
 > **목표**: 2,000줄의 인라인 모놀리식 CSS를 독립 라이브러리로 분리하고, 전통 서첩 조판의 미학을 완성합니다.
 
-- [ ] **2-1. 독립 모듈 추출 및 Cascade Layers 정리**
-  - [ ] `index.html` 내 인라인 CSS를 `examples/sumi/sumi.css`로 추출 분리
-  - [ ] Readwell 코어 CSS 레이어 체계(`@layer themes.sumi`, `@layer components.sumi`)와 연동
-  - [ ] 불필요하게 남발된 CSS `!important` 선언 정리
-- [ ] **2-2. 코드 위생 및 모바일 뷰포트 개선**
-  - [ ] HTML 본문 속 수십 개의 인라인 하드코딩 `style="..."` 속성을 시맨틱 CSS 클래스로 리팩토링
-  - [ ] 캔버스 및 레이아웃의 `100vh`/`100vw`를 Dynamic Viewport 단위(`100dvh`/`100dvw`)로 전환하여 모바일 주소창 출렁임 버그 해결
-  - [ ] 장문 아티클 하단 오프스크린 섹션에 `content-visibility: auto` 렌더링 최적화 적용
-- [ ] **2-3. 고서 전통 세로쓰기(縱書) UX 결함 완전 해결**
-  - [ ] `.rw-sumi-vertical-wrap`의 가로 스크롤 초기 위치를 고서 정통 읽기 시작점인 **우측 끝(RTL 시작점)**으로 자동 정렬
-  - [ ] 마우스 휠 이벤트(`deltaY`)를 가로 스크롤(`scrollLeft`)로 매핑하여 부드러운 병풍/서첩 넘김 인터랙션 지원
-- [ ] **2-4. 전통 권점(圈點) 및 CJK 타이포그래피 고도화**
-  - [ ] `text-emphasis: filled circle var(--rw-sumi-seal)`를 활용한 전통 붉은 주사(朱砂) 권점 강조 클래스(`.rw-sumi-emphasis`) 구현
-  - [ ] 최신 CSS `text-spacing-trim: normal` 적용으로 CJK 문장 부호(괄호/쉼표/마침표) 연속 여백 자동 압축
-  - [ ] `line-break: strict; word-break: keep-all;`로 행두 금칙 문자 엄격 적용
-  - [ ] 담묵 소자(小字) 루비 주석 스타일링(`<ruby>`, `<rt>`) 지원
-- [ ] **[Phase 2 검증]**: 분리된 `sumi.css` 로딩 확인, 세로쓰기 가로 휠 스크롤 및 RTL 시작 위치 확인, 권점 강조 렌더링 점검
+- [x] **2-1. 독립 모듈 추출 및 Cascade Layers 정리**
+  - [x] `index.html` 내 인라인 CSS를 `examples/sumi/sumi.css`로 추출 분리
+  - [x] Readwell 코어 CSS 레이어 체계(`@layer themes.sumi`, `@layer components.sumi`)와 연동
+  - [x] 불필요하게 남발된 CSS `!important` 선언 정리
+- [x] **2-2. 코드 위생 및 모바일 뷰포트 개선**
+  - [x] HTML 본문 속 수십 개의 인라인 하드코딩 `style="..."` 속성을 시맨틱 CSS 클래스로 리팩토링
+  - [x] 캔버스 및 레이아웃의 `100vh`/`100vw`를 Dynamic Viewport 단위(`100dvh`/`100dvw`)로 전환하여 모바일 주소창 출렁임 버그 해결
+  - [x] 장문 아티클 하단 오프스크린 섹션에 `content-visibility: auto` 렌더링 최적화 적용
+- [x] **2-3. 고서 전통 세로쓰기(縱書) UX 결함 완전 해결**
+  - [x] `.rw-sumi-vertical-wrap`의 가로 스크롤 초기 위치를 고서 정통 읽기 시작점인 **우측 끝(RTL 시작점)**으로 자동 정렬
+  - [x] 마우스 휠 이벤트(`deltaY`)를 가로 스크롤(`scrollLeft`)로 매핑하여 부드러운 병풍/서첩 넘김 인터랙션 지원
+- [x] **2-4. 전통 권점(圈點) 및 CJK 타이포그래피 고도화**
+  - [x] 전통 주사(朱砂) 권점(圈點) 3종 양식 고도화 및 본문 복원: 단조로운 컴퓨터 볼릿을 탈피하고 서예 필의(筆意)가 살아있는 참깨점(`.rw-sumi-emphasis` / `filled sesame`), 정통 고서 붉은 고리 권점(`.rw-sumi-emphasis--circle` / `open circle`), 슬라이더 일치 도장 인주 붓점 SVG 권점(`.rw-sumi-emphasis-seal`) 구현 및 가로/세로쓰기 연동
+  - [x] 최신 CSS `text-spacing-trim: normal` 적용으로 CJK 문장 부호(괄호/쉼표/마침표) 연속 여백 자동 압축
+  - [x] `line-break: strict; word-break: keep-all;`로 행두 금칙 문자 엄격 적용
+  - [x] 담묵 소자(小字) 루비 주석 스타일링(`<ruby>`, `<rt>`) 지원
+- [x] **2-5. [피드백 반영] 수묵 인터랙티브 슬라이더 핸들 수직 정렬 정상화**
+  - [x] `.rw-sumi-slider-box`의 flexbox 및 음수 마진 충돌 제거 (`position: relative; height: 12px; margin: 1.25rem 0 0.5rem;`)
+  - [x] `.rw-sumi-slider-input`의 44px 터치 타겟을 `top: 50%; transform: translateY(-50%)`로 트랙 중앙에 완벽 고정
+  - [x] 3대 정예 썸(Dot, Brush, Tick)의 WebKit/Moz 수직 오프셋 정밀 보정 (붓점 중심 -4px, 모필 붓촉 접점 -30px, 눈금 가늠자 침 -10px)
+- [x] **2-6. [긴급 복구] CSS 깨짐 및 HTML DOM 구조 불일치 결함 해결**
+  - [x] `sumi.css`: `body.rw-sumi-body` 및 `.rw-sumi-layout`에 고정 삽입되었던 `height: 100dvh;` 제거 (`min-height: 100vh; min-height: 100dvh;`로 복원하여 장문 스크롤 및 좌우 스티키 사이드바 정상 동작)
+  - [x] `index.html`: `#seal-badges`의 미닫힌 `</section>` 추가 및 `#sumi-sliders` 하단 잉여 `</div>` 제거로 `<main>` 조기 종료 및 우측 사이드바(`.rw-sumi-aside`) 3컬럼 이탈 현상 완전 해결
+  - [x] `index.html`: `.rw-callout-ink-box` 중복 `class` 속성 병합 단일화
+- [x] **[Phase 2 검증]**: 분리된 `sumi.css` 로딩, 3컬럼 레이아웃 완벽 복원, 세로쓰기 휠 스크롤/RTL 시작점 확인, 슬라이더 3종 핸들 트랙 중앙 정밀 안착 및 WebP 비트맵 일원화 검증 완료 (스크린샷 대조 및 `npm test` 통과)
 
 ---
 
